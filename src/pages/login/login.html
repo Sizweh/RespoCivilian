@@ -1,0 +1,69 @@
+<ion-content text-color='calm'  text-center padding="true" class="manual-ios-statusbar-padding">
+
+  <br>
+  <br>
+  <div>
+      <img class="logo" src="../../assets/Respo Logo002.png"
+      style="display: block; width: 50%; height: auto; margin-left: auto; margin-right: auto;">
+  </div>
+  
+  <br>
+  <br>
+
+  <div class="login-fields" [formGroup]="loginForm">
+      <ion-item>
+        <ion-input
+          block
+          formControlName="phoneNumber"
+          minLength="10"
+          maxLength="10"
+          type="tel"
+          placeholder="Cell Number"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          formControlName="password"
+          type="password"
+          minLength="7"
+          maxLength="7"
+          placeholder="Password"
+        ></ion-input>
+      </ion-item>
+    </div>
+  
+    <div class="remember_token">
+      <ion-item no-lines>
+        <ion-label>Remember Me.</ion-label>
+        <ion-checkbox
+          [(ngModel)]="remembertoken"
+          (ionChange)="updateToken()"
+        ></ion-checkbox>
+      </ion-item>
+    </div>
+  
+   <br>
+          <button
+            ion-button
+            round
+            block
+            [disabled]="!loginForm.valid"
+            (click)="goLogin()"
+            color="newcolor"
+          >
+            Log in
+          </button>
+
+
+   <P  (click)="goResetPassword()">Forgot Password</P>
+     
+      <P>OR</P>
+    
+
+
+
+
+        <button (click)="goRegister()" full round ion-button color="calm" clear>Register</button>
+
+
+  </ion-content>

@@ -1,0 +1,69 @@
+
+
+
+<ion-content padding>
+    <br>
+
+  <ion-item no-lines>
+    <ion-avatar>
+      <img src="../../assets/icons/euphonic.jpg"
+        style="width: 100px; height: 100px;  margin-left: auto; margin-right: auto;">
+    </ion-avatar>
+  </ion-item>
+
+  
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button (click)="goHome()"  outline ion-button color="light" round>Change or Upload Pic. </button>
+
+  <br>
+  <br>
+
+ 
+
+  <ion-item>
+    <ion-input block type="text" placeholder="Full Name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input block minLength="10" maxLength="10" type="tel" placeholder="Phone Number"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input block type="text" placeholder="Email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input block minLength="10" maxLength="10" type="password" placeholder="Password"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input minLength="6" maxLength="20" type="password" placeholder="Confirm Password"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Gender</ion-label>
+    <ion-select>
+      <ion-option value="Male">Male</ion-option>
+      <ion-option value="Female">Female</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Date of Birth</ion-label>
+    <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD MMMM YYYY" placeholder="Select date of birth">
+    </ion-datetime>
+  </ion-item>
+
+<br>
+
+
+  <ion-row>
+    <ion-col col-6>
+      <button ion-button block clear color='newcolor' (click)="goHome()"> Cancel </button>
+    </ion-col>
+    <ion-col col-6>
+      <button ion-button round block color='secondary' [disabled]="" (click)="goHome()"> Done</button>
+    </ion-col>
+  </ion-row>
+
+
+</ion-content>

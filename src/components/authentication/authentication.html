@@ -1,0 +1,26 @@
+
+<ion-header>
+    <ion-navbar>
+      <ion-title>Connection</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  
+  <ion-content padding>
+    <ion-list>
+      <ion-item>
+        <ion-label fixed>Cell Number</ion-label>
+        <ion-input type="tel" value="" [(ngModel)]="data.cell_number"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label fixed>Password</ion-label>
+        <ion-input type="password" [(ngModel)]="data.password"></ion-input>
+      </ion-item>
+  
+    </ion-list>
+  
+    <div padding>
+       <button ion-button color="primary" block (click)="signin()" [disabled]="!checkLoginDisable()">Signin</button>
+    </div>
+  </ion-content>

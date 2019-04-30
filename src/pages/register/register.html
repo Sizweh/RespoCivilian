@@ -1,0 +1,98 @@
+
+
+
+<ion-content text-center padding>
+    
+  <br>
+  <br>
+  
+  <h5>Register</h5>
+    <div class="register-fields" [formGroup]="registerForm">
+      <ion-item>
+        <ion-input
+          block
+          formControlName="fullName"
+          type="text"
+          placeholder="Full Name"
+        ></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-input
+          block
+          formControlName="phoneNumber"
+          minLength="10"
+          maxLength="10"
+          type="tel"
+          placeholder="Cell Number"
+        ></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-input
+          block
+          formControlName="Email"
+          type="email"
+          placeholder="Email"
+        ></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Gender</ion-label>
+        <ion-select formControlName="gender">
+          <ion-option value="Male">Male</ion-option>
+          <ion-option value="Female">Female</ion-option>
+        </ion-select>
+      </ion-item>
+     
+      
+  
+      <ion-item>
+        <ion-label>Date of Birth</ion-label>
+        <ion-datetime
+          displayFormat="DD/MM/YYYY"
+          pickerFormat="DD MMMM YYYY"
+          formControlName="myDate"
+          placeholder="Select date of birth"
+        ></ion-datetime>
+      </ion-item>
+
+
+
+      <ion-item>
+        <ion-input
+          formControlName="password"
+          minLength="6"
+          maxLength="20"
+          type="password"
+          placeholder="Password"
+        ></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-input
+          formControlName="confirmPassword"
+          minLength="6"
+          maxLength="20"
+          type="password"
+          placeholder="Confirm Password"
+        ></ion-input>
+      </ion-item>
+  
+    
+    </div>
+  <br>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+          <button ion-button block round clear color="newcolor" (click)="goLogin()">back</button>
+        </ion-col>
+  
+        <ion-col col-6>
+          <button ion-button block color="secondary" round  [disabled]="!registerForm.valid" (click)="goVerifyAccount()">
+            REGISTER
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
