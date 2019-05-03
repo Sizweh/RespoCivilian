@@ -33,9 +33,17 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
-
+  hideShowPassword() {
+    this.passwordType = this.passwordType === 'tel' ? 'password' : 'tel';
+    this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';
+  }
   updateToken() {
     console.log('Remember token new state:' + this.remembertoken);
+  }
+
+  public isOnline: boolean = false;
+  updateDriverOnlineStatus($event) {
+    this.isOnline = !this.isOnline;
   }
 
   goLogin(){
