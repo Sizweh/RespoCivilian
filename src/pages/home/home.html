@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-navbar >
-    <ion-toolbar mode="ios">
+    <ion-navbar color="newcolor">
+          <ion-toolbar mode="ios">
       <ion-buttons start>
 
         <button color='light' ion-button icon-only menuToggle>
@@ -16,97 +16,21 @@
 
 <ion-content text-center padding>
 
+      <ion-row *ngFor="let fault of faultCategories">
+        <ion-card>
+            <ion-card-content>
+            <ion-item no-lines  (click)="goLocation(fault)" text-right>
+                <ion-avatar item-start>
+                  <img [src]="fault.imageUrl">
+                </ion-avatar>
+                <h1>0</h1>
+                <font size="3" color='#38414a'>{{ fault.category }}</font >
+              </ion-item>
+            </ion-card-content> 
 
-    <ion-item no-lines  (click)="goLocation()" text-right>
-      <ion-avatar item-start>
-        <img src="../../assets/icons/R7.png">
-      </ion-avatar>
-      <h1>0</h1>
-      <font size="3" color='#38414a'>Vehicle Accident</font >
-    </ion-item>
-
-
-    <br>
-  
-    <ion-item no-lines text-right>
-      <ion-avatar item-start>
-        <img src="../../assets/icons/R3.png">
-      </ion-avatar>
-      <h1>0</h1>
-      <font size="3" color='#38414a'>Heart Attack</font>
-    </ion-item>
-
-<br>
-    <ion-item no-lines text-right>
-      <ion-avatar item-start>
-        <img src="../../assets/icons/R5.png">
-      </ion-avatar>
-      <h1>0</h1>
-      <font size="3" color='#38414a'>Severe Bleeding</font>
-    </ion-item>
- 
-<br>
- 
-    <ion-item no-lines text-right>
-      <ion-avatar item-start>
-        <img src="../../assets/icons/R9.png">
-      </ion-avatar>
-      <h1>0</h1>
-      <font size="3" color='#38414a'>Burns</font>
-    </ion-item>
- 
-<br>
-  
-    <ion-item no-lines text-right>
-      <ion-avatar item-start>
-        <img src="../../assets/icons/R1.png">
-      </ion-avatar>
-      <h1>0</h1>
-      <font size="3" color='#38414a'>Diffculty Breathing</font>
-    </ion-item>
- 
-<br>
- 
-    <ion-item no-lines text-right>
-      <ion-avatar item-start>
-        <img src="../../assets/icons/R2.png">
-      </ion-avatar>
-      <h1>0</h1>
-      <font size="3" color='#38414a'>Fainting</font>
-    </ion-item>
- 
-<br>
-
-    <ion-item no-lines text-right>
-      <ion-avatar item-start>
-        <img src="../../assets/icons/R6.png">
-      </ion-avatar>
-      <h1>0</h1>
-      <font size="3" color='#38414a'>Snake Bite</font>
-    </ion-item>
-  
-<br>
-
-    <ion-item no-lines text-right>
-      <ion-avatar item-start>
-        <img src="../../assets/icons/R4.png">
-      </ion-avatar>
-      <h1>0</h1>
-      <font size="3"color='#38414a'>Labour</font>
-    </ion-item>
- 
-<br>
-
-    <ion-item no-lines (click)="goSpecifyEmergency()"  text-right>
-      <ion-avatar item-start>
-        <img src="../../assets/icons/R8.png">
-      </ion-avatar>
-      <h1>0</h1>
-      <font size="3" color='#38414a'>Other</font>
-    </ion-item>
- 
- 
-
+        </ion-card> 
+       
+      </ion-row>
 
 </ion-content>
 

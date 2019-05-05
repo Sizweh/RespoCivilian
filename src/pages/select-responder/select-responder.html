@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-navbar>
+    <ion-navbar color="newcolor">
       <ion-toolbar mode="ios">
         <ion-buttons start>
   
@@ -16,10 +16,46 @@
           </ion-header>
 
 <ion-content>
-<ion-item (click)="goConfirm()">
-      <ion-list>
+<!-- <ion-item (click)="goConfirm()"> -->
+      <!-- <ion-list *ngFor="let respo of allResponders"> -->
+      <ion-row *ngFor="let respo of allResponders">
+      
+       <ion-card>
+          <ion-card-content>
+              <ion-item (click)="goConfirm(respo)" text-left>
+                  <ion-avatar item-start>
+                    <img src="../../assets/3FydRPmMQsaNOI7xC6Zo_RRV.png">
+                  </ion-avatar>
+                  <ion-row>   
+                      <p style="font-size: 12px;"><b>Name:</b> 
+                        {{ respo.driver_name }}
+                      </p>
+                  </ion-row>
+                  <ion-row>   
+                      <p style="float:left; font-size: 12px;"><b>Plate Num:</b>
+                        {{ respo.license_no }}
+                      </p>
+                    </ion-row>
+                 <ion-row>   
+                    <p style="float:left; font-size: 12px;"><b>Cell Num:</b>
+                       {{ respo.phone_no }}
+                    </p>
+                  </ion-row>
+                  <ion-row>   
+                      <p style="float:left; font-size: 12px;"><b>Company:</b> 
+                        {{ respo.company.company_name }}
+                      </p>
+                  </ion-row>
+                  <!-- <ion-row>   
+                      <h2 style="float:left;"><b>Nmae:</b> {{ respo.driver_name }}</h2>
+                  </ion-row> -->
+             </ion-item>
+          </ion-card-content> 
+
+      </ion-card> 
+      </ion-row>
   
-    <ion-item >
+    <!-- <ion-item >
       <ion-avatar item-start>
         <img src="../../assets/3FydRPmMQsaNOI7xC6Zo_RRV.png">
       </ion-avatar>
@@ -66,9 +102,9 @@
       <h2>Paramed</h2>
       <p>14km away
         <br></p>
-    </ion-item>
+    </ion-item> -->
 
-  </ion-list>
+  <!-- </ion-list> -->
 
-  </ion-item>
+  <!-- </ion-item> -->
 </ion-content>

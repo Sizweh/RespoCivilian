@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { LocationPage } from './location';
-import { HttpClientModule } from '@angular/common/http';
+import { ShowdriversPage } from './showdrivers';
 import { IonicStorageModule } from '@ionic/storage';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    LocationPage,
+    ShowdriversPage,
   ],
   imports: [
-    IonicPageModule.forChild(LocationPage),
-    HttpClientModule,
+    IonicPageModule.forChild(ShowdriversPage),
     IonicStorageModule.forRoot(),
+    HttpClientModule,
+
   ],
 })
-export class LocationPageModule {}
+export class ShowdriversPageModule {}
