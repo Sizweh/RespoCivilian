@@ -5,7 +5,52 @@
   <br>
   <br>
   
-<h5>Enter Next of Kin details here:</h5>
+<h5>Next of Kin 1:</h5>
+
+    <div class="register-fields" [formGroup]="nextofkinForm">
+
+<ion-item>
+    <ion-input
+     placeholder="Name" 
+     type="text"
+    
+     ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input 
+    placeholder="Surname" 
+    type="text"
+   
+    
+    ></ion-input>
+
+  </ion-item>
+  
+
+  <ion-item>
+      <ion-input 
+      placeholder="Phone Number" 
+      type="tel"
+     
+      minLength="5"
+      maxLength="10"
+      ></ion-input>
+    </ion-item>
+
+    </div>
+
+    <ion-item>
+        <ion-label>Relationship</ion-label>
+        <ion-select  >
+          <ion-option value="Family Member">Family Member</ion-option>
+          <ion-option value="Friend">Friend</ion-option>
+          <ion-option value="Colleague">Colleague</ion-option>
+        </ion-select>
+      </ion-item>
+
+
+<h5>Next of Kin 2:</h5>
 
     <div class="register-fields" [formGroup]="nextofkinForm">
 
