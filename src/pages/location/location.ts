@@ -1,6 +1,5 @@
 import { Component, OnInit, ComponentFactoryResolver } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, UrlSerializer} from 'ionic-angular';
-import{ AuthProvider } from './../../providers/auth/auth'
 import { HttpClient } from '@angular/common/http';
 import { AlertsProvider } from './../../providers/alerts/alerts';
 import { Storage } from '@ionic/storage';
@@ -50,7 +49,6 @@ responderDistance: any;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
-    public auth: AuthProvider,
     private http: HttpClient,
     public alert: AlertsProvider,
     private storage: Storage,
@@ -154,7 +152,7 @@ googleMap ()
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-    
+
       var pos = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
@@ -165,7 +163,7 @@ googleMap ()
       if(civilianLng){
         that.civilianLat = pos.lat;
         that.civilianLng = pos.lng;
-      }
+      } 
 
       //marker for user/civilian location
       var markerCivilian;
@@ -260,27 +258,29 @@ handleLocationError(browserHasGeolocation, infoWindow, pos, map) {
     // this.http.post("http://46.101.169.33/api/civilian/makeRequest", this.userDetails)//live    
     this.http.post("http://127.0.0.1:8000/api/civilian/makeRequest", this.userDetails)//local
     .subscribe(data => {
-      console.log(data);
+     console.log(data);
 
       var msg = data['msg'];
       var status = data['status'];
+      var reqId = data['request_id'];
 
       const loader = this.loadingCtrl.create({
         content: "Sending request...",
         duration: 3000
       });
-      loader.present();
 
       this.alert.presentAlert("Notification", msg);
 
       if (status == "OK") {
+        loader.present();
+        this.storage.set('request_id', reqId);
         this.navCtrl.push("ConfirmPage");
       } 
 
      }, error => {
       console.log(error);
     });
-    this.navCtrl.push('ConfirmPage')
+    // this.navCtrl.push('ConfirmPage')
   }
 
   goHome(){

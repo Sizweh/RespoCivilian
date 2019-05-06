@@ -42,7 +42,7 @@ export class MyApp {
   goLogin(){
     // this.sideMenu.hide();
     this.nav.setRoot('LoginPage');
-    this.menu.enable(true);
+    // this.menu.enable(true);
     this.menu.close();
     }
   

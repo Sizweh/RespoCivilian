@@ -3,9 +3,10 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { AlertsProvider } from './../../providers/alerts/alerts';
-import{ AuthProvider } from './../../providers/auth/auth'
+import { AuthProvider } from './../../providers/auth/auth'
 import { Storage } from '@ionic/storage';
-
+import { MenuController } from 'ionic-angular';
+// import { MainServiceProvider } from './../../providers/main-service/main-service'
 
 @IonicPage()
 @Component({
@@ -27,9 +28,12 @@ export class LoginPage {
     public formBuilder: FormBuilder,
     public alert: AlertsProvider,
     public auth: AuthProvider,
-    private storage: Storage
+    private storage: Storage,
+    public menuCtrl: MenuController,
+    // private mainService: MainServiceProvider,
 
     ) {
+      this.menuCtrl.enable(false);
 
       this.loginForm = formBuilder.group({
         'phoneNumber': ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern("^[0-9]{10}")])],
@@ -61,6 +65,8 @@ export class LoginPage {
 
       // this.http.post("http://03e873a6.ngrok.io/api/civilian/loginCivilian", postData)
     // this.http.post("http://46.101.169.33/api/civilian/loginCivilian", postData)
+
+    // this.mainService.login(postData) //need to do smething like this
     this.http.post("http://127.0.0.1:8000/api/civilian/loginCivilian", postData)
       .subscribe(data => {
       //  console.log(data);
