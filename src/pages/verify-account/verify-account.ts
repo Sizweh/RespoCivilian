@@ -47,9 +47,9 @@ export class VerifyAccountPage {
    //pass to back-end
       console.log(this.verificationCode.value);
       var postData = this.verificationCode.value;
-      // this.http.post("http://03e873a6.ngrok.io/api/civilian/activateCivilian", postData)
+    
     // this.http.post("http://46.101.169.33/api/civilian/activateCivilian", postData)
-    this.http.post("http://127.0.0.1:8000/api/civilian/activateCivilian", postData)
+    this.http.post("http://46.101.169.33/api/civilian/activateCivilian", postData)
 
       .subscribe(data => {
        console.log(data);

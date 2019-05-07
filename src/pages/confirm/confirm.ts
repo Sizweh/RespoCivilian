@@ -122,7 +122,7 @@ export class ConfirmPage {
     
 
     // return console.log(this.userDetails);
-    this.http.post("http://127.0.0.1:8000/api/civilian/checkRespoAccept", this.userDetails)
+     this.http.post("http://46.101.169.33/api/civilian/checkRespoAccept", this.userDetails)
     
       .subscribe(data => {
          console.log(this.userDetails);

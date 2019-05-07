@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams} from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -18,13 +18,15 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'home.html',
 })
 export class HomePage {
-
+  playerId :any; 
+  user_ids :any;
 
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     private storage: Storage,
+    private http: HttpClient,
     
    
     ) {
@@ -93,10 +95,46 @@ faultCategories = [
 ];
 
 
+ionViewDidLoad() {
+  console.log('ionViewDidLoad HomePage');
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
-  }
+  var notificationOpenedCallback = function(jsonData) {
+    console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+  };
+
+  window["plugins"].OneSignal
+    .startInit("422a9798-6102-4c4b-8d59-bd1bebcd6810", "316673984537")
+    .handleNotificationOpened(notificationOpenedCallback)
+    .endInit();
+   
+  window["plugins"].OneSignal.getIds(function(ids) {
+      this.playerId =  ids.userId
+      alert(this.playerId)
+});
+this.storage.get('user_id').then((user_id) => {
+ // console.log(user_id);
+   this.user_ids = user_id ; 
+});
+
+  var postData ={user_id:this.user_ids , playerId:this.playerId };
+  
+  this.http.post("http://46.101.169.33/api/civilian/updatePlayerId", postData)
+    .subscribe(data => {
+
+      var msg = data['msg'];
+      var status = data['status'];
+      if (status == "OK") {
+        console.log("playeId updated.");
+      } else {
+        console.log("Please try again.");
+      }
+
+     }, error => {
+      console.log(error);
+    });
+   
+}
+
   goLocation(fault){
     this.storage.set('category', fault);
     this.navCtrl.push('SelectResponderPage')

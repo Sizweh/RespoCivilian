@@ -6,6 +6,7 @@ import { AlertsProvider } from './../../providers/alerts/alerts';
 import { AuthProvider } from './../../providers/auth/auth'
 import { Storage } from '@ionic/storage';
 import { MenuController } from 'ionic-angular';
+import { updateDate } from 'ionic-angular/umd/util/datetime-util';
 // import { MainServiceProvider } from './../../providers/main-service/main-service'
 
 @IonicPage()
@@ -17,6 +18,7 @@ export class LoginPage {
 
   remembertoken: boolean;
   loginForm: FormGroup;
+  playerId :any; 
 
   passwordType: string = 'password';
   passwordIcon: string = 'eye-off';
@@ -40,6 +42,8 @@ export class LoginPage {
         'password': ['', Validators.compose([Validators.minLength(4), Validators.maxLength(50), Validators.pattern('[a-zA-Z0-9._]+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$'), Validators.required])],
       })
   }
+
+ 
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
@@ -67,7 +71,7 @@ export class LoginPage {
     // this.http.post("http://46.101.169.33/api/civilian/loginCivilian", postData)
 
     // this.mainService.login(postData) //need to do smething like this
-    this.http.post("http://127.0.0.1:8000/api/civilian/loginCivilian", postData)
+     this.http.post("http://46.101.169.33/api/civilian/loginCivilian", postData)
       .subscribe(data => {
       //  console.log(data);
         // alert("Done")
@@ -98,6 +102,7 @@ export class LoginPage {
   
 
   }
+
 
   goHome(){
     this.navCtrl.push("HomePage");

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { HomePage } from './home';
 import { IonicStorageModule } from '@ionic/storage';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -9,6 +10,7 @@ import { IonicStorageModule } from '@ionic/storage';
   ],
   imports: [
     IonicPageModule.forChild(HomePage),
+    HttpClientModule,
     IonicStorageModule.forRoot()
 
   ],

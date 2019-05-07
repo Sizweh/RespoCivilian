@@ -29,8 +29,8 @@ export class SelectResponderPage {
        //oninit
           //api call to get all driver 
         // this.http.get("http://03e873a6.ngrok.io/api/civilian/showalldrivers", this.userDetails)//testing on devapp
-        // this.http.get("http://46.101.169.33/api/civilian/showalldrivers", this.userDetails)
-      this.http.get("http://127.0.0.1:8000/api/civilian/showalldrivers")
+         //this.http.get("http://46.101.169.33/api/civilian/showalldrivers", this.userDetails)
+         this.http.get("http://46.101.169.33/api/civilian/showalldrivers")
       .subscribe(data => {
         this.allResponders = data;
       
