@@ -255,8 +255,8 @@ handleLocationError(browserHasGeolocation, infoWindow, pos, map) {
     }
     // return console.log(this.userDetails);
     // this.http.post("http://03e873a6.ngrok.io/api/civilian/makeRequest", this.userDetails)//testing on devapp
-    // this.http.post("http://46.101.169.33/api/civilian/makeRequest", this.userDetails)//live    
-    this.http.post("http://127.0.0.1:8000/api/civilian/makeRequest", this.userDetails)//local
+     this.http.post("http://46.101.169.33/api/civilian/makeRequest", this.userDetails)//live    
+    // this.http.post("http://127.0.0.1:8000/api/civilian/makeRequest", this.userDetails)//local
     .subscribe(data => {
      console.log(data);
 
