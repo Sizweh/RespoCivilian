@@ -13,6 +13,7 @@ import { AuthProvider } from '../providers/auth/auth';
 import { ToastProvider } from '../providers/toast/toast';
 import { AlertsProvider } from '../providers/alerts/alerts';
 import { PipesModule } from '../pipes/pipes.module';
+import { UrlbaseProvider } from '../providers/urlbase/urlbase';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { PipesModule } from '../pipes/pipes.module';
     CallNumber,
     Contacts,
     HttpModule,
+    UrlbaseProvider,
     
   
   ]
