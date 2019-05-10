@@ -7,12 +7,37 @@
   
                 </div>
                 <br>
-                <br>      
+                <br> 
+           
+                <!-- <ion-row *ngFor="let respo of selectedResponder"> -->
+                    <ion-card>
+                        <ion-card-content>
+                        <ion-item no-lines text-left>
+                            <ion-avatar item-start>
+                              <img src="../../assets/3FydRPmMQsaNOI7xC6Zo_RRV.png">
+                            </ion-avatar>
+                              <ion-row>   
+                                  <p style="font-size: 12px;"><b>Name:</b> 
+                                  {{ responderName }} 
+                                  </p>
+                              </ion-row>
+                              <ion-row>   
+                                  <p style="font-size: 12px;"><b>
+                                      {{ responderDistance }} minutes away
+                                  </b> 
+
+                                  </p>
+                              </ion-row>
+                      </ion-item>
+                    </ion-card-content> 
+                  </ion-card> 
+                <!-- </ion-row> -->
+                
 
             <font size="4" color='#38414a'>Emergency Type</font >
               <br>
               <br>
-            <font size="4" color='#f53d3d'>Vehicle Accident</font >
+            <font size="4" color='#f53d3d'>{{event}}</font >
 
           <br>
           <br>

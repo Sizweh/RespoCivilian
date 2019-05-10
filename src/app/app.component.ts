@@ -34,6 +34,16 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.menu.enable(true);
+      
+      var notificationOpenedCallback = function(jsonData) {
+        console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+      };
+  
+      window["plugins"].OneSignal
+         .startInit("422a9798-6102-4c4b-8d59-bd1bebcd6810", "316673984537")
+        .handleNotificationOpened(notificationOpenedCallback)
+        .endInit();
+
     });
   }
 
@@ -42,7 +52,7 @@ export class MyApp {
   goLogin(){
     // this.sideMenu.hide();
     this.nav.setRoot('LoginPage');
-    this.menu.enable(true);
+    // this.menu.enable(true);
     this.menu.close();
     }
   

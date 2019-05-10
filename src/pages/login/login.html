@@ -1,14 +1,14 @@
-<ion-content text-color='calm' text-center padding="true" class="manual-ios-statusbar-padding">
-
- 
+<ion-content padding="true" class="manual-ios-statusbar-padding">
   <div>
+<<<<<<< HEAD
     <img class="logo" src="../../assets/Respo Logo002.png"
       style="display: block; width: 48%; height: auto; margin-left: auto; margin-right: auto;">
+=======
+      <img class="logo" src="http://46.101.169.33/img/logo1.png"
+      style="display: block; width: 70%; height: auto; margin-left: auto; margin-right: auto;">
+>>>>>>> 53c75abb890f55efd06d19a25bb82eb1184d4e52
   </div>
-
-  <br>
-  <br>
-
+  
   <div class="login-fields" [formGroup]="loginForm">
     <ion-item>
       <ion-input block formControlName="phoneNumber" minLength="10" maxLength="10" type="tel" placeholder="Cell Number">
@@ -38,7 +38,9 @@
     </ion-item>
   </div>
   <br>
-  <button ion-button round block [disabled]="!loginForm.valid" (click)="goLogin()" color="newcolor">
+  <!-- <button ion-button round block [disabled]="!loginForm.valid" (click)="goLogin()" color="newcolor"> -->
+    <button ion-button round block (click)="goLogin()" color="newcolor">
+
     Log in
   </button>
   
@@ -50,4 +52,4 @@
   <button (click)="goRegister()" full round ion-button color="calm" clear>Register</button>
   
   
-  </ion-content>
+</ion-content>
