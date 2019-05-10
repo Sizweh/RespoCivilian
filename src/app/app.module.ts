@@ -13,20 +13,20 @@ import { AuthProvider } from '../providers/auth/auth';
 import { ToastProvider } from '../providers/toast/toast';
 import { AlertsProvider } from '../providers/alerts/alerts';
 import { PipesModule } from '../pipes/pipes.module';
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import { IonicStorageModule } from '@ionic/storage';
+import { FileChooser } from '@ionic-native/file-chooser';
 
 @NgModule({
   declarations: [
     MyApp,
-
+    
   ],
   imports: [
     BrowserModule,
     PipesModule,
-   
-    IonicModule.forRoot(MyApp, {
-
-      mode: 'md'
-    }),
+    IonicModule.forRoot(MyApp), 
+    IonicStorageModule.forRoot()
     
   
   ],
@@ -38,14 +38,17 @@ import { PipesModule } from '../pipes/pipes.module';
   providers: [
     StatusBar,
     SplashScreen,
+    ImagePicker,
+    FileChooser,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+   
     AuthProvider,
     AlertsProvider,
     ToastProvider,
     CallNumber,
     Contacts,
     HttpModule,
-    
+  
   
   ]
 })
