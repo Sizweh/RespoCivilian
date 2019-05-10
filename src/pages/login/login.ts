@@ -1,12 +1,16 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HttpClient } from '@angular/common/http';
+// import { HttpClient } from '@angular/common/http';
 import { AlertsProvider } from './../../providers/alerts/alerts';
 import { AuthProvider } from './../../providers/auth/auth'
 import { Storage } from '@ionic/storage';
 import { MenuController } from 'ionic-angular';
+// import {RequestOptions, Request, RequestMethod} from '@angular/http';
+
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
+// import { updateDate } from 'ionic-angular/umd/util/datetime-util';
+
 // import { MainServiceProvider } from './../../providers/main-service/main-service'
 
 @IonicPage()
@@ -18,12 +22,14 @@ export class LoginPage {
 
   remembertoken: boolean;
   loginForm: FormGroup;
+  playerId :any; 
 
   passwordType: string = 'password';
   passwordIcon: string = 'eye-off';
 
   constructor(
-    private http: HttpClient,
+    // private http: HttpClient,
+    
     public navCtrl: NavController,
     public navParams: NavParams,
     public formBuilder: FormBuilder,
@@ -43,6 +49,8 @@ export class LoginPage {
       })
   }
 
+ 
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
@@ -53,9 +61,7 @@ export class LoginPage {
   }
 
   goLogin(){
-    //this.navCtrl.push("HomePage");
-    //this.navCtrl.setRoot("HomePage");
-   //this._menuCtrl.swipeEnable(false);
+   
     var headers = new Headers();
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
@@ -69,29 +75,27 @@ export class LoginPage {
       //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.login(postData)
     .subscribe(res => {
-      // this.presentToast(res.msg, res.status);
-      console.log(res);
-      // alert(res);ss
-      this.alert.presentAlert("Notification", res.msg);
+        // this.presentToast(res.msg, res.status);
+        console.log(res);
+        // alert(res);ss
+        this.alert.presentAlert("Notification", res.msg);
 
-      if (res.status=='OK') {
-        this.storage.set('user_name', res.user_name);
-        this.storage.set('user_id', res.user_id);
-        // localStorage.setItem('token', res.token);
-        this.navCtrl.setRoot('HomePage');
-      }
+        if (res.status=='OK') {
+          this.storage.set('user_name', res.user_name);
+          this.storage.set('user_id', res.user_id);
+          // localStorage.setItem('token', res.token);
+          this.navCtrl.setRoot('HomePage');
+        }
     }, (err) => {
-      console.log(err);
+        console.log(err);
     });
+
+
     //END API CALL
       // this.http.post("http://03e873a6.ngrok.io/api/civilian/loginCivilian", postData)
     // this.http.post("http://46.101.169.33/api/civilian/loginCivilian", postData)
 
     // this.mainService.login(postData) //need to do smething like this
-    // this.http.post("http://127.0.0.1:8000/api/civilian/loginCivilian", postData)
-    //   .subscribe(data => {
-    //   //  console.log(data);
-    //     // alert("Done")
        
 
     //     var msg = data['msg'];
@@ -119,6 +123,7 @@ export class LoginPage {
   
 
   }
+
 
   goHome(){
     this.navCtrl.push("HomePage");

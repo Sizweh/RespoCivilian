@@ -17,6 +17,8 @@ export class UrlbaseProvider {
   constructor(public http: HttpClient) {
     console.log('Hello UrlbaseProvider Provider');
   }
+
+  //pass test on local
   login (data): Observable<any> {
     return this.http.post<any>(this.apiUrl + 'loginCivilian', data)
       .pipe(
@@ -25,21 +27,61 @@ export class UrlbaseProvider {
       );
   }
 
-  // showMyRequests (data): Observable<any> {
-  //   return this.http.post<any>(this.apiUrl + 'myRequests', data)
-  //     .pipe(
-  //       tap(_ => this.log('myRequests')),
-  //       catchError(this.handleError('myRequests', []))
-  //     );
-  // }
+  //pass test on local
+  register (data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'registerCivilian', data)
+      .pipe(
+        tap(_ => this.log('registerCivilian')),
+        catchError(this.handleError('registerCivilian', []))
+      );
+  }
 
-  // acceptRequest (data): Observable<any> {
-  //   return this.http.post<any>(this.apiUrl + 'acceptRequest', data)
-  //     .pipe(
-  //       tap(_ => this.log('myRequests')),
-  //       catchError(this.handleError('myRequests', []))
-  //     );
-  // }
+    //pass test on local, verify page
+  activate (data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'activateCivilian', data)
+      .pipe(
+        tap(_ => this.log('activateCivilian')),
+        catchError(this.handleError('activateCivilian', []))
+      );
+  }
+
+  updatePlayerId (data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'updatePlayerId', data)
+      .pipe(
+        tap(_ => this.log('updatePlayerId')),
+        catchError(this.handleError('updatePlayerId', []))
+      );
+  }
+
+  //pass test on local, select-responder page
+  showalldrivers (): Observable<any> {
+    return this.http.get<any>(this.apiUrl + 'showalldrivers')
+      .pipe(
+        tap(_ => this.log('showalldrivers')),
+        catchError(this.handleError('showalldrivers', []))
+      );
+  }
+
+  //pass test on local, confirm page
+  makeRequest (data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'makeRequest', data)
+      .pipe(
+        tap(_ => this.log('makeRequest')),
+        catchError(this.handleError('makeRequest', []))
+      );
+  }
+
+  //pass test on local, confirm page
+  //fail on live, url maybe isnt on back end
+  checkRespoAccept (data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'checkRespoAccept', data)
+      .pipe(
+        tap(_ => this.log('checkRespoAccept')),
+        catchError(this.handleError('checkRespoAccept', []))
+      );
+  }
+
+ 
   
 
   private handleError<T> (operation = 'operation', result?: T) {

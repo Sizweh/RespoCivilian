@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams} from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-
+import { HttpClient } from '@angular/common/http';
+import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 
 
 
@@ -18,14 +19,16 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'home.html',
 })
 export class HomePage {
-
+  playerId :any; 
+  user_ids :any;
 
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     private storage: Storage,
-    
+    private http: HttpClient,
+    private urlService: UrlbaseProvider,
    
     ) {
 }
@@ -93,10 +96,45 @@ faultCategories = [
 ];
 
 
+ionViewDidLoad() {
+  console.log('ionViewDidLoad HomePage');
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
+  var notificationOpenedCallback = function(jsonData) {
+    console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+  };
+
+  // window["plugins"].OneSignal
+  //   .startInit("422a9798-6102-4c4b-8d59-bd1bebcd6810", "316673984537")
+  //   .handleNotificationOpened(notificationOpenedCallback)
+  //   .endInit();
+   
+//   window["plugins"].OneSignal.getIds(function(ids) {
+//       this.playerId =  ids.userId
+//       alert(this.playerId)
+// });
+this.storage.get('user_id').then((user_id) => {
+ // console.log(user_id);
+   this.user_ids = user_id ; 
+});
+
+  var postData ={user_id:this.user_ids , playerId:this.playerId };
+
+  this.urlService.updatePlayerId(postData)
+  .subscribe(res => {
+  console.log(res);
+  
+  if (res.status=='OK') {
+    console.log("playeId updated.");
+  }  else {
+    console.log("Please try again.");
   }
+}, (err) => {
+  console.log(err);
+});
+  
+   
+}
+
   goLocation(fault){
     this.storage.set('category', fault);
     this.navCtrl.push('SelectResponderPage')

@@ -7,7 +7,7 @@ import { Contacts } from '@ionic-native/contacts';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { HttpClientModule } from '@angular/common/http'
 import { HttpModule } from '@angular/http';
 import { AuthProvider } from '../providers/auth/auth';
 import { ToastProvider } from '../providers/toast/toast';
@@ -23,12 +23,12 @@ import { UrlbaseProvider } from '../providers/urlbase/urlbase';
   imports: [
     BrowserModule,
     PipesModule,
-   
     IonicModule.forRoot(MyApp, {
 
       mode: 'md'
     }),
-    
+    HttpClientModule,
+
   
   ],
   bootstrap: [IonicApp],
@@ -45,7 +45,7 @@ import { UrlbaseProvider } from '../providers/urlbase/urlbase';
     ToastProvider,
     CallNumber,
     Contacts,
-    HttpModule,
+    // HttpModule,
     UrlbaseProvider,
     
   
