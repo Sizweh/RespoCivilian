@@ -111,7 +111,7 @@ googleMap ()
 
 //intial map setup, if no geolaction available
  this.map = new google.maps.Map(document.getElementById('map'), {   
-    zoom: 16,
+    zoom: 19,
     center: {lat:-29.856278, lng:31.028828}
 
   });

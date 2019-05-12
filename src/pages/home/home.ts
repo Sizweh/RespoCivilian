@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams} from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { HttpClient } from '@angular/common/http';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
+import { MenuController } from 'ionic-angular';
 
 
 
@@ -29,8 +30,12 @@ export class HomePage {
     private storage: Storage,
     private http: HttpClient,
     private urlService: UrlbaseProvider,
+    public menuCtrl: MenuController,
+
    
     ) {
+      this.menuCtrl.enable(true);
+
 }
 faultCategories = [
   {
