@@ -284,6 +284,6 @@ handleLocationError(browserHasGeolocation, infoWindow, pos, map) {
   }
 
   goHome(){
-    this.navCtrl.setRoot('EmergencyPage')
+    this.navCtrl.setRoot('HomePage')
   }
 }

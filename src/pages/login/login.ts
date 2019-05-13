@@ -42,14 +42,13 @@ export class LoginPage {
         'password': ['', Validators.compose([Validators.minLength(4), Validators.maxLength(50), Validators.pattern('[a-zA-Z0-9._]+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$'), Validators.required])],
       })
   }
-
- 
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
-
-
+  hideShowPassword() {
+    this.passwordType = this.passwordType === 'tel' ? 'password' : 'tel';
+    this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';
+  }
   updateToken() {
     console.log('Remember token new state:' + this.remembertoken);
   }
