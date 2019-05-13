@@ -254,6 +254,7 @@ handleLocationError(browserHasGeolocation, infoWindow, pos, map) {
       'emergency_type': this.event,
     }
 
+
     this.urlService.makeRequest(this.userDetails)
     .subscribe(res => {
         // this.presentToast(res.msg, res.status);

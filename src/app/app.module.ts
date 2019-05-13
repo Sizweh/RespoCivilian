@@ -15,10 +15,15 @@ import { AlertsProvider } from '../providers/alerts/alerts';
 import { PipesModule } from '../pipes/pipes.module';
 import { UrlbaseProvider } from '../providers/urlbase/urlbase';
 
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import { IonicStorageModule } from '@ionic/storage';
+import { FileChooser } from '@ionic-native/file-chooser';
+
+
 @NgModule({
   declarations: [
     MyApp,
-
+    
   ],
   imports: [
     BrowserModule,
@@ -29,6 +34,9 @@ import { UrlbaseProvider } from '../providers/urlbase/urlbase';
     }),
     HttpClientModule,
 
+
+    IonicStorageModule.forRoot()
+    
   
   ],
   bootstrap: [IonicApp],
@@ -39,7 +47,10 @@ import { UrlbaseProvider } from '../providers/urlbase/urlbase';
   providers: [
     StatusBar,
     SplashScreen,
+    ImagePicker,
+    FileChooser,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+   
     AuthProvider,
     AlertsProvider,
     ToastProvider,
@@ -48,6 +59,8 @@ import { UrlbaseProvider } from '../providers/urlbase/urlbase';
     // HttpModule,
     UrlbaseProvider,
     
+    HttpModule,
+  
   
   ]
 })

@@ -1,37 +1,61 @@
 <ion-header>
     <ion-navbar color="newcolor">
-          <ion-toolbar mode="ios">
-      <ion-buttons start>
-
-        <button color='light' ion-button icon-only menuToggle>
-          <ion-icon name="menu"></ion-icon>
+      <ion-toolbar mode="ios">
+        <ion-buttons start>
+         <button color='light' ion-button icon-only menuToggle>
+         <ion-icon name="menu"></ion-icon>
         </button>
-      </ion-buttons>
-      <ion-title  text-center>Home</ion-title>
-
+       </ion-buttons>
+      <ion-title text-center></ion-title>
+    <img align-right class="logo" src="../../assets/Respo Logo002.png"
+      style="display: block; width: 30%; height: auto; margin-left: auto; margin-right: auto;">
     </ion-toolbar>
   </ion-navbar>
 </ion-header>
 
 
-<ion-content text-center padding>
-
-      <ion-row *ngFor="let fault of faultCategories">
-        <ion-card>
-            <ion-card-content>
-            <ion-item no-lines  (click)="goLocation(fault)" text-right>
+<ion-content text-center >
+<br>
+      <ion-row no-lines *ngFor="let fault of faultCategories">
+        <ion-card no-lines>
+          
+            <ion-item no-lines (click)="goLocation(fault)" text-right>
                 <ion-avatar item-start>
                   <img [src]="fault.imageUrl">
                 </ion-avatar>
-                <!-- <h1>0</h1> -->
                 <font size="3" color='#38414a'>{{ fault.category }}</font >
               </ion-item>
-            </ion-card-content> 
+           
 
         </ion-card> 
        
       </ion-row>
 
+
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
 </ion-content>
 
 
