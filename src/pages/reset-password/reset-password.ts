@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
+import { MenuController } from 'ionic-angular';
+import { AlertsProvider } from './../../providers/alerts/alerts';
+import { Storage } from '@ionic/storage';
+
 
 @IonicPage()
 @Component({
@@ -17,13 +22,22 @@ export class ResetPasswordPage {
   numberType: string = 'number';
   numberIcon: string = 'eye-off';
 
+
   constructor(
+    public alert: AlertsProvider,
     public navCtrl: NavController,  
     public navParams: NavParams,
     public formBuilder: FormBuilder,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
+    private urlService: UrlbaseProvider,
+    public menuCtrl: MenuController,
+    private storage: Storage,
+
+
     ) {
+      this.menuCtrl.enable(false);
+
 
       this.resetPasswordForm = formBuilder.group({
         'phonenumber': ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern("^[0-9]{10}")])],
@@ -47,7 +61,25 @@ export class ResetPasswordPage {
 
 
   goForgotpassword2(){
-    this.navCtrl.setRoot("Forgotpassword2Page");
+    var postData = this.resetPasswordForm.value;
+
+    this.urlService.requestNewPassword(postData)
+    .subscribe(res => {
+        // this.presentToast(res.msg, res.status);
+        console.log(res);
+        // alert(res);ss
+        this.alert.presentAlert("Notification", res.msg);
+
+        if (res.status=='OK') {
+          this.storage.set('user_num', this.resetPasswordForm.value.phonenumber);
+          alert(this.resetPasswordForm.value.phonenumber);
+          // this.storage.set('user_id', res.user_id);
+          // localStorage.setItem('token', res.token);
+          this.navCtrl.setRoot("Forgotpassword2Page");
+        }
+    }, (err) => {
+        console.log(err);
+    });
 
   }
 

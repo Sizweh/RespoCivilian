@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { ResetPasswordPage } from './reset-password';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -8,6 +9,8 @@ import { ResetPasswordPage } from './reset-password';
   ],
   imports: [
     IonicPageModule.forChild(ResetPasswordPage),
+    IonicStorageModule.forRoot()
+
   ],
 })
 export class ResetPasswordPageModule {}
