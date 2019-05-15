@@ -66,7 +66,7 @@ export class Forgotpassword2Page {
           // this.storage.set('user_id', res.user_id);
           // localStorage.setItem('token', res.token);
           // this.navCtrl.setRoot('HomePage');
-          this.navCtrl.setRoot('LoginPage')
+          this.navCtrl.setRoot('LoginPage');
 
     }
   }, (err) => {
