@@ -83,7 +83,7 @@ export class ConfirmPage {
       });
       
   }
-  timeInt (){
+  timeInt (){//THIS SHOULD BECOME A PUSHER NOTIFICATION TO CHECK IF REPONDER ACCEPTED
       const source = interval(5000);
       //output: 0,1,2,3,4,5....
       this.subscription = source.subscribe(val => this.checkAccept());
@@ -104,6 +104,38 @@ export class ConfirmPage {
     this.navCtrl.setRoot('HomePage')
   }
 
+  cancel() {
+  // cancelRequest
+  this.subscription.unsubscribe();
+
+  this.userDetails={
+    'user_id': this.civilianId,
+    'driver_id': this.responderId,
+    'request_id': this.reqId,
+    'reason': 'Civilian cancled',
+    'user_type': 'Civilian',
+   
+  }
+  this.urlService.cancelRequest( this.userDetails)
+    .subscribe(res => {
+        // this.presentToast(res.msg, res.status);
+        this.alert.presentAlert("Notification", res.msg);
+        console.log(res);
+        if (res.status=='OK') {
+          this.subscription.unsubscribe();
+          this.navCtrl.push('SelectResponderPage');
+        } 
+        // if(res.status=='canceled') {
+        //   this.navCtrl.push('SelectResponderPage');
+
+        // }
+    }, (err) => {
+        console.log(err);
+    });
+
+
+  
+  }
   checkAccept() {
 
     this.userDetails={
@@ -121,6 +153,10 @@ export class ConfirmPage {
           this.alert.presentAlert("Notification", res.msg);
           this.subscription.unsubscribe();
           this.navCtrl.push('CountDownPage');
+        } 
+        if(res.status=='canceled') {
+          this.navCtrl.push('SelectResponderPage');
+
         }
     }, (err) => {
         console.log(err);
