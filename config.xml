@@ -86,16 +86,12 @@
     </plugin>
     <plugin name="cordova-plugin-contacts" spec="3.0.1" />
     <plugin name="mx.ferreyra.callnumber" spec="~0.0.2" />
-
-    <engine name="android" spec="^7.1.4" />
     <plugin name="cordova-plugin-telerik-imagepicker" spec="2.3.2">
         <variable name="PHOTO_LIBRARY_USAGE_DESCRIPTION" value="your usage message" />
     </plugin>
     <plugin name="com-badrit-base64" spec="0.2.0" />
     <plugin name="cordova-sqlite-storage" spec="3.2.0" />
     <plugin name="cordova-plugin-filechooser" spec="1.2.0" />
-
     <plugin name="onesignal-cordova-plugin" spec="2.4.7" />
-    <engine name="android" spec="7.1.4" />
-
+    <engine name="android" spec="^7.1.4" />
 </widget>

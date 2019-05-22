@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CallNumber } from '@ionic-native/call-number';
-
+import { Storage } from '@ionic/storage';
 
 
 /**
@@ -17,13 +17,22 @@ import { CallNumber } from '@ionic-native/call-number';
   templateUrl: 'count-down.html',
 })
 export class CountDownPage {
- 
+  selectedResponder: any; 
+
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
-    public callNumber: CallNumber
+    public callNumber: CallNumber,
+    private storage: Storage,
+
     ) {
 
-   
+      this.storage.get('selected_responder').then((val) => {
+        console.log('respo db stuff');
+        console.log(val);
+        this.selectedResponder = [val];
+
+
+      }); 
 
     }
 
