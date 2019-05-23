@@ -40,18 +40,11 @@ export class ResetPasswordPage {
 
 
       this.resetPasswordForm = formBuilder.group({
-        'phonenumber': ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern("^[0-9]{10}")])],
+        'email': ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern("")])],
       })
     }
 
 
-
-
-
-
-
-
-  
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ResetPasswordPage');

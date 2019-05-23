@@ -108,10 +108,10 @@ ionViewDidLoad() {
     console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
   };
 
-  window["plugins"].OneSignal
-    .startInit("422a9798-6102-4c4b-8d59-bd1bebcd6810", "316673984537")
-    .handleNotificationOpened(notificationOpenedCallback)
-    .endInit();
+ // window["plugins"].OneSignal
+ //   .startInit("422a9798-6102-4c4b-8d59-bd1bebcd6810", "316673984537")
+//    .handleNotificationOpened(notificationOpenedCallback)
+//    .endInit();
    
   window["plugins"].OneSignal.getIds(function(ids) {
       this.playerId =  ids.userId
@@ -142,6 +142,7 @@ this.storage.get('user_id').then((user_id) => {
 
   goLocation(fault){
     this.storage.set('category', fault);
+    
     this.navCtrl.push('SelectResponderPage')
   }
   goSpecifyEmergency(){

@@ -71,7 +71,7 @@ export class ConfirmPage {
       this.storage.get('selected_responder').then((val) => {
         console.log('respo db stuff');
         console.log(val);
-        this.selectedResponder = val;
+        this.selectedResponder = [val];
         this.responderId = val.id;
         this.responderName = val.driver_name;
         // alert(this.responderName);
@@ -80,7 +80,7 @@ export class ConfirmPage {
 
         //polling, should look for alternatives
         this.timeInt();
-      });
+      }); 
       
   }
   timeInt (){//THIS SHOULD BECOME A PUSHER NOTIFICATION TO CHECK IF REPONDER ACCEPTED

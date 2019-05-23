@@ -13,14 +13,62 @@
   </P>
 
   <br>
+  <!-- company_id: "1"
+  created_at: null
+  created_by_user_id: null
+  driver_name: "Max"
+  email: "max@default.com"
+  id: 1
+  lat: "-29.73787390372199"
+  license_no: "ND 111"
+  lng: "31.044383587938682"
+  pdp: "12344"
+  pdp_expiry: "10 Jan 2020"
+  phone_no: "0714896751"
+  remember_token: null
+  status: "active"
+  updated_at: null
+  user_id: "0"   
 
+  address: "100"
+city: "Durban"
+company_name: "Test one"
+company_reg: "11000000"
+created_at: "2019-05-10 08:56:58"
+email: "respo@gmail.com"
+ems_lisence: "100"
+id: 1
+phone_no: "0"
+province: "Kzdm"
+remember_token: null
+updated_at: "2019-05-10 08:56:58"
+user_id: 4 -->
+
+  <ion-row *ngFor="let detail of selectedResponder">
+      <ion-card>
+          <ion-card-header>
+              <h2 class="card-title"><b>Company name:</b> {{detail.company.company_name}}</h2>
+
+              <h2 class="card-title"><b>Responder name:</b> {{detail.driver_name}}</h2>
+          </ion-card-header>
+            <ion-item >
+          <p><b>Cell: </b> {{detail.phone_no}}</p> 
+          <p><b>Plate number: </b>{{detail.license_no}}</p>
+          <p>1 minute away.</p>
+        </ion-item>
+       
+      </ion-card>
+    </ion-row>
 
   <!-- <button ion-button color='danger'  full   round  (click)="goHome()">Close</button> -->
     <button ion-button color='danger'  full   round  (click)="cancel()">Cancel</button>
 
   <br>
 
+
   <!-- <button ion-button clear color='dark' round full (click)="goCountDown()">Next Page</button> -->
+
+
 
 
 
