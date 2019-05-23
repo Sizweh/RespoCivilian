@@ -97,6 +97,14 @@ export class UrlbaseProvider {
       );
   }
 
+  cancelRequest (data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'cancelRequest', data)
+      .pipe(
+        tap(_ => this.log('cancelRequest')),
+        catchError(this.handleError('cancelRequest', []))
+      );
+  }
+
  
   
 
