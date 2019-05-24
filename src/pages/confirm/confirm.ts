@@ -93,6 +93,7 @@ export class ConfirmPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ConfirmPage');
+    this.subscription.unsubscribe();
   }
 
   goCountDown(){
@@ -121,9 +122,9 @@ export class ConfirmPage {
         // this.presentToast(res.msg, res.status);
         this.alert.presentAlert("Notification", res.msg);
         console.log(res);
-        if (res.status=='OK') {
+        if (res.status=='canceled') {
           this.subscription.unsubscribe();
-          this.navCtrl.push('SelectResponderPage');
+          this.navCtrl.push('HomePage');
         } 
         // if(res.status=='canceled') {
         //   this.navCtrl.push('SelectResponderPage');
@@ -149,13 +150,22 @@ export class ConfirmPage {
     .subscribe(res => {
         // this.presentToast(res.msg, res.status);
         console.log(res);
-        if (res.status=='OK') {
-          this.alert.presentAlert("Notification", res.msg);
-          this.subscription.unsubscribe();
+        
+
+        if (res.status=='accepted') {
           this.navCtrl.push('CountDownPage');
+          this.subscription.unsubscribe();
+        this.alert.presentAlert("Notification", res.msg);
+        } 
+        if (res.status=='arrived') {
+          this.navCtrl.push('ArrivalPage');
+          this.subscription.unsubscribe();
+        this.alert.presentAlert("Notification", res.msg);
         } 
         if(res.status=='canceled') {
           this.navCtrl.push('SelectResponderPage');
+          this.subscription.unsubscribe();
+        this.alert.presentAlert("Notification", res.msg);
 
         }
     }, (err) => {

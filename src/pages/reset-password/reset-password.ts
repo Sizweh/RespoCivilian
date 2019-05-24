@@ -40,7 +40,7 @@ export class ResetPasswordPage {
 
 
       this.resetPasswordForm = formBuilder.group({
-        'email': ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern("")])],
+        'phoneNumber': ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern("")])],
       })
     }
 
@@ -64,8 +64,8 @@ export class ResetPasswordPage {
         this.alert.presentAlert("Notification", res.msg);
 
         if (res.status=='OK') {
-          this.storage.set('user_num', this.resetPasswordForm.value.phonenumber);
-          alert(this.resetPasswordForm.value.phonenumber);
+          this.storage.set('user_num', this.resetPasswordForm.value.phoneNumber);
+          alert(this.resetPasswordForm.value.phoneNumber);
           // this.storage.set('user_id', res.user_id);
           // localStorage.setItem('token', res.token);
           this.navCtrl.setRoot("Forgotpassword2Page");
