@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
 import { AlertsProvider } from './../../providers/alerts/alerts';
 import { MenuController } from 'ionic-angular';
+import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
+
 // import { MainServiceProvider } from './../../providers/main-service/main-service'
 @IonicPage()
 @Component({
@@ -21,10 +22,10 @@ export class VerifyAccountPage {
     public formBuilder: FormBuilder,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
-    public http: HttpClient,
     public alert: AlertsProvider,
     private storage: Storage,
     public menuCtrl: MenuController,
+    private urlService: UrlbaseProvider,
     // public mainService: MainServiceProvider,
      ) {
       this.menuCtrl.enable(false);
@@ -47,32 +48,31 @@ export class VerifyAccountPage {
    //pass to back-end
       console.log(this.verificationCode.value);
       var postData = this.verificationCode.value;
-    
-    // this.http.post("http://46.101.169.33/api/civilian/activateCivilian", postData)
-    this.http.post("http://46.101.169.33/api/civilian/activateCivilian", postData)
 
-      .subscribe(data => {
-       console.log(data);
-        var msg = data['msg'];
-        var status = data['status'];
-        const loader = this.loadingCtrl.create({
-          content: "Checking code...",
-          duration: 3000
-        });
-        loader.present();
-        this.alert.presentAlert("Notification", msg);
-        if (status == "OK") {
-            //save user details
-            this.storage.set('user_name', data['user_name']);
-             this.storage.set('user_id', data['user_id']);
+      this.urlService.activate(postData)
+      .subscribe(res => {
+      // this.presentToast(res.msg, res.status);
+      console.log(res);
 
-          this.navCtrl.push("HomePage");
-        } else {
-        }
-
-       }, error => {
-        console.log(error);
+      //loader
+      const loader = this.loadingCtrl.create({
+        content: "Checking code...",
+        duration: 3000
       });
+      loader.present();      
+      
+      this.alert.presentAlert("Notification", res.msg);
+      if (res.status=='OK') {
+        this.storage.set('user_name', res.user_name);
+        this.storage.set('user_id', res.user_id);
+        // localStorage.setItem('token', res.token);
+        this.navCtrl.setRoot('HomePage');
+      }
+    }, (err) => {
+      console.log(err);
+    });
+    
+   
   }
 
   }

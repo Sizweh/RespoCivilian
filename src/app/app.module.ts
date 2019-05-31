@@ -7,15 +7,18 @@ import { Contacts } from '@ionic-native/contacts';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { HttpClientModule } from '@angular/common/http'
 import { HttpModule } from '@angular/http';
 import { AuthProvider } from '../providers/auth/auth';
 import { ToastProvider } from '../providers/toast/toast';
 import { AlertsProvider } from '../providers/alerts/alerts';
 import { PipesModule } from '../pipes/pipes.module';
+import { UrlbaseProvider } from '../providers/urlbase/urlbase';
+
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { FileChooser } from '@ionic-native/file-chooser';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +28,13 @@ import { FileChooser } from '@ionic-native/file-chooser';
   imports: [
     BrowserModule,
     PipesModule,
-    IonicModule.forRoot(MyApp), 
+    IonicModule.forRoot(MyApp, {
+
+      mode: 'md'
+    }),
+    HttpClientModule,
+
+
     IonicStorageModule.forRoot()
     
   
@@ -47,6 +56,9 @@ import { FileChooser } from '@ionic-native/file-chooser';
     ToastProvider,
     CallNumber,
     Contacts,
+    // HttpModule,
+    UrlbaseProvider,
+    
     HttpModule,
   
   

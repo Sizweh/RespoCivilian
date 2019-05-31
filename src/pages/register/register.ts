@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AlertsProvider } from './../../providers/alerts/alerts';
 import { HttpClient } from '@angular/common/http';
 import { MenuController } from 'ionic-angular';
+import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 
 @IonicPage()
 @Component({
@@ -21,6 +22,8 @@ export class RegisterPage {
     public alert: AlertsProvider,
     public http: HttpClient,
     public menuCtrl: MenuController,
+    private urlService: UrlbaseProvider,
+
 
     ) {
       this.menuCtrl.enable(false);
@@ -63,23 +66,39 @@ export class RegisterPage {
         return;
       }
       postData['user_role']=  "Civilian";
-     this.http.post("http://46.101.169.33/api/civilian/registerCivilian", postData)
-   
-      .subscribe(data => {
-       console.log(data);
-        // alert("Done")
-        var msg = data['msg'];
-        var status = data['status'];
-        if (status == "OK") {
-          this.alert.presentAlert("Notification", msg);
-          this.navCtrl.push("VerifyAccountPage");
-         } //else {
-        //   this.alert.presentAlert("Whoops!", 'User Taken');
-        // }
 
-       }, error => {
-        console.log(error);
-      });
+      //THIS IS A BETTER WAY TO MAKE API CALLS
+    this.urlService.register(postData)
+    .subscribe(res => {
+      // this.presentToast(res.msg, res.status);
+      console.log(res);
+      // alert(res);ss
+      this.alert.presentAlert("Notification", res.msg);
+
+      if (res.status=='OK') {
+        this.navCtrl.push("VerifyAccountPage");
+        // localStorage.setItem('token', res.token);
+      }
+    }, (err) => {
+      console.log(err);
+    });
+  //    this.http.post("http://46.101.169.33/api/civilian/registerCivilian", postData)
+   
+  //     .subscribe(data => {
+  //      console.log(data);
+  //       // alert("Done")
+  //       var msg = data['msg'];
+  //       var status = data['status'];
+  //       if (status == "OK") {
+  //         this.alert.presentAlert("Notification", msg);
+  //         this.navCtrl.push("VerifyAccountPage");
+  //        } //else {
+  //       //   this.alert.presentAlert("Whoops!", 'User Taken');
+  //       // }
+
+  //      }, error => {
+  //       console.log(error);
+  //     });
   }
 
   goMedicalDetails(){

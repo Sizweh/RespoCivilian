@@ -1,9 +1,9 @@
-import { Component, OnInit, ComponentFactoryResolver } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, UrlSerializer} from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { AlertsProvider } from './../../providers/alerts/alerts';
 import { Storage } from '@ionic/storage';
-
+import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 
 
 
@@ -49,10 +49,10 @@ responderDistance: any;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
-    private http: HttpClient,
     public alert: AlertsProvider,
     private storage: Storage,
     public loadingCtrl: LoadingController,
+    private urlService: UrlbaseProvider,
 
 
     ) {
@@ -111,7 +111,7 @@ googleMap ()
 
 //intial map setup, if no geolaction available
  this.map = new google.maps.Map(document.getElementById('map'), {   
-    zoom: 16,
+    zoom: 19,
     center: {lat:-29.856278, lng:31.028828}
 
   });
@@ -253,33 +253,60 @@ handleLocationError(browserHasGeolocation, infoWindow, pos, map) {
       'company_id': this.selectedResponder.company.id,
       'emergency_type': this.event,
     }
-    // return console.log(this.userDetails);
-    // this.http.post("http://03e873a6.ngrok.io/api/civilian/makeRequest", this.userDetails)//testing on devapp
-     this.http.post("http://46.101.169.33/api/civilian/makeRequest", this.userDetails)//live    
-    // this.http.post("http://127.0.0.1:8000/api/civilian/makeRequest", this.userDetails)//local
-    .subscribe(data => {
-     console.log(data);
 
-      var msg = data['msg'];
-      var status = data['status'];
-      var reqId = data['request_id'];
 
-      const loader = this.loadingCtrl.create({
+    this.urlService.makeRequest(this.userDetails)
+    .subscribe(res => {
+        // this.presentToast(res.msg, res.status);
+        console.log(res);
+        // alert(res);ss
+        var msg = res.msg;
+        var status = res.status;
+        var reqId = res.request_id;
+
+        const loader = this.loadingCtrl.create({
         content: "Sending request...",
         duration: 3000
-      });
+        });
 
       this.alert.presentAlert("Notification", msg);
-
       if (status == "OK") {
         loader.present();
         this.storage.set('request_id', reqId);
         this.navCtrl.push("ConfirmPage");
       } 
-
-     }, error => {
-      console.log(error);
+    }, (err) => {
+        console.log(err);
     });
+
+
+    // return console.log(this.userDetails);
+    // this.http.post("http://03e873a6.ngrok.io/api/civilian/makeRequest", this.userDetails)//testing on devapp
+    // this.http.post("http://46.101.169.33/api/civilian/makeRequest", this.userDetails)//live    
+    // this.http.post("http://127.0.0.1:8000/api/civilian/makeRequest", this.userDetails)//local
+    // .subscribe(data => {
+    //  console.log(data);
+
+    //   var msg = data['msg'];
+    //   var status = data['status'];
+    //   var reqId = data['request_id'];
+
+    //   const loader = this.loadingCtrl.create({
+    //     content: "Sending request...",
+    //     duration: 3000
+    //   });
+
+    //   this.alert.presentAlert("Notification", msg);
+
+    //   if (status == "OK") {
+    //     loader.present();
+    //     this.storage.set('request_id', reqId);
+    //     this.navCtrl.push("ConfirmPage");
+    //   } 
+
+    //  }, error => {
+    //   console.log(error);
+    // });
     // this.navCtrl.push('ConfirmPage')
   }
 

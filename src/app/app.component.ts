@@ -39,6 +39,8 @@ export class MyApp {
         console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
       };
   
+
+   //   Can only work when we compile for mobile and not on desktop
       window["plugins"].OneSignal
          .startInit("422a9798-6102-4c4b-8d59-bd1bebcd6810", "316673984537")
         .handleNotificationOpened(notificationOpenedCallback)

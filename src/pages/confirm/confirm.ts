@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HttpClient } from '@angular/common/http';
+// import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
 import { AlertsProvider } from './../../providers/alerts/alerts';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/interval';
-import {take} from 'rxjs/operators';  
+
 import { interval } from 'rxjs/observable/interval';
+import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 
 
 /**
@@ -47,16 +46,14 @@ export class ConfirmPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public http: HttpClient,
+    private urlService: UrlbaseProvider,
     public alert: AlertsProvider,
     private storage: Storage,
     ) 
     
     {
   
-      // const source = interval(3000);
-      // //output: 0,1,2,3,4,5....
-      // const subscribe = source.subscribe(this.checkAccept);
+     
       this.storage.get('user_id').then((val) => {
         console.log('user db stuff');
         console.log(val);
@@ -74,22 +71,24 @@ export class ConfirmPage {
       this.storage.get('selected_responder').then((val) => {
         console.log('respo db stuff');
         console.log(val);
-        this.selectedResponder = val;
+        this.selectedResponder = [val];
         this.responderId = val.id;
         this.responderName = val.driver_name;
         // alert(this.responderName);
         var randomnumber = Math.floor(Math.random() * (7 - 1 + 1)) + 1;
         this.responderDistance = randomnumber;
 
-        
+        //polling, should look for alternatives
         this.timeInt();
-      });
+      }); 
       
   }
   timeInt (){
-      const source = interval(3000);
+      const source = interval(5000);
       //output: 0,1,2,3,4,5....
       this.subscription = source.subscribe(val => this.checkAccept());
+      // this.checkAccept();
+
   }
 
   ionViewDidLoad() {
@@ -97,22 +96,16 @@ export class ConfirmPage {
   }
 
   goCountDown(){
+    this.subscription.unsubscribe();
     this.navCtrl.push('CountDownPage')
   }
   goHome(){
+    this.subscription.unsubscribe();
     this.navCtrl.setRoot('HomePage')
   }
 
   checkAccept() {
 
-    // this.storage.get('user_id').then((val) => {
-    //   console.log('user db stuff');
-    //   console.log(val);
-    //   this.civilianId = val;
-    //   // alert(val);
-      
-    // });
-    // this.http.post("http://46.101.169.33/api/civilian/activateCivilian", postData)
     this.userDetails={
       'user_id': this.civilianId,
       'driver_id': this.responderId,
@@ -120,31 +113,19 @@ export class ConfirmPage {
      
     }
     
-
-    // return console.log(this.userDetails);
-     this.http.post("http://46.101.169.33/api/civilian/checkRespoAccept", this.userDetails)
-    
-      .subscribe(data => {
-         console.log(this.userDetails);
-
-      //  return console.log(data);
-        var msg = data['msg'];
-        var status = data['status'];
-        if (status == "OK") {
-          this.alert.presentAlert("Notification", msg);
-            //save user details
-            // this.storage.set('user_name', data['user_name']);
-            //  this.storage.set('user_id', data['user_id']);
-            // alert("driver accepted");
-            this.subscription.unsubscribe();
-          this.navCtrl.push("CountDownPage");
-        } else {
-          // alert("driver has not accepted yet.");
-
+    this.urlService.checkRespoAccept( this.userDetails)
+    .subscribe(res => {
+        // this.presentToast(res.msg, res.status);
+        console.log(res);
+        if (res.status=='OK') {
+          this.alert.presentAlert("Notification", res.msg);
+          this.subscription.unsubscribe();
+          this.navCtrl.push('CountDownPage');
         }
+    }, (err) => {
+        console.log(err);
+    });
 
-       }, error => {
-        console.log(error);
-      });
+
   }
 }
