@@ -1,0 +1,76 @@
+
+
+<ion-content text-center padding>
+  <br>
+
+ <h6>For Someone else:</h6>
+
+    <ion-item>
+        <ion-input
+         placeholder="Name & Surname" 
+         type="text"
+      
+         ></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-input 
+        placeholder="Medical Aid Scheme" 
+        type="text"
+     
+        ></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-input
+         placeholder="Scheme Number" 
+         type="number"
+      
+         ></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-input 
+        placeholder="Preferred Hospital" 
+        type="text"
+     
+        ></ion-input>
+      </ion-item> 
+      
+      
+      <ion-item>
+          <ion-input 
+          placeholder="State your reason here..." 
+          type="text"
+       
+          ></ion-input>
+        </ion-item>
+  
+  
+      <ion-item>
+          <ion-input 
+          placeholder="Next of kin number" 
+          type="text"
+       
+          ></ion-input>
+        </ion-item>
+
+
+        <ion-grid>
+            <ion-row>
+              <ion-col col-6>
+                <button ion-button block round clear color="newcolor" (click)="go()">back</button>
+              </ion-col>
+        
+              <ion-col col-6>
+                <button ion-button block color="secondary" round  [disabled] (click)="goHome()">
+                Done
+                </button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>        
+
+
+
+
+</ion-content>

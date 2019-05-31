@@ -7,30 +7,53 @@
         </button>
        </ion-buttons>
       <ion-title text-center></ion-title>
-    <img align-right class="logo" src="../../assets/Respo Logo002.png"
-      style="display: block; width: 30%; height: auto; margin-left: auto; margin-right: auto;">
+   
     </ion-toolbar>
   </ion-navbar>
 </ion-header>
 
 
-<ion-content text-center >
+<ion-content text-center padding>
 <br>
-      <ion-row no-lines *ngFor="let fault of faultCategories">
-        <ion-card no-lines>
-          
-            <ion-item no-lines (click)="goLocation(fault)" text-right>
-                <ion-avatar item-start>
-                  <img [src]="fault.imageUrl">
-                </ion-avatar>
-                <h1></h1>
-                <font size="3" color='#38414a'>{{ fault.category }}</font >
-              </ion-item>
-           
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-        </ion-card> 
-       
-      </ion-row>
+
+<ion-item no-lines text-center (click)="goLanding()" color='danger'>
+  <h3>Emergency</h3>
+    <h3></h3>
+     <p></p>
+      <ion-card-content>
+    <!-- Add card content here! -->
+   </ion-card-content>
+  <ion-icon name="warning"></ion-icon>
+</ion-item>
+
+   <br>
+
+<ion-item  no-lines text-center (click)="goSelfAdmission()" color='dakar'>
+  <h3>Self Admission</h3>
+    <h3></h3>
+     <p></p>
+      <ion-card-content>
+    <!-- Add card content here! -->
+   </ion-card-content>
+  <ion-icon name="paper"></ion-icon>
+</ion-item>
+   <br>
+
+
+
+
+
+ <br>
+
+
+
 
 
 

@@ -49,4 +49,12 @@ export class MedicalDetailsPage {
   goEditsuccessfully(){
     this.navCtrl.push('EditsuccessfullyPage')
   }
+
+  goNextOfKin(){
+    this.navCtrl.push('NextOfKinPage')
+  }
+  goRegister(){
+    this.navCtrl.push('RegisterPage')
+  }
+  
 }

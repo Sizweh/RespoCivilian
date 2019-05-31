@@ -144,6 +144,13 @@ this.storage.get('user_id').then((user_id) => {
     this.navCtrl.push('SpecifyEmergencyPage')
   }
 
+  goLanding(){
+    this.navCtrl.push('LandingPage')
+  }
+  goSelfAdmission(){
+    this.navCtrl.push('SelfAdmissionPage')
+  }
+
 
 
 

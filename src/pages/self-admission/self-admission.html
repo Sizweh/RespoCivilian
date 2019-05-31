@@ -1,0 +1,37 @@
+<ion-header>
+    <ion-navbar color="newcolor">
+      <ion-toolbar color="newcolor" mode="ios">
+        <ion-buttons start>
+         <button color='light' ion-button icon-only menuToggle>
+         <ion-icon name="menu"></ion-icon>
+        </button>
+       </ion-buttons>
+      <ion-title text-center></ion-title>
+   
+    </ion-toolbar>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content text-center padding>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+          <button icon-right ion-button block round outline color="danger" (click)="goForSelf()">
+            For Self
+            <ion-icon name="ios-contact"></ion-icon>
+          </button>
+   <br>
+          <button icon-right ion-button block outline color="dakar" round  [disabled] (click)="openModal()">
+             For Someone else
+             <ion-icon name="ios-contact"></ion-icon>
+          </button>
+    
+</ion-content>

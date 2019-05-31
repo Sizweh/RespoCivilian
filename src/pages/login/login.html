@@ -31,15 +31,10 @@
 
   
 
-  <div class="remember_token">
-    <ion-item no-lines>
-      <ion-label>Remember Me.</ion-label>
-      <ion-checkbox [(ngModel)]="remembertoken" (ionChange)="updateToken()"></ion-checkbox>
-    </ion-item>
-  </div>
+
   <br>
   <!-- <button ion-button round block [disabled]="!loginForm.valid" (click)="goLogin()" color="newcolor"> -->
-    <button ion-button round block (click)="goLogin()" color="newcolor">
+    <button  icon-right ion-button round block (click)="goLogin()" color="newcolor">
 
     Log in
   </button>
@@ -47,9 +42,9 @@
   
   <p text-center  (click)="goResetPassword()">Forgot Password</p>
   
-  <P text-center >OR</P>
+  <P text-center >Or</P>
   
-  <button (click)="goRegister()" full round ion-button color="calm" clear>Register</button>
+  <button (click)="goRegister()"  full round ion-button color="calm" clear>Register</button>
   
   
 </ion-content>

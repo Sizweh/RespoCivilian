@@ -1,0 +1,81 @@
+<!--
+  Generated template for the BankingDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+
+<ion-content text-center padding>
+  <br>
+
+<h5>Banking Details</h5>
+
+
+<div class="register-fields" [formGroup]="registerForm">
+
+<ion-item>
+    <ion-input
+     placeholder="Credit/Debit card" 
+     type="text"
+     formControlName="credit/debitCard"
+     ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input 
+    placeholder="Card Holder Name" 
+    type="text"
+    formControlName="cardholderName"
+    ></ion-input>
+
+  </ion-item>
+  
+
+
+  <ion-item>
+      <ion-input 
+      placeholder="Expiry Date" 
+      type="Date"
+      formControlName="expiryDate"
+      ></ion-input>
+    </ion-item>
+
+  <ion-item>
+      <ion-input 
+      placeholder="CVV" 
+      type="number"
+      formControlName="cvc"
+      ></ion-input>
+    </ion-item>
+
+
+  </div>
+        
+
+
+
+<br>
+
+<font (click)="goFaq()" size="2" color='#488aff'>Read Terms & Conditions Here</font>
+
+
+    <div class="remember_token">
+        <ion-item no-lines>
+           <ion-label>I Accept The Terms & Conditions</ion-label>
+           <ion-checkbox [(ngModel)]="remembertoken" (ionChange)="updateToken()"></ion-checkbox>
+         </ion-item>
+       </div>
+
+
+<br>
+<ion-row>
+    <ion-col col-6>
+      <button ion-button clear color='newcolor' block (click)="goNextOfKin()" > back</button>
+     </ion-col>
+      <ion-col col-6>
+        <button  ion-button round color='secondary' block (click)="goVerifyAccount()"> Done</button>
+      </ion-col>
+</ion-row>
+</ion-content>

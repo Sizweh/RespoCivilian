@@ -52,6 +52,12 @@ export class NextOfKinPage {
   goEditsuccessfully(){
     this.navCtrl.setRoot('EditsuccessfullyPage')
   }
+  goBankingDetails(){
+    this.navCtrl.setRoot('BankingDetailsPage')
+  }
+  goMedicalDetails(){
+    this.navCtrl.setRoot('MedicalDetailsPage')
+  }
 
 
   

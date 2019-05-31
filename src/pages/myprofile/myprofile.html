@@ -2,8 +2,8 @@
 
 
 <ion-content padding>
-    <br>
-
+ 
+<h6 text-center>My Profile</h6>
   <ion-item no-lines>
     <ion-avatar>  
       <img src="../../assets/icons/euphonic.jpg"
@@ -11,16 +11,9 @@
     </ion-avatar>
   </ion-item>
 
-  <ion-item>
-    <ion-label fixed>Avatar</ion-label>
-    <ion-avatar  item-end>
-      <img src="{{imgPreview}}" (click)="openFileChooser()">
-    </ion-avatar>
- 
-  </ion-item>
-
   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button (click)="getImages()"  outline ion-button color="light" round>Change or Upload Pic. </button>
+  
+
 
 
     <!-- More Pinterest floating gallery style -->
@@ -30,48 +23,68 @@
       </div>
     </div>
 
+    <button icon-right text-lowercase round outline ion-button block color='newcolor' (click)="go()">
+      Upload or Change Profile Pic  <ion-icon name="cloud-upload"></ion-icon>
+    </button>
 
   <br>
   <br>
 
-  <ion-item>
-    <ion-input block type="text" placeholder="Full Name"></ion-input>
-  </ion-item>
 
-  <ion-item>
-    <ion-input block minLength="10" maxLength="10" type="tel" placeholder="Phone Number"></ion-input>
-  </ion-item>
+      <ion-item (click)="goPersonalDetails()" color='light'>
+        <ion-avatar item-start>
+          <img src="../../assets/icons/">
+        </ion-avatar>
+        <h3>Personal Details</h3>
+        <h3></h3>
+        <p></p>
+      </ion-item>
+   
+      <ion-item (click)="goMedicalHistory()" color='light'>
+        <ion-avatar item-start>
+          <img src="../../assets/icons/">
+        </ion-avatar>
+        <h3>Medical History</h3>
+        <h3></h3>
+        <p></p>
+      </ion-item>
+   
+      <ion-item (click)="goNextOfSkin()" color='light'>
+        <ion-avatar item-start>
+          <img src="../../assets/icons/">
+        </ion-avatar>
+        <h3>Next Of Kin</h3>
+        <h3></h3>
+        <p></p>
+      </ion-item>
 
-  <ion-item>
-    <ion-input block type="text" placeholder="Email"></ion-input>
-  </ion-item>
-
-
-  <ion-item>
-    <ion-label>Gender</ion-label>
-    <ion-select>
-      <ion-option value="Male">Male</ion-option>
-      <ion-option value="Female">Female</ion-option>
-    </ion-select>
-  </ion-item>
-
-  <ion-item>
-    <ion-label>Date of Birth</ion-label>
-    <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD MMMM YYYY" placeholder="Select date of birth">
-    </ion-datetime>
-  </ion-item>
+      <ion-item (click)="goBankDetails()" color='light'>
+        <ion-avatar item-start>
+          <img src="../../assets/icons/">
+        </ion-avatar>
+        <h3>Banking Details</h3>
+        <h3></h3>
+        <p></p>
+      </ion-item>
+   
 
 <br>
+<br>
+  
 
+  
+<ion-list>
+    <ion-item (click)="goLogin()" color=''>
+      <ion-avatar item-start>
+        <img src="../../assets/icons/13.png">
+      </ion-avatar>
+      <h3>Log out</h3>
+      <h3></h3>
+      <p></p>
+    </ion-item>
+  </ion-list>
+ 
 
-  <ion-row>
-    <ion-col col-6>
-      <button ion-button block clear color='newcolor' (click)="goHome()"> Cancel </button>
-    </ion-col>
-    <ion-col col-6>
-      <button ion-button round block color='secondary' [disabled]="" (click)="goHome()"> Done</button>
-    </ion-col>
-  </ion-row>
 
 
 
