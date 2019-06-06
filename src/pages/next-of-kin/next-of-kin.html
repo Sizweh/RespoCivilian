@@ -11,7 +11,7 @@
     <ion-input
      placeholder="Name" 
      type="text"
-    
+     formControlName="name"
      ></ion-input>
   </ion-item>
 
@@ -19,7 +19,7 @@
     <ion-input 
     placeholder="Surname" 
     type="text"
-   
+    formControlName="surname"
     
     ></ion-input>
 
@@ -28,15 +28,24 @@
 
   <ion-item>
       <ion-input 
+      placeholder="Email" 
+      type="email"
+      formControlName="email"
+ 
+      ></ion-input>
+    </ion-item>
+
+  <ion-item>
+      <ion-input 
       placeholder="Phone Number" 
-      type="tel"
-     
-      minLength="5"
+      type="Number"
+      formControlName="phoneNumber"
+  
       maxLength="10"
       ></ion-input>
     </ion-item>
 
-    </div>
+  
 
     <ion-item>
         <ion-label>Relationship</ion-label>
@@ -47,6 +56,7 @@
         </ion-select>
       </ion-item>
 
+    </div>
 
 <h6>Next of Kin 2:</h6>
 
@@ -56,7 +66,7 @@
     <ion-input
      placeholder="Name" 
      type="text"
-    
+     formControlName="name"
      ></ion-input>
   </ion-item>
 
@@ -64,24 +74,34 @@
     <ion-input 
     placeholder="Surname" 
     type="text"
-   
+    formControlName="surname"
     
     ></ion-input>
 
+  </ion-item>
+
+
+  <ion-item>
+    <ion-input 
+    placeholder="Email" 
+    type="email"
+    formControlName="email"
+
+    ></ion-input>
   </ion-item>
   
 
   <ion-item>
       <ion-input 
       placeholder="Phone Number" 
-      type="tel"
+      type="number"
+      formControlName="phoneNumber"
      
-      minLength="5"
       maxLength="10"
       ></ion-input>
     </ion-item>
 
-    </div>
+ 
 
     <ion-item>
         <ion-label>Relationship</ion-label>
@@ -92,6 +112,7 @@
         </ion-select>
       </ion-item>
 
+    </div>
 
 
 <br>

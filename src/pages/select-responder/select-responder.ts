@@ -58,6 +58,11 @@ export class SelectResponderPage {
     console.log(responder);
     this.navCtrl.push('LocationPage')
   }
+
+  
+  goRequestElse() {
+    this.navCtrl.push('RequestElsePage')
+  }
   
 
 }

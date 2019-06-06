@@ -54,7 +54,7 @@ export class LandingPage {
     },
     {
       faultID: 5,
-      category: "Diffcult Breathing",
+      category: "Difficulty Breathing",
       imageUrl: "http://46.101.169.33/icons/difficultbreathing.png",
       icon: "alarm"
     },
@@ -78,18 +78,21 @@ export class LandingPage {
       
       
     },
-    {
-      faultID: 9,
-      category: "Other",
-      imageUrl: "http://46.101.169.33/icons/other.png",//
-      icon: "alarm"
-    },
+ 
   
   
-   
   ];
   
-  
+  otherCategories = [
+    {
+      faultID: 9,
+      category: "B8A",
+      imageUrl: "http://46.101.169.33/icons/B8A.png",
+      icon: "alarm"
+     
+    },
+
+  ];
   ionViewDidLoad() {
     console.log('ionViewDidLoad LandingPage');
   
@@ -136,9 +139,13 @@ export class LandingPage {
     
     this.navCtrl.push('SelectResponderPage')
   }
-  goSpecifyEmergency(){
+
+  goSpecifyEmergency(other){
+    this.storage.set('category',other);
+
     this.navCtrl.push('SpecifyEmergencyPage')
   }
+
 
 
 

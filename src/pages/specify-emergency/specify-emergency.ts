@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+import { HttpClient } from '@angular/common/http';
 
 /**
  * Generated class for the SpecifyEmergencyPage page.
@@ -15,18 +17,37 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SpecifyEmergencyPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    private storage: Storage,
+    private http: HttpClient,
+    ) {
   }
 
   ionViewDidLoad() {
+
+
+
     console.log('ionViewDidLoad SpecifyEmergencyPage');
   }
+
+ 
+   
+
+ 
+   
 
   goLocation(){
     this.navCtrl.push('LocationPage')
   }
   goHome(){
     this.navCtrl.setRoot('HomePage')
+  }
+  goSelectResponder(other){
+    this.storage.set('category',other);
+   
+    this.navCtrl.push('SelectResponderPage')
   }
 
 

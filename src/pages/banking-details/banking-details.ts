@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormGroup,  FormBuilder, Validators,  } from '@angular/forms'; 
 import { AlertsProvider } from './../../providers/alerts/alerts';
 import { HttpClient } from '@angular/common/http';
+import { Storage } from '@ionic/storage';
 
 
 /**
@@ -27,6 +28,7 @@ export class BankingDetailsPage {
     public navParams: NavParams,
     public alert: AlertsProvider,
     public http: HttpClient,
+    private storage: Storage,
     public formBuilder: FormBuilder,
     ) { 
 
@@ -85,6 +87,7 @@ export class BankingDetailsPage {
   goNextOfKin(){
     this.navCtrl.push("NextOfKinPage");
          }
+         
   goFaq(){
     this.navCtrl.push("FaqPage");
          }

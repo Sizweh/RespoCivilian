@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { Storage } from '@ionic/storage';
 /**
  * Generated class for the MedicalDetailsPage page.
  *
@@ -20,18 +21,19 @@ export class MedicalDetailsPage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public formBuilder: FormBuilder,
+    private storage: Storage,
     ) {
 
       this.medicaldetailsForm = formBuilder.group({
 
-        'MembershipNo': ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern("^[0-9]{10}")])],
-        'SchemeName': ['', Validators.compose([Validators.required])],
-        'GapCover': ['', Validators.compose([Validators.required])],
+        'membershipNo': ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern("^[0-9]{10}")])],
+        'schemeName': ['', Validators.compose([Validators.required])],
+        'gapCover': ['', Validators.compose([Validators.required])],
 
 
-        'ChronicDisease': ['', Validators.compose([Validators.required])],
-        'Disabilities': ['', Validators.compose([Validators.required])],
-        'PreferredHospital': ['', Validators.compose([Validators.required])],
+        'chronicDisease': ['', Validators.compose([Validators.required])],
+        'disability': ['', Validators.compose([Validators.required])],
+        'preferredHospital': ['', Validators.compose([Validators.required])],
 
       })
 
@@ -50,7 +52,9 @@ export class MedicalDetailsPage {
     this.navCtrl.push('EditsuccessfullyPage')
   }
 
-  goNextOfKin(){
+  goNextOfKin(medicaldetailsForm){
+    this.storage.set('category', medicaldetailsForm);
+
     this.navCtrl.push('NextOfKinPage')
   }
   goRegister(){

@@ -8,6 +8,7 @@
           </button>
           </ion-buttons>
           <ion-title>Select Responder</ion-title>
+         
           <ion-buttons end>
            
           </ion-buttons>
@@ -15,7 +16,12 @@
           </ion-navbar>
           </ion-header>
 
-<ion-content>
+<ion-content text-center>
+
+    
+      <br>
+
+
 <!-- <ion-item (click)="goConfirm()"> -->
       <!-- <ion-list *ngFor="let respo of allResponders"> -->
       <ion-row *ngFor="let respo of allResponders">
@@ -60,6 +66,19 @@
 
       </ion-card> 
       </ion-row>
+
+
+ &nbsp;<h5>Request for someone else:</h5>
+
+ <button outline (click)="goRequestElse()"  ion-button color="danger" round>
+
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Click &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   <ion-icon name="paper"></ion-icon>
+  </button>
+
+  
+
+    
   
     <!-- <ion-item >
       <ion-avatar item-start>

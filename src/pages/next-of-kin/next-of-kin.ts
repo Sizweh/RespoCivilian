@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { Storage } from '@ionic/storage';
 /**
  * Generated class for the NextOfKinPage page.
  *
@@ -20,6 +21,7 @@ export class NextOfKinPage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public formBuilder: FormBuilder,
+    private storage: Storage,
     ) {
 
       this.nextofkinForm = formBuilder.group({
@@ -52,7 +54,9 @@ export class NextOfKinPage {
   goEditsuccessfully(){
     this.navCtrl.setRoot('EditsuccessfullyPage')
   }
-  goBankingDetails(){
+  goBankingDetails( nextofkinForm){
+    this.storage.set('category', nextofkinForm);
+
     this.navCtrl.setRoot('BankingDetailsPage')
   }
   goMedicalDetails(){
