@@ -24,6 +24,7 @@ declare var google;
 })
 export class LocationPage implements OnInit {
 
+
 map         : any;
 infoWindow  : any;
 marker      : any;
@@ -45,6 +46,12 @@ selectedResponder      : any;
 responderName: any;
 responderPlate: any;
 responderDistance: any;
+  GoogleAutocomplete: any;
+  autocomplete: { input: string; };
+  autocompleteItems: any[];
+  zone: any;
+
+
 
 
   constructor(public navCtrl: NavController, 
@@ -55,11 +62,39 @@ responderDistance: any;
     private urlService: UrlbaseProvider,
 
 
+
     ) {
+
+      this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
+      this.autocomplete = { input: '' };
+      this.autocompleteItems = [];
+
+
+  }
+
+  updateSearchResults(){
+    if (this.autocomplete.input == '') {
+      this.autocompleteItems = [];
+      return;
+    }
+
+     
+  this.GoogleAutocomplete.getPlacePredictions({ input: this.autocomplete.input },
+    (predictions, status) => {
+      this.autocompleteItems = [];
+      this.zone.run(() => {
+        predictions.forEach((prediction) => {
+          this.autocompleteItems.push(prediction);
+        });
+      });
+    });
 
 
 
   }
+
+
+
 
   ngOnInit() {
    
@@ -76,8 +111,8 @@ responderDistance: any;
 googleMap ()
 
 {
-  
-
+ 
+ 
 
  
   this.storage.get('category').then((val) => {
@@ -312,5 +347,14 @@ handleLocationError(browserHasGeolocation, infoWindow, pos, map) {
 
   goHome(){
     this.navCtrl.setRoot('HomePage')
+
   }
+
+
+ 
+
+
+
+
+
 }

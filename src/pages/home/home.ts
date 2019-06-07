@@ -65,8 +65,8 @@ faultCategories = [
   },
   {
     faultID: 5,
-    category: "Diffcult Breathing",
-    imageUrl: "http://46.101.169.33/icons/difficultbreathing.png",
+    category: "Difficulty Breathing",
+    imageUrl: "http://46.101.169.33/icons/difficultybreathing.png",
     icon: "alarm"
   },
   {
@@ -99,8 +99,8 @@ faultCategories = [
 otherCategories = [
   {
     faultID: 9,
-    category: "B8A",
-    imageUrl: "http://46.101.169.33/icons/B8A.png",
+    category: "R8",
+    imageUrl: "http://46.101.169.33/icons/R8.png",
     icon: "alarm"
    
   },
