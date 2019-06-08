@@ -23,7 +23,7 @@ export class LoginPage {
   remembertoken: boolean;
   loginForm: FormGroup;
   playerId :any; 
-
+  username :any;
   passwordType: string = 'password';
   passwordIcon: string = 'eye-off';
 
@@ -50,6 +50,20 @@ export class LoginPage {
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+
+    this.storage.get('user_name').then((val) => {
+      console.log('cater db stuff');
+      console.log(val);
+      this.username = val;
+   
+      
+    });
+
+    if  (!this.username){
+
+      this.navCtrl.setRoot('HomePage');
+    }
+
   }
   hideShowPassword() {
     this.passwordType = this.passwordType === 'tel' ? 'password' : 'tel';

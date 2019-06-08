@@ -16,6 +16,7 @@ import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 })
 export class SelectResponderPage {
   allResponders: any;
+  specify_emergency: any;
 
   constructor(
     public navCtrl: NavController,
@@ -52,6 +53,16 @@ export class SelectResponderPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SelectResponderPage');
+
+
+    this.storage.get('Specify_emergency').then((val) => {
+      console.log('cater db stuff');
+      console.log(val);
+      this.specify_emergency = val;
+   
+      
+    });
+
   }
   goConfirm(responder){
     this.storage.set('selected_responder', responder);

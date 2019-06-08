@@ -123,6 +123,7 @@ googleMap ()
     
   });
 
+
   this.storage.get('user_id').then((val) => {
     console.log('user db stuff');
     console.log(val);

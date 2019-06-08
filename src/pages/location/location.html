@@ -4,70 +4,74 @@
           <ion-content text-center >
   <br>
   
-  <h3>Confirm</h3>
+  <h3></h3>
 
 
 
   <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()" placeholder="Search for a place">
-    
+  
   </ion-searchbar>
-
+  
   <ion-list [hidden]="autocompleteItems.length == 0">
-      <ion-item *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResult(item)">
-        {{ item.description }}
-      </ion-item>
-    </ion-list>
+    <ion-item *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResult(item)">
+      {{ item.description }}
+    </ion-item>
+  </ion-list>
 
               <div id="map">
-                  
-
-                </div>
-
-             
-
-                <br>
-                <br> 
-           
-                <!-- <ion-row *ngFor="let respo of selectedResponder"> -->
-                    <ion-card>
-                        <ion-card-content>
-                        <ion-item no-lines text-left>
-                            <ion-avatar item-start>
-                              <img src="http://46.101.169.33/img/medcar.png">
-                            </ion-avatar>
-                              <ion-row>   
-                                  <p style="font-size: 12px;"><b>Name:</b> 
-                                  {{ responderName }} 
-                                  </p>
-                              </ion-row>
-                              <ion-row>   
-                                  <p style="font-size: 12px;"><b>
-                                      <!-- {{ responderDistance }} minutes away -->
-                                      1 minute away
-
-                                  </b> 
-
-                                  </p>
-                              </ion-row>
-                      </ion-item>
-                    </ion-card-content> 
-                  </ion-card> 
-                <!-- </ion-row> -->
+              
+              
+              </div>
+              
+              
+              
+              <br>
+              <br>
+              
+              <!-- <ion-row *ngFor="let respo of selectedResponder"> -->
+              <ion-card>
+                <ion-card-content>
+                  <ion-item no-lines text-left>
+                    <ion-avatar item-start>
+                      <img src="http://46.101.169.33/img/medcar.png">
+                    </ion-avatar>
+                    <ion-row>
+                      <p style="font-size: 12px;"><b>Name:</b>
+                        {{ responderName }}
+                      </p>
+                    </ion-row>
+                    <ion-row>
+                      <p style="font-size: 12px;"><b>
+                          <!-- {{ responderDistance }} minutes away -->
+                          1 minute away
+              
+                        </b>
+              
+                      </p>
+                    </ion-row>
+                  </ion-item>
+                </ion-card-content>
+              </ion-card>
+              <!-- </ion-row> -->
                 
 
-            <font size="4" color='#38414a'>Emergency Type</font >
-              <br>
-              <br>
-            <font size="4" color='#f53d3d'>{{event}}</font >
-
-          <br>
-          <br>
-          
-          <button (click)="goConfirm()"  ion-button color="secondary" round>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Confirm &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-          <br>
-          <br>
-          
-        <button (click)="goHome()" ion-button color="newcolor" round>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cancel &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+            <font size="4" color='#38414a'>Emergency Type</font>
+            <br>
+            <br>
+            <font size="4" color='#f53d3d'>{{event}}</font>
+            
+            <br>
+            <br>
+            
+            <button (click)="goConfirm()" ion-button color="secondary"
+              round>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Confirm
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+            <br>
+            <br>
+            
+            <button (click)="goHome()" ion-button color="newcolor"
+              round>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cancel
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
 
 
 
