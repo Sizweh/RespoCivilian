@@ -1,84 +1,79 @@
 
 
-<ion-content text-center  padding>
-<br>
-<br>
+<ion-content text-center padding>
+  <br>
+  <br>
 
-  
- 
 
-        <h6>
-            Medical Aid Details
-        </h6>
 
-    <ion-item>
-      <ion-input 
-      placeholder="Membership No" 
-      type="number"
-     
 
-      ></ion-input>
-    </ion-item>
-  
-    <ion-item>
-      <ion-input 
-      placeholder="Scheme Name"  
-      type="text"      
-      ></ion-input>
-      </ion-item>
+  <h6>
+    Medical Aid Details
+  </h6>
 
-    <ion-item>
-        <ion-input 
-        placeholder="Partial Membership"  
-        type="text"    
-        ></ion-input>
-      </ion-item>
+  <ion-item>
+    <ion-input placeholder="Membership No" type="number"></ion-input>
+  </ion-item>
 
-      <h6 text-center  >
-          History
-      </h6>
-            <ion-item>
-                <ion-label> Chronic Disease </ion-label>
-                <ion-select [(ngModel)]="gaming">               
-                  <ion-option value="nes">ALS</ion-option>
-                  <ion-option value="n64">Asthma</ion-option>
-                  <ion-option value="ps">Cancer</ion-option>
-                  <ion-option value="genesis">Eating Disorders</ion-option>
-                  <ion-option value="saturn">Heart Disease</ion-option>
-                  <ion-option value="snes">Obesity</ion-option>
-                </ion-select>
-              </ion-item>
-              
-            <ion-item>
-                <ion-label>Disability </ion-label>
-                <ion-select [(ngModel)]="gaming">
-                  <ion-option value="nes">Yes</ion-option>
-                  <ion-option value="n64">No</ion-option>
-                </ion-select>
-              </ion-item>
+  <ion-item>
+   
+    <ion-input placeholder="Scheme Name" type="text"></ion-input>
+    
+    <ion-select >
 
-              <h6 text-center  >
-                  Preferred Hospital
-              </h6>
+        <ion-option value="Assupol_Life">Assupol Life</ion-option>
+        <ion-option value="Gems">Gems</ion-option>
+        <ion-option value="Discovery">Discovery</ion-option>
+    
+      </ion-select>
+  </ion-item>
 
-                    <ion-item>
-                        <ion-input 
-                        placeholder="Preferred Hospital"  
-                        type="text"
-                       
-                        ></ion-input>
-                      </ion-item>
-                      
-                       
-<br>
+  <ion-item>
+    <ion-input placeholder="Partial Membership" type="text"></ion-input>
+  </ion-item>
+
+  <h6 text-center>
+    History
+  </h6>
+  <ion-item>
+    <ion-input placeholder="Chronic Disease" type="text"></ion-input>
+   
+    <ion-select >
+      <ion-option >ALS</ion-option>
+      <ion-option >Asthma</ion-option>
+      <ion-option >Cancer</ion-option>
+      <ion-option >Eating Disorders</ion-option>
+      <ion-option >Heart Disease</ion-option>
+      <ion-option >Obesity</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Disability </ion-label>
+    <ion-select >
+      <ion-option >Yes</ion-option>
+      <ion-option >No</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <h6 text-center>
+    Preferred Hospital
+  </h6>
+
+  <ion-item>
+    <ion-input placeholder="Preferred Hospital" type="text"></ion-input>
+  </ion-item>
+
+
+  <br>
 
   <ion-row>
-      <ion-col col-6>
-        <button ion-button block clear color='newcolor' (click)="goRegister()"> Back </button>
-       </ion-col>
-        <ion-col col-6>
-          <button ion-button round block color='secondary'  (click)= "goNextOfKin()"> Next</button>
-        </ion-col>
-    </ion-row>
+    <ion-col col-6>
+      <button ion-button block clear color='newcolor' (click)="goRegister()"> Back </button>
+    </ion-col>
+    <ion-col col-6>
+      <button ion-button round block color='secondary' (click)="goNextOfKin()"> Next</button>
+    </ion-col>
+  </ion-row>
 
 </ion-content>

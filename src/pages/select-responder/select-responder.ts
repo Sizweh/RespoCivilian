@@ -23,9 +23,6 @@ export class SelectResponderPage {
     public navParams: NavParams,
     private storage: Storage,
     private urlService: UrlbaseProvider,
-
-
-
     ) {
       this.urlService.showalldrivers()
               .subscribe(res => {

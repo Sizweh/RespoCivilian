@@ -17,7 +17,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SpecifyEmergencyPage {
   username :any;
-
+  specify :any;
+  
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     private storage: Storage,
@@ -28,21 +29,9 @@ export class SpecifyEmergencyPage {
   ionViewDidLoad() {
 
     console.log('ionViewDidLoad SpecifyEmergencyPage');
-
-  
-
-   
- 
-
-
   }
-
  
-   
-
  
-   
-
   goLocation(){
   
 
@@ -51,9 +40,9 @@ export class SpecifyEmergencyPage {
   goHome(){
     this.navCtrl.setRoot('HomePage')
   }
-  goSelectResponder(){
-    this.storage.set('Specify_emergency',"aaaaaaaaaaaaa");
-
+  goSelectResponder(specify){
+    this.storage.set('Specify_emergency',"specify");
+     console.log(specify);
   
     this.navCtrl.push('SelectResponderPage')
   }
