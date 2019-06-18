@@ -1,128 +1,82 @@
 import { Component } from "@angular/core";
-import {
-  IonicPage,
-  NavController,
-  NavParams,
-  ModalController
-} from "ionic-angular";
+import { IonicPage,NavController,NavParams, ModalController} from "ionic-angular";
+import { Observable } from 'rxjs/Observable';
+import { AlertController, ToastController } from 'ionic-angular'
 
+
+import { TodoServiceProvider } from "../../providers/todo-service/todo-service";
 @IonicPage()
 @Component({
   selector: "page-contact",
   templateUrl: "contact.html",
 })
 export class ContactPage {
-  tickets: string = "logfault";
 
+  todos: Observable<any>;
+  
+ 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public modalCtrl: ModalController
-  ) { }
-
-  ionViewDidLoad() {
-    console.log("ionViewDidLoad ContactPage");
+    public modalCtrl: ModalController,
+    public alertCtrl: AlertController, 
+    public toastCtrl: ToastController,
+    public todoService: TodoServiceProvider
+  ) { 
+    this.loadTodos();
   }
 
-  faultCategories = [
-    {
-      faultID: 1,
-      category: "Heart Attack",
-      imageUrl: "../../assets/icons/heart attack.png",
-      icon: "alarm"
-     
-    },
-    {
-      faultID: 2,
-      category: "Severe Bleeding",
-      imageUrl: "../../assets/icons/severe bleeding.png",
-      icon: "alarm"
-    },
-    {
-      faultID: 3,
-      category: "Burns",
-      imageUrl: "../../assets/icons/burns.png",
-      icon: "alarm"
-    },
-    {
-      faultID: 4,
-      category: "Difficult Breathing",
-      imageUrl: "../../assets/icons/difficult breathing.png",
-      icon: "alarm"
-    },
-    {
-      faultID: 5,
-      category: "Fainting",
-      imageUrl: "../../assets/icons/fainting.png",
-      icon: "alarm"
-    },
-    {
-      faultID: 6,
-      category: "Snake Bite",
-      imageUrl: "../../assets/icons/snake bite.png",
-      icon: "alarm"
-    },
-    {
-      faultID: 7,
-      category: "Vehicle Accident",
-      imageUrl: "../../assets/icons/vehicle accident.png",
-      icon: "alarm"
-    },
-    {
-      faultID: 8,
-      category: "Other",
-      imageUrl: "../../assets/icons/other.png",
-      icon: "alarm"
-    }
-  ];
+  loadTodos() {
+    this.todos = this.todoService.getTodos();
+  }
 
+  addTodo() {
+    let prompt = this.alertCtrl.create({
+      title: 'Add Todo',
+      message: "Enter the text for your new todo",
+      inputs: [
+        {
+          name: 'text',
+          placeholder: 'Buy Milk'
+        },
+      ],
 
-  logsHistory = [
-    {
-      faultID: 1,
-      category: "Roads",
-      subject: "Damaged Roads",
-      date: "12-02-2019",
-      status: "Pending",
-      city: "Durban",
-      refNumber: "KZN-154256",
-      imageUrl: "../../assets/icons/Group 606.png",
-      map: " ../../assets/imgs/map.png",
-      rating: "4",
-      disputed: "0",
-      icon: "alarm"
-    },
-    {
-      faultID: 2,
-      category: "Roads",
-      subject: "Damaged Roads",
-      date: "12-02-2019",
-      status: "Pending",
-      city: "Durban",
-      refNumber: "KZN-154256",
-      imageUrl: "../../assets/icons/Group 606.png",
-      map: " ../../assets/imgs/map.png",
-      rating: "2",
-      disputed: "Yes",
-      icon: "alarm"
-    }
-  ];
+      buttons: [
+        {
+          text: 'Cancel'
+        },
 
-  faultData(category) {
-    let faultDataModal = this.modalCtrl.create("FaultDataPage", {
-      data: category
+        {
+          text: 'Save',
+          handler: data => {
+            this.todoService.addTodo(data.text).subscribe(data => {
+              this.showToast(data.msg);
+              this.loadTodos();
+            });
+          }
+        }
+      ]
     });
-    faultDataModal.present();
+    prompt.present();
   }
 
-  loggedFault(loggedfault) {
-    let faultDataModal = this.modalCtrl.create("LoggedFaultDetailsPage", {
-      data: loggedfault
+
+  removeTodo(id) {
+    this.todoService.deleteTodo(id).subscribe(data => {
+      this.showToast(data.msg);
+      this.loadTodos();
+    })
+  }
+
+
+  private showToast(message: string) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 3000
     });
-    faultDataModal.present();
+    toast.present();
   }
+ 
 
-  viewComments() { }
 
-  viewPlayers() { }
 }
