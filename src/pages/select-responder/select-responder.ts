@@ -52,18 +52,14 @@ export class SelectResponderPage {
     console.log('ionViewDidLoad SelectResponderPage');
 
 
-    this.storage.get('Specify_emergency').then((val) => {
-      console.log('cater db stuff');
-      console.log(val);
-      this.specify_emergency = val;
-   
-      
-    });
-
   }
   goConfirm(responder){
     this.storage.set('selected_responder', responder);
     console.log(responder);
+
+
+
+
     this.navCtrl.push('LocationPage')
   }
 

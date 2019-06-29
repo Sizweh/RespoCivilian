@@ -6,6 +6,7 @@ import { AlertsProvider } from './../../providers/alerts/alerts';
 import { AuthProvider } from './../../providers/auth/auth'
 import { Storage } from '@ionic/storage';
 import { MenuController } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 // import {RequestOptions, Request, RequestMethod} from '@angular/http';
 
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
@@ -38,6 +39,7 @@ export class LoginPage {
     private storage: Storage,
     public menuCtrl: MenuController,
     private urlService: UrlbaseProvider,
+    public alertCtrl: AlertController
     // private mainService: MainServiceProvider,
 
     ) {
@@ -144,6 +146,28 @@ export class LoginPage {
 
   goRegister(){
     this.navCtrl.push("RegisterPage");
+  }
+  goMedicalDetails(){
+    const confirm = this.alertCtrl.create({
+      title: 'Are you on medical aid?',
+      message: '',
+      buttons: [
+        {
+          text: 'Disagree',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Agree',
+          handler: () => {
+            console.log('Agree clicked');
+          }
+        }
+      ]
+    });
+    confirm.present();
+    this.navCtrl.push("MedicalDetailsPage");
   }
 
   goResetPassword(){

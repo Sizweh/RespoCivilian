@@ -50,8 +50,7 @@ responderDistance: any;
   autocomplete: { input: string; };
   autocompleteItems: any[];
   zone: any;
-
-
+  specify_emergency: any;
 
 
   constructor(public navCtrl: NavController, 
@@ -60,9 +59,6 @@ responderDistance: any;
     private storage: Storage,
     public loadingCtrl: LoadingController,
     private urlService: UrlbaseProvider,
-
-
-
     ) {
 
       this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
@@ -93,9 +89,6 @@ responderDistance: any;
 
   }
 
-
-
-
   ngOnInit() {
    
 
@@ -122,6 +115,15 @@ googleMap ()
     this.event = val.category;
     
   });
+  this.storage.get('specify_emergency').then((val) => {
+    console.log('specify db stuff');
+    console.log(val);
+    this.specify_emergency = val;
+    this.event = val.specify_emergency;
+    
+  });
+
+ 
 
 
   this.storage.get('user_id').then((val) => {
@@ -288,6 +290,7 @@ handleLocationError(browserHasGeolocation, infoWindow, pos, map) {
       'driver_id': this.selectedResponder.id,
       'company_id': this.selectedResponder.company.id,
       'emergency_type': this.event,
+      'specify_emergency': this.event,
     }
 
 

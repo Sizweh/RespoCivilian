@@ -92,7 +92,7 @@ export class MyApp {
     this.menu.close();
     }
   goMyProfile(){
-    this.nav.push('MyprofilePage');
+    this.nav.setRoot('MyprofilePage');
     this.menu.enable(true);
     this.menu.close();
     }

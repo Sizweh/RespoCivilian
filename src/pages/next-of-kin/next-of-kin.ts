@@ -17,6 +17,7 @@ import { AlertsProvider } from './../../providers/alerts/alerts';
   templateUrl: 'next-of-kin.html',
 })
 export class NextOfKinPage {
+  remembertoken: boolean;
 
   nextofkinForm: FormGroup;
 
@@ -24,7 +25,7 @@ export class NextOfKinPage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public formBuilder: FormBuilder,
-    private storage: Storage,
+    public storage: Storage,
     private urlService: UrlbaseProvider,
     public alert: AlertsProvider,
     ) {
@@ -50,6 +51,12 @@ export class NextOfKinPage {
       })
 // this.registerForm.valid.;
   }
+
+  updateToken() {
+    console.log('Remember token new state:' + this.remembertoken);
+  }
+
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad NextOfKinPage');
@@ -83,10 +90,12 @@ export class NextOfKinPage {
       .subscribe(res => {
         // this.presentToast(res.msg, res.status);
         console.log(res);
-        // alert(res);ss
+        // alert(res);
         this.alert.presentAlert("Notification", res.msg);
   
         if (res.status=='OK') {
+          this.storage.set('nextofkinform', res.nextofkinform);
+          this.storage.set('nextofkinform', res.nextofkin_id);
           this.navCtrl.push("VerifyAccountPage");
           // localStorage.setItem('token', res.token);
         }
@@ -118,7 +127,14 @@ export class NextOfKinPage {
  
 
   goMedicalDetails(){
-    this.navCtrl.setRoot('MedicalDetailsPage')
+    this.navCtrl.push('MedicalDetailsPage')
+  }
+
+  goFaq(){
+    this.navCtrl.push('FaqPage')
+  }
+  goRegister(){
+    this.navCtrl.push('RegisterPage')
   }
 
 }

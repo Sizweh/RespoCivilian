@@ -66,7 +66,7 @@ faultCategories = [
   {
     faultID: 5,
     category: "Difficulty Breathing",
-    imageUrl: "http://46.101.169.33/icons/difficulty.png",
+    imageUrl: "http://46.101.169.33/icons/difficulty.jpg",
     icon: "alarm"
   },
   {
@@ -92,7 +92,7 @@ faultCategories = [
   {
     faultID: 9,
     category: "Falling",
-    imageUrl: "http://46.101.169.33/icons/falling.png",
+    imageUrl: "http://46.101.169.33/icons/falling.jpg",
     icon: "alarm"
     
     
@@ -100,12 +100,13 @@ faultCategories = [
   {
     faultID: 9,
     category: "Seizure",
-    imageUrl: "http://46.101.169.33/icons/seizure.png",
+    imageUrl: "http://46.101.169.33/icons/seizure.jpg",
     icon: "alarm"
     
     
   },
 
+ 
 
 
  
@@ -115,7 +116,7 @@ faultCategories = [
 otherCategories = [
   {
     faultID: 10,
-    category: "R8",
+    category: "Other",
     imageUrl: "http://46.101.169.33/icons/R8.png",
     icon: "alarm"
    
@@ -171,13 +172,17 @@ this.storage.get('user_id').then((user_id) => {
     
     this.navCtrl.push('SelectResponderPage')
   }
-  goSpecifyEmergency(){
+
+  goSpecifyEmergency(other){
+    this.storage.set('category', other);
+
     this.navCtrl.push('SpecifyEmergencyPage')
   }
 
   goLanding(){
     this.navCtrl.push('LandingPage')
   }
+  
   goSelfAdmission(){
     this.navCtrl.push('SelfAdmissionPage')
   }

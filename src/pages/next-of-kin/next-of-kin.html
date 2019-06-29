@@ -26,14 +26,6 @@
   </ion-item>
   
 
-  <ion-item>
-      <ion-input 
-      placeholder="Email" 
-      type="email"
-      formControlName="email"
- 
-      ></ion-input>
-    </ion-item>
 
   <ion-item>
       <ion-input 
@@ -75,34 +67,18 @@
     placeholder="Surname" 
     type="text"
     formControlName="surname"
-    
-    ></ion-input>
-
-  </ion-item>
-
-
-  <ion-item>
-    <ion-input 
-    placeholder="Email" 
-    type="email"
-    formControlName="email"
-
     ></ion-input>
   </ion-item>
   
-
   <ion-item>
       <ion-input 
       placeholder="Phone Number" 
       type="number"
       formControlName="phoneNumber"
-     
       maxLength="10"
       ></ion-input>
     </ion-item>
-
  
-
     <ion-item>
         <ion-label>Relationship</ion-label>
         <ion-select  >
@@ -112,16 +88,29 @@
         </ion-select>
       </ion-item>
 
-    </div>
+   </div>
+
+   <br>
+
+   <font (click)="goFaq()" size="2" color='#488aff'>Read Terms & Conditions Here</font>
+
+
+    <div class="remember_token">
+        <ion-item no-lines>
+           <ion-label>I Accept The Terms & Conditions</ion-label>
+           <ion-checkbox [(ngModel)]="remembertoken" (ionChange)="updateToken()"></ion-checkbox>
+         </ion-item>
+       </div>
 
 
 <br>
     <ion-row>
         <ion-col col-6>
-          <button ion-button clear color='newcolor' block (click)="goMedicalDetails()" > back</button>
+          <button ion-button clear color='newcolor' block (click)="goMedicalDetails()"> back</button>
          </ion-col>
           <ion-col col-6>
-            <button ion-button round color='secondary' block (click)="goVerifyAccount()"> Next</button>
+            <button ion-button round color='secondary' block (click)="goRegister()"> Next</button>
           </ion-col>
-</ion-row>
+       </ion-row>
+
 </ion-content>

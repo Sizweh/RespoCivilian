@@ -5,6 +5,7 @@ import { AlertsProvider } from './../../providers/alerts/alerts';
 import { HttpClient } from '@angular/common/http';
 import { MenuController } from 'ionic-angular';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -23,6 +24,7 @@ export class RegisterPage {
     public http: HttpClient,
     public menuCtrl: MenuController,
     private urlService: UrlbaseProvider,
+    public storage: Storage,
 
 
     ) {
@@ -36,9 +38,6 @@ export class RegisterPage {
         'phoneNumber': ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern("^[0-9]{10}")])],
         // 'Email': '',//['', Validators.compose([Validators.required])],
         'Email': ['', Validators.compose([Validators.minLength(4), Validators.maxLength(50), Validators.pattern('[a-zA-Z0-9._]+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$'), Validators.required])],
-
-        'password': ['', Validators.compose([Validators.required, Validators.minLength(6) ])],//, Validators.maxLength(6)])],
-        'confirmPassword': ['', Validators.compose([Validators.required, Validators.minLength(6) ])],//, Validators.maxLength(6)])],
 
       })
       // this.registerForm.valid.;
@@ -101,8 +100,8 @@ export class RegisterPage {
   //     });
   }
 
-  goMedicalDetails(){
-    this.navCtrl.push('MedicalDetailsPage')
+  goNextofkin(){
+    this.navCtrl.push('NextofkinPage')
   }
 
 }

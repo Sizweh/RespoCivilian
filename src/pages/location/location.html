@@ -1,35 +1,28 @@
 
-
-    
-          <ion-content text-center >
-  <br>
-  
-  <h3></h3>
+<ion-content text-center>
+<br>
 
 
 
   <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()" placeholder="Search for a place">
-  
+
   </ion-searchbar>
-  
+
   <ion-list [hidden]="autocompleteItems.length == 0">
     <ion-item *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResult(item)">
       {{ item.description }}
     </ion-item>
   </ion-list>
 
-              <div id="map">
-              
-              
-              </div>
-              
-              
-              
-              <br>
-              <br>
+  <div id="map">
+
+
+  </div>
+            
               
               <!-- <ion-row *ngFor="let respo of selectedResponder"> -->
               <ion-card>
+              
                 <ion-card-content>
                   <ion-item no-lines text-left>
                     <ion-avatar item-start>
@@ -51,38 +44,38 @@
                     </ion-row>
                   </ion-item>
                 </ion-card-content>
+              
               </ion-card>
               <!-- </ion-row> -->
-                
-
-            <font size="4" color='#38414a'>Emergency Type</font>
-            <br>
-            <br>
-            <font size="4" color='#f53d3d'>{{event}}</font>
-            
-            <br>
-            <br>
-            
-            <button (click)="goConfirm()" ion-button color="secondary"
-              round>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Confirm
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-            <br>
-            <br>
-            
-            <button (click)="goHome()" ion-button color="newcolor"
-              round>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cancel
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-
-
-
-
-
-
-
-     
-
-
-
-
-          </ion-content>
-          
+              
+              
+              <font size="4" color='#38414a'>Emergency Type</font>
+              <br>
+              <br>
+              <font size="4" color='#f53d3d'>{{event}}</font>
+              
+              <br>
+              <br>
+              
+              <button (click)="goConfirm()" ion-button color="secondary"
+                round>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Confirm
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+              <br>
+              <br>
+              
+              <button (click)="goHome()" ion-button color="newcolor"
+                round>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cancel
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              </ion-content>

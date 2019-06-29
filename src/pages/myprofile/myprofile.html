@@ -1,4 +1,15 @@
-
+<ion-header>
+    <ion-navbar color="newcolor">
+      <ion-toolbar color="newcolor" mode="ios">
+        <ion-buttons start>
+         <button color='light' ion-button icon-only menuToggle>
+         <ion-icon name="menu"></ion-icon>
+        </button>
+       </ion-buttons>
+      <ion-title text-center></ion-title>
+    </ion-toolbar>
+  </ion-navbar>
+</ion-header>
 
 
 <ion-content padding>
@@ -12,9 +23,6 @@
   </ion-item>
 
   
-  
-
-
 
     <!-- More Pinterest floating gallery style -->
     <div class="images">
@@ -23,76 +31,46 @@
       </div>
     </div>
 
-    <button icon-right text-lowercase round outline ion-button block color='newcolor' (click)="go()">
-      Upload or Change Profile Pic  <ion-icon name="cloud-upload"></ion-icon>
-    </button>
+
+
+
+    <button  icon-right ion-button round block (click)="go()" text-lowercase outline color="newcolor">
+
+        Upload or Change Profile Pic
+      <ion-icon name=""></ion-icon>
+      </button>
+
 
   <br>
   <br>
 
 
-      <ion-item (click)="goPersonalDetails()" color='light'>
-        <ion-avatar item-start>
-          <img src="../../assets/icons/">
-        </ion-avatar>
+      <ion-item  (click)="goPersonalDetails()" color=''>
+      
         <h3>Personal Details</h3>
         <h3></h3>
         <p></p>
       </ion-item>
    
-      <ion-item (click)="goMedicalHistory()" color='light'>
-        <ion-avatar item-start>
-          <img src="../../assets/icons/">
-        </ion-avatar>
+      <ion-item (click)="goMedicalHistory()" color=''>
+    
         <h3>Medical History</h3>
         <h3></h3>
         <p></p>
       </ion-item>
    
-      <ion-item (click)="goNextOfSkin()" color='light'>
-        <ion-avatar item-start>
-          <img src="../../assets/icons/">
-        </ion-avatar>
+      <ion-item (click)="goNextOfSkin()" color=''>
+     
         <h3>Next Of Kin</h3>
         <h3></h3>
         <p></p>
       </ion-item>
 
-      <ion-item (click)="goBankDetails()" color='light'>
-        <ion-avatar item-start>
-          <img src="../../assets/icons/">
-        </ion-avatar>
-        <h3>Banking Details</h3>
-        <h3></h3>
-        <p></p>
-      </ion-item>
    
 
 <br>
 <br>
   
-
-  
-<ion-list>
-    <ion-item (click)="goLogin()" color=''>
-      <ion-avatar item-start>
-        <img src="../../assets/icons/13.png">
-      </ion-avatar>
-      <h3>Log out</h3>
-      <h3></h3>
-      <p></p>
-    </ion-item>
-  </ion-list>
- 
-
-
-
-
-
- 
-
-
-
 
 
 

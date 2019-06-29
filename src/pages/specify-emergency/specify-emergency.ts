@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { HttpClient } from '@angular/common/http';
-
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
+import { AlertsProvider } from './../../providers/alerts/alerts';
 /**
  * Generated class for the SpecifyEmergencyPage page.
  *
@@ -17,17 +19,50 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SpecifyEmergencyPage {
   username :any;
-  specify :any;
+  specify_emergency :any;
+
+  
+  specifyForm: FormGroup;
   
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     private storage: Storage,
-    private http: HttpClient,
+    private urlService: UrlbaseProvider,
+    public http: HttpClient,
+    public formBuilder: FormBuilder,
+    public alert: AlertsProvider,
     ) {
+
+
+      this.specifyForm = formBuilder.group({
+
+        'specify_emergency': ['', Validators.compose([Validators.required])],
+
+      })
   }
 
-  ionViewDidLoad() {
 
+
+  otherCategories = [
+    {
+      faultID: 10,
+      category: "Other",
+      placeholder: "",
+      imageUrl: "http://46.101.169.33/icons/R8.png",
+      icon: "alarm"
+     
+    },
+  
+  ];
+  
+
+
+
+
+
+  ionViewDidLoad() {
+    this.storage.set('specify_emergency', this.specify_emergency);
+    console.log(this.specify_emergency);
     console.log('ionViewDidLoad SpecifyEmergencyPage');
   }
  
@@ -35,14 +70,17 @@ export class SpecifyEmergencyPage {
   goLocation(){
   
 
+
     this.navCtrl.push('LocationPage')
   }
   goHome(){
     this.navCtrl.setRoot('HomePage')
   }
-  goSelectResponder(specify){
-    this.storage.set('Specify_emergency',"specify");
-     console.log(specify);
+
+  goSelectResponder(specify_emergency){
+       this.storage.set('specify_emergency', specify_emergency);
+    console.log(specify_emergency);
+  
   
     this.navCtrl.push('SelectResponderPage')
   }

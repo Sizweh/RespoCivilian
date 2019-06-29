@@ -60,40 +60,24 @@
 
 
 
-      <ion-item>
-        <ion-input
-          formControlName="password"
-          minLength="6"
-          maxLength="20"
-          type="password"
-          placeholder="Password - min 6"
-        ></ion-input>
-      </ion-item>
-  
-      <ion-item>
-        <ion-input
-          formControlName="confirmPassword"
-          minLength="6"
-          maxLength="20"
-          type="password"
-          placeholder="Confirm Password"
-        ></ion-input>
-      </ion-item>
   
     
     </div>
+
   <br>
+
   <ion-grid>
       <ion-row>
         <ion-col col-6>
-          <button ion-button block round clear color="newcolor" (click)="goLogin()">back</button>
+          <button ion-button block round clear color="newcolor" (click)="goNextofkin()">back</button>
         </ion-col>
   
         <ion-col col-6>
-          <button ion-button block color="secondary" round  [disabled]="!registerForm.valid" (click)="goMedicalDetails()">
+          <button ion-button block color="secondary" round  [disabled]="!registerForm.valid" (click)="goVerifyAccount()">
             Next
           </button>
         </ion-col>
       </ion-row>
     </ion-grid>
+    
   </ion-content>

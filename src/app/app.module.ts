@@ -18,8 +18,8 @@ import { UrlbaseProvider } from '../providers/urlbase/urlbase';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { FileChooser } from '@ionic-native/file-chooser';
-import { AppSettingsProvider } from '../providers/app-settings/app-settings';
-import { TodoServiceProvider } from '../providers/todo-service/todo-service';
+
+
 
 
 @NgModule({
@@ -62,8 +62,7 @@ import { TodoServiceProvider } from '../providers/todo-service/todo-service';
     UrlbaseProvider,
     
     HttpModule,
-    AppSettingsProvider,
-    TodoServiceProvider,
+ 
   
   
   ]
