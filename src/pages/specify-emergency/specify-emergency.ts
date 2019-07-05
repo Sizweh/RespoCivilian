@@ -5,12 +5,6 @@ import { HttpClient } from '@angular/common/http';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { AlertsProvider } from './../../providers/alerts/alerts';
-/**
- * Generated class for the SpecifyEmergencyPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -18,10 +12,9 @@ import { AlertsProvider } from './../../providers/alerts/alerts';
   templateUrl: 'specify-emergency.html',
 })
 export class SpecifyEmergencyPage {
+
   username :any;
   specify_emergency :any;
-
-  
   specifyForm: FormGroup;
   
   constructor(public navCtrl: NavController, 
@@ -33,15 +26,12 @@ export class SpecifyEmergencyPage {
     public alert: AlertsProvider,
     ) {
 
-
       this.specifyForm = formBuilder.group({
 
-        'specify_emergency': ['', Validators.compose([Validators.required])],
+      'specify_emergency': ['', Validators.compose([Validators.required])],
 
       })
   }
-
-
 
   otherCategories = [
     {
@@ -55,11 +45,6 @@ export class SpecifyEmergencyPage {
   
   ];
   
-
-
-
-
-
   ionViewDidLoad() {
     this.storage.set('specify_emergency', this.specify_emergency);
     console.log(this.specify_emergency);

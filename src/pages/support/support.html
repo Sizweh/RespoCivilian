@@ -13,21 +13,22 @@
   </ion-header>
 
   <ion-content>
+    
+    <br>
 
       <ion-list>
       
 
-
-  <ion-item (click)="goContactPage()"> 
-    <h2>Contact</h2>
-    <button ion-button clear item-end></button>
-  </ion-item>
-
-
-
-
+          <div class="login-fields" [formGroup]="contactForm">
+          
+            <ion-item>
+              <ion-input formControlName="message" block minLength="10" maxLength="200" type="text" placeholder="Message">
+              </ion-input>
+            </ion-item>
+          
+          </div>
   
-
+  <button (click)="sendContact()"    full round ion-button color="calm" clear>Send</button>
 
 
 

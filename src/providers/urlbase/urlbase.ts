@@ -12,8 +12,8 @@ import { catchError, tap } from 'rxjs/operators';
 */
 @Injectable()
 export class UrlbaseProvider {
-   apiUrl = 'http://46.101.169.33/api/civilian/';
-  // apiUrl = 'http://127.0.0.1:8000/api/civilian/';
+ //  apiUrl = 'http://46.101.169.33/api/civilian/';
+   apiUrl = 'http://127.0.0.1:8000/api/civilian/';
   constructor(public http: HttpClient) {
     console.log('Hello UrlbaseProvider Provider');
   }
@@ -33,6 +33,14 @@ export class UrlbaseProvider {
       .pipe(
         tap(_ => this.log('registerCivilian')),
         catchError(this.handleError('registerCivilian', []))
+      );
+  }
+  //pass test on local
+  history (data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'userhistory', data)
+      .pipe(
+        tap(_ => this.log('userhistory')),
+        catchError(this.handleError('userhistory', []))
       );
   }
 
@@ -78,6 +86,35 @@ export class UrlbaseProvider {
       .pipe(
         tap(_ => this.log('checkRespoAccept')),
         catchError(this.handleError('checkRespoAccept', []))
+      );
+  }
+
+  personalDetails (data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'userDetails', data)
+      .pipe(
+        tap(_ => this.log('userDetails')),
+        catchError(this.handleError('userDetails', []))
+      );
+  }
+  medicalHistory (data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'userMedicalAid', data)
+      .pipe(
+        tap(_ => this.log('userMedicalAid')),
+        catchError(this.handleError('userMedicalAid', []))
+      );
+  }
+  nextofSkin(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'nextOfKin', data)
+      .pipe(
+        tap(_ => this.log('nextOfKin')),
+        catchError(this.handleError('nextOfKin', []))
+      );
+  }
+  contact(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'support', data)
+      .pipe(
+        tap(_ => this.log('support')),
+        catchError(this.handleError('support', []))
       );
   }
 

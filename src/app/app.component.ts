@@ -2,21 +2,36 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav,  Platform, MenuController,  } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { Storage } from '@ionic/storage';
 
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
+  [x: string]: any;
   @ViewChild(Nav) nav: Nav;
-
+  username:any; 
   rootPage: any = 'LoginPage';
   // menu: true;
 
   pages: Array<{ title: string, component: any , icon:string}>;
 
-  constructor( public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public menu: MenuController) {
+  constructor( public platform: Platform, 
+    public statusBar: StatusBar, 
+    public splashScreen: SplashScreen, 
+    public menu: MenuController,
+    private storage: Storage,
+    ) {
+
+      this.storage.get('user_name').then((val) => {
+        console.log(String(val));
+        this.username = String(val);
+      
+        
+      });
+      
+     
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -24,6 +39,9 @@ export class MyApp {
   
      
     ];
+    
+   
+    
     
   }
   

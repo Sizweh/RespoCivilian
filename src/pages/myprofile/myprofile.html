@@ -1,11 +1,11 @@
 <ion-header>
-    <ion-navbar color="newcolor">
-      <ion-toolbar color="newcolor" mode="ios">
-        <ion-buttons start>
-         <button color='light' ion-button icon-only menuToggle>
-         <ion-icon name="menu"></ion-icon>
+  <ion-navbar color="newcolor">
+    <ion-toolbar color="newcolor" mode="ios">
+      <ion-buttons start>
+        <button color='light' ion-button icon-only menuToggle>
+          <ion-icon name="menu"></ion-icon>
         </button>
-       </ion-buttons>
+      </ion-buttons>
       <ion-title text-center></ion-title>
     </ion-toolbar>
   </ion-navbar>
@@ -13,65 +13,61 @@
 
 
 <ion-content padding>
- 
-<h6 text-center>My Profile</h6>
+
+  <h6 text-center>My Profile</h6>
   <ion-item no-lines>
-    <ion-avatar>  
+    <ion-avatar>
       <img src="../../assets/icons/euphonic.jpg"
         style="width: 100px; height: 100px;  margin-left: auto; margin-right: auto;">
     </ion-avatar>
   </ion-item>
 
-  
 
-    <!-- More Pinterest floating gallery style -->
-    <div class="images">
-      <div class="one-image" *ngFor="let img of imageResponse">
-        <img src="{{img}}" alt="" srcset="">
-      </div>
+
+  <!-- More Pinterest floating gallery style -->
+  <div class="images">
+    <div class="one-image" *ngFor="let img of imageResponse">
+      <img src="{{img}}" alt="" srcset="">
     </div>
+  </div>
 
 
 
 
-    <button  icon-right ion-button round block (click)="go()" text-lowercase outline color="newcolor">
+  <button icon-right ion-button round block (click)="go()" text-lowercase outline color="newcolor">
 
-        Upload or Change Profile Pic
-      <ion-icon name=""></ion-icon>
-      </button>
+    Upload or Change Profile Pic
+    <ion-icon name=""></ion-icon>
+  </button>
 
 
   <br>
   <br>
+<ion-item (click)="goPersonalDetails()" color=''>
+
+  <h3>Personal Details</h3>
+  <h3></h3>
+  <p></p>
+</ion-item>
+
+<ion-item (click)="goMedicalHistory()" color=''>
+
+  <h3>Medical History</h3>
+  <h3></h3>
+  <p></p>
+</ion-item>
+
+<ion-item (click)="goNextOfSkin()" color=''>
+
+  <h3>Next Of Kin</h3>
+  <h3></h3>
+  <p></p>
+</ion-item>
 
 
-      <ion-item  (click)="goPersonalDetails()" color=''>
-      
-        <h3>Personal Details</h3>
-        <h3></h3>
-        <p></p>
-      </ion-item>
-   
-      <ion-item (click)="goMedicalHistory()" color=''>
-    
-        <h3>Medical History</h3>
-        <h3></h3>
-        <p></p>
-      </ion-item>
-   
-      <ion-item (click)="goNextOfSkin()" color=''>
-     
-        <h3>Next Of Kin</h3>
-        <h3></h3>
-        <p></p>
-      </ion-item>
-
-   
 
 <br>
 <br>
-  
-
 
 
 </ion-content>

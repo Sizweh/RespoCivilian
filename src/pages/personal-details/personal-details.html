@@ -21,4 +21,23 @@
 
 <ion-content padding>
 
+  
+    <ion-row no-lines *ngFor="let fault of personal_collection">
+        <ion-card no-lines>
+          <ion-item no-lines  text-right>
+            
+            <!-- <h1> Emergency type : {{ fault.emergency_type }}</h1> -->
+            <font size="3" color='#38414a'>Name : {{ fault.name }}</font><br>
+            <font size="3" color='#38414a'>DOB : {{ fault.dob }}</font><br>
+            <font size="3" color='#38414a'>Email : {{ fault.email }}</font><br>
+            <font size="3" color='#38414a'>Phone Number : {{ fault.phone_no }}</font><br>
+            <font size="3" color='#38414a'>Gender : {{ fault.gender }}</font><br>
+           
+      
+          </ion-item>
+        </ion-card>
+      </ion-row>
+  <br>
+
+
 </ion-content>
