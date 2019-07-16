@@ -18,6 +18,10 @@ import { UrlbaseProvider } from '../providers/urlbase/urlbase';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { FileChooser } from '@ionic-native/file-chooser';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
+import { File } from '@ionic-native/file/ngx';
+
 
 
 
@@ -60,6 +64,9 @@ import { FileChooser } from '@ionic-native/file-chooser';
     Contacts,
     // HttpModule,
     UrlbaseProvider,
+    Camera,
+    FileTransfer,
+    File,
     
     HttpModule,
  

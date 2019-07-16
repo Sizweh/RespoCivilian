@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { FormGroup, FormBuilder, } from '@angular/forms';
-import { AlertController } from 'ionic-angular';
+import { AlertController, LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 /**
@@ -25,12 +25,14 @@ export class PersonalDetailsPage {
   personalForm: FormGroup;
   personal_collection: any;
 
+
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     private urlService: UrlbaseProvider,
     private storage: Storage,
     public formBuilder: FormBuilder,
     public alertCtrl: AlertController,
+    public loadingCtrl: LoadingController,
     ) {
 
 
@@ -42,14 +44,11 @@ export class PersonalDetailsPage {
       });
    
       this.personalForm = formBuilder.group({
-        'user_id': ['3',],
+        'user_id': ['70',],
+      
+       
       })
   }
-
-
-
-
-  
 
   ionViewDidLoad() {
    
@@ -85,8 +84,7 @@ export class PersonalDetailsPage {
 
 
 
-
-
+   
 
 
 
@@ -96,6 +94,15 @@ export class PersonalDetailsPage {
 
 
 
+  goMyprofile(){
+    const loading= this.loadingCtrl.create({
+      content: "saving...",
+      duration: 1000
+    });
+    loading.present();
+    this.navCtrl.setRoot('MyprofilePage')
+  
+    }
 
   
 

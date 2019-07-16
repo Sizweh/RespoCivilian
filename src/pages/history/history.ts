@@ -5,12 +5,8 @@ import { FormGroup, FormBuilder, Validators, } from '@angular/forms';
 import { AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
-/**
- * Generated class for the HistoryPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
+
 
 @IonicPage()
 @Component({
@@ -20,11 +16,23 @@ import { Storage } from '@ionic/storage';
 export class HistoryPage {
 
   historyForm: FormGroup;
-  alert: any;
+  // alert: any;
   history_collection: any;
   UserId :any;
+  // user_id_server:any;
+  // historyFormm: FormGroup;
+  // get_history_data_Object:any ;
+  // user_id_serve: null;
+
+
+  emergency_type:any;
+  Userdata: any;
+  user_id: any;
+  pick_up: any;
   toConcat:any;
-  
+  // promise1:any;
+  // promise2:any;
+  // var:any;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -34,26 +42,22 @@ export class HistoryPage {
     private storage: Storage,
 
     ) {
+
       this.storage.get('user_id').then((val) => {
         console.log(String(val));
-        this.  toConcat =   this.UserId =String(val);
-      
-        
+        this.toConcat = this.UserId =String(val); 
       });
-   
+
       this.historyForm = formBuilder.group({
-        'user_id': ['3',],
+        'user_id': ['2',],
+        
       })
   }
 
 
-  
-  
-
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HistoryPage');
+    console.log('ionViewDidLoad HistoryPage' );
 
-  
 
     var headers = new Headers();
     headers.append("Accept", 'application/json');
@@ -65,18 +69,15 @@ export class HistoryPage {
       var postData = this.historyForm.value;
 
 
-
       //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.history(postData)
     .subscribe(res => {
         // this.presentToast(res.msg, res.status);
        // console.log(res.id);
         //console.log(res.drop_off);
-       //// this.alert.presentAlert("Notification", res.msg);
+       // this.alert.presentAlert("Notification", res.msg);
      this.history_collection = res;
         if (res.status=='OK') {
-      //    this.storage.set('user_name', res.user_name);
-        //  this.storage.set('user_id', res.user_id);
           // localStorage.setItem('token', res.token);
           //this.navCtrl.setRoot('HomePage');
         }
@@ -90,12 +91,7 @@ export class HistoryPage {
 
 
   goHistory1(){
-
-
     console.log("uuuuuu");
-  
-   
-
  //   this.navCtrl.push('History1Page')
   }
 

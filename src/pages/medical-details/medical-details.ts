@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Storage } from '@ionic/storage';
+import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
+import { AlertsProvider } from './../../providers/alerts/alerts';
+
+
 /**
  * Generated class for the MedicalDetailsPage page.
  *
@@ -16,27 +20,45 @@ import { Storage } from '@ionic/storage';
 })
 export class MedicalDetailsPage {
 
+
   medicaldetailsForm: FormGroup;
+  localStorage: any;
+
+
+
+
+
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public formBuilder: FormBuilder,
     public storage: Storage,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    private urlService: UrlbaseProvider,
+    public alert: AlertsProvider,
+   
     ) {
 
       this.medicaldetailsForm = formBuilder.group({
 
-        'membershipNo': ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern("^[0-9]{10}")])],
-        'schemeName': ['', Validators.compose([Validators.required])],
-        'gapCover': ['', Validators.compose([Validators.required])],
+        'member_no': ['', Validators.compose([Validators.required])],
+        'scheme_name': ['', Validators.compose([Validators.required])],
+        'partial_membership': ['', Validators.compose([Validators.required])],
 
 
-        'chronicDisease': ['', Validators.compose([Validators.required])],
+        'chronic_dis': ['', Validators.compose([Validators.required])],
         'disability': ['', Validators.compose([Validators.required])],
-        'preferredHospital': ['', Validators.compose([Validators.required])],
+        'prefered_hospital': ['', Validators.compose([Validators.required])],
 
       })
+
+
+      
+
+
+
+
+
 
 
 
@@ -57,29 +79,23 @@ export class MedicalDetailsPage {
 
   goNextOfKin(){
 
-    const confirm = this.alertCtrl.create({
-      title: 'Are you on medical aid?',
-      message: '',
-      buttons: [
-        {
-          text: 'Disagree',
-          handler: () => {
-            console.log('Disagree clicked');
-          }
-        },
-        {
-          text: 'Agree',
-          handler: () => {
-            console.log('Agree clicked');
-          }
-        }
-      ]
-    });
-    confirm.present();
 
+const value = this.medicaldetailsForm.value;
 
-    this.navCtrl.push('NextOfKinPage')
+   this.storage.set('member_no', value.member_no);
+   this.storage.set('scheme_name', value.scheme_name);  
+   this.storage.set('partial_membership', value.partial_membership);
+   this.storage.set('chronic_dis', value.chronic_dis);
+   this.storage.set('disability', value.disability);
+   this.storage.set('prefered_hospital', value.prefered_hospital);
+
+  
+  
+  
+
+   this.navCtrl.push('NextOfKinPage')
   }
+
 
   goRegister(){
     this.navCtrl.push('RegisterPage')

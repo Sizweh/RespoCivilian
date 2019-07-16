@@ -1,79 +1,77 @@
-
-
 <ion-content text-center padding>
   <br>
   <br>
 
+  <h6 (click)="go()">Medical Aid Details (Fill in if on Medical Aid) </h6>
+
+<!-- <font (click)="go()" size="4" color='#488aff'>Medical Aid Details (optional) </font><br> -->
 
 
+  <div class="login-fields" [formGroup]="medicaldetailsForm">
 
-  <h6>
-    Medical Aid Details
-  </h6>
+    <ion-item>
+      <ion-input formControlName="member_no" placeholder="Membership No" type="number"></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-input placeholder="Membership No" type="number"></ion-input>
-  </ion-item>
-
-  <ion-item>
-   
-    <ion-input placeholder="Scheme Name" type="text"></ion-input>
-    
-    <ion-select >
-
+    <ion-item>
+      <ion-input placeholder="Scheme Name" type="text"></ion-input>
+      <ion-select formControlName="scheme_name">
         <ion-option value="Assupol_Life">Assupol Life</ion-option>
         <ion-option value="Gems">Gems</ion-option>
         <ion-option value="Discovery">Discovery</ion-option>
-    
       </ion-select>
-  </ion-item>
+    </ion-item>
 
-  <ion-item>
-    <ion-input placeholder="Partial Membership" type="text"></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-input formControlName="partial_membership" placeholder="Partial Membership" type="text"></ion-input>
+    </ion-item>
 
-  <h6 text-center>
-    History
-  </h6>
-  <ion-item>
-    <ion-input placeholder="Chronic Disease" type="text"></ion-input>
-   
-    <ion-select >
-      <ion-option >ALS</ion-option>
-      <ion-option >Asthma</ion-option>
-      <ion-option >Cancer</ion-option>
-      <ion-option >Eating Disorders</ion-option>
-      <ion-option >Heart Disease</ion-option>
-      <ion-option >Obesity</ion-option>
-    </ion-select>
-  </ion-item>
+    <!-- <br> -->
+    <!-- <h6 text-center>Preferred Hospital (if on Medical Aid)</h6> -->
 
-  <ion-item>
-    <ion-label>Disability </ion-label>
-    <ion-select >
-      <ion-option >Yes</ion-option>
-      <ion-option >No</ion-option>
-    </ion-select>
-  </ion-item>
+    <ion-item>
+      <ion-input formControlName="prefered_hospital" placeholder="Preferred Hospital" type="text"></ion-input>
+    </ion-item>
+<br>
+<br>
+<br>
+    <h6 text-center>Medical History</h6>
 
-  <h6 text-center>
-    Preferred Hospital
-  </h6>
+    <ion-item>
+      <ion-input placeholder="Chronic Disease" type="text"></ion-input>
+      <ion-select formControlName="chronic_dis">
+        <ion-option>ALS</ion-option>
+        <ion-option>Asthma</ion-option>
+        <ion-option>Cancer</ion-option>
+        <ion-option>Eating Disorders</ion-option>
+        <ion-option>Heart Disease</ion-option>
+        <ion-option>Obesity</ion-option>
+      </ion-select>
+    </ion-item>
 
-  <ion-item>
-    <ion-input placeholder="Preferred Hospital" type="text"></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label>Disability </ion-label>
+      <ion-select formControlName="disability">
+        <ion-option>Yes</ion-option>
+        <ion-option>No</ion-option>
+      </ion-select>
+    </ion-item>
 
+ 
+
+  </div>
 
   <br>
 
   <ion-row>
     <ion-col col-6>
-      <button ion-button block clear color='newcolor' (click)="goLogin()"> Back </button>
+      <button ion-button block clear color='newcolor' (click)="goRegister()"> Back </button>
     </ion-col>
     <ion-col col-6>
-      <button ion-button round block color='secondary' (click)="goNextOfKin()"> Next</button>
+      <button ion-button round block color='secondary' (click)="goNextOfKin()">
+        Next</button>
     </ion-col>
   </ion-row>
 
+  <!-- [disabled]="!medicaldetailsForm.valid" -->
 </ion-content>

@@ -115,16 +115,18 @@ googleMap ()
     this.event = val.category;
     
   });
-  this.storage.get('specify_emergency').then((val) => {
-    console.log('specify db stuff');
-    console.log(val);
-    this.specify_emergency = val;
-    this.event = val.specify_emergency;
+  // this.storage.get('specify_emergency').then((val) => {
+  //   console.log('specify db stuff');
+  //   console.log(val);
+  //   this.specify_emergency = val;
+  //   this.event = val.specify_emergency;
     
-  });
+  // });
 
- 
-
+  // this.storage.get('specify_emergency').then((val) => {
+  //   //  console.log(String(val));
+  //   this.specify_emergency = val;
+  // });
 
   this.storage.get('user_id').then((val) => {
     console.log('user db stuff');

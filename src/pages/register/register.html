@@ -1,7 +1,7 @@
 
 
 
-<ion-content text-center padding>
+<ion-content no-scrolling text-center padding>
  
   <br>
 
@@ -21,7 +21,7 @@
       <ion-item>
         <ion-input
           block
-          formControlName="phoneNumber"
+          formControlName="phonenumber"
           minLength="10"
           maxLength="10"
           type="tel"
@@ -32,9 +32,11 @@
       <ion-item>
         <ion-input
           block
-          formControlName="Email"
+          formControlName="email"
           type="email"
           placeholder="Email"
+          minLength="10"
+          maxLength="20"
         ></ion-input>
       </ion-item>
   
@@ -58,7 +60,27 @@
         ></ion-datetime>
       </ion-item>
 
+      <ion-item>
+          <ion-input
+            block
+            formControlName="password"
+            minLength="6"
+            maxLength="6"
+            type="password"
+            placeholder="Create Password"
+          ></ion-input>
+        </ion-item>
 
+      <!-- <ion-item>
+          <ion-input
+            block
+            formControlName="confirmPassword"
+            minLength="6"
+            maxLength="6"
+            type="password"
+            placeholder="Confirm Password"
+          ></ion-input>
+        </ion-item> -->
 
   
     
@@ -69,11 +91,11 @@
   <ion-grid>
       <ion-row>
         <ion-col col-6>
-          <button ion-button block round clear color="newcolor" (click)="goNextofkin()">back</button>
+          <button ion-button block round clear color="newcolor" (click)="goLogin()">back</button>
         </ion-col>
   
         <ion-col col-6>
-          <button ion-button block color="secondary" round  [disabled]="!registerForm.valid" (click)="goVerifyAccount()">
+          <button [disabled]="!registerForm.valid" ion-button block color="secondary" round   (click)="goMedicalDetails()">
             Next
           </button>
         </ion-col>

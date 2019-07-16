@@ -146,7 +146,7 @@ ionViewDidLoad() {
 });
 this.storage.get('user_id').then((user_id) => {
  // console.log(user_id);
-   this.user_ids = user_id ; 
+   this.user_ids = 'user_id' ; 
 });
 
   var postData ={user_id:this.user_ids , playerId:this.playerId };

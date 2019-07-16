@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { FormGroup, FormBuilder, } from '@angular/forms';
-import { AlertController } from 'ionic-angular';
+import { AlertController, LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 /**
@@ -33,6 +33,7 @@ export class MedicalHistoryPage {
     private storage: Storage,
     public formBuilder: FormBuilder,
     public alertCtrl: AlertController,
+    public loadingCtrl: LoadingController,
     ) {
 
 
@@ -44,7 +45,9 @@ export class MedicalHistoryPage {
       });
    
       this.medicalForm = formBuilder.group({
-        'user_id': ['1',],
+        'user_id': ['70',],
+
+
       })
   }
 
@@ -91,5 +94,16 @@ export class MedicalHistoryPage {
 
 
   }
+
+
+  goMyprofile(){
+    const loading= this.loadingCtrl.create({
+      content: "saving...",
+      duration: 1000
+    });
+    loading.present();
+    this.navCtrl.setRoot('MyprofilePage')
+  
+    }
 
 }

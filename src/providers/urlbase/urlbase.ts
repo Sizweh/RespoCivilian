@@ -12,7 +12,7 @@ import { catchError, tap } from 'rxjs/operators';
 */
 @Injectable()
 export class UrlbaseProvider {
- //  apiUrl = 'http://46.101.169.33/api/civilian/';
+   //apiUrl = 'http://46.101.169.33/api/civilian/';
    apiUrl = 'http://127.0.0.1:8000/api/civilian/';
   constructor(public http: HttpClient) {
     console.log('Hello UrlbaseProvider Provider');
@@ -118,7 +118,6 @@ export class UrlbaseProvider {
       );
   }
 
- 
   
 
   private handleError<T> (operation = 'operation', result?: T) {

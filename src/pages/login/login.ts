@@ -8,7 +8,7 @@ import { Storage } from '@ionic/storage';
 import { MenuController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 // import {RequestOptions, Request, RequestMethod} from '@angular/http';
-
+import { NextOfKinPage } from '../next-of-kin/next-of-kin';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 // import { updateDate } from 'ionic-angular/umd/util/datetime-util';
 
@@ -21,13 +21,15 @@ import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 })
 export class LoginPage {
 
+  NextOfKinPage: NextOfKinPage ;
+
   remembertoken: boolean;
   loginForm: FormGroup;
   playerId :any; 
   username :any;
   passwordType: string = 'password';
   passwordIcon: string = 'eye-off';
-
+ 
   constructor(
     // private http: HttpClient,
     
@@ -147,32 +149,47 @@ export class LoginPage {
   goRegister(){
     this.navCtrl.push("RegisterPage");
   }
+
+  
   goMedicalDetails(){
-    const confirm = this.alertCtrl.create({
-      title: 'Are you on medical aid?',
-      message: '',
-      buttons: [
-        {
-          text: 'Disagree',
-          handler: () => {
-            console.log('Disagree clicked');
-          }
-        },
-        {
-          text: 'Agree',
-          handler: () => {
-            console.log('Agree clicked');
-          }
-        }
-      ]
-    });
-    confirm.present();
+   
     this.navCtrl.push("MedicalDetailsPage");
   }
 
   goResetPassword(){
     this.navCtrl.push("ResetPasswordPage");
   }
+ 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+ 
 
 }

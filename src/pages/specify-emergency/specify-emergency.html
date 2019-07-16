@@ -19,10 +19,10 @@
 <div class="register-fields" [formGroup]="specifyForm">
 
 <ion-row no-lines *ngFor="let other of otherCategories">  
+
 <ion-item >
     <ion-input
      placeholder="Specify emergency:"
-      
      type="text"
      formControlName="specify_emergency"
      [(ngModel)] = "specify_emergency"

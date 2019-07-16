@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { FormGroup, FormBuilder, } from '@angular/forms';
-import { AlertController } from 'ionic-angular';
+import { AlertController, LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 
@@ -31,7 +31,8 @@ export class SupportPage {
     public alertCtrl: AlertController,
     private urlService: UrlbaseProvider,
     private storage: Storage,
-    public formBuilder: FormBuilder, 
+    public formBuilder: FormBuilder,
+    public loadingCtrl: LoadingController, 
    
     ) {
 
@@ -55,12 +56,6 @@ export class SupportPage {
     console.log('ionViewDidLoad SupportPage');
 
 
-
-
-    
-    
-
-
   }
 
 
@@ -73,6 +68,9 @@ export class SupportPage {
 
 
   sendContact() {
+
+
+
 
     var headers = new Headers();
     headers.append("Accept", 'application/json');
@@ -102,6 +100,27 @@ export class SupportPage {
     }, (err) => {
         console.log(err);
     });
+
+
+    const loader = this.loadingCtrl.create({
+      content: "Checking code...",
+      duration: 1000
+    });
+    loader.present();
+
+    let alert = this.alertCtrl.create({
+      title: 'Message sent ',
+      message: '',
+      buttons: [
+        {
+          text: 'OK',
+          handler: () => {
+           // this.navCtrl.push("HomePage");
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
 

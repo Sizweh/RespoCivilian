@@ -1,9 +1,9 @@
 
 
-<ion-content text-center padding>
+<ion-content no-scrolling text-center padding>
   <br>
 
-<h6>Next of Kin 1:</h6>
+<h6>Next of Kin 1</h6>
 
     <div class="register-fields" [formGroup]="nextofkinForm">
 
@@ -20,9 +20,7 @@
     placeholder="Surname" 
     type="text"
     formControlName="surname"
-    
     ></ion-input>
-
   </ion-item>
   
 
@@ -31,8 +29,7 @@
       <ion-input 
       placeholder="Phone Number" 
       type="Number"
-      formControlName="phoneNumber"
-  
+      formControlName="phone"
       maxLength="10"
       ></ion-input>
     </ion-item>
@@ -41,54 +38,19 @@
 
     <ion-item>
         <ion-label>Relationship</ion-label>
-        <ion-select  >
+        <ion-select formControlName="relationship"  >
           <ion-option value="Family Member">Family Member</ion-option>
           <ion-option value="Friend">Friend</ion-option>
           <ion-option value="Colleague">Colleague</ion-option>
         </ion-select>
       </ion-item>
 
+      
     </div>
 
-<h6>Next of Kin 2:</h6>
+<!-- <h6 (click)="goNextofkin2()">Next of Kin 2 (Optional) </h6> -->
 
-    <div class="register-fields" [formGroup]="nextofkinForm">
-
-<ion-item>
-    <ion-input
-     placeholder="Name" 
-     type="text"
-     formControlName="name"
-     ></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-input 
-    placeholder="Surname" 
-    type="text"
-    formControlName="surname"
-    ></ion-input>
-  </ion-item>
-  
-  <ion-item>
-      <ion-input 
-      placeholder="Phone Number" 
-      type="number"
-      formControlName="phoneNumber"
-      maxLength="10"
-      ></ion-input>
-    </ion-item>
  
-    <ion-item>
-        <ion-label>Relationship</ion-label>
-        <ion-select  >
-          <ion-option value="Family Member">Family Member</ion-option>
-          <ion-option value="Friend">Friend</ion-option>
-          <ion-option value="Colleague">Colleague</ion-option>
-        </ion-select>
-      </ion-item>
-
-   </div>
 
    <br>
 
@@ -106,11 +68,13 @@
 <br>
     <ion-row>
         <ion-col col-6>
-          <button ion-button clear color='newcolor' block (click)="goMedicalDetails()"> back</button>
+          <button ion-button clear color='newcolor' block (click)="goLogin()"> Cancel</button>
          </ion-col>
           <ion-col col-6>
-            <button ion-button round color='secondary' block (click)="goRegister()"> Next</button>
+            <button   ion-button round color='secondary' block (click)="goVerifyAccount()"> Done</button>
           </ion-col>
        </ion-row>
+
+       <!-- [disabled]="!nextofkinForm.valid" -->
 
 </ion-content>

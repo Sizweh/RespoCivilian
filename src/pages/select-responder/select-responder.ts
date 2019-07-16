@@ -16,7 +16,7 @@ import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 })
 export class SelectResponderPage {
   allResponders: any;
-  specify_emergency: any;
+
 
   constructor(
     public navCtrl: NavController,

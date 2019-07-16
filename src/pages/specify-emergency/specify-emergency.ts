@@ -14,7 +14,7 @@ import { AlertsProvider } from './../../providers/alerts/alerts';
 export class SpecifyEmergencyPage {
 
   username :any;
-  specify_emergency :any;
+  //specify_emergency :any;
   specifyForm: FormGroup;
   
   constructor(public navCtrl: NavController, 
@@ -46,28 +46,33 @@ export class SpecifyEmergencyPage {
   ];
   
   ionViewDidLoad() {
-    this.storage.set('specify_emergency', this.specify_emergency);
-    console.log(this.specify_emergency);
+
     console.log('ionViewDidLoad SpecifyEmergencyPage');
   }
  
  
   goLocation(){
-  
-
-
     this.navCtrl.push('LocationPage')
   }
+
+
   goHome(){
     this.navCtrl.setRoot('HomePage')
   }
 
-  goSelectResponder(specify_emergency){
-       this.storage.set('specify_emergency', specify_emergency);
-    console.log(specify_emergency);
+
+  goSelectResponder(){
+
+    const value = this.specifyForm.value;
+
+    this.storage.set('specify_emergency', value.specify_emergency);
+
+
+ //this.storage.set('specify_emergency', specify_emergency);
+ //console.log(specify_emergency);
   
   
-    this.navCtrl.push('SelectResponderPage')
+   this.navCtrl.push('SelectResponderPage')
   }
 
 
