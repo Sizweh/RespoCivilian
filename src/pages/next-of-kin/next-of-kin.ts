@@ -226,12 +226,14 @@ goVerifyAccount(){
    //register//
  
    fullName: this.fullName,
+   phonenumber: this.phonenumber,
    gender: this.gender,
    myDate: this.myDate,
    email: this.email,
   //  password: 'ffffff',
-  //  confirmPassword: this.confirmPassword,
+ 
    password:this.password,
+//  confirmPassword: this.confirmPassword,
    status:'fffffff'
   
  }

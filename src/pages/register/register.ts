@@ -42,7 +42,7 @@ export class RegisterPage {
         'phonenumber': ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern("^[0-9]{10}")])],
         'email': ['', Validators.compose([Validators.minLength(4), Validators.maxLength(50), Validators.pattern('[a-zA-Z0-9._]+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$'), Validators.required])],
         'password': ['', Validators.compose([Validators.required, Validators.minLength(6)])],
-        // 'confirmPassword': ['', Validators.compose([Validators.required, Validators.minLength(6) ])],
+         'confirmPassword': ['', Validators.compose([Validators.required, Validators.minLength(6) ])],
       })
    
   }
@@ -63,37 +63,28 @@ export class RegisterPage {
   
   goMedicalDetails(){
 
-    const confirm = this.alertCtrl.create({
-      title: 'Are you on medical aid?',
-      message: '',
-      buttons: [
-        {
-
-          
-
-          text: 'Yes',
-          handler: () => {
-            this.storage.set('Medical_Aid_Status', 'Yes');
-            console.log('Agree clicked');
-
-
-         
-          }
-        },
-        {
-         
-          text: 'No',
-          handler: () => {
-
-            this.storage.set('Medical_Aid_Status', 'No');
-            console.log('Disagree clicked');
-            this.navCtrl.push('NextOfKinPage');
-
-          }
-        }
-      ]
-    });
-    confirm.present();
+    // const confirm = this.alertCtrl.create({
+    //   title: 'Are you on medical aid?',
+    //   message: '',
+    //   buttons: [
+    //     {
+    //       text: 'Yes',
+    //       handler: () => {
+    //         this.storage.set('Medical_Aid_Status', 'Yes');
+    //         console.log('Agree clicked');  
+    //       }
+    //     },
+    //     {
+    //       text: 'No',
+    //       handler: () => {
+    //         this.storage.set('Medical_Aid_Status', 'No');
+    //         console.log('Disagree clicked');
+    //         this.navCtrl.push('NextOfKinPage');
+    //       }
+    //     }
+    //   ]
+    // });
+    // confirm.present();
 
     const values = this.registerForm.value;
    
@@ -103,7 +94,7 @@ export class RegisterPage {
     this.storage.set('email', values.email);
     this.storage.set('phonenumber', values.phonenumber);
     this.storage.set('password', values.password);
-    // this.storage.set('confirmPassword', values.confirmPassword);
+    this.storage.set('confirmPassword', values.confirmPassword);
 
 
     this.navCtrl.push('MedicalDetailsPage');

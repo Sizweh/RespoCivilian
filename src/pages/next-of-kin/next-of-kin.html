@@ -3,9 +3,9 @@
 <ion-content no-scrolling text-center padding>
   <br>
 
-<h6>Next of Kin 1</h6>
+<h6>Add Next of Kin details</h6>
 
-    <div class="register-fields" [formGroup]="nextofkinForm">
+<div class="register-fields" [formGroup]="nextofkinForm">
 
 <ion-item>
     <ion-input
@@ -23,8 +23,6 @@
     ></ion-input>
   </ion-item>
   
-
-
   <ion-item>
       <ion-input 
       placeholder="Phone Number" 
@@ -33,8 +31,6 @@
       maxLength="10"
       ></ion-input>
     </ion-item>
-
-  
 
     <ion-item>
         <ion-label>Relationship</ion-label>
@@ -45,13 +41,10 @@
         </ion-select>
       </ion-item>
 
-      
     </div>
 
 <!-- <h6 (click)="goNextofkin2()">Next of Kin 2 (Optional) </h6> -->
-
- 
-
+   <br>
    <br>
 
    <font (click)="goFaq()" size="2" color='#488aff'>Read Terms & Conditions Here</font>

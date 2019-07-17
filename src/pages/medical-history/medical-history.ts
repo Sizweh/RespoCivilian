@@ -106,4 +106,8 @@ export class MedicalHistoryPage {
   
     }
 
+  goAddMedicalAid(){
+    this.navCtrl.setRoot('AddMedicalAidPage')
+    }
+
 }

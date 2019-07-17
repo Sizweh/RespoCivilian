@@ -45,6 +45,8 @@ export class PersonalDetailsPage {
    
       this.personalForm = formBuilder.group({
         'user_id': ['70',],
+
+        
       
        
       })
