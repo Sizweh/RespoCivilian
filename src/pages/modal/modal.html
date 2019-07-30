@@ -1,87 +1,98 @@
-<!--
-  Generated template for the ModalPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-  <ion-navbar color="newcolor">
-    <ion-title></ion-title>
-     <ion-buttons end>
-      <button ion-button (click)="closeModal()">Close</button>
-    </ion-buttons>
+    <ion-navbar color="newcolor">
+      <ion-toolbar color="newcolor" mode="ios">
+        <ion-buttons start>
+         <button color='light' ion-button icon-only menuToggle>
+         <ion-icon name="menu"></ion-icon>
+        </button>
+       </ion-buttons>
+      <ion-title text-center></ion-title>
+    </ion-toolbar>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content text-center padding>
 
-    <h6>For Someone else:</h6>
+    <ion-title text-center>Edit Next of Kin Details</ion-title>
 
-    <ion-item>
-        <ion-input
-         placeholder="Name & Surname" 
-         type="text"
-      
-         ></ion-input>
-      </ion-item>
-    
-      <ion-item>
-        <ion-input 
-        placeholder="Medical Aid Scheme" 
-        type="text"
+    <br>
+
+    <ion-row no-lines *ngFor="let fault of skin_collection">
+
+        <ion-card no-lines>
+
+  <div class="login-fields" [formGroup]="skinForm">
+
+        <ion-item text-left>
+            <ion-label floating> Name </ion-label>
+            <ion-input formControlName="name" block value="{{ fault.name }}">
+              
+            </ion-input>
+            <!-- <div class="login-fields" [formGroup]="personalForm">
+                      </div> -->
+          </ion-item>
      
-        ></ion-input>
-      </ion-item>
-    
-      <ion-item>
-        <ion-input
-         placeholder="Scheme Number" 
-         type="number"
-      
-         ></ion-input>
-      </ion-item>
-    
-      <ion-item>
-        <ion-input 
-        placeholder="Preferred Hospital" 
-        type="text"
+        <ion-item text-left>
+            <ion-label floating >Surname</ion-label>
+            <ion-input formControlName="surname" block value="{{ fault.surname }}">
+            </ion-input>
+            <!-- <div class="login-fields" [formGroup]="personalForm">
+                      </div> -->
+          </ion-item>
      
-        ></ion-input>
-      </ion-item> 
-      
-      
-      <ion-item>
-          <ion-input 
-          placeholder="State your reason here..." 
-          type="text"
-       
-          ></ion-input>
-        </ion-item>
-  
-  
-      <ion-item>
-          <ion-input 
-          placeholder="Next of kin number" 
-          type="text"
-       
-          ></ion-input>
-        </ion-item>
+        <ion-item text-left>
+            <ion-label floating >Phone Number</ion-label>
+            <ion-input minLength="10" maxLength="10" formControlName="phone" block value="{{ fault.phone }}">
+            </ion-input>
+            <!-- <div class="login-fields" [formGroup]="personalForm">
+                      </div> -->
+          </ion-item>
+     
+        <ion-item text-left>
+            <ion-label floating >Email</ion-label>
+            <ion-input formControlName="email" block value="{{ fault.email }}">
+            </ion-input>
+            <!-- <div class="login-fields" [formGroup]="personalForm">
+                      </div> -->
+          </ion-item>
+
+        <ion-item text-left>
+            <ion-label floating >Relationship</ion-label>
+            <ion-input formControlName="relationship" block value="{{ fault.relationship }}">
+            </ion-input>
+            <!-- <div class="login-fields" [formGroup]="personalForm">
+                      </div> -->
+          </ion-item>
+
+<br>
+
+          <!-- <ion-col>
+              <button button-end button-right  ion-button icon-start clear small (click)="goMyprofile()">
+                <ion-icon color='danger' name="md-trash"></ion-icon>
+                <ion-label color='danger'>Delete</ion-label>
+              </button>
+            </ion-col> -->
+
+        </div>
+
+          </ion-card>
+     
+    </ion-row>
 
 
-        <ion-grid>
-            <ion-row>
-              <ion-col col-6>
-                <button ion-button block round clear color="newcolor" (click)="go()">back</button>
-              </ion-col>
-        
-              <ion-col col-6>
-                <button ion-button block color="secondary" round  [disabled] (click)="goHome()">
-                Done
-                </button>
-              </ion-col>
-            </ion-row>
-          </ion-grid>        
+    <ion-row>
+
+        <ion-col col-6>
+          <button icon-right ion-button block round color="secondary" (click)="goMyprofile()">
+              Save 
+            <ion-icon name=""></ion-icon> 
+           </button>
+        </ion-col>
+      </ion-row>
+
+
+  
 
 
 

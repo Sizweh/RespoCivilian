@@ -4,12 +4,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { AlertsProvider } from './../../providers/alerts/alerts';
-/**
- * Generated class for the NextOfKinPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -23,10 +18,8 @@ export class NextOfKinPage {
   nextofkin2Form : FormGroup;
   registerForm: FormGroup;
 
-
   UserId :any;
   Userdata: any;
-
 
   fullName:any;
   gender:any;
@@ -34,17 +27,12 @@ export class NextOfKinPage {
   phonenumber:any;
   email:any;
   password:any;
-  // confirmPassword:any;
+  confirmPassword:any;
 
- 
   phone:any;
-  // phoneNumber2:any;
   relationship:any;
-  // relationship2:any;
   name:any;
-  // name2:any;
   surname:any;
-  // surname2:any;
 
 
   partial_membership:any;
@@ -70,29 +58,17 @@ export class NextOfKinPage {
         'name': ['', Validators.compose([Validators.required])],
         'surname': ['', Validators.compose([Validators.required])],
         
-        'phone': ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern("^[0-9]{10}")])],
+        'phone': ['', Validators.compose([Validators.required])],
+
         'relationship': ['', Validators.compose([Validators.required])],
     
       })
   
-
-      // this.nextofkin2Form = formBuilder.group({
-
-      //   'name2': ['', Validators.compose([Validators.required])],
-      //   'surname2': ['', Validators.compose([Validators.required])],
-        
-      //   'phoneNumber2': ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern("^[0-9]{10}")])],
-      //   'relationship2': ['', Validators.compose([Validators.required])],
-    
-      // })
-
   }
 
   updateToken() {
     console.log('Remember token new state:' + this.remembertoken);
   }
-
-
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad NextOfKinPage');
@@ -122,6 +98,10 @@ export class NextOfKinPage {
     this.storage.get('password').then((val) => {
       //  console.log(String(val));
       this.password = val;
+    });
+    this.storage.get('confirmPassword').then((val) => {
+      //  console.log(String(val));
+      this.confirmPassword = val;
     });
   
     
@@ -187,12 +167,8 @@ this.storage.get('relationship').then((val) => {
 
 
 
-
-
 }
 
-
-  
 
 goVerifyAccount(){
 
@@ -201,6 +177,7 @@ goVerifyAccount(){
   this.storage.set('name', value.name);
   this.storage.set('surname', value.surname);
   this.storage.set('phone', value.phone);
+
   this.storage.set('relationship', value.relationship);
 
   this.Userdata = { 
@@ -220,9 +197,9 @@ goVerifyAccount(){
    name: value.name,
    surname: value.surname,
    phone:value.phone,
+ 
    relationship:value.relationship,
 
- 
    //register//
  
    fullName: this.fullName,
@@ -238,8 +215,6 @@ goVerifyAccount(){
   
  }
  
-
-
   var headers = new Headers();
   headers.append("Accept", 'application/json');
   headers.append('Content-Type', 'application/json' );
@@ -250,8 +225,6 @@ goVerifyAccount(){
      console.log(this.nextofkinForm.value);
      var postData = this.nextofkinForm.value;
    
-
-
    // postData['user_role']=  "Civilian";
 
 
@@ -273,10 +246,6 @@ goVerifyAccount(){
        console.log(err);
      });
 
-
-
-
-
        //    this.http.post("http://46.101.169.33/api/civilian/registerCivilian", postData)
    
   //     .subscribe(data => {
@@ -297,16 +266,10 @@ goVerifyAccount(){
   //}
   
  
-
 }
 
-
-
-
-
-    
+  
 goLogin(){
-
   // const loading= this.loadingCtrl.create({
   //   content: "loging out...",
   //   duration: 3000
@@ -325,9 +288,7 @@ this.navCtrl.setRoot('LoginPage')
   goRegister(){
      this.navCtrl.push('RegisterPage')
   }
-  // goNextofkin2(){
-  //    this.navCtrl.push('Nextofkin2Page')
-  // }
+  
 
 
 

@@ -56,5 +56,8 @@ export class ForSelfPage {
  goSelfAdmission(){    
  this.navCtrl.push("SelfAdmissionPage");
  }
+ goSelectResponder(){    
+ this.navCtrl.push("SelectResponderPage");
+ }
 
 }

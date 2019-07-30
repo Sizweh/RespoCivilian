@@ -23,31 +23,50 @@
   </ion-item>
 
 
-  <button icon-right ion-button round block (click)="upload()" text-lowercase outline color="newcolor">
+  <!-- <button icon-right ion-button round block (click)="upload()" text-lowercase outline color="newcolor">
     Upload or Change Profile Pic
     <ion-icon name=""></ion-icon>
-  </button>
+  </button> -->
+
+  <ion-item round no-lines text-center (click)="getImage()" color=''>
+    <h3>Upload or Change Profile Pic</h3>
+    <p>{{imageURI}}</p>
+  </ion-item>
 
 
+  <!-- <ion-item no-lines >
+      <h4 text-center>Image Preview</h4>
+      <img src="{{imageFileName}}" *ngIf="imageFileName" alt="Ionic File" width="300" />
+    </ion-item>
+
+
+  <ion-item round no-lines text-center text-center (click)="uploadFile()" color=''>
+    <h3>Upload</h3>
+  </ion-item> -->
+  
   <!-- <ion-item>
     <p>{{imageURI}}</p>
     <button ion-button color="secondary" (click)="getImage()">Get Image</button>
-  </ion-item>
-  <ion-item>
-    <h4>Image Preview</h4>
-    <img src="{{imageFileName}}" *ngIf="imageFileName" alt="Ionic File" width="300" />
-  </ion-item>
-  <ion-item>
+  </ion-item> -->
+
+ 
+
+  <!-- <ion-item>
     <button ion-button (click)="uploadFile()">Upload</button>
   </ion-item> -->
 
+
   <br>
-  <br>
+
+
+
   <ion-item (click)="goPersonalDetails()" color=''>
     <h3>Personal Details</h3>
     <h3></h3>
     <p></p>
   </ion-item>
+
+
 
   <ion-item (click)="goMedicalHistory()" color=''>
     <h3>Medical History</h3>
@@ -61,12 +80,23 @@
     <p></p>
   </ion-item>
 
+ 
+
+  <ion-item (click)="goChangePassword()" color=''>
+    <h3>Change Password</h3>
+    <h3></h3>
+    <p></p>
+  </ion-item>
+  
+
+
   <ion-item  (click)="goLogin()" color=''>
     <!-- <ion-avatar item-start>
       <img src="http://46.101.169.33/icons/13.png">
     </ion-avatar> -->
     <h3>Log out</h3>
   </ion-item>
+
 
   <!-- <ion-row>
 <ion-col col-6>

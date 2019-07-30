@@ -1,16 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
-import { FormGroup, FormBuilder, } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AlertController, LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-
-/**
- * Generated class for the NextOfSkinPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+//import { NextOfSkinPage } from '../next-of-kin/next-of-kin';
 
 @IonicPage()
 @Component({
@@ -19,10 +13,17 @@ import { Storage } from '@ionic/storage';
 })
 export class NextOfSkinPage {
 
-  UserId :any;
+  User_Id :any;
   toConcat:any;
   skinForm: FormGroup;
   skin_collection: any;
+
+  NextOfSkinPage: NextOfSkinPage ;
+  phone:any;
+  relationship:any;
+  name:any;
+  user_ids:any;
+  surname:any;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -35,22 +36,25 @@ export class NextOfSkinPage {
     ) {
 
 
-      this.storage.get('user_id').then((val) => {
-        console.log(String(val));
-        this.  toConcat =   this.UserId =String(val);
-      
-        
-      });
-   
+  
       this.skinForm = formBuilder.group({
-        'user_id': ['70',],
+
+        'user_id': ['85',],
+        
+        'name': ['', Validators.compose([Validators.required])],
+        'User_Id': ['', Validators.compose([Validators.required])],
+   
+        'surname': ['', Validators.compose([Validators.required])],
       })
+
+
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad NextOfSkinPage');
 
-
+ 
     var headers = new Headers();
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
@@ -59,8 +63,6 @@ export class NextOfSkinPage {
    //pass to back-end
     //  console.log(this.historyForm.value);
       var postData = this.skinForm.value;
-
-
 
       //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.nextofSkin(postData)
@@ -72,7 +74,7 @@ export class NextOfSkinPage {
      this.skin_collection = res;
         if (res.status=='OK') {
       //    this.storage.set('user_name', res.user_name);
-        //  this.storage.set('user_id', res.user_id);
+        
           // localStorage.setItem('token', res.token);
           //this.navCtrl.setRoot('HomePage');
         }
@@ -82,21 +84,99 @@ export class NextOfSkinPage {
 
 
 
-
-
-
-
-
   }
 
-  goMyprofile(){
-    const loading= this.loadingCtrl.create({
-      content: "saving...",
-      duration: 1000
-    });
-    loading.present();
-    this.navCtrl.setRoot('MyprofilePage')
+  goMyprofile(id){
+
+
+var headers = new Headers();
+headers.append("Accept", 'application/json');
+headers.append('Content-Type', 'application/json' );
+
+var postData = 
+{
+id:id
+}
+
+
+  this.urlService.deleteNext(postData)
+  .subscribe(res => {
+      // this.presentToast(res.msg, res.status);
+     // console.log(res.id);
+      //console.log(res.drop_off);
+     //// this.alert.presentAlert("Notification", res.msg);
+   this.skin_collection = res;
+      if (res.status=='OK') {
+    //    this.storage.set('user_name', res.user_name);
+      //  this.storage.set('user_id', res.user_id);
+        // localStorage.setItem('token', res.token);
+        //this.navCtrl.setRoot('HomePage');
+       }
+  }, (err) => {
+      console.log(err);
+  });
+
+  let alert = this.alertCtrl.create({
+    title: 'Confirm delete',
+    message: 'Are you sure?',
+    buttons: [
+      {
+        text: 'No',
+        role: 'cancel',
+        handler: () => {
+          console.log('No clicked');
+      
+        }
+      },
+      {
+        text: 'Yes',
+        handler: () => {
+          console.log('Yes clicked');
+         
+        }
+      }
+    ]
+  });
+  alert.present();
+
+
+  // const loading= this.loadingCtrl.create({
+  //   content: "deleting details",
+  //   duration: 1000
+  // });
+  // loading.present();
+
+     //this.navCtrl.setRoot('MyprofilePage')
   
     }
+
+  // goNextofkin2(){
+ 
+  //   this.navCtrl.push("Nextofkin2Page", {
+    
+  //   });
+  //   }
+
+  goNextofkin2(user_id){
+ 
+    this.navCtrl.push("Nextofkin2Page", {
+      user_id: this.User_Id,
+    
+    });
+    }
+    goModal(id,user_id){    
+    
+      this.navCtrl.push("ModalPage", {
+        data: id,
+        user_id:user_id
+      });
+   
+      }
+
+
+
+
+
+
 
 }

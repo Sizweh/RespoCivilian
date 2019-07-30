@@ -2,12 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
-/**
- * Generated class for the SelectResponderPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -56,10 +51,6 @@ export class SelectResponderPage {
   goConfirm(responder){
     this.storage.set('selected_responder', responder);
     console.log(responder);
-
-
-
-
     this.navCtrl.push('LocationPage')
   }
 

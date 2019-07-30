@@ -100,9 +100,6 @@ export class RegisterPage {
     this.navCtrl.push('MedicalDetailsPage');
   }
 
-
-
- 
    // var headers = new Headers();
     //headers.append("Accept", 'application/json');
     //headers.append('Content-Type', 'application/json' );

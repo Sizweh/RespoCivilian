@@ -6,13 +6,6 @@ import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { AlertsProvider } from './../../providers/alerts/alerts';
 
 
-/**
- * Generated class for the MedicalDetailsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-medical-details',
@@ -23,11 +16,6 @@ export class MedicalDetailsPage {
 
   medicaldetailsForm: FormGroup;
   localStorage: any;
-
-
-
-
-
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -53,15 +41,7 @@ export class MedicalDetailsPage {
       })
 
 
-      
-
-
-
-
-
-
-
-
+  
 
     }
 

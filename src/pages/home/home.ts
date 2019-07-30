@@ -183,7 +183,8 @@ this.storage.get('user_id').then((user_id) => {
     this.navCtrl.push('LandingPage')
   }
   
-  goSelfAdmission(){
+  goSelfAdmission(fault){
+    this.storage.set('category', fault);
     this.navCtrl.push('SelfAdmissionPage')
   }
 

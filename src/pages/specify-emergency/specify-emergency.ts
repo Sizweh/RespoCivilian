@@ -46,7 +46,6 @@ export class SpecifyEmergencyPage {
   ];
   
   ionViewDidLoad() {
-
     console.log('ionViewDidLoad SpecifyEmergencyPage');
   }
  
@@ -64,14 +63,8 @@ export class SpecifyEmergencyPage {
   goSelectResponder(){
 
     const value = this.specifyForm.value;
-
     this.storage.set('specify_emergency', value.specify_emergency);
 
-
- //this.storage.set('specify_emergency', specify_emergency);
- //console.log(specify_emergency);
-  
-  
    this.navCtrl.push('SelectResponderPage')
   }
 

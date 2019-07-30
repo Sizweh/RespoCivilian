@@ -16,7 +16,7 @@
   <br>
   <ion-row no-lines *ngFor="let fault of faultCategories">
     <ion-card no-lines>
-      <ion-item no-lines (click)="goLocation(fault)" text-right>
+      <ion-item no-lines (click)="goSelfAdmission(fault)" text-right>
         <ion-avatar item-start>
           <img [src]="fault.imageUrl">
         </ion-avatar>
@@ -45,17 +45,15 @@
 <br>
 <br>
 
-<ion-fab right bottom>
+<!-- <ion-fab right bottom>
   <button ion-fab color="secondary"><ion-icon name="md-share"></ion-icon></button>
   <ion-fab-list side="left">
     <button  color="calm" ion-fab><ion-icon name="logo-whatsapp"></ion-icon></button>
     <button color="primary" ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
     <button  color="royal" ion-fab><ion-icon name="md-chatboxes"></ion-icon></button>
     <button ion-fab><ion-icon name="logo-linkedin"></ion-icon></button>
-
-    <button  color="danger" ion-fab><ion-icon name="logo-googleplus"></ion-icon></button>
   </ion-fab-list>
-</ion-fab>
+</ion-fab> -->
 
 
 

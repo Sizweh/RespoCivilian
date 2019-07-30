@@ -2,13 +2,12 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,  AlertController, LoadingController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
+import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
+import { FormGroup, FormBuilder, Validators, } from '@angular/forms';
+import { Storage } from '@ionic/storage';
 
-/**
- * Generated class for the MyprofilePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
+
 
 @IonicPage()
 @Component({
@@ -22,14 +21,58 @@ export class MyprofilePage {
   imageURI:any;
   imageFileName:any;
 
+  profileForm: FormGroup;
+  id: any;
+  User_Id :any;
+  user_id:any;
+  profile_collection: any;
+
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public loadingCtrl: LoadingController,
     public alertCtrl:  AlertController,
-
-  private transfer: FileTransfer,
-  private camera: Camera,
+    private urlService: UrlbaseProvider,
+    private storage: Storage,
+    public formBuilder: FormBuilder,
+    private transfer: FileTransfer,
+    private camera: Camera,
     ) {
+
+  }
+
+
+  ionViewDidLoad() {
+
+   var headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json' );
+ 
+   
+   //pass to back-end
+    //  console.log(this.nextofkin2Form.value);
+    var postData = this.profileForm.value;
+
+    //THIS IS A BETTER WAY TO MAKE API CALLS
+  this.urlService.addNext(postData)
+  .subscribe(res => {
+      // this.presentToast(res.msg, res.status);
+     // console.log(res.id);
+      //console.log(res.drop_off);
+     //// this.alert.presentAlert("Notification", res.msg);
+   this.profile_collection = res;
+      if (res.status=='OK') {
+    //    this.storage.set('user_name', res.user_name);
+      //  this.storage.set('user_id', res.user_id);
+        // localStorage.setItem('token', res.token);
+        //this.navCtrl.setRoot('HomePage');
+       }
+  }, (err) => {
+      console.log(err);
+  });
+
+
+
+
   }
 
   getImage() {
@@ -75,15 +118,6 @@ export class MyprofilePage {
     });
   }
 
-
-
-
-
-
-
-
-
-
   goHome(){
   this.navCtrl.setRoot('HomePage')
 
@@ -91,8 +125,8 @@ export class MyprofilePage {
   goLogin(){
 
     const loading= this.loadingCtrl.create({
-      content: "loging out...",
-      duration: 3000
+      content: "logging out...",
+      duration: 2000
     });
     loading.present();
   this.navCtrl.setRoot('LoginPage')
@@ -102,25 +136,48 @@ export class MyprofilePage {
   
 
 
-  goPersonalDetails(){
-    this.navCtrl.push('PersonalDetailsPage')
-  
+  goPersonalDetails(user_id){
+    this.navCtrl.push("PersonalDetailsPage", {
+      user_id: this.User_Id,
+    });
     }
 
-    goMedicalHistory(){
-    this.navCtrl.push('MedicalHistoryPage')
-  
+    goMedicalHistory(user_id){
+    this.navCtrl.push("MedicalHistoryPage", {
+      user_id: this.User_Id,
+    });
     }
+
+    // goMedicalHistory(user_id){
+    // this.navCtrl.push('MedicalHistoryPage')
+    // }
 
     goNextOfSkin(){
+
+
     this.navCtrl.push('NextOfSkinPage')
   
     }
 
     goBankDetails(){
+
+
     this.navCtrl.push('BankDetailsPage')
   
     }
+    goChangePassword(){
+
+
+    this.navCtrl.push('ChangePasswordPage')
+  
+    }
+    // goChangePassword( user_id){
+    //   //  this.navCtrl.push('Nextofkin2Page')
+    //     this.navCtrl.push("ChangePasswordPage", {
+    //       user_id:user_id,
+        
+    //     });
+    //     }
 
 
 }

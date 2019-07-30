@@ -2,83 +2,85 @@
   <ion-navbar color="newcolor">
     <ion-toolbar mode="ios">
       <ion-buttons start>
-
         <button ion-button icon-only menuToggle>
           <ion-icon name="menu"></ion-icon>
-        </button>
-      </ion-buttons>
-      <ion-title>Select Responder</ion-title>
-
-      <ion-buttons end>
-
+           </button>
+          </ion-buttons>
+         <ion-title>Select Responder</ion-title>
+       <ion-buttons end>
       </ion-buttons>
     </ion-toolbar>
   </ion-navbar>
 </ion-header>
 
-<ion-content text-center>
-
-    
+<ion-content text-center>    
       <br>
-
-
 <!-- <ion-item (click)="goConfirm()"> -->
       <!-- <ion-list *ngFor="let respo of allResponders"> -->
       <ion-row *ngFor="let respo of allResponders">
       
        <ion-card>
           <ion-card-content>
+
               <ion-item (click)="goConfirm(respo)" text-left>
+
                   <ion-avatar item-start>
-                    <img src="http://46.101.169.33/img/medcar.png">
+                    <img src="../../assets/CITIMED.jpg">
                   </ion-avatar>
-                  <ion-row>   
-                      <p style="font-size: 12px;"><b>Name:</b> 
+
+                  <!-- <ion-row>   
+                      <p style="font-size: 12px;"><b>Responder Name:</b> 
                         {{ respo.driver_name }}
                       </p>
-                  </ion-row>
+                  </ion-row> -->
+
                   <ion-row>   
-                      <p style="float:left; font-size: 12px;"><b>Plate Num:</b>
+                    <p style="float:left; font-size: 12px;"><b>Company Name:</b> 
+                      {{ respo.company.company_name }}
+                    </p>
+                  </ion-row>
+
+                  <ion-row>   
+                      <p style="float:left; font-size: 12px;"><b>Cell Number:</b>
+                         {{ respo.phone_no }}
+                      </p>
+                    </ion-row>
+          
+                  <!-- <ion-row>   
+                      <p style="float:left; font-size: 12px;"><b>Email:</b> 
+                        {{ respo.email}}
+                      </p>
+                  </ion-row>
+
+                  <ion-row>   
+                      <p style="float:left; font-size: 12px;"><b>Plate Number:</b>
                         {{ respo.license_no }}
                       </p>
                     </ion-row>
-                 <ion-row>   
-                    <p style="float:left; font-size: 12px;"><b>Cell Num:</b>
-                       {{ respo.phone_no }}
-                    </p>
-                  </ion-row>
-                  <ion-row>   
-                      <p style="float:left; font-size: 12px;"><b>Company:</b> 
-                        {{ respo.company.company_name }}
-                      </p>
-                  </ion-row>
 
                   <ion-row>   
                     <p style="float:left; font-size: 12px;"><b></b> 
                       1 minute away
                     </p>
-                </ion-row>
-                  <!-- <ion-row>   
-                      <h2 style="float:left;"><b>Nmae:</b> {{ respo.driver_name }}</h2>
-                  </ion-row> -->
+                </ion-row> -->
+                 
              </ion-item>
-          </ion-card-content> 
+
+          </ion-card-content>
 
       </ion-card> 
+
       </ion-row>
 
 
- &nbsp;<h5>Request for someone else:</h5>
+ <!-- &nbsp;<h5>Request for someone else:</h5> -->
 
- <button outline (click)="goRequestElse()"  ion-button color="danger" round>
+ <!-- <button (click)="goRequestElse()"  ion-button color="danger" round> -->
 
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Click &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-   <ion-icon name="paper"></ion-icon>
-  </button>
+   <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Click &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+   <!-- <ion-icon name="paper"></ion-icon> -->
+  <!-- </button> -->
 
-  
-
-    
   
     <!-- <ion-item >
       <ion-avatar item-start>

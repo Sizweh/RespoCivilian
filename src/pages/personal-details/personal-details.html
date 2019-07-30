@@ -17,14 +17,16 @@
  <br> 
     <ion-title text-center>Edit Personal Details</ion-title>
 
-  <br>
-  <ion-row no-lines *ngFor="let fault of personal_collection">
+  
+  <ion-row no-scrolling no-lines *ngFor="let fault of personal_collection">
 
   <ion-card no-lines>
 
+  <div no-scrolling                                                                                                                                                                                                                                                                            class="login-fields" [formGroup]="personalForm">
+
     <ion-item text-left>
       <ion-label floating>Full Name </ion-label>
-      <ion-input floating block value="  {{ fault.name }}">
+      <ion-input formControlName="fullName" floating block value="  {{ fault.name }}">
       </ion-input>
       <!-- <div class="login-fields" [formGroup]="personalForm">
 </div> -->
@@ -39,15 +41,15 @@
 
     <ion-item text-left>
       <ion-label floating>Email </ion-label>
-      <ion-input block value="{{ fault.email }}">
+      <ion-input formControlName="email" block value="{{ fault.email }}">
       </ion-input>
       <!-- <div class="login-fields" [formGroup]="personalForm">
 </div> -->
-    </ion-item>
-
+    </ion-item>         
+                                              
     <ion-item text-left>
       <ion-label floating>Phone Number </ion-label>
-      <ion-input block value=" {{ fault.phone_no }}">
+      <ion-input formControlName="phonenumber" block value=" {{ fault.phone_no }}">
       </ion-input>
       <!-- <div class="login-fields" [formGroup]="personalForm">
 </div> -->
@@ -55,7 +57,7 @@
 
     <ion-item text-left>
       <ion-label floating>Gender </ion-label>
-      <ion-input block value="  {{ fault.gender }}">
+      <ion-input formControlName="gender" block value="  {{ fault.gender }}">
       </ion-input>
       <!-- <div class="login-fields" [formGroup]="personalForm">
 </div> -->
@@ -63,17 +65,21 @@
 
     <ion-item text-left>
       <ion-label floating>DOB </ion-label>
-      <ion-input block value="  {{ fault.dob }}">
+      <ion-input formControlName="myDate" block value="  {{ fault.dob }}">
       </ion-input>
       <!-- <div class="login-fields" [formGroup]="personalForm">
 </div> -->
     </ion-item>
 
+
+    </div>
+
+    
   </ion-card>
 
   </ion-row>
 
-  <br>
+  <!-- <br> -->
 
   <!-- <button  icon-right ion-button round color='secondary' block (click)="goMyprofile()"> Save
   <ion-icon name="paper"></ion-icon>

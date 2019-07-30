@@ -24,10 +24,12 @@
  
   <ion-card no-lines>
 
-    <ion-item text-left>
-      <ion-label floating>Membership Number</ion-label>
-      <ion-input block value="{{fault.member_no}}">
-      </ion-input>
+  <div class="login-fields" [formGroup]="medicalForm">
+
+  <ion-item no-lines text-left>
+    <ion-label floating>Membership Number</ion-label>
+    <ion-input formControlName="member_no" block value="{{fault.member_no}}">
+    </ion-input>
       <!-- <div class="login-fields" [formGroup]="personalForm">
 </div> -->
       <!-- <h1> Emergency type : {{ fault.emergency_type }}</h1> -->
@@ -39,45 +41,44 @@
 -->
     </ion-item>
 
-    <ion-item text-left>
+    <ion-item no-lines text-left>
       <ion-label floating>Scheme Name</ion-label>
-      <ion-input value="{{ fault.scheme_name }}"></ion-input>
-     
+      <ion-input formControlName="scheme_name" value="{{ fault.scheme_name }}"></ion-input>
     </ion-item>
 
-    <ion-item text-left>
+    <ion-item no-lines text-left>
       <ion-label floating>Partial Membership </ion-label>
-      <ion-input value=" {{ fault.partial_membership }}">
+      <ion-input formControlName="partial_membership" value=" {{ fault.partial_membership }}">
       </ion-input>
       <!-- <div class="login-fields" [formGroup]="personalForm">
 </div> -->
     </ion-item>
 
-    <ion-item text-left>
+    <ion-item no-lines text-left>
         <ion-label floating>Prefered Hospital </ion-label>
-        <ion-input value="  {{ fault.prefered_hospital }}">
+        <ion-input formControlName="prefered_hospital" value="  {{ fault.prefered_hospital }}">
         </ion-input>
         <!-- <div class="login-fields" [formGroup]="personalForm">
   </div> -->
       </ion-item>
 
-    <ion-item text-left>
+    <ion-item no-lines text-left>
       <ion-label floating>Chronic Disease </ion-label>
-      <ion-input value="{{ fault.chronic_dis }}">
+      <ion-input formControlName="chronic_dis" value="{{ fault.chronic_dis }}">
       </ion-input>
       <!-- <div class="login-fields" [formGroup]="personalForm">
 </div> -->
     </ion-item>
 
-    <ion-item text-left>
+    <ion-item no-lines text-left>
       <ion-label floating>Disability</ion-label>
-      <ion-input value="  {{ fault.disability }}">
+      <ion-input formControlName="disability" value="  {{ fault.disability }}">
       </ion-input>
       <!-- <div class="login-fields" [formGroup]="personalForm">
 </div> -->
     </ion-item>
 
-
+  </div>
 
     <!-- <ion-card no-lines>
 <ion-item no-lines  text-right> -->
@@ -94,45 +95,20 @@
 </ion-card>
 
   </ion-row>
-
-  <br>
-
+<!-- 
+  <br> -->
 
   <!-- <button outline icon-right ion-button round color='secondary' block (click)="goMyprofile()"> Save
     <ion-icon name="paper"></ion-icon>
   </button> -->
 
-
-  <ion-row>
-
-      <!-- <button
-      class="add"
-      ion-button
-      item-right
-      icon-right
-      margin-bottom
-      color="primary"
-      (click)="addEntry()">
-      Add medical aid details
-         <ion-icon name="add"></ion-icon>
-   </button> -->
-
+<ion-row>
   <ion-col col-6>
-      <button icon-right outline ion-button round color='secondary' block (click)="goAddMedicalAid()"> 
-        Add details
-        <ion-icon name="add"></ion-icon>
-      </button>
-    </ion-col>
-
-    <ion-col col-6>
-      <button icon-right ion-button block round color="secondary" (click)="goMyprofile()">
-        Save
-        <!-- <ion-icon name="paper"></ion-icon> -->
-      </button>
-    </ion-col>
-
-  </ion-row>
-
+    <button icon-right ion-button block round color="secondary" (click)="goMyprofile()">
+      Save
+    </button>
+  </ion-col>
+</ion-row>
 
 
 </ion-content>

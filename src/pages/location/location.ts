@@ -50,7 +50,7 @@ responderDistance: any;
   autocomplete: { input: string; };
   autocompleteItems: any[];
   zone: any;
-  specify_emergency: any;
+
 
 
   constructor(public navCtrl: NavController, 
@@ -292,7 +292,7 @@ handleLocationError(browserHasGeolocation, infoWindow, pos, map) {
       'driver_id': this.selectedResponder.id,
       'company_id': this.selectedResponder.company.id,
       'emergency_type': this.event,
-      'specify_emergency': this.event,
+      'specify_emergency': this.event,    
     }
 
 

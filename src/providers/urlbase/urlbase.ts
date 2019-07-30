@@ -110,11 +110,76 @@ export class UrlbaseProvider {
         catchError(this.handleError('nextOfKin', []))
       );
   }
+  getpenextOfKin(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'get_penextOfKin', data)
+      .pipe(
+        tap(_ => this.log('nextOfKin')),
+        catchError(this.handleError('nextOfKin', []))
+      );
+  }
+
+  
   contact(data): Observable<any> {
     return this.http.post<any>(this.apiUrl + 'support', data)
       .pipe(
         tap(_ => this.log('support')),
         catchError(this.handleError('support', []))
+      );
+  }
+  reset(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'resetPassword', data)
+      .pipe(
+        tap(_ => this.log('resetPassword')),
+        catchError(this.handleError('resetPassword', []))
+      );
+  }
+  upload(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'updateUserProfile', data)
+      .pipe(
+        tap(_ => this.log('updateUserProfile')),
+        catchError(this.handleError('updateUserProfile', []))
+      );
+  }
+  addNext(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'addnextOfKin', data)
+      .pipe(
+        tap(_ => this.log('addnextOfKin')),
+        catchError(this.handleError('addnextOfKin', []))
+      );
+  }
+  editMedical(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'updateMedicalHistory', data)
+      .pipe(
+        tap(_ => this.log('updateMedicalHistory')),
+        catchError(this.handleError('updateMedicalHistory', []))
+      );
+  }
+  editPersonal(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'updatePersonal', data)
+      .pipe(
+        tap(_ => this.log('updatePersonal')),
+        catchError(this.handleError('updatePersonal', []))
+      );
+  }
+  editNext(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'updateNextofKin', data)
+      .pipe(
+        tap(_ => this.log('updateNextofKin')),
+        catchError(this.handleError('updateNextofKin', []))
+      );
+  }
+  deleteNext(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'deleteNextofKin', data)
+      .pipe(
+        tap(_ => this.log('deleteNextofKin')),
+        catchError(this.handleError('deleteNextofKin', []))
+      );
+  }
+  changePassword(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'changePassword', data)
+      .pipe(
+        tap(_ => this.log('changePassword')),
+        catchError(this.handleError('changePassword', []))
       );
   }
 
