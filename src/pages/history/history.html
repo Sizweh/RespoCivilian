@@ -21,12 +21,13 @@
 
       <ion-row no-lines *ngFor="let fault of history_collection">
           <ion-card no-lines>
-            <ion-item no-lines  text-left>
-              <h1> Emergency type : {{ fault.emergency_type }}</h1>
+            <ion-item color='light'no-lines  text-left>
+              <h1 color='newcolor'> Emergency type : {{ fault.emergency_type }}</h1>
+              <font size="3" color='#38414a'>Pick-Up : {{ fault.pick_up }}</font><br>
               <font size="3" color='#38414a'>Drop-off : {{ fault.drop_off }}</font><br>
               <font size="3" color='#38414a'>Status : {{ fault.status }}</font><br>
               <font size="3" color='#38414a'>Responder : {{ fault.company_id }}</font><br>
-              <font size="3" color='#38414a'>Date : {{ fault.created_at }}</font><br>
+              <!-- <font size="3" color='#38414a'>Date : {{ fault.created_at }}</font><br> -->
              
 
             </ion-item>

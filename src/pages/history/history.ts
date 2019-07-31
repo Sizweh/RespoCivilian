@@ -49,7 +49,7 @@ export class HistoryPage {
       });
 
       this.historyForm = formBuilder.group({
-        'user_id': ['2',],
+        'user_id': ['85',],
         
       })
   }

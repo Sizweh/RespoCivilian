@@ -66,7 +66,7 @@ faultCategories = [
   {
     faultID: 5,
     category: "Difficulty Breathing",
-    imageUrl: "http://46.101.169.33/icons/difficulty.jpg",
+    imageUrl: "../../assets/icons/difficulty.jpg",
     icon: "alarm"
   },
   {
@@ -92,15 +92,15 @@ faultCategories = [
   {
     faultID: 9,
     category: "Falling",
-    imageUrl: "http://46.101.169.33/icons/falling.jpg",
+    imageUrl: "../../assets/icons/falling.jpg",
     icon: "alarm"
     
     
   },
   {
-    faultID: 9,
+    faultID: 10,
     category: "Seizure",
-    imageUrl: "http://46.101.169.33/icons/seizure.jpg",
+    imageUrl: "../../assets/icons/seizure.jpg",
     icon: "alarm"
     
     
@@ -115,7 +115,7 @@ faultCategories = [
  
 otherCategories = [
   {
-    faultID: 10,
+    faultID: 11,
     category: "Other",
     imageUrl: "http://46.101.169.33/icons/R8.png",
     icon: "alarm"

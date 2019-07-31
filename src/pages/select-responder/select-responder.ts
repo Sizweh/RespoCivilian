@@ -45,9 +45,8 @@ export class SelectResponderPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SelectResponderPage');
-
-
   }
+
   goConfirm(responder){
     this.storage.set('selected_responder', responder);
     console.log(responder);

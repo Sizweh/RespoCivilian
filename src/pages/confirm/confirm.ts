@@ -8,12 +8,6 @@ import { interval } from 'rxjs/observable/interval';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 
 
-/**
- * Generated class for the ConfirmPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -40,7 +34,6 @@ export class ConfirmPage {
   responderPlate: any;
   responderDistance: any;
   reqId: any;
-
   subscription: any;
 
   constructor(

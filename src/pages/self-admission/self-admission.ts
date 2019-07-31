@@ -69,11 +69,13 @@ goForSelf(){
 this.navCtrl.push("ForSelfPage");
 }
 
-goForSomeone(){
+goForSomeone(data){
 
 this.storage.set('ForSomeone', 'Yes');
+console.log(+ "ForSomeone");
+    console.log(data);
 
-this.navCtrl.push("ForSomeonePage");
+ // this.navCtrl.push("ForSomeonePage");
 }
 
 

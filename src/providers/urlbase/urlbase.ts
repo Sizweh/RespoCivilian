@@ -126,6 +126,13 @@ export class UrlbaseProvider {
         catchError(this.handleError('support', []))
       );
   }
+  specify(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'specify', data)
+      .pipe(
+        tap(_ => this.log('specify')),
+        catchError(this.handleError('specify', []))
+      );
+  }
   reset(data): Observable<any> {
     return this.http.post<any>(this.apiUrl + 'resetPassword', data)
       .pipe(
