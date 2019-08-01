@@ -40,8 +40,16 @@ export class MyprofilePage {
 
   }
 
+ 
+ionViewDidEnter()
+{
+
+}
 
   ionViewDidLoad() {
+
+ this.storage.get('user_id').then((result) => {
+
 
    var headers = new Headers();
     headers.append("Accept", 'application/json');
@@ -49,27 +57,24 @@ export class MyprofilePage {
  
    
    //pass to back-end
-    //  console.log(this.nextofkin2Form.value);
-    var postData = this.profileForm.value;
+   console.log(result);
+    var postData = {user_id:result}
 
     //THIS IS A BETTER WAY TO MAKE API CALLS
-  this.urlService.addNext(postData)
+  this.urlService.personalDetails(postData)
   .subscribe(res => {
-      // this.presentToast(res.msg, res.status);
-     // console.log(res.id);
-      //console.log(res.drop_off);
-     //// this.alert.presentAlert("Notification", res.msg);
+      
    this.profile_collection = res;
       if (res.status=='OK') {
-    //    this.storage.set('user_name', res.user_name);
-      //  this.storage.set('user_id', res.user_id);
-        // localStorage.setItem('token', res.token);
-        //this.navCtrl.setRoot('HomePage');
+    
+       // this.storage.set('user_idss', res.user_id);
+       
        }
   }, (err) => {
       console.log(err);
   });
 
+ });
 
 
 
@@ -137,15 +142,25 @@ export class MyprofilePage {
 
 
   goPersonalDetails(user_id){
+
+  this.storage.get('user_id').then((result) => {
+
     this.navCtrl.push("PersonalDetailsPage", {
-      user_id: this.User_Id,
+      user_id:result,
     });
+});
+    
     }
 
     goMedicalHistory(user_id){
-    this.navCtrl.push("MedicalHistoryPage", {
-      user_id: this.User_Id,
+this.storage.get('user_id').then((result) => {
+
+   this.navCtrl.push("MedicalHistoryPage", {
+      user_id:result,
     });
+});
+
+    
     }
 
     // goMedicalHistory(user_id){
@@ -153,9 +168,14 @@ export class MyprofilePage {
     // }
 
     goNextOfSkin(){
+this.storage.get('user_id').then((result) => {
 
+   this.navCtrl.push("NextOfSkinPage", {
+      user_id:result,
+    });
+});
 
-    this.navCtrl.push('NextOfSkinPage')
+    //this.navCtrl.push('NextOfSkinPage')
   
     }
 

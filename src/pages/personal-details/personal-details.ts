@@ -47,7 +47,7 @@ export class PersonalDetailsPage {
    
       this.personalForm = formBuilder.group({
      
-        'user_id': ['85'],
+        'user_id': [this.User_Id],
         // 'user_id': [this.User_Id],
 
         'fullName': ['', Validators.compose([Validators.required])],

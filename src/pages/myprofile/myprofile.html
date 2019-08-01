@@ -14,11 +14,14 @@
 
 <ion-content padding>
 
-  <h6 text-center>My Profile</h6>
+  <!-- <h6 text-center>My Profile</h6> -->
   <ion-item no-lines>
     <ion-avatar>
-      <img src="../../assets/icons/euphonic.jpg"
+      <div *ngFor="let fault of profile_collection">
+
+      <img src="{{fault.profile}}"
         style="width: 100px; height: 100px;  margin-left: auto; margin-right: auto;">
+      </div>
     </ion-avatar>
   </ion-item>
 
@@ -29,8 +32,10 @@
   </button> -->
 
   <ion-item round no-lines text-center (click)="getImage()" color=''>
-    <h3>Upload or Change Profile Pic</h3>
+    <div *ngFor="let fault of profile_collection">
+    <h3>Hi ,{{fault.name}}</h3>
     <p>{{imageURI}}</p>
+     </div>
   </ion-item>
 
 
