@@ -251,7 +251,7 @@ goConfirm(){
     'driver_id': this.selectedResponder.id,
     'company_id': this.selectedResponder.company.id,
     'emergency_type': this.event,
-    'specify_emergency': this.event    
+    // 'specify_emergency': this.event    
   }
 
 

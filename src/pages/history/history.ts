@@ -30,6 +30,8 @@ export class HistoryPage {
   user_id: any;
   pick_up: any;
   toConcat:any;
+  User_Id :any;
+    id: any;
   // promise1:any;
   // promise2:any;
   // var:any;
@@ -43,12 +45,18 @@ export class HistoryPage {
 
     ) {
 
-      this.storage.get('user_id').then((val) => {
-        console.log(String(val));
-        this.toConcat = this.UserId =String(val); 
-      });
+      this.id = navParams.get('data') ;
+      this.User_Id = navParams.get('user_id') ;
+
+      // this.storage.get('user_id').then((val) => {
+      //   console.log(String(val));
+      //   this.toConcat = this.UserId =String(val); 
+      // });
 
       this.historyForm = formBuilder.group({
+
+        // 'user_id': [this.User_Id,],
+        // 'id': [this.id,],
         'user_id': ['85',],
         
       })

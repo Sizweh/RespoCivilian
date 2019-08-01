@@ -3,6 +3,7 @@ import { Nav,  Platform, MenuController,  } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
@@ -10,39 +11,73 @@ import { Storage } from '@ionic/storage';
 })
 export class MyApp {
   [x: string]: any;
+  // User_Id :any;
+  // user_id :any;
+  User_Id :any;
+  user_id :any;
+  id :any;
+  menuForm: FormGroup;
+
+
+
   @ViewChild(Nav) nav: Nav;
   username:any; 
   rootPage: any = 'LoginPage';
   // menu: true;
+ 
+ 
+
+ 
 
   pages: Array<{ title: string, component: any , icon:string}>;
 
+
   constructor( public platform: Platform, 
     public statusBar: StatusBar, 
+   
     public splashScreen: SplashScreen, 
     public menu: MenuController,
     private storage: Storage,
+    public formBuilder: FormBuilder,
     ) {
 
+
+ 
       this.storage.get('user_name').then((val) => {
         console.log(String(val));
-        this.username = String(val);
-      
-        
+        this.username = String(val);  
       });
+
+      this.storage.get('user_id').then((val) => {
+        console.log(String(val));
+        this.user_id = String(val);  
+      });
+   
+
+
+      this.menuForm = formBuilder.group({
+
+      
+
+        'user_id': ['85'],
+        
+        // 'name': ['', Validators.compose([Validators.required])],
+        // 'User_Id': ['', Validators.compose([Validators.required])],
+   
+        // 'surname': ['', Validators.compose([Validators.required])],
+      })
+
+     
       
      
     this.initializeApp();
-
     // used for an example of ngFor and navigation
-    this.pages = [
-  
-     
-    ];
+    //this.pages = [
+
+   // ];
     
    
-    
-    
+   
   }
   
   initializeApp() {
@@ -83,11 +118,17 @@ export class MyApp {
     this.menu.close();
     }
   
-  goHistory(){
+  goHistory(user_id){
  // this.sideMenu.hide();
-    this.nav.setRoot('HistoryPage');
+    // this.nav.setRoot('HistoryPage');
+    this.nav.setRoot("HistoryPage", {
+      user_id: this.User_Id,
+    
+    });
+
     this.menu.enable(true);
     this.menu.close();
+
     }
   
   goMyAccount(){

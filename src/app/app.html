@@ -10,9 +10,11 @@
 <br>
 
 
-<ion-list>
 
-      <ion-list>
+<div class="login-fields" [formGroup]="menuForm">
+<ion-list no-lines>
+
+    
           <ion-item (click)="goMyProfile()" >
             <ion-avatar item-start>
               <img src="../../assets/icons/euphonic.jpg">
@@ -20,11 +22,7 @@
             <h2>{{ username }}</h2>
             <p>View Profile</p>
           </ion-item>
-        </ion-list>
-
-      
-    
-          <ion-list>
+   
             <ion-item (click)="goHome()" color=''>
               <ion-avatar item-start>
                 <img src="http://46.101.169.33/icons/15.png">
@@ -33,10 +31,12 @@
               <h3></h3>
               <p></p>
             </ion-item>
-          </ion-list>
+       
           
-          <ion-list>
-            <ion-item (click)="goHistory()" color=''>
+          
+
+       
+            <ion-item (click)="goHistory(user_id)" color=''>
               <ion-avatar item-start>
                 <img src="http://46.101.169.33/icons/11.png">
               </ion-avatar>
@@ -44,9 +44,10 @@
               <h3></h3>
               <p></p>
             </ion-item>
-          </ion-list>
-           
-          <ion-list>
+        
+
+     
+    
             <ion-item (click)="goSupport()" color=''>
               <ion-avatar item-start>
                 <img src="http://46.101.169.33/icons/12.png">
@@ -55,18 +56,13 @@
               <h3></h3>
               <p></p>
             </ion-item>
-          </ion-list>
+         
           
-
-      
-
-        
-          
-      
-
-   
-   
           </ion-list>
+
+          </div>
+
+     
      
           
   </ion-content>

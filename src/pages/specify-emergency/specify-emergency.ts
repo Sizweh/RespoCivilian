@@ -66,39 +66,20 @@ export class SpecifyEmergencyPage {
     const value = this.specifyForm.value;
     this.storage.set('specify_emergency', value.specify_emergency);
 
+    // var headers = new Headers();
+    // headers.append("Accept", 'application/json');
+    // headers.append('Content-Type', 'application/json');
+    // var postData = this.specifyForm.value
+    // this.urlService.specify(postData)
+    //   .subscribe(res => {
+    //     this.specify_collection = res;
+    //     if (res.status == 'OK') {
+    //     }
+    //   }, (err) => {
+    //     console.log(err);
+    //   });
 
-    
-    var headers = new Headers();
-    headers.append("Accept", 'application/json');
-    headers.append('Content-Type', 'application/json' );
-  //  const requestOptions = new RequestOptions({ headers: headers });
-   
-   //pass to back-end
-    //  console.log(this.historyForm.value);
-      var postData = this.specifyForm.value;
-      //THIS IS A BETTER WAY TO MAKE API CALLS
-    this.urlService.specify(postData)
-    .subscribe(res => {
-        // this.presentToast(res.msg, res.status);
-       // console.log(res.id);
-        //console.log(res.drop_off);
-       //// this.alert.presentAlert("Notification", res.msg);
-     this.specify_collection = res;
-        if (res.status=='OK') {
-      //    this.storage.set('user_name', res.user_name);
-        //  this.storage.set('user_id', res.user_id);
-          // localStorage.setItem('token', res.token);
-          //this.navCtrl.setRoot('HomePage');
-        }
-    }, (err) => {
-        console.log(err);
-    });
-
-
-
-
-
-   //this.navCtrl.push('SelectResponderPage')
+   this.navCtrl.push('SelectResponderPage')
   }
 
 
