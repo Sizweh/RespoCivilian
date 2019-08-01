@@ -13,7 +13,7 @@ import { Storage } from '@ionic/storage';
 })
 export class NextOfSkinPage {
 
-  User_Id :any;
+  User_ID :any;
   toConcat:any;
   skinForm: FormGroup;
   skin_collection: any;
@@ -35,11 +35,12 @@ export class NextOfSkinPage {
 
     ) {
 
-
+//this.id = navParams.get('user_id') ;
+      this.User_ID = navParams.get('user_id') ;
   
       this.skinForm = formBuilder.group({
 
-        'user_id': ['85',],
+        'user_id': [this.User_ID,],
         
         'name': ['', Validators.compose([Validators.required])],
         'User_Id': ['', Validators.compose([Validators.required])],
@@ -159,10 +160,13 @@ id:id
 
   goNextofkin2(user_id){
  
-    this.navCtrl.push("Nextofkin2Page", {
-      user_id: this.User_Id,
-    
+ this.storage.get('user_id').then((result) => {
+
+  this.navCtrl.push("Nextofkin2Page", {
+      user_id:result,
     });
+});
+    
     }
     goModal(id,user_id){    
     

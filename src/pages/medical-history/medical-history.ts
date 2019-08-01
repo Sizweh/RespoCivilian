@@ -41,7 +41,7 @@ export class MedicalHistoryPage {
    
       this.medicalForm = formBuilder.group({
         
-        'user_id': ['85',],
+        'user_id': [this.User_Id,],
         // 'user_id': [this.User_Id],
 
         'member_no': ['', Validators.compose([Validators.required])],

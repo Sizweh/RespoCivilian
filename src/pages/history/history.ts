@@ -49,7 +49,7 @@ export class HistoryPage {
       });
 
       this.historyForm = formBuilder.group({
-        'user_id': ['85',],
+        'user_id': ['',],
         
       })
   }
@@ -58,7 +58,7 @@ export class HistoryPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad HistoryPage' );
 
-
+this.storage.get('user_id').then((val) => {
     var headers = new Headers();
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
@@ -66,7 +66,7 @@ export class HistoryPage {
    
    //pass to back-end
     //  console.log(this.historyForm.value);
-      var postData = this.historyForm.value;
+      var postData = {user_id:val};
 
 
       //THIS IS A BETTER WAY TO MAKE API CALLS
@@ -84,6 +84,8 @@ export class HistoryPage {
     }, (err) => {
         console.log(err);
     });
+
+     });
   }
 
 
