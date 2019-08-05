@@ -5,8 +5,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AlertController, LoadingController, ToastController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
-
-
 @IonicPage()
 @Component({
   selector: 'page-personal-details',
@@ -16,14 +14,12 @@ export class PersonalDetailsPage {
 
 
   User_Id :any;
-
   UserId :any;
   toConcat:any;
   personalForm: FormGroup;
   personal_collection: any;
   username:any; 
   id: any;
-
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -35,7 +31,6 @@ export class PersonalDetailsPage {
     private toastCtrl: ToastController
     ) {
 
- 
       this.id = navParams.get('data') ;
       this.User_Id = navParams.get('user_id') ;
      
@@ -86,9 +81,7 @@ export class PersonalDetailsPage {
         }
     }, (err) => {
         console.log(err);
-    });
-
-
+    }); 
   }
 
   goMyprofile(){

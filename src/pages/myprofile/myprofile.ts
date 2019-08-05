@@ -139,9 +139,7 @@ ionViewDidEnter()
   }
 
   
-
-
-  goPersonalDetails(user_id){
+  goPersonalDetails(){
 
   this.storage.get('user_id').then((result) => {
 
@@ -163,10 +161,6 @@ this.storage.get('user_id').then((result) => {
     
     }
 
-    // goMedicalHistory(user_id){
-    // this.navCtrl.push('MedicalHistoryPage')
-    // }
-
     goNextOfSkin(){
 this.storage.get('user_id').then((result) => {
 
@@ -179,15 +173,7 @@ this.storage.get('user_id').then((result) => {
   
     }
 
-    goBankDetails(){
-
-
-    this.navCtrl.push('BankDetailsPage')
-  
-    }
     goChangePassword(){
-
-
     this.navCtrl.push('ChangePasswordPage')
   
     }

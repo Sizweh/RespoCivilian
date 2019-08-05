@@ -2,16 +2,11 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { FormGroup, FormBuilder, } from '@angular/forms';
-import { AlertController, LoadingController } from 'ionic-angular';
+import { AlertController, LoadingController, ToastController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 
-/**
- * Generated class for the SupportPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -21,10 +16,13 @@ import { Storage } from '@ionic/storage';
 export class SupportPage {
 
   UserId :any;
+  Id :any;
   toConcat:any;
   contactForm: FormGroup;
   contact_collection: any;
-  
+  user_id: any;
+  User_Id :any;
+  id: any;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -32,22 +30,20 @@ export class SupportPage {
     private urlService: UrlbaseProvider,
     private storage: Storage,
     public formBuilder: FormBuilder,
-    public loadingCtrl: LoadingController, 
+    public loadingCtrl: LoadingController,
+    private toastCtrl: ToastController 
    
     ) {
+      this.id = navParams.get('data') ;
+      this.User_Id = navParams.get('user_id') ;
+      // this.Id = navParams.get('id') ;
 
-      this.storage.get('user_id').then((val) => {
-        console.log(String(val));
-        this.  toConcat =   this.UserId =String(val);
-      
-        
-      });
-   
-    
-      
       this.contactForm = formBuilder.group({
+        'user_id': [this.User_Id],
+        // 'id': [this.Id],
+
+        // 'user_id': ['85'],
         'message': ['', ],
-        'user_id': ['3', ],
       })
 
   }
@@ -55,22 +51,16 @@ export class SupportPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad SupportPage');
 
-
   }
 
 
+  goHome() {
+
+    const values = this.contactForm.value;
+    this.storage.set('message', values.message);
 
 
-
-
-
-
-
-
-  sendContact() {
-
-
-
+    //  this.storage.get('user_id').then((val) => {
 
     var headers = new Headers();
     headers.append("Accept", 'application/json');
@@ -79,9 +69,9 @@ export class SupportPage {
    
    //pass to back-end
     //  console.log(this.historyForm.value);
+
+      //var postData = {user_id:val};
       var postData = this.contactForm.value;
-
-
 
       //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.contact(postData)
@@ -103,29 +93,37 @@ export class SupportPage {
 
 
     const loader = this.loadingCtrl.create({
-      content: "Checking code...",
-      duration: 1000
+      content: "Sending message...",
+      duration: 1200
     });
     loader.present();
 
-    let alert = this.alertCtrl.create({
-      title: 'Message sent ',
-      message: '',
-      buttons: [
-        {
-          text: 'OK',
-          handler: () => {
-           // this.navCtrl.push("HomePage");
-          }
-        }
-      ]
+    let toast = this.toastCtrl.create({
+      message: 'Message sent! ',
+      duration: 3000,
+      position: 'bottom'
     });
-    alert.present();
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+    toast.present();
+
+    // let alert = this.alertCtrl.create({
+    //   title: 'Message sent ',
+    //   message: '',
+    //   buttons: [
+    //     {
+    //       text: 'OK',
+    //       handler: () => {
+    //        alert.present();
+    //       }
+    //     }
+    //   ]
+    // });
+  //  });
+    //alert.present();
+   // this.navCtrl.setRoot("HomePage");
   }
-
-
-
-
 
 
   goContactPage(){

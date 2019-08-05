@@ -11,13 +11,12 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class MyApp {
   [x: string]: any;
-  // User_Id :any;
-  // user_id :any;
-  User_Id :any;
-  user_id :any;
-  id :any;
-  menuForm: FormGroup;
+ 
 
+  menuForm: FormGroup;
+  id: any;
+  User_Id :any;
+  user_id:any;
 
 
   @ViewChild(Nav) nav: Nav;
@@ -41,43 +40,26 @@ export class MyApp {
     public formBuilder: FormBuilder,
     ) {
 
-
- 
       this.storage.get('user_name').then((val) => {
         console.log(String(val));
         this.username = String(val);  
       });
-
-      this.storage.get('user_id').then((val) => {
-        console.log(String(val));
-        this.user_id = String(val);  
-      });
    
-
 
       this.menuForm = formBuilder.group({
-
-      
-
-        'user_id': ['85'],
-        
-        // 'name': ['', Validators.compose([Validators.required])],
-        // 'User_Id': ['', Validators.compose([Validators.required])],
-   
-        // 'surname': ['', Validators.compose([Validators.required])],
+        'user_id': [''],
       })
 
-     
-      
-     
     this.initializeApp();
     // used for an example of ngFor and navigation
-    //this.pages = [
-
-   // ];
+    this.pages = [
+    ];
     
-   
-   
+
+  }
+
+  ionViewDidLoad() {
+
   }
   
   initializeApp() {
@@ -118,17 +100,14 @@ export class MyApp {
     this.menu.close();
     }
   
-  goHistory(user_id){
+  goHistory(){
  // this.sideMenu.hide();
     // this.nav.setRoot('HistoryPage');
     this.nav.setRoot("HistoryPage", {
-      user_id: this.User_Id,
-    
+      // user_id: this.User_Id,
     });
-
     this.menu.enable(true);
     this.menu.close();
-
     }
   
   goMyAccount(){
@@ -138,18 +117,34 @@ export class MyApp {
     this.menu.close();
     }
   
-  goSupport(){
-     // this.sideMenu.hide();
-    this.nav.setRoot('SupportPage');
-    this.menu.enable(true);
-    this.menu.close();
-    }
+  // goSupport(){
+  //    // this.sideMenu.hide();
+
+  //   this.nav.setRoot('SupportPage');
+  //   this.menu.enable(true);
+  //   this.menu.close();
+  //   }
+
+      
+    goSupport(){
+
+    this.storage.get('user_id').then((result) => {
+      this.nav.setRoot("SupportPage", {
+        user_id:result,
+        id:result,
+      });
+  });
+  this.menu.enable(true);
+  this.menu.close();
+      }
+  
   
   goAbout(){
     this.nav.setRoot('AboutPage');
     this.menu.enable(true);
     this.menu.close();
     }
+
   goMyProfile(){
     this.nav.setRoot('MyprofilePage');
     this.menu.enable(true);
