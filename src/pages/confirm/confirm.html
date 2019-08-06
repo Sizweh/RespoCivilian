@@ -45,22 +45,29 @@ updated_at: "2019-05-10 08:56:58"
 user_id: 4 -->
 
   <ion-row *ngFor="let detail of selectedResponder">
-      <ion-card>
-          <ion-card-header>
-              <h2 class="card-title"><b>Company name:</b> {{detail.company.company_name}}</h2>
 
-              <h2 class="card-title"><b>Responder name:</b> {{detail.driver_name}}</h2>
-          </ion-card-header>
-            <ion-item >
-          <p><b>Cell: </b> {{detail.phone_no}}</p> 
-          <p><b>Plate number: </b>{{detail.license_no}}</p>
-          <p>1 minute away.</p>
-        </ion-item>
-       
-      </ion-card>
-    </ion-row>
+    <!-- <ion-card> -->
+    <ion-item no-lines color='light'>
+      <ion-avatar item-right>
+        <img src="../../assets/CITIMED.jpg">
+      </ion-avatar>
+      <font size="3" color='#38414a'><b>Company name: {{detail.company.company_name}}</b></font><br>
+      <p href="tel:+2787463734"><b>Cell: </b> {{detail.phone_no}}</p>
+      <p><b>Plate number: </b>{{detail.license_no}}</p>
+      <p>1 minute away.</p>
 
-  <button ion-button color='danger'  full   round  (click)="goHome()">Close</button>
+      <a ion-button clear class="gl" icon-right outline color="secondary" href="tel:+2787463734">Call
+
+         <ion-icon name="md-call"></ion-icon>
+      </a>
+    </ion-item>
+
+ 
+  
+    <!-- </ion-card> -->
+  </ion-row>
+    <br>
+  <button ion-button color='dakar'  full   round  (click)="goHome()">Close</button>
   <br>
 
   <button ion-button clear color='light' round full (click)="goCountDown()">Next Page</button>

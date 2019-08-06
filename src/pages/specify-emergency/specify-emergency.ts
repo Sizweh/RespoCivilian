@@ -59,6 +59,9 @@ export class SpecifyEmergencyPage {
   goHome(){
     this.navCtrl.setRoot('HomePage')
   }
+  goSelfAdmission(){
+    this.navCtrl.push('SelfAdmissionPage')
+  }
 
 
   goSelectResponder(){

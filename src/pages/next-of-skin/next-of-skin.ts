@@ -14,6 +14,8 @@ import { Storage } from '@ionic/storage';
 export class NextOfSkinPage {
 
   User_ID :any;
+  User_Id :any;
+  id :any;
   toConcat:any;
   skinForm: FormGroup;
   skin_collection: any;
@@ -35,16 +37,17 @@ export class NextOfSkinPage {
 
     ) {
 
-//this.id = navParams.get('user_id') ;
-      this.User_ID = navParams.get('user_id') ;
+       //this.id = navParams.get('user_id') ;
+      // this.User_ID = navParams.get('user_id') ;
+      this.id = navParams.get('data') ;
+      this.User_Id = navParams.get('user_id') ;
   
       this.skinForm = formBuilder.group({
 
-        'user_id': [this.User_ID,],
+        // 'user_id': [this.User_ID,],
+        'user_id': [this.User_Id,],
         
         'name': ['', Validators.compose([Validators.required])],
-        'User_Id': ['', Validators.compose([Validators.required])],
-   
         'surname': ['', Validators.compose([Validators.required])],
       })
 
@@ -61,11 +64,11 @@ export class NextOfSkinPage {
     headers.append('Content-Type', 'application/json' );
   //  const requestOptions = new RequestOptions({ headers: headers });
    
-   //pass to back-end
+   //   pass to back-end
     //  console.log(this.historyForm.value);
       var postData = this.skinForm.value;
 
-      //THIS IS A BETTER WAY TO MAKE API CALLS
+   //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.nextofSkin(postData)
     .subscribe(res => {
         // this.presentToast(res.msg, res.status);
@@ -75,30 +78,23 @@ export class NextOfSkinPage {
      this.skin_collection = res;
         if (res.status=='OK') {
       //    this.storage.set('user_name', res.user_name);
-        
           // localStorage.setItem('token', res.token);
           //this.navCtrl.setRoot('HomePage');
         }
     }, (err) => {
         console.log(err);
     });
-
-
-
   }
 
   goMyprofile(id){
 
 
-var headers = new Headers();
-headers.append("Accept", 'application/json');
-headers.append('Content-Type', 'application/json' );
+// var headers = new Headers();
+// headers.append("Accept", 'application/json');
+// headers.append('Content-Type', 'application/json' );
 
-var postData = 
-{
-id:id
-}
-
+var postData = { id:id }
+// var postData = this.skinForm.value;
 
   this.urlService.deleteNext(postData)
   .subscribe(res => {
@@ -117,46 +113,37 @@ id:id
       console.log(err);
   });
 
-  let alert = this.alertCtrl.create({
-    title: 'Confirm delete',
-    message: 'Are you sure?',
-    buttons: [
-      {
-        text: 'No',
-        role: 'cancel',
-        handler: () => {
-          console.log('No clicked');
-      
-        }
-      },
-      {
-        text: 'Yes',
-        handler: () => {
-          console.log('Yes clicked');
-         
-        }
-      }
-    ]
-  });
-  alert.present();
-
-
+  // let alert = this.alertCtrl.create({
+  //   title: 'Confirm delete',
+  //   message: 'Are you sure?',
+  //   buttons: [
+  //     {
+  //       text: 'No',
+  //       role: 'cancel',
+  //       handler: () => {
+  //         console.log('No clicked');
+  //       }
+  //     },
+  //     {
+  //       text: 'Yes',
+  //       handler: () => {
+  //         console.log('Yes clicked');
+  //       }
+  //     }
+  //   ]
+  // });
+  // alert.present();
   // const loading= this.loadingCtrl.create({
   //   content: "deleting details",
   //   duration: 1000
   // });
   // loading.present();
 
-     //this.navCtrl.setRoot('MyprofilePage')
+     this.navCtrl.setRoot('MyprofilePage')
   
     }
 
-  // goNextofkin2(){
- 
-  //   this.navCtrl.push("Nextofkin2Page", {
-    
-  //   });
-  //   }
+
 
   goNextofkin2(user_id){
  
