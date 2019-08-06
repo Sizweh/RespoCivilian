@@ -24,7 +24,7 @@
 
               <ion-item (click)="goConfirm(respo)" text-left>
 
-                  <ion-avatar item-start>
+                  <ion-avatar item-right>
                     <img src="../../assets/CITIMED.jpg">
                   </ion-avatar>
 
@@ -34,17 +34,21 @@
                       </p>
                   </ion-row> -->
 
-                  <ion-row>   
+                  <!-- <ion-row>   
                     <p style="float:left; font-size: 12px;"><b>Company Name:</b> 
                       {{ respo.company.company_name }}
                     </p>
-                  </ion-row>
+                  </ion-row> -->
 
-                  <ion-row>   
+                  <font size="3" color='#38414a'><b>{{ respo.company.company_name }}</b></font><br>
+                  <font size="2" color='#38414a'>{{ respo.phone_no }}</font><br>
+                  <font size="2" color='#38414a'>   1 minute away </font><br>
+
+                  <!-- <ion-row>   
                       <p style="float:left; font-size: 12px;"><b>Cell Number:</b>
                          {{ respo.phone_no }}
                       </p>
-                    </ion-row>
+                    </ion-row> -->
           
                   <!-- <ion-row>   
                       <p style="float:left; font-size: 12px;"><b>Email:</b> 

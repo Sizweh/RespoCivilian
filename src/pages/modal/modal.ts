@@ -120,12 +120,12 @@ export class ModalPage {
 
   goMyprofile() {
 
-    // const values = this.skinForm.value;
-    // this.storage.set('name', values.name);
-    // this.storage.set('surname', values.surname);
-    // this.storage.set('phone', values.phone);
-    // this.storage.set('email', values.email);
-    // this.storage.set('relationship', values.relationship);
+    const values = this.skinForm.value;
+    this.storage.set('name', values.name);
+    this.storage.set('surname', values.surname);
+    this.storage.set('phone', values.phone);
+    this.storage.set('email', values.email);
+    this.storage.set('relationship', values.relationship);
 
     var headers = new Headers();
     headers.append("Accept", 'application/json');
