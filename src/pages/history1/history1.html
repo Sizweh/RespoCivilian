@@ -2,7 +2,6 @@
     <ion-navbar  color='newcolor'>
       <ion-toolbar  color='newcolor' mode="ios">
         <ion-buttons start>
-  
           <button ion-button icon-only menuToggle>
             <ion-icon name="menu"></ion-icon>
           </button>
@@ -12,24 +11,144 @@
     </ion-navbar>
   </ion-header>
 
-<ion-content text-center>
-   
+<ion-content text-center padding>
+
+    <div id="map">
+
+
+      </div>
+
+  <br>
+        <div class="register-fields" [formGroup]="historyForm">
+
+            
+            <ion-row no-lines *ngFor="let fault of history_collection">
+
+                <!-- <ion-card no-lines> -->
+                  <ion-item color='light'no-lines  text-left>
+                    <!-- <h1 color='newcolor'> Emergency type : {{ fault.emergency_type }}</h1>  -->
+                    <font size="3" color='#38414a'>Pick-Up : <b>{{ fault.pick_up }}</b></font><br>
+                    <font size="3" color='#38414a'>Drop-off : {{ fault.drop_off }}</font><br> 
+                    <!-- <font size="3" color='#38414a'>Responder : {{ fault.driver_name }}</font><br> -->
+                  </ion-item>
+                <!-- </ion-card> -->
+              </ion-row>
+
+                <ion-row no-lines *ngFor="let fault of history_collection">
+          
+                      <ion-item color=''no-lines  text-left>
+                        <!-- <h1 color='newcolor'> Emergency type : {{ fault.emergency_type }}</h1> -->
+                        <font size="3" color='#38414a'> Emergency type :<b> {{ fault.emergency_type }}</b></font><br>
+                        <!-- <font size="3" color='#38414a'>Pick-Up : {{ fault.pick_up }}</font><br>
+                        <font size="3" color='#38414a'>Drop-off : {{ fault.drop_off }}</font><br> -->
+                        <font size="3" color='#38414a'>Status : {{ fault.status }}</font><br>
+                        <!-- <font size="3" color='#38414a'>Responder : {{ fault.driver_name }}</font><br> -->
+                        <font size="3" color='#38414a'>Date : {{ fault.created_at }}</font><br>
+                      </ion-item>
+                  </ion-row>
+                 
+           
+
+
+          
+
+       
+
+
+
+
+  
+  <!-- <br> -->
+              <ion-row no-lines *ngFor="let fault of history_collection">
+
+              <!-- <ion-card no-padding> -->
+                  <ion-item no-lines color=''>
+                    <ion-avatar item-right>
+                      <img src="../../assets/CITIMED.jpg">
+                    </ion-avatar>
+                       <!-- <h1 color='newcolor'> Emergency type : {{ fault.emergency_type }}</h1>  -->
+                    <!-- <font size="3" color='#38414a'><b>Pick-Up : <b>{{ fault.pick_up }}</b></font><br> -->
+                    <!-- <p href="tel:+2787463734"><b>Cell: </b> {{detail.phone_no}}</p> -->
+                     <font size="3" color='#38414a'>Responder : {{ fault.responderName }}</font><br>           
+                    <!-- <p>1 minute away.</p> -->
+                  </ion-item>
+                  <ion-col color="secondary" >
+                      <a ion-button full class="gl" icon-right outline color="newcolor" href="tel:+27764616736">Call Responder
+                          <!-- <ion-icon name="md-call"></ion-icon> -->
+                       </a>
+                  </ion-col>
+                  <!-- </ion-card> -->
+
+                </ion-row>
+
+        </div>
+
+<!--       
+      <br> -->
+      
+               <!-- <ion-col> -->
+                    <button full   color='newcolor' ion-button icon-right  (click)="goSupport()">
+                     
+                      <ion-label >Send Message</ion-label>
+                    </button>
+                  <!-- </ion-col> -->
+      
+            
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--    
     <br>
     <font size="4" color='#38414a'>Emergency:</font >
       <font size="4" color='#f53d3d'>Burns</font > 
-       
         <br>
         <br>
-  
-
       <ion-item color='light' no-lines>
-        
-      
-          <font size="3" color='#38414a'>Pick-up & Drop-off</font >
-            
+          <font size="3" color='#38414a'>Pick-up & Drop-off</font >  
         </ion-item>
-     
-    
       <ion-list>
       <ion-item no-lines>
         <ion-icon color='secondary' name="arrow-down" item-start></ion-icon>
@@ -37,7 +156,6 @@
         <ion-icon color='secondary' name="" item-end></ion-icon>
       </ion-item>
       <div id="map">
-
           <div class="gmap_canvas"><iframe width="600" height="50%" id="gmap_canvas"
               src="https://maps.google.com/maps?q=5%20Walnut%20Rd&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
               scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.pureblack.de"></a></div>
@@ -47,7 +165,6 @@
               height:  250%;
               width: 600px;
             }
-      
             .gmap_canvas {
               overflow: hidden;
               background: none !important;
@@ -55,51 +172,31 @@
               width: 600px;
             }
           </style>
-      
         </div>
-        
-       
-
       <ion-item>
         <ion-icon color='danger' name="arrow-up" item-start></ion-icon>
         Albert Luthuli Hospital
         <ion-icon color='danger' name="" item-end></ion-icon>
       </ion-item>
     </ion-list>
-
-
-
     <a  ion-button class="gl" outline color="" href="tel:+2787463734">Call Responder</a>
- 
     <br>
     <br>
-    <ion-item color='light' no-lines>
-        
-      
-        <font size="3" color='#38414a'>Responder</font >
-          
+    <ion-item color='light' no-lines> 
+        <font size="3" color='#38414a'>Responder</font >    
       </ion-item>
-
       <ion-item no-lines>
-          
           <ion-avatar item-start>
               <img src="../../assets/Wxr0mBdS96IQJcGlrm2I_er24_logo.jpg">
             </ion-avatar>
-        <font size="3" color='#38414a'>ER24</font > 
-         
+        <font size="3" color='#38414a'>ER24</font >   
         </ion-item>
-
         <ion-item color='light' no-lines>
-        
-      
             <font size="3" color='#38414a'>Time & Date</font > <br>     
-        
           </ion-item>
-    
           <ion-item no-lines>
-              
             <font size="3" color='#38414a'>07:08am / 29-04-2019</font>
-            </ion-item>
+            </ion-item> -->
 
 
 </ion-content>

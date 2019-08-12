@@ -43,6 +43,13 @@ export class UrlbaseProvider {
         catchError(this.handleError('userhistory', []))
       );
   }
+  viewhistory (data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'history', data)
+      .pipe(
+        tap(_ => this.log('history')),
+        catchError(this.handleError('history', []))
+      );
+  }
 
     //pass test on local, verify page
   activate (data): Observable<any> {

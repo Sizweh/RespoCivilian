@@ -21,9 +21,10 @@ import { FileChooser } from '@ionic-native/file-chooser';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 import { File } from '@ionic-native/file/ngx';
+import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
+import { SocketsProvider } from '../providers/sockets/sockets';
 
-
-
+const config: SocketIoConfig = { url: 'http://localhost:3001', options:{}};
 
 
 @NgModule({
@@ -39,8 +40,8 @@ import { File } from '@ionic-native/file/ngx';
       mode: 'md'
     }),
     HttpClientModule,
-
-
+     
+    SocketIoModule.forRoot(config),
     IonicStorageModule.forRoot()
     
   
@@ -56,7 +57,7 @@ import { File } from '@ionic-native/file/ngx';
     ImagePicker,
     FileChooser,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-   
+
     AuthProvider,
     AlertsProvider,
     ToastProvider,
@@ -67,8 +68,10 @@ import { File } from '@ionic-native/file/ngx';
     Camera,
     FileTransfer,
     File,
+    SocketsProvider,
     
     HttpModule,
+    SocketsProvider,
  
   
   

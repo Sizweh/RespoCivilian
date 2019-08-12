@@ -15,6 +15,8 @@ export class ChangePasswordPage {
 
   
   UserId :any;
+  id :any;
+  User_Id :any;
   toConcat:any;
   passwordForm: FormGroup;
   password_collection: any;
@@ -30,16 +32,18 @@ export class ChangePasswordPage {
 
     ) {
       
-
-      this.storage.get('user_id').then((val) => {
-        console.log(String(val));
-        this.  toConcat =   this.UserId =String(val);
-      });
+      this.id = navParams.get('data') ;
+      this.User_Id = navParams.get('user_id') ;
+  
    
       this.passwordForm = formBuilder.group({
-        'user_id': ['77',],
+
+        'user_id': [this.User_Id,],
+        'id': [this.id,],
+  
 
         'password': ['', Validators.compose([Validators.required, Validators.maxLength(6)])],
+        'new_password': ['', Validators.compose([Validators.required, Validators.maxLength(6)])],
         'confirmPassword': ['', Validators.compose([Validators.required, Validators.maxLength(6) ])],
       })
   }
@@ -76,12 +80,13 @@ export class ChangePasswordPage {
     const values = this.passwordForm.value;
 
     this.storage.set('password', values.password);
+    this.storage.set('new_password', values.new_password);
     this.storage.set('confirmPassword', values.confirmPassword);
 
 
     var postData = this.passwordForm.value;
 
-  //   //THIS IS A BETTER WAY TO MAKE API CALLS
+   //THIS IS A BETTER WAY TO MAKE API CALLS
   this.urlService.changePassword(postData)
   .subscribe(res => {
   //     // this.presentToast(res.msg, res.status);

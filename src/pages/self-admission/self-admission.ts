@@ -79,7 +79,9 @@ console.log(+ "ForSomeone");
 }
 
 
-goSelectResponder(){    
+goSelectResponder(){
+  this.storage.set('forSomeone', 'Yes');
+  console.log('for someone clicked');    
 this.navCtrl.push("SelectResponderPage");
 }
 

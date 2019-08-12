@@ -16,15 +16,8 @@ import { Storage } from '@ionic/storage';
 export class HistoryPage {
 
   historyForm: FormGroup;
-  // alert: any;
   history_collection: any;
   UserId :any;
-  // user_id_server:any;
-  // historyFormm: FormGroup;
-  // get_history_data_Object:any ;
-  // user_id_serve: null;
-
-
   emergency_type:any;
   Userdata: any;
   user_id: any;
@@ -32,9 +25,7 @@ export class HistoryPage {
   toConcat:any;
   User_Id :any;
     id: any;
-  // promise1:any;
-  // promise2:any;
-  // var:any;
+
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -48,10 +39,7 @@ export class HistoryPage {
       this.id = navParams.get('data') ;
       this.User_Id = navParams.get('user_id') ;
 
-      // this.storage.get('user_id').then((val) => {
-      //   console.log(String(val));
-      //   this.toConcat = this.UserId =String(val); 
-      // });
+   
 
       this.historyForm = formBuilder.group({
         'user_id': ['',],
@@ -95,12 +83,14 @@ this.storage.get('user_id').then((val) => {
 
 
 
-
-
-  goHistory1(){
-    console.log("uuuuuu");
- //   this.navCtrl.push('History1Page')
-  }
+  goHistory1(id, user_id){ 
+        
+    this.navCtrl.push("History1Page", {
+      data: id,
+      user_id:user_id
+    });
+ 
+    }
 
  
 }

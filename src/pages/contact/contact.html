@@ -13,12 +13,50 @@
 
     
     <ion-content>
-
+        <ion-grid>
+   
+            <ion-row *ngFor="let message of messages">
+              <ion-col  col-9 *ngIf="message.from !== nickname" class="message" [ngClass]="{'my_message': message.from === nickname, 'other_message': message.from !== nickname}">
+              <span class="user_name">{{ message.from}}:</span><br>
+              <span>{{ message.text }}</span>
+              <div class="message-detail">
+              <span><small>{{message.date | moment: "HH:mm" | lowercase}}</small></span>   
+              </div>
+            </ion-col>
+        
+            <ion-col offset-3 col-9 *ngIf="message.from === nickname" class="message" [ngClass]="{'my_message': message.from === nickname, 'other_message': message.from !== nickname}">
+                <span class="user_name">{{ message.from}}:</span><br>
+                <span>{{ message.text }}</span>
+                <div class="message-detail">
+                <span><small>{{message.date | moment: "HH:mm" | lowercase}}</small></span><br>
+                </div>
+              </ion-col>
+            </ion-row>
+  
+  
+          
+          </ion-grid>
+  
 
   
-    <h4>jjjjjj</h4>
 
+      
     </ion-content>
+<!-- 
+    <ion-footer>
+  
+        <ion-item>
+          <ion-input [(ngModel)]="message" placeholder="typing..."></ion-input>
+          
+          <button ion-button clear (click)="sendMessage()" item-end [disabled]="message ===''">
+            <ion-icon class="footer-btn" name="send"></ion-icon>
+          </button>
+        </ion-item>
+    
+      </ion-footer> -->
+
+      
+
             
 
       
