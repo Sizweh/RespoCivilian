@@ -47,15 +47,20 @@ export class SelectResponderPage {
     console.log('ionViewDidLoad SelectResponderPage');
   }
 
-  goConfirm(responder){
-    this.storage.set('selected_responder', responder);
-    console.log(responder);
-    this.navCtrl.push('LocationPage')
-  }
+  // goConfirm(responder){
+  //   this.storage.set('selected_responder', responder);
+  //   console.log(responder);
+  //   this.navCtrl.push('LocationPage')
+  // }
+
 
   
   goRequestElse() {
     this.navCtrl.push('RequestElsePage')
+  }
+  
+  goMap() {
+    this.navCtrl.push('MapPage')
   }
   
 
