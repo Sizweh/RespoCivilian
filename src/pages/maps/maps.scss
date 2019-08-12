@@ -1,0 +1,65 @@
+
+
+
+    page-location {
+        .toolbar-background {
+            background-color:#11C1F3;
+    }
+    
+     
+    
+          #pac-input{
+                //  background: #11C1F3 !important;
+                // border-radius: 1px solid transparent  ;
+                // height: 35px !important;
+                // max-width: 700px;
+                // font-size: 1.15em !important;
+                // border: 1px ;
+                //color:#38414a;
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+                resize: vertical;
+            }
+            
+        
+            #infowindow-content .title {
+              font-weight: bold;
+              font-size: 1.2em !important;
+             color:#38414a
+            }
+           
+
+          .gm-style .gm-style-iw {
+            //border: 2px solid #455268;
+            width: 50% !important;
+            height: 150px !important;
+          
+         }    
+         .gm-style .gm-style-iw #google-popup p{
+          padding: 4px;
+       }
+       .gm-style div div div div div div div div {
+      margin: 8px;
+        padding:0;
+        top: 0;
+        color: #38414a;
+        font-size: 1px;
+      }
+
+.centerMarker{
+  position:absolute;
+  right:50%;left:50%;
+
+    }
+    }
+    
+
+
+
+
+
+
+

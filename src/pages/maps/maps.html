@@ -1,0 +1,69 @@
+
+<ion-content text-center>
+ 
+  
+  
+  
+  
+  
+  
+    <!-- <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()" placeholder="Search for a place">
+  
+    </ion-searchbar>
+  
+    <ion-list [hidden]="autocompleteItems.length == 0">
+      <ion-item *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResult(item)">
+        {{ item.description }}
+      </ion-item>
+    </ion-list> -->
+  
+    <div id="map" style="width:500px; height:350px;">
+  
+  
+    </div>
+    
+    
+    <div id="pac-container" text-center >
+      <input id="pac-input" type="text" style="width: 100%; border: 1px solid #ccc; 
+       padding: 11px; border-radius: 4px; box-sizing: border-box; resize: vertical;  font-size: 17px;"
+  
+          placeholder="Enter a location">
+        
+  
+    </div>
+  
+    <br>
+    <div id="infowindow-content">
+      <img src="" width="12" height="12" id="place-icon">
+      <span id="place-name"  class="title"></span><br>
+      <span id="place-address"></span>
+    </div>   
+                
+                
+                
+                
+                <br>
+                <br>
+                
+                <button (click)="goLocation()" ion-button color="secondary"
+                  round>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Confirm Location
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                <br>
+                <br>
+                
+                <button (click)="goHome()" ion-button color="newcolor"
+                  round>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cancel
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                </ion-content>

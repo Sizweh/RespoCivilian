@@ -59,8 +59,8 @@ export class SelectResponderPage {
     this.navCtrl.push('RequestElsePage')
   }
   
-  goMap() {
-    this.navCtrl.push('MapPage')
+  goMaps() {
+    this.navCtrl.push('MapsPage')
   }
   
 
