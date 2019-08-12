@@ -20,19 +20,21 @@
   <div class="register-fields" [formGroup]="historyForm">
 
       <ion-row no-lines *ngFor="let fault of history_collection">
-          <ion-card no-lines>
-            <ion-item color='light'no-lines  text-left>
-              <h1 color='newcolor'> Emergency type : {{ fault.emergency_type }}</h1>
-              <font size="3" color='#38414a'>Pick-Up : {{ fault.pick_up }}</font><br>
-              <font size="3" color='#38414a'>Drop-off : {{ fault.drop_off }}</font><br>
-              <font size="3" color='#38414a'>Status : {{ fault.status }}</font><br>
-              <font size="3" color='#38414a'>Responder : {{ fault.company_id }}</font><br>
-              <!-- <font size="3" color='#38414a'>Date : {{ fault.created_at }}</font><br> -->
-             
 
+          <ion-card   no-lines>
+            <ion-item (click)="goHistory1(fault.id, fault.user_id)" color='light'no-lines  text-left>
+              <!-- <h1 color='newcolor'> Emergency type : {{ fault.emergency_type }}</h1> -->
+              <font size="3" color='#38414a'> Emergency type :<b> {{ fault.emergency_type }}</b></font><br>
+              <!-- <font size="3" color='#38414a'>Pick-Up : {{ fault.pick_up }}</font><br>
+              <font size="3" color='#38414a'>Drop-off : {{ fault.drop_off }}</font><br> -->
+              <font size="3" color='#38414a'>Status : {{ fault.status }}</font><br>
+              <!-- <font size="3" color='#38414a'>Responder : {{ fault.driver_name }}</font><br> -->
+              <font size="3" color='#38414a'>Date : {{ fault.created_at }}</font><br>
             </ion-item>
           </ion-card>
+
         </ion-row>
+        <br>
   </div>
     <br>
     

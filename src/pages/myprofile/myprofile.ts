@@ -168,23 +168,22 @@ this.storage.get('user_id').then((result) => {
       user_id:result,
     });
 });
-
-    //this.navCtrl.push('NextOfSkinPage')
-  
     }
 
     goChangePassword(){
-    this.navCtrl.push('ChangePasswordPage')
-  
-    }
-    // goChangePassword( user_id){
-    //   //  this.navCtrl.push('Nextofkin2Page')
-    //     this.navCtrl.push("ChangePasswordPage", {
-    //       user_id:user_id,
-        
-    //     });
-    //     }
+this.storage.get('user_id').then((result) => {
 
+   this.navCtrl.push("ChangePasswordPage", {
+      user_id:result,
+    });
+});
+    }
+
+    // goChangePassword(){
+    // this.navCtrl.push('ChangePasswordPage')
+  
+    // }
+   
 
 }
 

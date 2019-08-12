@@ -1,50 +1,50 @@
 <ion-content padding="true" class="manual-ios-statusbar-padding">
-  <div>
+<div>
 
-    <img class="logo" src="http://46.101.169.33/img/respo2.png"
-      style="display: block; width: 48%; height: auto; margin-left: auto; margin-right: auto;">
-  </div>
+<img class="logo" src="http://46.101.169.33/img/respo2.png"
+style="display: block; width: 48%; height: auto; margin-left: auto; margin-right: auto;">
+</div>
 
-  <br>
-  <br>
-  <br>
-  
-  <div class="login-fields" [formGroup]="loginForm">
-    <ion-item>
-      <ion-input block formControlName="phoneNumber" minLength="10" maxLength="10" type="tel" placeholder="Cell Number">
-      </ion-input>
-    </ion-item>
+<br>
+<br>
+<br>
 
-    <ion-item>
-      <ion-input formControlName="password" [type]="passwordType" clearOnEdit="false" minLength="4" maxLength="6" placeholder="Password">
-      </ion-input>
+<div class="login-fields" [formGroup]="loginForm">
 
-      <button ion-button clear item-end (click)='hideShowPassword()' style="height:25px;">
+<ion-item>
+<ion-input block formControlName="phoneNumber" minLength="10" maxLength="10" type="tel" placeholder="Cell Number">
+</ion-input>
+</ion-item>
 
-        <ion-icon name="eye" style="font-size:25px;">
-        </ion-icon>
-      </button>
-    </ion-item>
+<ion-item>
+<ion-input formControlName="password" [type]="passwordType" clearOnEdit="false" minLength="4" maxLength="6" placeholder="Password">
+</ion-input>
 
-
-  </div>
-
-  
+<button ion-button clear item-end (click)='hideShowPassword()' style="height:25px;">
+<ion-icon name="eye" style="font-size:25px;">
+</ion-icon>
+</button>
+</ion-item>
 
 
-  <br>
-  <!-- <button ion-button round block [disabled]="!loginForm.valid" (click)="goLogin()" color="newcolor"> -->
-    <button  icon-right ion-button round block (click)="goLogin()" color="newcolor">
+</div>
 
-    Log in
-  </button>
-  
-  
-  <p text-center  (click)="goResetPassword()">Forgot Password</p>
-  
-  <P text-center >Or</P>
-  
-  <button (click)="goRegister()"  full round ion-button color="calm" clear>Register</button>
-  
-  
+
+
+
+<br>
+<!-- <button ion-button round block [disabled]="!loginForm.valid" (click)="goLogin()" color="newcolor"> -->
+<button  icon-right ion-button round block (click)="goLogin()" color="newcolor">
+
+Log in
+</button>
+
+
+<p text-center  (click)="goResetPassword()">Forgot Password</p>
+
+<P text-center >Or</P>
+
+<button (click)="goRegister()"  full round ion-button color="calm" clear>Register</button>
+
+
 </ion-content>

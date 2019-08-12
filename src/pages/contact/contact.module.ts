@@ -3,7 +3,8 @@ import { IonicPageModule } from 'ionic-angular';
 
 
 import { ContactPage } from './contact';
-
+import { PipesModule } from '../../pipes/pipes.module';
+import { SocketIoModule } from 'ng-socket-io';
 
 
 
@@ -13,7 +14,8 @@ import { ContactPage } from './contact';
   ],
   imports: [
     IonicPageModule.forChild(ContactPage),
-
+    SocketIoModule,
+    PipesModule
 
    
    
