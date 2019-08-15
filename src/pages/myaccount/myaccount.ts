@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { Storage } from '@ionic/storage';
 /**
  * Generated class for the MyaccountPage page.
  *
@@ -15,20 +15,50 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MyaccountPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    private storage: Storage,
+    ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyaccountPage');
   }
 
-  goEditRegistration(){
-    this.navCtrl.push('EditRegistrationPage')
-  }
+
   goNextOfKin(){
     this.navCtrl.push('NextOfKinPage')
   }
-  goMedicalDetails(){
-    this.navCtrl.push('MedicalDetailsPage')
-  }
+  // goBankingDetails(){
+  //   this.navCtrl.push('BankingDetailsPage')
+  // }
+
+
+  goBankingDetails(){
+    
+    this.storage.get('user_id').then((result) => {
+    
+       this.navCtrl.push("BankingDetailsPage", {
+          user_id:result,
+          // id:result,
+        });
+
+      });
+
+        }
+    
+
+  goForSelf(){
+    
+    this.storage.get('user_id').then((result) => {
+    
+       this.navCtrl.push("ForSelfPage", {
+          user_id:result,
+          // id:result,
+        });
+
+      });
+
+        }
+    
 }

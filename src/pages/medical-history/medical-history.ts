@@ -4,6 +4,9 @@ import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { FormGroup, FormBuilder, Validators, } from '@angular/forms';
 import { AlertController, LoadingController, ToastController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { SelectSearchableComponent } from 'ionic-select-searchable';
+
+
 
 
 @IonicPage()
@@ -13,13 +16,14 @@ import { Storage } from '@ionic/storage';
 })
 export class MedicalHistoryPage {
 
+  Employee:any;
+
   UserId :any;
   User_Id :any;
   id: any;
   toConcat:any;
   medicalForm: FormGroup;
   medical_collection: any;
-
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -54,36 +58,40 @@ export class MedicalHistoryPage {
       })
   }
 
+
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad MedicalHistoryPage');
 
     var headers = new Headers();
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
-  //  const requestOptions = new RequestOptions({ headers: headers });
-   
    //pass to back-end
-    //  console.log(this.historyForm.value);
       var postData = this.medicalForm.value;
-
-
       //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.medicalHistory(postData)
     .subscribe(res => {
-        // this.presentToast(res.msg, res.status);
-       // console.log(res.id);
-        //console.log(res.drop_off);
-       //// this.alert.presentAlert("Notification", res.msg);
      this.medical_collection = res;
         if (res.status=='OK') {
-      //    this.storage.set('user_name', res.user_name);
-        //  this.storage.set('user_id', res.user_id);
-          // localStorage.setItem('token', res.token);
-          //this.navCtrl.setRoot('MedicalHistoryPage');
         }
     }, (err) => {
         console.log(err);
     });
+
+    // var headers = new Headers();
+    // headers.append("Accept", 'application/json');
+    // headers.append('Content-Type', 'application/json' );
+   //pass to back-end
+      // var postData = this.medicalForm.value;
+      //THIS IS A BETTER WAY TO MAKE API CALLS
+    // this.urlService.medList(postData)
+    // .subscribe(res => {
+    //  this.medical_collection = res;
+    //     if (res.status=='OK') {
+    //     }
+    // }, (err) => {
+    //     console.log(err);
+    // });
 
 
   }
@@ -147,4 +155,7 @@ export class MedicalHistoryPage {
     this.navCtrl.push('AddMedicalAidPage')
     }
 
+ 
+
+    
 }

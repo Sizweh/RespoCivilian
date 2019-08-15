@@ -110,12 +110,12 @@ export class MyApp {
     this.menu.close();
     }
   
-  goMyAccount(){
-     // this.sideMenu.hide();
-    this.nav.setRoot('MyaccountPage');
-    this.menu.enable(true);
-    this.menu.close();
-    }
+  // goMyAccount(){
+  //    // this.sideMenu.hide();
+  //   this.nav.setRoot('MyaccountPage');
+  //   this.menu.enable(true);
+  //   this.menu.close();
+  //   }
   
   // goSupport(){
   //    // this.sideMenu.hide();
@@ -125,6 +125,18 @@ export class MyApp {
   //   this.menu.close();
   //   }
 
+      
+  goMyAccount(){
+
+    this.storage.get('user_id').then((result) => {
+      this.nav.setRoot("MyaccountPage", {
+        user_id:result,
+        id:result,
+      });
+  });
+  this.menu.enable(true);
+  this.menu.close();
+      }
       
     goSupport(){
 

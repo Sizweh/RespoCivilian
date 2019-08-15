@@ -1,81 +1,152 @@
-<!--
-  Generated template for the BankingDetailsPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-
-
-
+<ion-header>
+  <ion-navbar color='newcolor' >
+      <ion-toolbar color='newcolor'  mode="ios">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title></ion-title>
+  </ion-toolbar>
+  </ion-navbar>
+</ion-header>
 <ion-content text-center padding>
   <br>
+ 
 
-<h5>Banking Details</h5>
-
-
-<div class="register-fields" [formGroup]="registerForm">
-
-<ion-item>
-    <ion-input
-     placeholder="Credit/Debit card" 
-     type="text"
-     formControlName="credit/debitCard"
-     ></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-input 
-    placeholder="Card Holder Name" 
-    type="text"
-    formControlName="cardholderName"
-    ></ion-input>
-
-  </ion-item>
-  
-
-
-  <ion-item>
-      <ion-input 
-      placeholder="Expiry Date" 
-      type="Date"
-      formControlName="expiryDate"
-      ></ion-input>
-    </ion-item>
-
-  <ion-item>
-      <ion-input 
-      placeholder="CVV" 
-      type="number"
-      formControlName="cvc"
-      ></ion-input>
-    </ion-item>
-
-
-  </div>
-        
-
-
+<h5></h5>
+<font size="3" color='#38414a'><b>Note:&nbsp;  </b>  Fill in this form only if you're a Student at a  <b>University or College.</b></font><br>
 
 <br>
 
-<font (click)="goFaq()" size="2" color='#488aff'>Read Terms & Conditions Here</font>
+<!-- <ion-row no-scrolling no-lines *ngFor="let fault of student_collection"> -->
+<!-- 
+  
+    <ion-card no-lines> -->
+
+<div class="register-fields" [formGroup]="registerForm">
 
 
-    <div class="remember_token">
-        <ion-item no-lines>
-           <ion-label>I Accept The Terms & Conditions</ion-label>
-           <ion-checkbox [(ngModel)]="remembertoken" (ionChange)="updateToken()"></ion-checkbox>
-         </ion-item>
-       </div>
+
+  <ion-item>
+    <ion-label >Institution</ion-label>
+    <ion-input >Institution</ion-input>
+    <ion-select formControlName="org_name">
+      <ion-option value="MUT">MUT(Mangosuthu University of Technology)</ion-option>
+      <ion-option value="DUT">DUT(Durban University of Technology)</ion-option>
+      <ion-option value="UKZN">UKZN</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-input
+      block
+      formControlName="org_reg"
+      minLength="6"
+      maxLength="10"
+      type="number"
+      placeholder="Student No."
+    ></ion-input>
+  </ion-item>
+
+<ion-item>
+    <ion-input
+      block
+      formControlName="email"
+      type="text"
+      placeholder="Email"
+    ></ion-input>
+  </ion-item>
+
+<ion-item>
+    <ion-input
+      block
+      formControlName="phone_no"
+      type="text"
+      placeholder="Cell Number"
+    ></ion-input>
+  </ion-item>
+
+<ion-item>
+    <ion-input
+      block
+      formControlName="address"
+      type="text"
+      placeholder="Address"
+    ></ion-input>
+  </ion-item>
+
+<ion-item>
+    <ion-input
+      block
+      formControlName="city"
+      type="text"
+      placeholder="City"
+    ></ion-input>
+  </ion-item>
+
+<ion-item>
+    <ion-input
+      block
+      formControlName="province"
+      type="text"
+      placeholder="Province"
+    ></ion-input>
+  </ion-item>
+
+<ion-item>
+    <ion-input
+      block
+      formControlName="ems_lisence"
+      type="text"
+      placeholder="Ems"
+    ></ion-input>
+  </ion-item>
+
+
+ 
+
+  </div>
+<!-- 
+</ion-card> -->
+
+  <!-- </ion-row> -->
+        
 
 
 <br>
 <ion-row>
-    <ion-col col-6>
-      <button ion-button clear color='newcolor' block (click)="goNextOfKin()" > back</button>
-     </ion-col>
+    <!-- <ion-col col-6>
+      <button ion-button clear color='newcolor' block (click)="goMyaccount()" >back</button>
+     </ion-col> -->
       <ion-col col-6>
-        <button  ion-button round color='secondary' block (click)="goVerifyAccount()"> Done</button>
+        <button   ion-button round color='secondary' block (click)="goHome()">Save</button>
       </ion-col>
+      <!-- <ion-col col-6>
+        <button  [disabled]="!registerForm.valid"  ion-button round color='secondary' block (click)="goHome()">Save</button>
+      </ion-col> -->
 </ion-row>
+
+
+
+
 </ion-content>
+
+
+<!-- <font (click)="goFaq()" size="2" color='#488aff'>Read Terms & Conditions Here</font>
+<div class="remember_token">
+  <ion-item no-lines>
+    <ion-label>I Accept The Terms & Conditions</ion-label>
+    <ion-checkbox [(ngModel)]="remembertoken" (ionChange)="updateToken()"></ion-checkbox>
+  </ion-item>
+</div>
+<ion-item>
+  <ion-input placeholder="Credit/Debit card" type="text" formControlName="credit/debitCard"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-input placeholder="Card Holder Name" type="text" formControlName="cardholderName"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-input placeholder="Expiry Date" type="Date" formControlName="expiryDate"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-input placeholder="CVV" type="number" formControlName="cvc"></ion-input>
+</ion-item> -->

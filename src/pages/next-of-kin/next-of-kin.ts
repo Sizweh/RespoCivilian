@@ -28,6 +28,8 @@ export class NextOfKinPage {
   email:any;
   password:any;
   confirmPassword:any;
+  // org_name:any;
+  // student_no:any;
 
   phone:any;
   relationship:any;
@@ -57,9 +59,7 @@ export class NextOfKinPage {
 
         'name': ['', Validators.compose([Validators.required])],
         'surname': ['', Validators.compose([Validators.required])],
-        
         'phone': ['', Validators.compose([Validators.required])],
-
         'relationship': ['', Validators.compose([Validators.required])],
     
       })
@@ -103,6 +103,14 @@ export class NextOfKinPage {
       //  console.log(String(val));
       this.confirmPassword = val;
     });
+    // this.storage.get('org_name').then((val) => {
+    //   //  console.log(String(val));
+    //   this.org_name = val;
+    // });
+    // this.storage.get('student_no').then((val) => {
+    //   //  console.log(String(val));
+    //   this.student_no = val;
+    // });
   
     
     //////////////////medical////////////////////////
@@ -177,7 +185,6 @@ goVerifyAccount(){
   this.storage.set('name', value.name);
   this.storage.set('surname', value.surname);
   this.storage.set('phone', value.phone);
-
   this.storage.set('relationship', value.relationship);
 
   this.Userdata = { 
@@ -197,7 +204,6 @@ goVerifyAccount(){
    name: value.name,
    surname: value.surname,
    phone:value.phone,
- 
    relationship:value.relationship,
 
    //register//
@@ -207,6 +213,8 @@ goVerifyAccount(){
    gender: this.gender,
    myDate: this.myDate,
    email: this.email,
+  //  student_no: this.student_no,
+  //  org_name: this.org_name,
   //  password: 'ffffff',
  
    password:this.password,
@@ -270,11 +278,6 @@ goVerifyAccount(){
 
   
 goLogin(){
-  // const loading= this.loadingCtrl.create({
-  //   content: "loging out...",
-  //   duration: 3000
-  // });
-  // loading.present();
 this.navCtrl.setRoot('LoginPage')
 
 }

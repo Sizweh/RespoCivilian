@@ -196,6 +196,27 @@ export class UrlbaseProvider {
         catchError(this.handleError('changePassword', []))
       );
   }
+  medList(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'medical_aidlist', data)
+      .pipe(
+        tap(_ => this.log('medical_aidlist ')),
+        catchError(this.handleError('medical_aidlist ', []))
+      );
+  }
+  orgList(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'addOrgInfo', data)
+      .pipe(
+        tap(_ => this.log('addOrgInfo')),
+        catchError(this.handleError('addOrgInfo', []))
+      );
+  }
+  studentDetails(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'studentDetails', data)
+      .pipe(
+        tap(_ => this.log('studentDetails')),
+        catchError(this.handleError('studentDetails', []))
+      );
+  }
 
   
 

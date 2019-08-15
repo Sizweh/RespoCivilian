@@ -736,8 +736,8 @@ goConfirm(){
 // this.navCtrl.push('ConfirmPage')
 }
 
-goHome(){
-this.navCtrl.setRoot('HomePage')
+goMaps(){
+this.navCtrl.setRoot('MapsPage')
 
 }
 
