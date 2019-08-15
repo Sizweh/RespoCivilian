@@ -17,7 +17,7 @@ declare var google;
 
 export class MapsPage implements OnInit {
 
-
+  marrkerCivilian:any;
 map         : any;
 infoWindow  : any;
 marker      : any;
@@ -117,6 +117,7 @@ responderDistance: any;
 
     let that = this;
     //intial map setup, if no geolaction available
+
     this.map = new google.maps.Map(document.getElementById('map'), {
       zoom: 15,
       center: { lat: -29.856278, lng: 31.028828 },
@@ -445,7 +446,6 @@ responderDistance: any;
           });
       });
 
-
        
         marker.setVisible(false);
         var place = autocomplete.getPlace();
@@ -474,11 +474,19 @@ responderDistance: any;
             (place.address_components[2] && place.address_components[2].short_name || '')
           ].join(' ');
         }
-       // infowindow.setContent(address);
+        document.getElementById('infowindow-content').innerHTML =address;
+       
+        document.getElementById('pac-input').value = "";
         infowindowContent.children['place-icon'].src = place.icon;
         infowindowContent.children['place-name'].textContent = place.name;
         infowindowContent.children['place-address'].textContent = address;
-         //infowindow.open(that.map, marker);
+      //  marrkerCivilian.setVisible(false)
+       //   this.init() ; 
+
+        //  infowindow.open(that.map, marker);
+        //infowindow.setContent(address);
+       // document.getElementById('infowindow-content').innerHTML = "dsjfkjlkjslkjflkjsdlkjflksjl";
+        
       });
 
      
@@ -529,7 +537,65 @@ responderDistance: any;
 //END MARKER
 
 
-  this.infoWindow = new google.maps.InfoWindow;
+
+
+function init(){
+   
+    // Try HTML5 geolocation.
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        //set cvilians location
+
+        var civilianLng = pos.lng;
+        if (civilianLng) {
+          that.civilianLat = pos.lat;
+          that.civilianLng = pos.lng;
+        }
+
+      
+        //marker for user/civilian location
+       
+        var  image = "../../assets/mapi/fixed5.png";
+        var markerCivilian;
+        markerCivilian = new google.maps.Marker({
+          position: pos,
+          map: that.map,
+           
+          draggable: false,
+          icon:image,
+          animation: google.maps.Animation.DROP
+        });
+
+
+
+        var geocoder  = new google.maps.Geocoder();  
+        var location  = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); 
+        
+        
+        geocoder.geocode({'latLng': location}, function (results, status) {
+          if(status == google.maps.GeocoderStatus.OK) {           
+          var add=results[0].formatted_address;         
+          document.getElementById('infowindow-content').innerText = add;
+          }
+          });
+
+        var geocodr = new google.maps.Geocoder();
+        that.infoWindow.open(that.map);
+        that.map.setCenter(pos);
+
+      }, function () {
+        this.handleLocationError(true, that.infoWindow, this.map.getCenter(), that.map);
+      });
+ 
+    
+  }
+}
+  this.infoWindow = new google.maps.InfoWindow();
 
     // Try HTML5 geolocation.
     if (navigator.geolocation) {
@@ -546,7 +612,8 @@ responderDistance: any;
           that.civilianLat = pos.lat;
           that.civilianLng = pos.lng;
         }
-       
+
+      
         //marker for user/civilian location
        
         var  image = "../../assets/mapi/fixed5.png";
@@ -565,7 +632,7 @@ responderDistance: any;
 
 
 
-
+        
         var  image = "../../assets/mapi/moving4.png";
         var marrkerCivilian;
         marrkerCivilian = new google.maps.Marker({
@@ -575,13 +642,25 @@ responderDistance: any;
           title: 'My location',
           draggable: true,
           icon:image,
-          animation: google.maps.Animation.DROP
+          animation: google.maps.Animation.DROP,
+       
         });
-
+        
+        
+        var geocoder  = new google.maps.Geocoder();  
+        var location  = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); 
+        
+        
+        geocoder.geocode({'latLng': location}, function (results, status) {
+          if(status == google.maps.GeocoderStatus.OK) {           
+          var add=results[0].formatted_address;         
+          document.getElementById('infowindow-content').innerText = add;
+          }
+          });
 
         var geocodr = new google.maps.Geocoder();
     
-        marrkerCivilian.addListener('click', function(event)  {
+        marrkerCivilian.addListener('dragend', function(event)  {
 
         geocodr.geocode({
           'latLng': event.latLng
@@ -594,6 +673,7 @@ responderDistance: any;
               
                 infowindow.setContent(this.adressess);
                 document.getElementById('infowindow-content').innerHTML = this.adressess ;
+                // document.getElementById('infowindow-content').innerHTML = event.latLng ;
                
 
             
@@ -616,8 +696,8 @@ responderDistance: any;
         }
         
         var infowindow = new google.maps.InfoWindow();
-        infowindow.setContent('My Location');
-       
+        infowindow.setContent(marrkerCivilian.title);
+       // document.getElementById('infowindow-content').innerHTML = infowindow.content;
         
          
         infowindow.open(that.map, marrkerCivilian);
