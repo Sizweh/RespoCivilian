@@ -273,7 +273,7 @@ export class SupportPage {
             userId: this.toUser._id,
             username: this.toUser.username,
             pic: this.toUser.pic,
-            text: 'Thank you for the response'
+            text: 'Welcome to Respo'
           };
         this.messages.push(replyData);
         this.scrollToBottom();

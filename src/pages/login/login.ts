@@ -142,18 +142,14 @@ export class LoginPage {
   }
 
 
-  goHome(){
-    this.navCtrl.push("HomePage");
-  }
 
   goRegister(){
     this.navCtrl.push("RegisterPage");
   }
 
   
-  goMedicalDetails(){
-   
-    this.navCtrl.push("MedicalDetailsPage");
+  goBankingDetails(){
+    this.navCtrl.push("BankingDetailsPage");
   }
 
   goResetPassword(){

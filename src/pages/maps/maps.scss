@@ -1,59 +1,58 @@
-
-
-
-    page-location {
+page-maps {
         .toolbar-background {
             background-color:#11C1F3;
-    }
-    
-     
-    
-          #pac-input{
-                //  background: #11C1F3 !important;
-                // border-radius: 1px solid transparent  ;
-                // height: 35px !important;
-                // max-width: 700px;
-                // font-size: 1.15em !important;
-                // border: 1px ;
-                //color:#38414a;
-                width: 100%;
-                padding: 12px;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-                box-sizing: border-box;
-                resize: vertical;
-            }
-            
-        
-            #infowindow-content .title {
-              font-weight: bold;
-              font-size: 1.2em !important;
-             color:#38414a
-            }
-           
-
-          .gm-style .gm-style-iw {
-            //border: 2px solid #455268;
-            width: 50% !important;
-            height: 150px !important;
           
-         }    
-         .gm-style .gm-style-iw #google-popup p{
-          padding: 4px;
-       }
-       .gm-style div div div div div div div div {
-      margin: 8px;
-        padding:0;
-        top: 0;
-        color: #38414a;
-        font-size: 1px;
+          
       }
-
-.centerMarker{
-  position:absolute;
-  right:50%;left:50%;
-
+      .gm-style .gm-style-iw {
+        background-color: #f2f3f5;
+        // top: 0 !important;
+        // left: 0 !important;
+        width: 145px !important;
+        // height: 10% !important;
+        min-height: 78px !important;
+        // padding: 0px;
+        // display: block !important;
     }
+    .gm-style .gm-style-iw {
+      border: 2px solid #488aff;
+      width: 0% ;
+      height: 15% ;
+    
+   }    
+   .gm-style .gm-style-iw #google-popup p{
+    padding: 4px;
+  }
+  .gm-style div div div div div div div div {
+  font-weight: bold;
+  color: #455268;
+  font-size: 11px;
+  }
+  .errspan {
+    float: right;
+    margin-right: 6px;
+    margin-top: -20px;
+    position: relative;
+    z-index: 2;
+    color: red;
+  }
+
+
+  .input-wrapper {
+    display:inline-block;
+    position: relative
+}
+.input-wrapper:after {
+    font-family: 'FontAwesome';
+    content: '\f274';
+    position: absolute;
+    right: 6px;
+}
+  // #infowindow-content .title {
+  //       font-weight: bold;
+  //       font-size: 1.2em !important;
+        
+  //     }
     }
     
 

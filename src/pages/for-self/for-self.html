@@ -15,59 +15,59 @@
 
 <ion-content text-center padding>
 
+    <ion-title text-center>Edit Registration details</ion-title>
 
-    <h6> For Self:</h6>
+    <ion-row no-lines *ngFor="let fault of student_collection">
 
-    <br>
-      <ion-item>
-        <ion-input
-         placeholder="Name & Surname" 
-         type="text"
-      
-         ></ion-input>
-      </ion-item>
-    
-      <ion-item>
-        <ion-input 
-        placeholder="Medical Aid Scheme" 
-        type="text"
-     
-        ></ion-input>
-      </ion-item>
-    
-      <ion-item>
-        <ion-input
-         placeholder="Scheme Number" 
-         type="number"
-      
-         ></ion-input>
-      </ion-item>
-    
-      <ion-item>
-        <ion-input 
-        placeholder="Preferred Hospital" 
-        type="text"
-     
-        ></ion-input>
-      </ion-item>
-    
-      
-      <ion-item>
-          <ion-input 
-          placeholder="State your reason here..." 
-          type="text"
-       
-          ></ion-input>
+      <ion-card>
+  <div class="login-fields" [formGroup]="registerForm">
+
+    <ion-item no-lines text-left>
+        <ion-label floating>Institution</ion-label>
+        <ion-input formControlName="org_name" block value="{{fault.org_name}}"> </ion-input>
         </ion-item>
     
-      <ion-item>
-        <ion-input 
-        placeholder="Next of kin number" 
-        type="text"
-     
-        ></ion-input>
-      </ion-item>
- 
+        <ion-item no-lines text-left>
+          <ion-label floating>Student Number</ion-label>
+          <ion-input formControlName="org_reg" value="{{ fault.org_reg }}"></ion-input>
+        </ion-item>
+    
+        <ion-item no-lines text-left>
+          <ion-label floating>Email </ion-label>
+          <ion-input formControlName="email" value="{{ fault.email }}"></ion-input>
+          </ion-item>
+    
+        <ion-item no-lines text-left>
+          <ion-label floating>Cell Number</ion-label>
+          <ion-input formControlName="phone_no"  value="{{ fault.phone_no }}"></ion-input>
+    </ion-item>
+
+        <ion-item no-lines text-left>
+          <ion-label floating>Address</ion-label>
+          <ion-input formControlName="address" value="{{ fault.address }}"></ion-input>
+    </ion-item>
+
+        <ion-item no-lines text-left>
+          <ion-label floating>City</ion-label>
+          <ion-input formControlName="city"  value="{{ fault.city }}"></ion-input>
+    </ion-item>
+
+        <ion-item no-lines text-left>
+          <ion-label floating>Province</ion-label>
+          <ion-input formControlName="province"  value="{{ fault.province }}"></ion-input>
+    </ion-item>
+
+        <ion-item no-lines text-left>
+          <ion-label floating>Ems</ion-label>
+          <ion-input formControlName="ems_lisence" value="{{ fault.ems_lisence }}"></ion-input>
+    </ion-item>
+
+        </div>
+
+      </ion-card>
+        </ion-row>
+
+
       
 
 

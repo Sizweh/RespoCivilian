@@ -11,17 +11,18 @@
 
   <div class="login-fields" [formGroup]="medicaldetailsForm">
 
-    <ion-item>
-      <ion-input formControlName="member_no" placeholder="Membership No" type="number"></ion-input>
-    </ion-item>
-
-    <ion-item>
+    
+  <ion-item>
       <ion-input placeholder="Scheme Name" type="text"></ion-input>
       <ion-select formControlName="scheme_name">
         <ion-option value="Assupol_Life">Assupol Life</ion-option>
         <ion-option value="Gems">Gems</ion-option>
         <ion-option value="Discovery">Discovery</ion-option>
       </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-input formControlName="member_no" placeholder="Membership No" type="number"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -48,7 +49,8 @@
     </ion-item>
 
     <ion-item>
-      <ion-label>Disability </ion-label>
+      <!-- <ion-label>Disability</ion-label> -->
+      <ion-input placeholder="Disability" type="text"></ion-input>
       <ion-select formControlName="disability">
         <ion-option>Yes</ion-option>
         <ion-option>No</ion-option>

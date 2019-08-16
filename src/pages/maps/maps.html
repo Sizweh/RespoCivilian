@@ -22,18 +22,28 @@
   
     </div>
     
-    
-    <div id="pac-container" text-center >
-      <input id="pac-input" type="text" style="width: 100%; border: 1px solid #ccc; 
-       padding: 11px; border-radius: 4px; box-sizing: border-box; resize: vertical;  font-size: 17px;"
   
-          placeholder="Enter a location">
-        
+    <div id="pac-container" class="input-icons" text-center  >
+      <input text-align=center id="pac-input" type="text" style="width: 100%; border: 1px solid #38414a;  
+       padding: 10px; border-radius: 3px; box-sizing: border-box; resize: vertical; font-size: 17px;"
   
+          placeholder="Enter a Location">
+          
+
+
+
+    <!-- <div id="pac-container" class="input-icons" text-center  >
+      <input text-align=center id="pac-input" type="text" style="width: 97%; border: 1px solid #ccc; 
+       padding: 10px; border-radius: 3px; box-sizing: border-box; resize: vertical;  border: 2px solid #38414a;  border-radius: 25px;  font-size: 17px;"
+  
+          placeholder="Search Location or Address"> -->
+
+         
+          
     </div>
   
     <br>
-    <div id="infowindow-content">
+    <div id="infowindow-content"  style="font-size: 17px;  color:#38414a; font-weight: bold;">
       <img src="" width="12" height="12" id="place-icon">
       <span id="place-name"  class="title"></span><br>
       <span id="place-address"></span>
@@ -60,10 +70,28 @@
                 
                 
                 
+<br>
+<br>
+                
+<button (click)="goLocation()" ion-button color="secondary"
+round>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Confirm Location
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+<br>
+<br>
+
+<button (click)="goHome()" ion-button color="newcolor"
+round>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cancel
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+
+
+
+
+
+
+
                 
                 
                 
                 
                 
-                
-                </ion-content>
+</ion-content>

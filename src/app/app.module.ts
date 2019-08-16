@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, NgModule,  CUSTOM_ELEMENTS_SCHEMA, } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { CallNumber } from '@ionic-native/call-number';
 import { MyApp } from './app.component';
@@ -23,6 +23,7 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-nati
 import { File } from '@ionic-native/file/ngx';
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 import { SocketsProvider } from '../providers/sockets/sockets';
+import { SelectSearchableModule } from 'ionic-select-searchable';
 
 const config: SocketIoConfig = { url: 'http://localhost:3001', options:{}};
 
@@ -35,8 +36,9 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options:{}};
   imports: [
     BrowserModule,
     PipesModule,
+    SelectSearchableModule,
     IonicModule.forRoot(MyApp, {
-
+    
       mode: 'md'
     }),
     HttpClientModule,
@@ -46,6 +48,12 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options:{}};
     
   
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA , 
+
+    
+  ],
+
+
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp

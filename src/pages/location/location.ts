@@ -403,32 +403,25 @@ responderDistance: any;
  
 
    
-        var input = document.getElementById('pac-input');
+        
        
 
     
 
-        var autocomplete = new google.maps.places.Autocomplete(input);
-        autocomplete.bindTo('bounds', that.map);
-
-        autocomplete.setFields(
-          ['address_components', 'geometry', 'icon', 'name']);
-
-      var infowindow = new google.maps.InfoWindow();
+        
       var infowindowContent = document.getElementById('infowindow-content');
       // infowindow.setContent();
 
-      
+      var  image = "../../assets/mapi/fixed5.png";
       var marker = new google.maps.Marker({
         map: that.map,
-        anchorPoint: new google.maps.Point(0, -29),
-        draggable: true
-
+        // anchorPoint: new google.maps.Point(0, -29),
+        draggable: true,
+        icon:image
+    
 
       });
 
-      autocomplete.addListener('place_changed', function() {
-        infowindow.close();
 
 
 
@@ -458,39 +451,7 @@ responderDistance: any;
 
 
        
-        marker.setVisible(false);
-        var place = autocomplete.getPlace();
-        if (!place.geometry) {
-
-          window.alert("No details available for input: '" + place.name + "'");
-          return;
-        }
-
-        if (place.geometry.viewport) {
-          that.map.fitBounds(place.geometry.viewport);
-        } else {
-          that.map.setCenter(place.geometry.location);
-          that.map.setZoom(17);
-
-        }
-        marker.setPosition(place.geometry.location);
-        
-        marker.setVisible(true);
-
-        var address = '';
-        if (place.address_components) {
-          address = [
-            (place.address_components[0] && place.address_components[0].short_name || ''),
-            (place.address_components[1] && place.address_components[1].short_name || ''),
-            (place.address_components[2] && place.address_components[2].short_name || '')
-          ].join(' ');
-        }
-        infowindow.setContent(address);
-        infowindowContent.children['place-icon'].src = place.icon;
-        infowindowContent.children['place-name'].textContent = place.name;
-        infowindowContent.children['place-address'].textContent = address;
-        infowindow.open(that.map, marker);
-      });
+       
 
      
 
@@ -570,6 +531,18 @@ responderDistance: any;
           animation: google.maps.Animation.DROP
         });
 
+        var geocoder  = new google.maps.Geocoder();  
+        var location  = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); 
+        
+        
+        geocoder.geocode({'latLng': location}, function (results, status) {
+          if(status == google.maps.GeocoderStatus.OK) {           
+          var add=results[0].formatted_address;         
+          document.getElementById('infowindow-content').innerHTML=add;
+          }
+          });
+
+
         marker.addListener('click', toggleBounce);
         function toggleBounce() {
           if (marker.getAnimation() !== null) {
@@ -579,13 +552,11 @@ responderDistance: any;
           }
         }
 
-        google.maps.event.addListener(markerCivilian, 'click', (function (marker) {
-          return function () {
-            infowindow.setContent("my Location");
-            infowindow.open(that.map, marker);
+            var infowindow = new google.maps.InfoWindow();
+            infowindow.setContent("My location");
+            infowindow.open(that.map, markerCivilian);
             // document.getElementById("emegencyButtons").style.display ='';
-          }
-        })(markerCivilian));
+            
 
 
 
@@ -736,8 +707,8 @@ goConfirm(){
 // this.navCtrl.push('ConfirmPage')
 }
 
-goHome(){
-this.navCtrl.setRoot('HomePage')
+goMaps(){
+this.navCtrl.setRoot('MapsPage')
 
 }
 
