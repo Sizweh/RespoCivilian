@@ -38,12 +38,14 @@ specify_emergency: any;
 
 selectedResponder      : any; 
 responderName: any;
+driver_name: any;
 responderPlate: any;
 responderDistance: any;
   GoogleAutocomplete: any;
   autocomplete: { input: string; };
   autocompleteItems: any[];
   zone: any;
+    address: any;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -89,6 +91,12 @@ responderDistance: any;
       console.log(val);
       this.category = val;
       this.event = val.category;
+    });
+    this.storage.get('search_addres').then((val) => {
+      console.log('cater db stuff');
+      console.log(val);
+      this.address = val;
+      this.event = val.address;
     });
     // this.storage.get('specify_emergency').then((val) => {
     //   console.log('cater db stuff');

@@ -190,10 +190,10 @@ export class UrlbaseProvider {
       );
   }
   changePassword(data): Observable<any> {
-    return this.http.post<any>(this.apiUrl + 'changePassword', data)
+    return this.http.post<any>(this.apiUrl + 'changepassword', data)
       .pipe(
-        tap(_ => this.log('changePassword')),
-        catchError(this.handleError('changePassword', []))
+        tap(_ => this.log('changepassword')),
+        catchError(this.handleError('changepassword', []))
       );
   }
   medList(data): Observable<any> {
@@ -216,6 +216,30 @@ export class UrlbaseProvider {
         tap(_ => this.log('studentDetails')),
         catchError(this.handleError('studentDetails', []))
       );
+  }
+  editDetails(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'updateDetails', data)
+      .pipe(
+        tap(_ => this.log('updateDetails')),
+        catchError(this.handleError('updateDetails', []))
+      );
+
+  }
+  deleteForm(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'updateDetails', data)
+      .pipe(
+        tap(_ => this.log('updateDetails')),
+        catchError(this.handleError('updateDetails', []))
+      );
+
+  }
+  institutionList(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'Org_List', data)
+      .pipe(
+        tap(_ => this.log('Org_List')),
+        catchError(this.handleError('Org_List', []))
+      );
+
   }
 
   

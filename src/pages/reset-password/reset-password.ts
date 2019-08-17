@@ -31,7 +31,7 @@ export class ResetPasswordPage {
 
       this.resetPasswordForm = formBuilder.group({
         'email': ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern("")])],
-        'password': ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.pattern("")])],
+        // 'password': ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.pattern("")])],
       })
     }
 
@@ -48,7 +48,7 @@ export class ResetPasswordPage {
     const value = this.resetPasswordForm.value;
 
     this.storage.set('email', value.email);
-    this.storage.set('password', value.password);
+    // this.storage.set('password', value.password);
 
 
     var headers = new Headers();

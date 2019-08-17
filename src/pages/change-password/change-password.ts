@@ -123,7 +123,7 @@ export class ChangePasswordPage {
       duration: 700
     });
     loading.present();
-    // this.navCtrl.setRoot('MyprofilePage')
+   this.navCtrl.setRoot('MyprofilePage')
   
     }
 

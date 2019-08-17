@@ -29,41 +29,46 @@
     
         <ion-item no-lines text-left>
           <ion-label floating>Student Number</ion-label>
-          <ion-input formControlName="org_reg" value="{{ fault.org_reg }}"></ion-input>
+          <ion-input formControlName="company_registration" value="{{ fault.company_registration }}"></ion-input>
         </ion-item>
     
-        <ion-item no-lines text-left>
+        <!-- <ion-item no-lines text-left>
           <ion-label floating>Email </ion-label>
           <ion-input formControlName="email" value="{{ fault.email }}"></ion-input>
-          </ion-item>
+          </ion-item> -->
     
-        <ion-item no-lines text-left>
+        <!-- <ion-item no-lines text-left>
           <ion-label floating>Cell Number</ion-label>
           <ion-input formControlName="phone_no"  value="{{ fault.phone_no }}"></ion-input>
-    </ion-item>
+    </ion-item> -->
 
-        <ion-item no-lines text-left>
+        <!-- <ion-item no-lines text-left>
           <ion-label floating>Address</ion-label>
           <ion-input formControlName="address" value="{{ fault.address }}"></ion-input>
-    </ion-item>
+    </ion-item> -->
 
-        <ion-item no-lines text-left>
+        <!-- <ion-item no-lines text-left>
           <ion-label floating>City</ion-label>
           <ion-input formControlName="city"  value="{{ fault.city }}"></ion-input>
-    </ion-item>
+    </ion-item> -->
 
-        <ion-item no-lines text-left>
+        <!-- <ion-item no-lines text-left>
           <ion-label floating>Province</ion-label>
           <ion-input formControlName="province"  value="{{ fault.province }}"></ion-input>
-    </ion-item>
+    </ion-item> -->
 
-        <ion-item no-lines text-left>
+        <!-- <ion-item no-lines text-left>
           <ion-label floating>Ems</ion-label>
           <ion-input formControlName="ems_lisence" value="{{ fault.ems_lisence }}"></ion-input>
-    </ion-item>
+    </ion-item> -->
 
         </div>
-
+        <!-- <ion-col col-6>
+          <button button-right button-left  ion-button icon-start clear small (click)="goHome(fault.id)">
+              <ion-icon color='danger' name=""></ion-icon>
+              <ion-label color='danger'>Delete</ion-label>
+            </button>
+          </ion-col> -->
       </ion-card>
         </ion-row>
 
@@ -73,15 +78,13 @@
 
       <ion-grid>
           <ion-row>
-            <!-- <ion-col col-6>
-              <button ion-button block round clear color="newcolor" (click)="go()">back</button>
-            </ion-col> -->
+              <ion-col col-6>
+                  <button ion-button block color="secondary" round  [disabled] (click)="goMyAccount()">
+                  Done
+                  </button>
+                </ion-col>
       
-            <ion-col col-6>
-              <button ion-button block color="secondary" round  [disabled] (click)="go()">
-              Done
-              </button>
-            </ion-col>
+           
           </ion-row>
         </ion-grid>
 

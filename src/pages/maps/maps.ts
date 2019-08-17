@@ -476,7 +476,9 @@ responderDistance: any;
         }
         document.getElementById('infowindow-content').innerHTML =address;
        
-        document.getElementById('pac-input').value = "";
+        this.storage.set('search_addres', address);
+
+        // document.getElementById('pac-input').value = "";
         infowindowContent.children['place-icon'].src = place.icon;
         infowindowContent.children['place-name'].textContent = place.name;
         infowindowContent.children['place-address'].textContent = address;
