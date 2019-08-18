@@ -31,56 +31,65 @@
     
 <ion-item no-lines text-left>
 
-<!-- 
-    <ion-label stacked >Scheme Name</ion-label> -->
+
+    <ion-label >Scheme Name</ion-label>
+    
 
     <ion-input formControlName="scheme_name" placeholder="Scheme Name" value="{{ fault.scheme_name }}"></ion-input>
-   
-    <ion-select formControlName="scheme_name">
-      <ion-option  value="Assupol Life">Assupol Life</ion-option>
-      <ion-option  value="Gems">Gems</ion-option>
-      <ion-option  value="Discovery">Discovery</ion-option>
-    </ion-select>
+    <ion-select  formControlName="scheme_name">
+         <ion-label>Scheme Name</ion-label>
+        <ion-option  value="SABC Medical Aid Scheme">SABC Medical Aid Scheme </ion-option>
+        <ion-option  value="SasolMed">SasolMed </ion-option>
+        <ion-option  value="SELFMED">SelfMed Medical Scheme </ion-option>
+        <ion-option  value="SUREMED">SureMed Health  </ion-option>
+        <ion-option  value="SPECTRAMED">SpectraMed  </ion-option>
+        <ion-option  value="TSOGO">Tsogo Sun Group Medical Scheme </ion-option>
+        <ion-option  value="TRANSMED">TransMed Medical Fund </ion-option>
+        <ion-option  value="TOPMED">TopMed Medical Scheme  </ion-option>
+      </ion-select>
+ 
   </ion-item>
 
   <ion-item no-lines text-left>
-    <ion-label floating>Membership Number</ion-label>
-    <ion-input formControlName="member_no" block value="{{fault.member_no}}"> </ion-input>
+    <ion-label >Membership Number</ion-label>
+    <ion-input formControlName="member_no" block placeholder="Membership No."  value="{{fault.member_no}}"> </ion-input>
     </ion-item>
 
     <ion-item no-lines text-left>
-      <ion-label floating>Partial Membership </ion-label>
-      <ion-input formControlName="partial_membership" value="{{ fault.partial_membership }}"></ion-input>
+      <ion-label >Partial Membership </ion-label>
+      <ion-input formControlName="partial_membership" placeholder="Partial Membership"  value="{{ fault.partial_membership }}"></ion-input>
     </ion-item>
 
     <ion-item no-lines text-left>
-      <ion-label floating>Preferred Hospital </ion-label>
-      <ion-input formControlName="prefered_hospital" value="{{ fault.prefered_hospital }}"></ion-input>
+      <ion-label >Preferred Hospital </ion-label>
+      <ion-input formControlName="prefered_hospital" placeholder="Preferred Hospital"  value="{{ fault.prefered_hospital }}"></ion-input>
       </ion-item>
 
     <ion-item no-lines text-left>
-      <ion-label floating>Chronic Disease </ion-label>
+      <ion-label >Chronic Disease </ion-label>
       <ion-input formControlName="chronic_dis" placeholder="Chronic Disease"  value="{{ fault.chronic_dis }}"></ion-input>
 
-      <!-- <ion-select formControlName="chronic_dis"> -->
-        <!-- <ion-option>ALS</ion-option>
+      <ion-select > 
+          <ion-label>Chronic Disease </ion-label>
+         <ion-option>ALS</ion-option>
         <ion-option>Asthma</ion-option>
         <ion-option>Cancer</ion-option>
         <ion-option>Eating Disorders</ion-option>
         <ion-option>Heart Disease</ion-option>
         <ion-option>Obesity</ion-option>
-      </ion-select> -->
+      </ion-select>
 
     </ion-item>
 
     <ion-item no-lines text-left>
-      <ion-label stacked>Disability</ion-label>
-      <ion-input formControlName="disability"  value="{{ fault.disability }}"></ion-input>
+      <ion-label >Disability</ion-label>
+      <ion-input formControlName="disability" placeholder="Disability"   value="{{ fault.disability }}"></ion-input>
 
-          <!-- <ion-select formControlName="disability" >
+          <ion-select >
+              <ion-label>Disability</ion-label>
         <ion-option>Yes</ion-option>
         <ion-option>No</ion-option>
-      </ion-select> -->
+      </ion-select>
 
 
 

@@ -53,7 +53,7 @@ export class ForSelfPage {
         'id': ['93'],
 
       'org_name': ['', Validators.compose([Validators.required])],
-      'org_reg': ['', Validators.compose([Validators.required])],
+      'company_registration': ['', Validators.compose([Validators.required])],
       'email': ['', Validators.compose([Validators.required])],
       'phone_no': ['', Validators.compose([Validators.required])],
       'ems_lisence': ['', Validators.compose([Validators.required])],
@@ -89,6 +89,21 @@ export class ForSelfPage {
 
   goHome(){
 
+    var headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json' );
+   //pass to back-end
+      var postData = this.registerForm.value;
+      //THIS IS A BETTER WAY TO MAKE API CALLS
+    this.urlService.deleteForm(postData)
+    .subscribe(res => {
+     this.student_collection = res;
+        if (res.status=='OK') {
+        }
+    }, (err) => {
+        console.log(err);
+    });
+
     const loading= this.loadingCtrl.create({
       content: "Checking code...",
       duration: 3000
@@ -117,8 +132,37 @@ export class ForSelfPage {
  goSelfAdmission(){    
  this.navCtrl.push("SelfAdmissionPage");
  }
- goSelectResponder(){    
- this.navCtrl.push("SelectResponderPage");
+ goMyAccount(){ 
+
+  const values = this.registerForm.value;
+   
+  this.storage.set('org_name', values.org_name);
+  this.storage.set('company_registration', values.company_registration);
+  // this.storage.set('email', values.email);
+  // this.storage.set('phone_no', values.phone_no);
+  // this.storage.set('ems_lisence', values.ems_lisence);
+  // this.storage.set('address', values.address);
+  // this.storage.set('city', values.city);
+  // this.storage.set('province', values.province);
+
+  var headers = new Headers();
+  headers.append("Accept", 'application/json');
+  headers.append('Content-Type', 'application/json' );
+ //pass to back-end
+    var postData = this.registerForm.value;
+    //THIS IS A BETTER WAY TO MAKE API CALLS
+  this.urlService.editDetails(postData)
+  .subscribe(res => {
+   this.student_collection = res;
+      if (res.status=='OK') {
+      }
+  }, (err) => {
+      console.log(err);
+  });
+  
+
+
+ //this.navCtrl.push("MyAccountPage");
  }
 
 }

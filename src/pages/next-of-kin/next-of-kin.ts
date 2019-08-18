@@ -29,7 +29,7 @@ export class NextOfKinPage {
   password:any;
   confirmPassword:any;
   // org_name:any;
-  // student_no:any;
+  // // student_no:any;
 
   phone:any;
   relationship:any;
