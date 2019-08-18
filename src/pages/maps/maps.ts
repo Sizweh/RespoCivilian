@@ -22,7 +22,7 @@ map         : any;
 infoWindow  : any;
 marker      : any;
 event       : any;
-
+value :any 
 civilianLat : any;
 civilianId  : any;
 civilianLng : any;
@@ -394,7 +394,7 @@ responderDistance: any;
       var infowindowContent = document.getElementById('infowindow-content');
       // infowindow.setContent();
 
-      var  image = "../../assets/mapi/moving4.png";
+      var  image = "http://46.101.169.33/icons/moving4.png";
       var marker = new google.maps.Marker({
         map: that.map,
         anchorPoint: new google.maps.Point(0, -29),
@@ -475,8 +475,8 @@ responderDistance: any;
           ].join(' ');
         }
         document.getElementById('infowindow-content').innerHTML =address;
-       
-        document.getElementById('pac-input').value = "";
+        var inputValue = (<HTMLInputElement>document.getElementById('pac-input')).value;
+        inputValue = "";
         infowindowContent.children['place-icon'].src = place.icon;
         infowindowContent.children['place-name'].textContent = place.name;
         infowindowContent.children['place-address'].textContent = address;
@@ -560,7 +560,7 @@ function init(){
       
         //marker for user/civilian location
        
-        var  image = "../../assets/mapi/fixed5.png";
+        var  image = "http://46.101.169.33/icons/fixed5.png";
         var markerCivilian;
         markerCivilian = new google.maps.Marker({
           position: pos,
@@ -616,7 +616,7 @@ function init(){
       
         //marker for user/civilian location
        
-        var  image = "../../assets/mapi/fixed5.png";
+        var  image = "http://46.101.169.33/icons/fixed5.png";
         var markerCivilian;
         markerCivilian = new google.maps.Marker({
           position: pos,
@@ -633,7 +633,7 @@ function init(){
 
 
         
-        var  image = "../../assets/mapi/moving4.png";
+        var  image = "http://46.101.169.33/icons/moving4.png";
         var marrkerCivilian;
         marrkerCivilian = new google.maps.Marker({
           position: pos,
