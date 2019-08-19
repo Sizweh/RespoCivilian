@@ -44,6 +44,7 @@ responderDistance: any;
   autocomplete: { input: string; };
   autocompleteItems: any[];
   zone: any;
+  Adressess: any;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -438,7 +439,7 @@ responderDistance: any;
                 infowindow.setContent(this.adressess);
                 document.getElementById('infowindow-content').innerHTML = this.adressess ;
                
-
+                  this.Adressess = this.adressess;  
             
 
               }
@@ -475,15 +476,11 @@ responderDistance: any;
           ].join(' ');
         }
         document.getElementById('infowindow-content').innerHTML =address;
-<<<<<<< HEAD
+
         var inputValue = (<HTMLInputElement>document.getElementById('pac-input')).value;
         inputValue = "";
-=======
        
-        this.storage.set('search_addres', address);
 
-        // document.getElementById('pac-input').value = "";
->>>>>>> c7a2c363764a4de38b3307bbdcf9ca109766991c
         infowindowContent.children['place-icon'].src = place.icon;
         infowindowContent.children['place-name'].textContent = place.name;
         infowindowContent.children['place-address'].textContent = address;
@@ -683,7 +680,7 @@ function init(){
                 // document.getElementById('infowindow-content').innerHTML = event.latLng ;
                
 
-            
+                this.Adressess = this.adressess; 
 
               }
             }
@@ -873,7 +870,14 @@ this.navCtrl.setRoot('HomePage')
 
 }
 goLocation(){
-this.navCtrl.setRoot('LocationPage')
+  
+  var  Sear_location = document.getElementById('infowindow-content').innerText;
+  
+   this.navCtrl.setRoot("LocationPage", {
+       sear_location:Sear_location,
+  
+ });
+
 
 }
 

@@ -46,6 +46,7 @@ responderDistance: any;
   autocompleteItems: any[];
   zone: any;
     address: any;
+    address_loacation : any ; 
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -54,8 +55,8 @@ responderDistance: any;
     public loadingCtrl: LoadingController,
     private urlService: UrlbaseProvider,
     ) {
-
-    
+        this.address_loacation = navParams.get('sear_location') ;
+    //console.log('ssssssssssssss'+ this.address_loacation );
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
     this.autocomplete = { input: '' };
     this.autocompleteItems = []
@@ -548,6 +549,8 @@ responderDistance: any;
           if(status == google.maps.GeocoderStatus.OK) {           
           var add=results[0].formatted_address;         
           document.getElementById('infowindow-content').innerHTML=add;
+
+          
           }
           });
 
