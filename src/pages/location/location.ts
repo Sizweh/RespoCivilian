@@ -46,6 +46,7 @@ responderDistance: any;
   autocompleteItems: any[];
   zone: any;
     address: any;
+    address_loacation : any ; 
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -54,8 +55,8 @@ responderDistance: any;
     public loadingCtrl: LoadingController,
     private urlService: UrlbaseProvider,
     ) {
-
-    
+        this.address_loacation = navParams.get('sear_location') ;
+    //console.log('ssssssssssssss'+ this.address_loacation );
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
     this.autocomplete = { input: '' };
     this.autocompleteItems = []
@@ -118,6 +119,7 @@ responderDistance: any;
       console.log(val);
       this.selectedResponder = val;
       this.responderName = val.driver_name;
+      console.log(this.responderName + "ddddddddddddddd");
       // alert(this.responderName);
       var randomnumber = Math.floor(Math.random() * (7 - 1 + 1)) + 1;
       this.responderDistance = randomnumber;
@@ -420,7 +422,7 @@ responderDistance: any;
       var infowindowContent = document.getElementById('infowindow-content');
       // infowindow.setContent();
 
-      var  image = "../../assets/mapi/fixed5.png";
+      var  image = "http://46.101.169.33/icons/fixed5.png";
       var marker = new google.maps.Marker({
         map: that.map,
         // anchorPoint: new google.maps.Point(0, -29),
@@ -528,7 +530,7 @@ responderDistance: any;
         }
 
         //marker for user/civilian location
-        var  image = "../../assets/mapi/fixed5.png";
+        var  image = "http://46.101.169.33/icons/fixed5.png";
         var markerCivilian;
         markerCivilian = new google.maps.Marker({
           position: pos,
@@ -547,6 +549,8 @@ responderDistance: any;
           if(status == google.maps.GeocoderStatus.OK) {           
           var add=results[0].formatted_address;         
           document.getElementById('infowindow-content').innerHTML=add;
+
+          
           }
           });
 
@@ -673,8 +677,10 @@ goConfirm(){
         content: "Sending request...",
         duration: 3000
       });
-
-      this.alert.presentAlert("Notification", msg);
+      if (status == "error") {
+        this.alert.presentAlert("Respo", 'Please try again... connecting serve');
+      }
+      
       if (status == "OK") {
         loader.present();
         this.storage.set('request_id', reqId);
