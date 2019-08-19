@@ -52,8 +52,8 @@ export class BankingDetailsPage {
         // 'user_id': [this.User_Id,],
         // 'id': [this.id,],
 
-        'user_id': ['93'],
-        'id': ['93'],
+        'user_id': ['102'],
+        'id': ['102'],
 
       'org_name': ['', Validators.compose([Validators.required])],
       'company_registration': ['', Validators.compose([Validators.required])],
@@ -69,32 +69,32 @@ export class BankingDetailsPage {
 
   ionViewDidLoad() {
     
-    var headers = new Headers();
-    headers.append("Accept", 'application/json');
-    headers.append('Content-Type', 'application/json' );
+    // var headers = new Headers();
+    // headers.append("Accept", 'application/json');
+    // headers.append('Content-Type', 'application/json' );
   
-    // pass to back-end
-       console.log(this.registerForm.value);
-       var postData = this.registerForm.value;
+    // // pass to back-end
+    //    console.log(this.registerForm.value);
+    //    var postData = this.registerForm.value;
      
   
-    // THIS IS A BETTER WAY TO MAKE API CALLS
-       this.urlService.institutionList(postData)
-       .subscribe(res => {
-         // this.presentToast(res.msg, res.status);
-        console.log(res);
-         // alert(res);
-         this.alert.presentAlert("Notification", res.msg);
-         this.student_collection = res;
-         if (res.status=='OK') {
-          //this.storage.set('nextofkinform', res.nextofkinform);
-          //this.storage.set('nextofkinform', res.nextofkin_id);
-         // this.navCtrl.push("VerifyAccountPage");
-         // localStorage.setItem('token', res.token);
-        }
-       }, (err) => {
-         console.log(err);
-       });
+    // // THIS IS A BETTER WAY TO MAKE API CALLS
+    //    this.urlService.institutionList(postData)
+    //    .subscribe(res => {
+    //      // this.presentToast(res.msg, res.status);
+    //     console.log(res);
+    //      // alert(res);
+    //      this.alert.presentAlert("Notification", res.msg);
+    //      this.student_collection = res;
+    //      if (res.status=='OK') {
+    //       //this.storage.set('nextofkinform', res.nextofkinform);
+    //       //this.storage.set('nextofkinform', res.nextofkin_id);
+    //      // this.navCtrl.push("VerifyAccountPage");
+    //      // localStorage.setItem('token', res.token);
+    //     }
+    //    }, (err) => {
+    //      console.log(err);
+    //    });
     console.log('ionViewDidLoad BankingDetailsPage');
   }
 
