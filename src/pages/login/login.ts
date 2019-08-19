@@ -63,10 +63,10 @@ export class LoginPage {
       
     });
 
-    //if  (!this.username){
+    if  (!this.username){
 
-     // this.navCtrl.setRoot('HomePage');
-    //}
+     this.navCtrl.setRoot('HomePage');
+    }
 
   }
   hideShowPassword() {
