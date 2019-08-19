@@ -68,6 +68,7 @@ export class BankingDetailsPage {
     }
 
   ionViewDidLoad() {
+    
     var headers = new Headers();
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
