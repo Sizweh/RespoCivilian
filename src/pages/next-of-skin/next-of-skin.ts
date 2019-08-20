@@ -89,9 +89,9 @@ export class NextOfSkinPage {
   goMyprofile(id){
 
 
-// var headers = new Headers();
-// headers.append("Accept", 'application/json');
-// headers.append('Content-Type', 'application/json' );
+var headers = new Headers();
+headers.append("Accept", 'application/json');
+headers.append('Content-Type', 'application/json' );
 
 var postData = { id:id }
 // var postData = this.skinForm.value;
