@@ -52,22 +52,29 @@ export class LoginPage {
         'password': ['', Validators.compose([Validators.minLength(4), Validators.maxLength(50), Validators.pattern('[a-zA-Z0-9._]+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$'), Validators.required])],
       })
   }
+
+
+
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+   // console.log('ionViewDidLoad LoginPage');
 
     this.storage.get('user_name').then((val) => {
       console.log('cater db stuff');
-      console.log(val);
-      this.username = val;
-   
+     console.log(val);
+     this.username = val;
+     console.log("note  login" + this.username)
+     if(this.username === null)
+     {
+       console.log("Note  login")
+        
+     }
+     else{
+     this.navCtrl.setRoot('HomePage');
+     }
       
-    });
+   });
 
-    //if  (!this.username){
-
-     // this.navCtrl.setRoot('HomePage');
-    //}
-
+ 
   }
   hideShowPassword() {
     this.passwordType = this.passwordType === 'tel' ? 'password' : 'tel';

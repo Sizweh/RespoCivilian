@@ -48,10 +48,6 @@ export class ForSelfPage {
 
         // 'user_id': [this.User_Id,],
         // 'id': [this.id,],
-
-        'user_id': ['93'],
-        'id': ['93'],
-
       'org_name': ['', Validators.compose([Validators.required])],
       'company_registration': ['', Validators.compose([Validators.required])],
       'email': ['', Validators.compose([Validators.required])],
@@ -67,12 +63,15 @@ export class ForSelfPage {
   }
 
   ionViewDidLoad() {
+    this.storage.get('user_id').then((val) => {
+      console.log(String(val+"llllllllll"));
+      this.  toConcat =   this.UserId =String(val); 
 
-    var headers = new Headers();
+      var headers = new Headers();
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
    //pass to back-end
-      var postData = this.registerForm.value;
+      var postData = {user_id:val};
       //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.studentDetails(postData)
     .subscribe(res => {
@@ -83,6 +82,8 @@ export class ForSelfPage {
         console.log(err);
     });
 
+    });
+    
 
     console.log('ionViewDidLoad ForSelfPage');
   }

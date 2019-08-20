@@ -12,8 +12,8 @@ import { catchError, tap } from 'rxjs/operators';
 */
 @Injectable()
 export class UrlbaseProvider {
-    apiUrl = 'http://46.101.169.33/api/civilian/';
-  //apiUrl = 'http://127.0.0.1:8000/api/civilian/';
+  //  apiUrl = 'http://46.101.169.33/api/civilian/';
+  apiUrl = 'http://127.0.0.1:8000/api/civilian/';
   constructor(public http: HttpClient) {
     console.log('Hello UrlbaseProvider Provider');
   }
@@ -183,10 +183,10 @@ export class UrlbaseProvider {
       );
   }
   deleteNext(data): Observable<any> {
-    return this.http.post<any>(this.apiUrl + 'deleteNextofKin', data)
+    return this.http.post<any>(this.apiUrl + 'deletenextofkin', data)
       .pipe(
-        tap(_ => this.log('deleteNextofKin')),
-        catchError(this.handleError('deleteNextofKin', []))
+        tap(_ => this.log('deletenextofkin')),
+        catchError(this.handleError('deletenextofkin', []))
       );
   }
   changePassword(data): Observable<any> {
