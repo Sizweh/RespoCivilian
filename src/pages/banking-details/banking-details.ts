@@ -52,17 +52,18 @@ export class BankingDetailsPage {
         // 'user_id': [this.User_Id,],
         // 'id': [this.id,],
 
-        'user_id': ['102'],
-        'id': ['102'],
+        'user_id': ['103'],
+        'id': ['103'],
 
-      'org_name': ['', Validators.compose([Validators.required])],
-      'company_registration': ['', Validators.compose([Validators.required])],
-      // 'email': ['', Validators.compose([Validators.required])],
-      // 'phone_no': ['', Validators.compose([Validators.required])],
-      // 'ems_lisence': ['', Validators.compose([Validators.required])],
-      // 'address': ['', Validators.compose([Validators.required])],
-      // 'city': ['', Validators.compose([Validators.required])],
-      // 'province': ['', Validators.compose([Validators.required])],
+      'org': ['', Validators.compose([Validators.required])],
+      'student_no': ['', Validators.compose([Validators.required])],
+      'name': ['', Validators.compose([Validators.required])],
+      'email': ['', Validators.compose([Validators.required])],
+      'gender': ['', Validators.compose([Validators.required])],
+      'dob': ['', Validators.compose([Validators.required])],
+      'password': ['', Validators.compose([Validators.required])],
+
+      // 'phonenumber': ['', Validators.compose([Validators.required])],
     })
 
     }
@@ -111,14 +112,15 @@ export class BankingDetailsPage {
 
     const values = this.registerForm.value;
    
-    this.storage.set('org_name', values.org_name);
-    this.storage.set('company_registration', values.company_registration);
+    this.storage.set('org', values.org);
+    this.storage.set('student_no', values.student_no);
+    // this.storage.set('name', values.name);
     // this.storage.set('email', values.email);
-    // this.storage.set('phone_no', values.phone_no);
-    // this.storage.set('ems_lisence', values.ems_lisence);
-    // this.storage.set('address', values.address);
-    // this.storage.set('city', values.city);
-    // this.storage.set('province', values.province);
+    // this.storage.set('gender', values.gender);
+    // this.storage.set('dob', values.dob);
+    // this.storage.set('password', values.password);
+
+    // this.storage.set('phonenumber', values.phonenumber);
 
 
   var headers = new Headers();
@@ -166,7 +168,7 @@ export class BankingDetailsPage {
     });
     alert.present();
 
-    this.navCtrl.setRoot("HomePage");
+   this.navCtrl.setRoot("HomePage");
   }
 
 

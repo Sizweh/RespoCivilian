@@ -114,20 +114,20 @@ export class MedicalHistoryPage {
       console.log(err);
   });
 
-    var headers = new Headers();
-    headers.append("Accept", 'application/json');
-    headers.append('Content-Type', 'application/json' );
-   //pass to back-end
-      var postData = this.medicalForm.value;
-      //THIS IS A BETTER WAY TO MAKE API CALLS
-    this.urlService.medList(postData)
-    .subscribe(res => {
-     this.medical_collection = res;
-        if (res.status=='OK') {
-        }
-    }, (err) => {
-        console.log(err);
-    });
+  //   var headers = new Headers();
+  //   headers.append("Accept", 'application/json');
+  //   headers.append('Content-Type', 'application/json' );
+  //  //pass to back-end
+  //     var postData = this.medicalForm.value;
+  //     //THIS IS A BETTER WAY TO MAKE API CALLS
+  //   this.urlService.medList(postData)
+  //   .subscribe(res => {
+  //    this.medical_collection = res;
+  //       if (res.status=='OK') {
+  //       }
+  //   }, (err) => {
+  //       console.log(err);
+  //   });
 
 
   let toast = this.toastCtrl.create({
