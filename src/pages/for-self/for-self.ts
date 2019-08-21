@@ -52,7 +52,7 @@ export class ForSelfPage {
         'user_id': ['103'],
         'id': ['103'],
 
-      'org': ['', Validators.compose([Validators.required])],
+      'org_id': ['', Validators.compose([Validators.required])],
       'student_no': ['', Validators.compose([Validators.required])],
       // 'email': ['', Validators.compose([Validators.required])],
       // 'name': ['', Validators.compose([Validators.required])],
@@ -72,6 +72,7 @@ export class ForSelfPage {
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
    //pass to back-end
+
       var postData = this.registerForm.value;
       //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.studentDetails(postData)
@@ -82,7 +83,7 @@ export class ForSelfPage {
     }, (err) => {
         console.log(err);
     });
-
+  
 
     console.log('ionViewDidLoad ForSelfPage');
   }
@@ -104,25 +105,25 @@ export class ForSelfPage {
         console.log(err);
     });
 
-    const loading= this.loadingCtrl.create({
-      content: "Checking code...",
-      duration: 3000
-    });
-    loading.present();
+    // const loading= this.loadingCtrl.create({
+    //   content: "Checking code...",
+    //   duration: 3000
+    // });
+    // loading.present();
 
-    let alert = this.alertCtrl.create({
-      title: 'Self Admission',
-      message: 'Admission details sent successfully, your medical aid will reply with confirmation',
-      buttons: [
-        {
-          text: 'OK',
-          handler: () => {
+    // let alert = this.alertCtrl.create({
+    //   title: 'Self Admission',
+    //   message: 'Admission details sent successfully, your medical aid will reply with confirmation',
+    //   buttons: [
+    //     {
+    //       text: 'OK',
+    //       handler: () => {
         
-          }
-        }
-      ]
-    });
-    alert.present();
+    //       }
+    //     }
+    //   ]
+    // });
+    // alert.present();
 
     
     this.navCtrl.setRoot("HomePage");
@@ -138,7 +139,7 @@ export class ForSelfPage {
 
   const values = this.registerForm.value;
    
-  this.storage.set('org', values.org);
+  this.storage.set('org_id', values.org_id);
   this.storage.set('student_no', values.student_no);
   // this.storage.set('email', values.email);
   // this.storage.set('name', values.name);

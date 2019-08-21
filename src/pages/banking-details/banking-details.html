@@ -8,19 +8,19 @@
   </ion-toolbar>
   </ion-navbar>
 </ion-header>
-<ion-content text-center padding>
+<ion-content text-center padding >
   <br>
  
 
 <h5></h5>
-<font size="3" color='#38414a'><b>Note:&nbsp;  </b>  Fill in this form only if you're a Student at a  <b>University or College.</b></font><br>
+<font size="3" color='#38414a'><b>Note:&nbsp;  </b>  Fill in this form or register <b>Once</b>, only if you're a Student at a  <b>University or College.</b></font><br>
 
 <br>
 
-<!-- <ion-row no-scrolling no-lines *ngFor="let fault of student_collection"> -->
-<!-- 
+<!-- <ion-row no-scrolling  *ngFor="let fault of student_collection"> -->
+
   
-    <ion-card no-lines> -->
+    <!-- <ion-card no-lines>  -->
 
 <div class="register-fields" [formGroup]="registerForm">
 
@@ -28,8 +28,8 @@
 
   <ion-item>
     <!-- <ion-label >Institution</ion-label> -->
-    <ion-input   placeholder="Institution" ></ion-input>
-    <ion-select formControlName="org">
+    <ion-input   placeholder="Institution"  ></ion-input>
+    <ion-select formControlName="org_id">
       <ion-option value="MUT">MUT(Mangosuthu University of Technology)</ion-option>
       <ion-option value="DUT">DUT(Durban University of Technology)</ion-option>
       <ion-option value="UKZN">UKZN (University of Kwazulu Natal)</ion-option>
@@ -39,12 +39,7 @@
   </ion-item>
 
   <ion-item>
-    <ion-input
-      block
-      formControlName="student_no"
-      type="number"
-      placeholder="Student No."
-    ></ion-input>
+    <ion-input block formControlName="student_no" type="number" placeholder="Student No." ></ion-input>
   </ion-item>
 
 <!-- <ion-item>
@@ -105,8 +100,8 @@
  
 
   </div>
-<!-- 
-</ion-card> -->
+
+<!-- </ion-card>  -->
 
   <!-- </ion-row> -->
         

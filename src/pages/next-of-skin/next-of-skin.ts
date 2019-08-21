@@ -20,7 +20,7 @@ export class NextOfSkinPage {
   skinForm: FormGroup;
   skin_collection: any;
 
-  NextOfSkinPage: NextOfSkinPage ;
+ // MyprofilePage: MyprofilePage ;
   phone:any;
   relationship:any;
   name:any;
@@ -113,25 +113,30 @@ var postData = { id:id }
       console.log(err);
   });
 
-  // let alert = this.alertCtrl.create({
-  //   title: 'Confirm delete',
-  //   message: 'Are you sure?',
-  //   buttons: [
-  //     {
-  //       text: 'No',
-  //       role: 'cancel',
-  //       handler: () => {
-  //         console.log('No clicked');
-  //       }
-  //     },
-  //     {
-  //       text: 'Yes',
-  //       handler: () => {
-  //         console.log('Yes clicked');
-  //       }
-  //     }
-  //   ]
-  // });
+    const confirm = this.alertCtrl.create({
+      title: 'Are you sure?',
+      message: '',
+      buttons: [
+        {
+          text: 'Yes',
+          handler: () => {
+            this.storage.set('Medical_Aid_Status', 'Yes');
+            console.log('Agree clicked'); 
+            this.navCtrl.setRoot('MyprofilePage'); 
+          }
+        },
+        {
+          text: 'No',
+          handler: () => {
+            this.storage.set('Medical_Aid_Status', 'No');
+            console.log('Disagree clicked');
+     
+          }
+        }
+      ]
+    });
+    confirm.present();
+
   // alert.present();
   // const loading= this.loadingCtrl.create({
   //   content: "deleting details",
@@ -139,7 +144,7 @@ var postData = { id:id }
   // });
   // loading.present();
 
-     this.navCtrl.setRoot('MyprofilePage')
+    // this.navCtrl.setRoot('MyprofilePage')
   
     }
 

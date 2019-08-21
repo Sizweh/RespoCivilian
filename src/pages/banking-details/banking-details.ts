@@ -55,13 +55,13 @@ export class BankingDetailsPage {
         'user_id': ['103'],
         'id': ['103'],
 
-      'org': ['', Validators.compose([Validators.required])],
+      'org_id': ['', Validators.compose([Validators.required])],
       'student_no': ['', Validators.compose([Validators.required])],
-      'name': ['', Validators.compose([Validators.required])],
-      'email': ['', Validators.compose([Validators.required])],
-      'gender': ['', Validators.compose([Validators.required])],
-      'dob': ['', Validators.compose([Validators.required])],
-      'password': ['', Validators.compose([Validators.required])],
+      // 'name': ['', Validators.compose([Validators.required])],
+      // 'email': ['', Validators.compose([Validators.required])],
+      // 'gender': ['', Validators.compose([Validators.required])],
+      // 'dob': ['', Validators.compose([Validators.required])],
+      // 'password': ['', Validators.compose([Validators.required])],
 
       // 'phonenumber': ['', Validators.compose([Validators.required])],
     })
@@ -107,12 +107,12 @@ export class BankingDetailsPage {
   }
 
   
-  goHome(){
+  goHome(id){
 
 
     const values = this.registerForm.value;
    
-    this.storage.set('org', values.org);
+    this.storage.set('org_id', values.org_id);
     this.storage.set('student_no', values.student_no);
     // this.storage.set('name', values.name);
     // this.storage.set('email', values.email);
@@ -126,6 +126,7 @@ export class BankingDetailsPage {
   var headers = new Headers();
   headers.append("Accept", 'application/json');
   headers.append('Content-Type', 'application/json' );
+
 
   // pass to back-end
      console.log(this.registerForm.value);
@@ -148,7 +149,8 @@ export class BankingDetailsPage {
       }
      }, (err) => {
        console.log(err);
-     });
+       });
+   
 
         const loading= this.loadingCtrl.create({
       content: "Checking code...",
