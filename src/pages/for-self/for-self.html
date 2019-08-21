@@ -22,25 +22,34 @@
       <ion-card>
   <div class="login-fields" [formGroup]="registerForm">
 
+<<<<<<< HEAD
     <ion-item no-lines text-left>
         <ion-label floating>Institution</ion-label>
         <ion-input formControlName="org_id" block value="{{fault.org_id}}"> </ion-input>
+=======
+        <ion-item no-lines text-left>
+        <ion-label floating>Student Number </ion-label>
+        <ion-input formControlName="org_name" block value="{{fault.student_no}}"> </ion-input>
+>>>>>>> 8e0806a1ba74302541ddb380de170b36c594cc60
         </ion-item>
-    
+
+        
+<!--     
         <ion-item no-lines text-left>
           <ion-label floating>Student Number</ion-label>
-          <ion-input formControlName="student_no" value="{{ fault.student_no }}"></ion-input>
-        </ion-item>
+
+          <ion-input formControlName="company_registration" value="{{ fault.company_registration }}"></ion-input>
+        </ion-item>  -->
     
         <!-- <ion-item no-lines text-left>
-          <ion-label floating>Name </ion-label>
-          <ion-input formControlName="name" value="{{ fault.name }}"></ion-input>
-          </ion-item> -->
+          <ion-label floating>Email </ion-label>
+          <ion-input formControlName="email" value="{{ fault.email }}"></ion-input>
+          </ion-item>
     
-        <!-- <ion-item no-lines text-left>
-          <ion-label floating>Email</ion-label>
-          <ion-input formControlName="email"  value="{{ fault.email }}"></ion-input>
-    </ion-item> -->
+         <ion-item no-lines text-left>
+          <ion-label floating>Cell Number</ion-label>
+          <ion-input formControlName="phone_no"  value="{{ fault.phone_no }}"></ion-input>
+    </ion-item>  -->
 
         <!-- <ion-item no-lines text-left>
           <ion-label floating>Gender</ion-label>

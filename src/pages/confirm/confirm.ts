@@ -110,7 +110,7 @@ export class ConfirmPage {
     .subscribe(res => {
         // this.presentToast(res.msg, res.status);
         console.log(res);
-        if (res.status=='OK') {
+        if (res.status=='accepted') {
           this.alert.presentAlert("Notification", res.msg);
           this.subscription.unsubscribe();
           this.navCtrl.push('CountDownPage');

@@ -44,8 +44,8 @@ export class BankingDetailsPage {
         this.id = String(val);  
       });
 
-      // this.id = navParams.get('data') ;
-      // this.User_Id = navParams.get('user_id') ;
+      this.id = navParams.get('data') ;
+      this.User_Id = navParams.get('user_id') ;
 
       this.registerForm = formBuilder.group({
 
@@ -57,11 +57,11 @@ export class BankingDetailsPage {
 
       'org_id': ['', Validators.compose([Validators.required])],
       'student_no': ['', Validators.compose([Validators.required])],
-      // 'name': ['', Validators.compose([Validators.required])],
-      // 'email': ['', Validators.compose([Validators.required])],
-      // 'gender': ['', Validators.compose([Validators.required])],
-      // 'dob': ['', Validators.compose([Validators.required])],
-      // 'password': ['', Validators.compose([Validators.required])],
+      'name': ['', Validators.compose([Validators.required])],
+      'email': ['', Validators.compose([Validators.required])],
+      'gender': ['', Validators.compose([Validators.required])],
+      'dob': ['', Validators.compose([Validators.required])],
+      'password': ['', Validators.compose([Validators.required])],
 
       // 'phonenumber': ['', Validators.compose([Validators.required])],
     })
@@ -70,6 +70,8 @@ export class BankingDetailsPage {
 
   ionViewDidLoad() {
     
+    this.storage.get('user_id').then((val) => { 
+    });
     // var headers = new Headers();
     // headers.append("Accept", 'application/json');
     // headers.append('Content-Type', 'application/json' );
@@ -170,7 +172,7 @@ export class BankingDetailsPage {
     });
     alert.present();
 
-   this.navCtrl.setRoot("HomePage");
+   //this.navCtrl.setRoot("HomePage");
   }
 
 

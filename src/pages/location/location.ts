@@ -678,6 +678,7 @@ goConfirm(){
         duration: 3000
       });
       if (status == "error") {
+          console.log(msg + 'serve')
         this.alert.presentAlert("Respo", 'Please try again... connecting serve');
       }
       
