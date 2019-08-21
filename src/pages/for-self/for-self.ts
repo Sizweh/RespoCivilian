@@ -49,14 +49,14 @@ export class ForSelfPage {
         // 'user_id': [this.User_Id,],
         // 'id': [this.id,],
 
-      'org_name': ['', Validators.compose([Validators.required])],
-      'company_registration': ['', Validators.compose([Validators.required])],
-      'email': ['', Validators.compose([Validators.required])],
-      'phone_no': ['', Validators.compose([Validators.required])],
-      'ems_lisence': ['', Validators.compose([Validators.required])],
-      'address': ['', Validators.compose([Validators.required])],
-      'city': ['', Validators.compose([Validators.required])],
-      'province': ['', Validators.compose([Validators.required])],
+      'org_id': ['', Validators.compose([Validators.required])],
+      'student_no': ['', Validators.compose([Validators.required])],
+      // 'email': ['', Validators.compose([Validators.required])],
+      // 'phone_no': ['', Validators.compose([Validators.required])],
+      // 'ems_lisence': ['', Validators.compose([Validators.required])],
+      // 'address': ['', Validators.compose([Validators.required])],
+      // 'city': ['', Validators.compose([Validators.required])],
+      // 'province': ['', Validators.compose([Validators.required])],
 
     })
 
@@ -66,7 +66,7 @@ export class ForSelfPage {
 
   ionViewDidLoad() {
     this.storage.get('user_id').then((val) => {
-      console.log(String(val+"llllllllll"));
+      console.log(String(val));
       this.  toConcat =   this.UserId =String(val); 
 
       var headers = new Headers();
@@ -92,20 +92,20 @@ export class ForSelfPage {
 
   goHome(){
 
-    var headers = new Headers();
-    headers.append("Accept", 'application/json');
-    headers.append('Content-Type', 'application/json' );
-   //pass to back-end
-      var postData = this.registerForm.value;
-      //THIS IS A BETTER WAY TO MAKE API CALLS
-    this.urlService.deleteForm(postData)
-    .subscribe(res => {
-     this.student_collection = res;
-        if (res.status=='OK') {
-        }
-    }, (err) => {
-        console.log(err);
-    });
+  //   var headers = new Headers();
+  //   headers.append("Accept", 'application/json');
+  //   headers.append('Content-Type', 'application/json' );
+  //  //pass to back-end
+  //     var postData = this.registerForm.value;
+  //     //THIS IS A BETTER WAY TO MAKE API CALLS
+  //   this.urlService.deleteForm(postData)
+  //   .subscribe(res => {
+  //    this.student_collection = res;
+  //       if (res.status=='OK') {
+  //       }
+  //   }, (err) => {
+  //       console.log(err);
+  //   });
 
     // const loading= this.loadingCtrl.create({
     //   content: "Checking code...",

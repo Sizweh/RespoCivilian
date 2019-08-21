@@ -6,14 +6,16 @@
           <ion-icon name="menu"></ion-icon>
            </button>
           </ion-buttons>
-         <ion-title>Select Responder</ion-title>
+         <!-- <ion-title>Select Responder</ion-title> -->
        <ion-buttons end>
       </ion-buttons>
     </ion-toolbar>
   </ion-navbar>
 </ion-header>
 
-<ion-content text-center>    
+<ion-content text-center> 
+    <br>
+    <ion-title>Select Responder</ion-title>
       <br>
 <!-- <ion-item (click)="goConfirm()"> -->
       <!-- <ion-list *ngFor="let respo of allResponders"> -->
@@ -25,7 +27,7 @@
               <ion-item (click)="goMaps(respo)" text-left>
 
                   <ion-avatar item-right>
-                    <img src="http://46.101.169.33/icons/citymed.jpg">
+                    <img src="{{ respo.company.profile }}">
                   </ion-avatar>
 
                    <!-- <ion-row>   
@@ -41,7 +43,7 @@
 
                   <font size="3" color='#38414a'><b>{{ respo.company.company_name }}</b></font><br>
                   <!-- <font size="2" color='#38414a'>{{ respo.phone_no }}</font><br> -->
-                  <font size="2" color='#38414a'> Closest Base : 5 kms away </font><br>
+                  <!-- <font size="2" color='#38414a'> Closest Base : 5 kms away </font><br> -->
 
                   <!-- <ion-row>   
                       <p style="float:left; font-size: 12px;"><b>Cell Number:</b>

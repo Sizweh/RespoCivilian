@@ -58,22 +58,22 @@ export class LoginPage {
   ionViewDidLoad() {
    // console.log('ionViewDidLoad LoginPage');
 
-    this.storage.get('user_name').then((val) => {
-      console.log('cater db stuff');
-     console.log(val);
-     this.username = val;
-     console.log("note  login" + this.username)
-     if(this.username === null)
-     {
-       console.log("Note  login")
+    // this.storage.get('user_name').then((val) => {
+    //   console.log('cater db stuff');
+    //  console.log(val);
+    //  this.username = val;
+    //  console.log("note  login" + this.username)
+    //  if(this.username === null)
+    //  {
+    //    console.log("Note  login")
         
-     }
-     else{
-     this.navCtrl.setRoot('HomePage');
-     }
+    //  }
+    //  else{
+    //  this.navCtrl.setRoot('HomePage');
+    //  }
       
 
-    });
+    // });
 
     
 

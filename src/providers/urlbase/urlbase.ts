@@ -3,19 +3,16 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { of } from 'rxjs/observable/of';
 import { catchError, tap } from 'rxjs/operators';
-/*
-/*
-  Generated class for the UrlbaseProvider provider.
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
+
+
+
 @Injectable()
 export class UrlbaseProvider {
 
     apiUrl = 'http://46.101.169.33/api/civilian/';
+//  apiUrl = 'http://127.0.0.1:8000/api/civilian/';
 
- // apiUrl = 'http://127.0.0.1:8000/api/civilian/';
   constructor(public http: HttpClient) {
     console.log('Hello UrlbaseProvider Provider');
   }
@@ -135,13 +132,7 @@ export class UrlbaseProvider {
         catchError(this.handleError('support', []))
       );
   }
-  // specify(data): Observable<any> {
-  //   return this.http.post<any>(this.apiUrl + 'specify', data)
-  //     .pipe(
-  //       tap(_ => this.log('specify')),
-  //       catchError(this.handleError('specify', []))
-  //     );
-  // }
+
   reset(data): Observable<any> {
     return this.http.post<any>(this.apiUrl + 'resetPassword', data)
       .pipe(
@@ -227,14 +218,7 @@ export class UrlbaseProvider {
       );
 
   }
-  deleteForm(data): Observable<any> {
-    return this.http.post<any>(this.apiUrl + 'updateDetails', data)
-      .pipe(
-        tap(_ => this.log('updateDetails')),
-        catchError(this.handleError('updateDetails', []))
-      );
 
-  }
   institutionList(data): Observable<any> {
     return this.http.post<any>(this.apiUrl + 'Org_List', data)
       .pipe(
