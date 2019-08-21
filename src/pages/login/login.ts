@@ -72,16 +72,11 @@ export class LoginPage {
      this.navCtrl.setRoot('HomePage');
      }
       
-<<<<<<< HEAD
-   });
-=======
+
     });
 
-    if  (!this.username){
+    
 
-     this.navCtrl.setRoot('HomePage');
-    }
->>>>>>> 6e87605cb142f3a6cee19ca4ebb1f49a388f1e94
 
  
   }

@@ -48,7 +48,7 @@ export class ForSelfPage {
 
         // 'user_id': [this.User_Id,],
         // 'id': [this.id,],
-<<<<<<< HEAD
+
       'org_name': ['', Validators.compose([Validators.required])],
       'company_registration': ['', Validators.compose([Validators.required])],
       'email': ['', Validators.compose([Validators.required])],
@@ -57,20 +57,7 @@ export class ForSelfPage {
       'address': ['', Validators.compose([Validators.required])],
       'city': ['', Validators.compose([Validators.required])],
       'province': ['', Validators.compose([Validators.required])],
-=======
 
-        'user_id': ['103'],
-        'id': ['103'],
-
-      'org': ['', Validators.compose([Validators.required])],
-      'student_no': ['', Validators.compose([Validators.required])],
-      // 'email': ['', Validators.compose([Validators.required])],
-      // 'name': ['', Validators.compose([Validators.required])],
-      // 'gender': ['', Validators.compose([Validators.required])],
-      // 'dob': ['', Validators.compose([Validators.required])],
-      // 'password': ['', Validators.compose([Validators.required])],
-      // 'province': ['', Validators.compose([Validators.required])],
->>>>>>> 6e87605cb142f3a6cee19ca4ebb1f49a388f1e94
     })
 
 
