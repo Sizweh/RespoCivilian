@@ -27,6 +27,7 @@ export class LoginPage {
   loginForm: FormGroup;
   playerId :any; 
   username :any;
+  user_id:any;
   passwordType: string = 'password';
   passwordIcon: string = 'eye-off';
  
@@ -56,14 +57,14 @@ export class LoginPage {
 
 
   ionViewDidLoad() {
-   // console.log('ionViewDidLoad LoginPage');
+   console.log('ionViewDidLoad LoginPage');
 
-    // this.storage.get('user_name').then((val) => {
+    // this.storage.get('user_id').then((val) => {
     //   console.log('cater db stuff');
     //  console.log(val);
-    //  this.username = val;
-    //  console.log("note  login" + this.username)
-    //  if(this.username === null)
+    //  this.user_id = val;
+    //  console.log("note  login" + this.user_id)
+    //  if(this.user_id === null)
     //  {
     //    console.log("Note  login")
         

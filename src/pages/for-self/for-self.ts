@@ -30,8 +30,8 @@ export class ForSelfPage {
     private toastCtrl: ToastController
     ) {
 
-      // this.id = navParams.get('data') ;
-      // this.User_Id = navParams.get('user_id') ;
+      this.id = navParams.get('data') ;
+      this.User_Id = navParams.get('user_id') ;
 
       this.storage.get('user_id').then((val) => {
         console.log(String(val));
@@ -46,17 +46,11 @@ export class ForSelfPage {
    
       this.registerForm = formBuilder.group({
 
-        // 'user_id': [this.User_Id,],
-        // 'id': [this.id,],
+        'user_id': [this.User_Id,],
+        'id': [this.id,],
 
       'org_id': ['', Validators.compose([Validators.required])],
       'student_no': ['', Validators.compose([Validators.required])],
-      // 'email': ['', Validators.compose([Validators.required])],
-      // 'phone_no': ['', Validators.compose([Validators.required])],
-      // 'ems_lisence': ['', Validators.compose([Validators.required])],
-      // 'address': ['', Validators.compose([Validators.required])],
-      // 'city': ['', Validators.compose([Validators.required])],
-      // 'province': ['', Validators.compose([Validators.required])],
 
     })
 
@@ -90,52 +84,9 @@ export class ForSelfPage {
     console.log('ionViewDidLoad ForSelfPage');
   }
 
-  goHome(){
-
-  //   var headers = new Headers();
-  //   headers.append("Accept", 'application/json');
-  //   headers.append('Content-Type', 'application/json' );
-  //  //pass to back-end
-  //     var postData = this.registerForm.value;
-  //     //THIS IS A BETTER WAY TO MAKE API CALLS
-  //   this.urlService.deleteForm(postData)
-  //   .subscribe(res => {
-  //    this.student_collection = res;
-  //       if (res.status=='OK') {
-  //       }
-  //   }, (err) => {
-  //       console.log(err);
-  //   });
-
-    // const loading= this.loadingCtrl.create({
-    //   content: "Checking code...",
-    //   duration: 3000
-    // });
-    // loading.present();
-
-    // let alert = this.alertCtrl.create({
-    //   title: 'Self Admission',
-    //   message: 'Admission details sent successfully, your medical aid will reply with confirmation',
-    //   buttons: [
-    //     {
-    //       text: 'OK',
-    //       handler: () => {
-        
-    //       }
-    //     }
-    //   ]
-    // });
-    // alert.present();
-
-    
+  goHome() {
     this.navCtrl.setRoot("HomePage");
-         }
-
-
- goSelfAdmission(){    
- this.navCtrl.push("SelfAdmissionPage");
- }
-
+  }
 
  goMyaccount(){ 
 

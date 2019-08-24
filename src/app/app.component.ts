@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -21,7 +22,7 @@ export class MyApp {
 
   @ViewChild(Nav) nav: Nav;
   username:any; 
-  rootPage: any = 'LoginPage';
+  rootPage: any = 'HomePage';
   // menu: true;
  
  

@@ -14,25 +14,23 @@
 <br>
 <br>
 <br>
-
-
+<!-- 
+<ion-list no-lines *ngFor="let other of otherCategories">   -->
 <div class="register-fields" [formGroup]="specifyForm">
 
-<ion-row no-lines *ngFor="let other of otherCategories">  
 
 <ion-item >
     <ion-input
      placeholder="Specify emergency"
      type="text"
      formControlName="specify_emergency"
-     [(ngModel)] = "specify_emergency"
-
      ></ion-input>
-     <font size="3" color='#38414a'>{{ other.category }}</font>
+     <!-- <font size="3" color='#38414a'>{{ other.category }}</font> -->
   </ion-item>
-</ion-row>
+
 
 </div>
+<!-- </ion-list> -->
 
 
 

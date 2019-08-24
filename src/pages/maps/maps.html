@@ -1,47 +1,24 @@
 
 <ion-content text-center>
- 
-  
-  
-  
-  
-  
-  
-    <!-- <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()" placeholder="Search for a place">
-  
-    </ion-searchbar>
-  
-    <ion-list [hidden]="autocompleteItems.length == 0">
-      <ion-item *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResult(item)">
-        {{ item.description }}
-      </ion-item>
-    </ion-list> -->
-  
+    <br>
+    <div id="pac-container" class="input-icons" text-center  >
+        <input text-align=center value="" id="pac-input" type="text" style="width: 100%; border: 1px solid #38414a;  
+         padding: 10px; border-radius: 3px; box-sizing: border-box; resize: vertical; font-size: 17px;"
+    
+            placeholder="Enter a Location">
+      <!-- <div id="pac-container" class="input-icons" text-center  >
+        <input text-align=center id="pac-input" type="text" style="width: 97%; border: 1px solid #ccc; 
+         padding: 10px; border-radius: 3px; box-sizing: border-box; resize: vertical;  border: 2px solid #38414a;  border-radius: 25px;  font-size: 17px;"
+    
+            placeholder="Search Location or Address"> -->
+      </div>
+      <br>
     <div id="map" style="width:500px; height:350px;">
   
   
     </div>
     
-  
-    <div id="pac-container" class="input-icons" text-center  >
-      <input text-align=center value="" id="pac-input" type="text" style="width: 100%; border: 1px solid #38414a;  
-       padding: 10px; border-radius: 3px; box-sizing: border-box; resize: vertical; font-size: 17px;"
-  
-          placeholder="Enter a Location">
-          
 
-
-
-    <!-- <div id="pac-container" class="input-icons" text-center  >
-      <input text-align=center id="pac-input" type="text" style="width: 97%; border: 1px solid #ccc; 
-       padding: 10px; border-radius: 3px; box-sizing: border-box; resize: vertical;  border: 2px solid #38414a;  border-radius: 25px;  font-size: 17px;"
-  
-          placeholder="Search Location or Address"> -->
-
-         
-          
-    </div>
-  
     <br>
     <div id="infowindow-content"  style="font-size: 17px;  color:#38414a; font-weight: bold;">
       <img src="" width="12" height="12" id="place-icon">
@@ -52,8 +29,7 @@
                 
                 
                 
-                <br>
-                <br>
+              
                 
                 <button (click)="goLocation()" ion-button color="secondary"
                   round>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Confirm Location

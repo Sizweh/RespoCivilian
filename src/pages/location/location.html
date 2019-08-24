@@ -7,7 +7,12 @@
 
 
   </div>
+  <br>
+  <br>
 
+         <ion-title>Confirm Request</ion-title>
+
+  <br>
   <br>
   <div id="infowind" style="font-size: 17px;  color:#38414a; font-weight: bold;">
     {{address_loacation}}
@@ -16,23 +21,21 @@
     <span id=""></span>
 
   </div> 
-  
-  
-  
-
               <!-- <ion-row *ngFor="let respo of selectedResponder"> -->
               <ion-card>
               
                 <ion-card-content>
                   <ion-item no-lines text-left>
-                    <ion-avatar item-start>
+                    <ion-avatar item-right>
                       <img src="http://46.101.169.33/icons/citymed.jpg">
+                      <!-- {{ profile }} -->
                     </ion-avatar>
                     <ion-row>
-                      <p style="font-size: 12px;"><b>Name:</b>
+                      <b><p color="dakar"style="font-size: 15px;">
                         {{ responderName }}
-                      </p>
+                      </p></b>
                     </ion-row>
+                   
 
                      <!-- <ion-row>
                       <p style="font-size: 12px;"><b>
@@ -52,8 +55,9 @@
               <font size="4" color='#38414a'>Emergency Type</font>
               <br>
               <br>
-              <font size="4" color='#f53d3d'>{{event}}</font>
-              
+              <font size="4" color='#f53d3d'>{{event}}</font><br>
+              <font size="4" color='#f53d3d'>{{specify_emergency}}</font>
+            
               <br>
               <br>
               
@@ -62,7 +66,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
               <br>
               <br>
-              
+             
               <button (click)="goMaps()" ion-button color="newcolor"
                 round>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Back
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>

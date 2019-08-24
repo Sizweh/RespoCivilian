@@ -35,6 +35,7 @@ driversDistance: any;//distance between driver and civilian should be
 userDetails: any;
 category: any;
 specify_emergency: any;
+specifyEmergency: any;
 
 selectedResponder      : any; 
 responderName: any;
@@ -93,18 +94,13 @@ responderDistance: any;
       this.category = val;
       this.event = val.category;
     });
-    this.storage.get('search_addres').then((val) => {
-      console.log('cater db stuff');
+
+    this.storage.get('specify_emergency').then((val) => {
+      console.log('c db stuff');
       console.log(val);
-      this.address = val;
-      this.event = val.address;
+      this.specify_emergency = val;
+      this.specifyEmergency = val.specify_emergency;
     });
-    // this.storage.get('specify_emergency').then((val) => {
-    //   console.log('cater db stuff');
-    //   console.log(val);
-    //   this.specify_emergency = val;
-    //   this.event = val.specify_emergency;
-    // });
 
 
     this.storage.get('user_id').then((val) => {
@@ -132,14 +128,6 @@ responderDistance: any;
       center: { lat: -29.856278, lng: 31.028828 },
 
       disableDefaultUI: true,
-
-
-
-
-
-
-
-
 
       
      styles:[
@@ -384,40 +372,8 @@ responderDistance: any;
             ]
         }
     ]
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-    });
- 
-
    
-        
-       
-
-    
-
+    });
         
       var infowindowContent = document.getElementById('infowindow-content');
       // infowindow.setContent();
@@ -432,13 +388,8 @@ responderDistance: any;
 
       });
 
-
-
-
         var geocodr = new google.maps.Geocoder();
         
-            
-       
         marker.addListener('dragend', function(event)  {
             
        //   alert(event.latLng.lat() + ' ' +  event.latLng.lng());
@@ -452,31 +403,10 @@ responderDistance: any;
               
                 infowindow.setContent(this.adressess);
                 
-                
-
               }
             }
           });
       });
-
-
-       
-       
-
-     
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     //end intial map setup
@@ -660,7 +590,7 @@ goConfirm(){
     'driver_id': this.selectedResponder.id,
     'company_id': this.selectedResponder.company.id,
     'emergency_type': this.event,
-    // 'specify_emergency': this.event    
+    'specify_emergency': this.specifyEmergency,    
   }
 
 
@@ -678,8 +608,8 @@ goConfirm(){
         duration: 3000
       });
       if (status == "error") {
-          console.log(msg + 'serve')
-        this.alert.presentAlert("Respo", 'Please try again... connecting serve');
+          console.log(msg + 'server')
+        this.alert.presentAlert("Respo", 'Please try again... connecting to the server');
       }
       
       if (status == "OK") {

@@ -67,7 +67,7 @@
           <button ion-button clear color='newcolor' block (click)="goLogin()"> Cancel</button>
          </ion-col>
           <ion-col col-6>
-            <button   ion-button round color='secondary' block (click)="goVerifyAccount()"> Done</button>
+            <button  [disabled]="!nextofkinForm.valid"  ion-button round color='secondary' block (click)="goVerifyAccount()"> Done</button>
           </ion-col>
        </ion-row>
 

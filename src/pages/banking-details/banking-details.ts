@@ -75,20 +75,12 @@ export class BankingDetailsPage {
     //    console.log(this.registerForm.value);
     //    var postData = this.registerForm.value;
      
-  
     // // THIS IS A BETTER WAY TO MAKE API CALLS
     //    this.urlService.institutionList(postData)
     //    .subscribe(res => {
-    //      // this.presentToast(res.msg, res.status);
     //     console.log(res);
-    //      // alert(res);
-    //      this.alert.presentAlert("Notification", res.msg);
     //      this.student_collection = res;
     //      if (res.status=='OK') {
-    //       //this.storage.set('nextofkinform', res.nextofkinform);
-    //       //this.storage.set('nextofkinform', res.nextofkin_id);
-    //      // this.navCtrl.push("VerifyAccountPage");
-    //      // localStorage.setItem('token', res.token);
     //     }
     //    }, (err) => {
     //      console.log(err);
@@ -100,55 +92,68 @@ export class BankingDetailsPage {
     this.navCtrl.push("LoginPage");
   }
   goMyaccount() {
-    this.navCtrl.push("MyaccountPage");
-  }
 
-  
-  goHome(id){
-
-    this.storage.get('user_id').then((val) => {
-      console.log(String(val));
-      this.user_id = String(val);  
-
-
-      const values = this.registerForm.value;
-   
-
-      this.storage.set('org_id', values.org_id);
-      this.storage.set('student_no', values.student_no);
-      // this.storage.set('email', values.email);
-      // this.storage.set('phone_no', values.phone_no);
-      // this.storage.set('ems_lisence', values.ems_lisence);
-      // this.storage.set('address', values.address);
-      // this.storage.set('city', values.city);
-      // this.storage.set('province', values.province);
-  
-  
     var headers = new Headers();
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
+  //  const requestOptions = new RequestOptions({ headers: headers });
+   
+   //pass to back-end
+      console.log(this.registerForm.value);
+      var postData = this.registerForm.value;
+
+
+      //THIS IS A BETTER WAY TO MAKE API CALLS
+    this.urlService.institutionList(postData)
+    .subscribe(res => {
+        // this.presentToast(res.msg, res.status);
+        console.log(res);
+        // alert(res);ss
+        this.alert.presentAlert("Notification", res.msg);
+
+        if (res.status=='OK') {
+
+        }
+    }, (err) => {
+        console.log(err);
+    });
+
+
+
+    //this.navCtrl.push("MyaccountPage");
+  }
+
   
-    // pass to back-end
-       console.log(this.registerForm.value);
-       var collection = {user_id:val ,
-        org_id:values.org_id,
-        student_no:values.student_no
-        };
+  goHome(id,){
+
+
+    this.storage.get('user_id').then((val) => {
+      console.log(String(val));
+      this.user_id = String(val);
+
+      const values = this.registerForm.value;
+
+      this.storage.set('org_id', values.org_id);
+      this.storage.set('student_no', values.student_no);
+
+      var headers = new Headers();
+      headers.append("Accept", 'application/json');
+      headers.append('Content-Type', 'application/json');
+
+      // pass to back-end
+      console.log(this.registerForm.value);
+      var collection = {
+        user_id: val,
+        org_id: values.org_id,
+        student_no: values.student_no
+      };
      
-  
     // THIS IS A BETTER WAY TO MAKE API CALLS
        this.urlService.orgList(collection)
        .subscribe(res => {
          // this.presentToast(res.msg, res.status);
         console.log(res);
-         // alert(res);
-        // this.alert.presentAlert("Notification", res.msg);
-
          if (res.status=='OK') {
-          //this.storage.set('nextofkinform', res.nextofkinform);
-          //this.storage.set('nextofkinform', res.nextofkin_id);
-         // this.navCtrl.push("VerifyAccountPage");
-         // localStorage.setItem('token', res.token);
         }
        }, (err) => {
          console.log(err);
@@ -172,7 +177,7 @@ export class BankingDetailsPage {
       });
       alert.present();
   
-      this.navCtrl.setRoot("HomePage");
+      //this.navCtrl.setRoot("HomePage");
 
     });
 

@@ -52,84 +52,83 @@ export class History1Page {
       })
   }
 
-  ngOnInit() {
-    let that = this;
-    setTimeout(function () {
-      that.googleMap();
-    }, 2000)
-  }
+  // ngOnInit() {
+  //   let that = this;
+  //   setTimeout(function () {
+  //     that.googleMap();
+  //   }, 2000)
+  // }
 
-  googleMap() {
+  // googleMap() {
 
-    let that = this;
-    //intial map setup, if no geolaction available
-    this.map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 19,
-      center: { lat: -29.856278, lng: 31.028828 }
-    });
-    //end intial map setup
-    // var driverLatLng = {lat:this.driverLat, lng:this.driverLng};
-    // console.log("driver");
-    // console.log(driverLatLng);
+  //   let that = this;
+  //   //intial map setup, if no geolaction available
+  //   this.map = new google.maps.Map(document.getElementById('map'), {
+  //     zoom: 19,
+  //     center: { lat: -29.856278, lng: 31.028828 }
+  //   });
+  //   //end intial map setup
+  //   // var driverLatLng = {lat:this.driverLat, lng:this.driverLng};
+  //   // console.log("driver");
+  //   // console.log(driverLatLng);
 
-    var infowindow = new google.maps.InfoWindow();
+  //   var infowindow = new google.maps.InfoWindow();
 
-    this.infoWindow = new google.maps.InfoWindow;
+  //   this.infoWindow = new google.maps.InfoWindow;
 
-    // Try HTML5 geolocation.
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function (position) {
+  //   // Try HTML5 geolocation.
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(function (position) {
 
-        var pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-        //set cvilians location
+  //       var pos = {
+  //         lat: position.coords.latitude,
+  //         lng: position.coords.longitude
+  //       };
+  //       //set cvilians location
 
-        var civilianLng = pos.lng;
-        if (civilianLng) {
-          that.civilianLat = pos.lat;
-          that.civilianLng = pos.lng;
-        }
+  //       var civilianLng = pos.lng;
+  //       if (civilianLng) {
+  //         that.civilianLat = pos.lat;
+  //         that.civilianLng = pos.lng;
+  //       }
 
-        //marker for user/civilian location
-        var markerCivilian;
-        markerCivilian = new google.maps.Marker({
-          position: pos,
-          map: that.map,
-          title: 'My location',
-          draggable: false,
-        });
+  //       //marker for user/civilian location
+  //       var markerCivilian;
+  //       markerCivilian = new google.maps.Marker({
+  //         position: pos,
+  //         map: that.map,
+  //         title: 'My location',
+  //         draggable: false,
+  //       });
 
-        google.maps.event.addListener(markerCivilian, 'click', (function (marker) {
-          return function () {
-            infowindow.setContent("my Location");
-            infowindow.open(that.map, marker);
-            // document.getElementById("emegencyButtons").style.display ='';
-          }
-        })(markerCivilian));
+  //       google.maps.event.addListener(markerCivilian, 'click', (function (marker) {
+  //         return function () {
+  //           infowindow.setContent("my Location");
+  //           infowindow.open(that.map, marker);
+  //           // document.getElementById("emegencyButtons").style.display ='';
+  //         }
+  //       })(markerCivilian));
 
+  //       that.infoWindow.open(that.map);
+  //       that.map.setCenter(pos);
 
-        that.infoWindow.open(that.map);
-        that.map.setCenter(pos);
+  //     }, function () {
+  //       this.handleLocationError(true, that.infoWindow, this.map.getCenter(), that.map);
+  //     });
 
-      }, function () {
-        this.handleLocationError(true, that.infoWindow, this.map.getCenter(), that.map);
-      });
-
-    } else {
-      // Browser doesn't support Geolocation
-      this.handleLocationError(true, that.infoWindow, that.map.getCenter(), that.map);
-      }
-      }
+  //   } else {
+  //     // Browser doesn't support Geolocation
+  //     this.handleLocationError(true, that.infoWindow, that.map.getCenter(), that.map);
+  //     }
+  //     }
       
-      handleLocationError(browserHasGeolocation, infoWindow, pos, map) {
-      infoWindow.setPosition(pos);
-      infoWindow.setContent(browserHasGeolocation ?
-      'Error: The Geolocation service failed.' :
-      'Error: Your browser doesn\'t support geolocation.');
-      infoWindow.open(map);
-      }
+  //     handleLocationError(browserHasGeolocation, infoWindow, pos, map) {
+  //     infoWindow.setPosition(pos);
+  //     infoWindow.setContent(browserHasGeolocation ?
+  //     'Error: The Geolocation service failed.' :
+  //     'Error: Your browser doesn\'t support geolocation.');
+  //     infoWindow.open(map);
+  //     }
 
 
 
@@ -137,18 +136,7 @@ export class History1Page {
   ionViewDidLoad() {
     console.log('ionViewDidLoad History1Page');
 
-    // this.storage.get('responderName').then((val) => {
-    //   console.log('respo db stuff');
-    //   console.log(val);
-    //   this.selectedResponder = val;
-    //   this.responderName = val.driver_name;
-    //   alert(this.responderName);
-    //   var randomnumber = Math.floor(Math.random() * (7 - 1 + 1)) + 1;
-    //   this.responderDistance = randomnumber;
-    // });
 
-     // this.storage.get('id').then((val) => {
-    // this.storage.get('user_id').then((val) => {
 
       var headers = new Headers();
       headers.append("Accept", 'application/json');
