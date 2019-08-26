@@ -58,39 +58,42 @@
 
 
   
-  <!-- <br> -->
+ 
               <ion-row no-lines *ngFor="let fault of history_collection">
-
-              <!-- <ion-card no-padding> -->
+                  <br>
+                  <ion-title text-center>Responder</ion-title>
+    
                   <ion-item no-lines color=''>
+                
                     <ion-avatar item-right>
                       <img src="../../assets/CITIMED.jpg">
                     </ion-avatar>
                        <!-- <h1 color='newcolor'> Emergency type : {{ fault.emergency_type }}</h1>  -->
                     <!-- <font size="3" color='#38414a'><b>Pick-Up : <b>{{ fault.pick_up }}</b></font><br> -->
                     <!-- <p href="tel:+2787463734"><b>Cell: </b> {{detail.phone_no}}</p> -->
-                     <font size="3" color='#38414a'>Responder : {{ fault.company_id }}</font><br>           
+                  
+<br>
+                     <font size="3" color='#38414a'> {{ fault.company_id }}</font><br>           
                     <!-- <p>1 minute away.</p> -->
                   </ion-item>
                   <ion-col color="secondary" >
-                      <a ion-button full class="gl" icon-right outline color="newcolor" href="tel:+27764616736">Call Responder
+                      <a ion-button  full round class="gl" icon-right color="secondary" href="tel:+080 033 3911">Call Responder
                           <!-- <ion-icon name="md-call"></ion-icon> -->
                        </a>
                   </ion-col>
-                  <!-- </ion-card> -->
+              
 
                 </ion-row>
 
         </div>
 
-<!--       
-      <br> -->
+
       
                <!-- <ion-col> -->
-                    <button full   color='newcolor' ion-button icon-right  (click)="goSupport()">
+                    <!-- <button full   color='newcolor' ion-button icon-right  (click)="goSupport()">
                      
                       <ion-label >Send Message</ion-label>
-                    </button>
+                    </button> -->
                   <!-- </ion-col> -->
       
             

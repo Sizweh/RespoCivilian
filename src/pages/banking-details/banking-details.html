@@ -27,20 +27,16 @@
 
 
   <ion-item>
-   
-    <ion-input formControlName="org_id" placeholder="Institution"  ></ion-input>
- 
+  <ion-input formControlName="org_id" placeholder="Institution" ></ion-input>
     <ion-select formControlName="org_id"  >
         <ion-label >Institution</ion-label>
-
-  
-      <ion-option value="2">MUT</ion-option>
- 
+      <ion-option value="2">MUT (Mangosuthu University of Technology)</ion-option>
+      <ion-option value="1">DUT</ion-option>
     </ion-select>
   </ion-item>
 
   <ion-item>
-    <ion-input block formControlName="student_no" type="text" placeholder="Student No." ></ion-input>
+    <ion-input block formControlName="student_no" type="text" placeholder="Student No."></ion-input>
   </ion-item>
 
 <!-- <ion-item>
@@ -97,31 +93,18 @@
     ></ion-input>
   </ion-item> -->
 
-
- 
-
   </div>
 
 <!-- </ion-card>  -->
 
   <!-- </ion-row> -->
         
-
-
 <br>
 <ion-row>
-    <!-- <ion-col col-6>
-      <button ion-button clear color='newcolor' block (click)="goMyaccount()" >back</button>
-     </ion-col> -->
       <ion-col col-6>
-        <button   ion-button round color='secondary' block (click)="goHome()()">Save</button>
+        <button   ion-button round color='secondary' block (click)="goMyaccount()()">Save</button>
       </ion-col>
-      <!-- <ion-col col-6>
-        <button  [disabled]="!registerForm.valid"  ion-button round color='secondary' block (click)="goHome()">Save</button>
-      </ion-col> -->
 </ion-row>
-
-<button ion-button round small block block (click)="goMyaccount()">View</button>
 
 
 

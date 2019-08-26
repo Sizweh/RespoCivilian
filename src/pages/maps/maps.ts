@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { AlertsProvider } from './../../providers/alerts/alerts';
 import { Storage } from '@ionic/storage';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 
 declare var google;
@@ -46,13 +47,27 @@ responderDistance: any;
   zone: any;
   Adressess: any;
 
+  map1Form: FormGroup;
+  map2Form: FormGroup;
+
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public alert: AlertsProvider,
     private storage: Storage,
     public loadingCtrl: LoadingController,
     private urlService: UrlbaseProvider,
+    public formBuilder: FormBuilder,
     ) {
+
+      
+      this.map1Form = formBuilder.group({
+        'map1': ['',],
+       
+      })
+      this.map2Form = formBuilder.group({
+        'map2': ['',],
+     
+      })
 
     
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
@@ -91,14 +106,7 @@ responderDistance: any;
       this.category = val;
       this.event = val.category;
     });
-    // this.storage.get('specify_emergency').then((val) => {
-    //   console.log('cater db stuff');
-    //   console.log(val);
-    //   this.specify_emergency = val;
-    //   this.event = val.specify_emergency;
-    // });
-
-
+ 
     this.storage.get('user_id').then((val) => {
       console.log('user db stuff');
       console.log(val);
@@ -124,12 +132,6 @@ responderDistance: any;
       center: { lat: -29.856278, lng: 31.028828 },
 
       disableDefaultUI: true,
-
-
-
-
-
-
 
 
 
@@ -871,9 +873,18 @@ this.navCtrl.setRoot('HomePage')
 }
 goLocation(){
   
+  
+  const value = this.map1Form.value;
+
+  this.storage.set('map1', value.map1);
+
+  // const value = this.map2Form.value;
+
+  // this.storage.set('map2', value.map2);
+
   var  Sear_location = document.getElementById('infowindow-content').innerText;
   
-   this.navCtrl.setRoot("LocationPage", {
+  this.navCtrl.setRoot("LocationPage", {
        sear_location:Sear_location,
   
  });

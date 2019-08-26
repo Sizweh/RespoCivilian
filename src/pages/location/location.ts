@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { AlertsProvider } from './../../providers/alerts/alerts';
 import { Storage } from '@ionic/storage';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 
 declare var google;
@@ -48,6 +49,8 @@ responderDistance: any;
   zone: any;
     address: any;
     address_loacation : any ; 
+    
+  mapForm: FormGroup;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -56,6 +59,16 @@ responderDistance: any;
     public loadingCtrl: LoadingController,
     private urlService: UrlbaseProvider,
     ) {
+
+        // this.mapForm = formBuilder.group({
+        //     'address': ['',],
+           
+        //   })
+
+
+
+
+
         this.address_loacation = navParams.get('sear_location') ;
     //console.log('ssssssssssssss'+ this.address_loacation );
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
@@ -93,6 +106,12 @@ responderDistance: any;
       console.log(val);
       this.category = val;
       this.event = val.category;
+    });
+    this.storage.get('address_loacation').then((val) => {
+      console.log('cater db stuff');
+      console.log(val);
+      this.address_loacation = val;
+      this.event = val.address_loacation;
     });
 
     this.storage.get('specify_emergency').then((val) => {
@@ -584,13 +603,15 @@ goConfirm(){
 
   let that = this;
   this.userDetails = {
+
     'civilian_id': this.civilianId,
     'lat': that.civilianLat,//current lat
-    'lng': that.civilianLng,//current lng
+     'lng': that.civilianLng,//current lng
     'driver_id': this.selectedResponder.id,
     'company_id': this.selectedResponder.company.id,
     'emergency_type': this.event,
     'specify_emergency': this.specifyEmergency,    
+    'address_loacation': this.address_loacation,    
   }
 
 
@@ -602,11 +623,13 @@ goConfirm(){
       var msg = res.msg;
       var status = res.status;
       var reqId = res.request_id;
+      var adId = res.address_loacation;
 
       const loader = this.loadingCtrl.create({
         content: "Sending request...",
         duration: 3000
       });
+
       if (status == "error") {
           console.log(msg + 'server')
         this.alert.presentAlert("Respo", 'Please try again... connecting to the server');
@@ -615,6 +638,8 @@ goConfirm(){
       if (status == "OK") {
         loader.present();
         this.storage.set('request_id', reqId);
+        this.storage.set('address_loacation', adId);
+
         this.navCtrl.push("ConfirmPage");
       }
     }, (err) => {

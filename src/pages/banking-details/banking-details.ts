@@ -61,37 +61,9 @@ export class BankingDetailsPage {
       // 'city': ['', Validators.compose([Validators.required])],
       // 'province': ['', Validators.compose([Validators.required])],
 
+      
+
     })
-
-    }
-
-  ionViewDidLoad() {
-    
-    // var headers = new Headers();
-    // headers.append("Accept", 'application/json');
-    // headers.append('Content-Type', 'application/json' );
-  
-    // // pass to back-end
-    //    console.log(this.registerForm.value);
-    //    var postData = this.registerForm.value;
-     
-    // // THIS IS A BETTER WAY TO MAKE API CALLS
-    //    this.urlService.institutionList(postData)
-    //    .subscribe(res => {
-    //     console.log(res);
-    //      this.student_collection = res;
-    //      if (res.status=='OK') {
-    //     }
-    //    }, (err) => {
-    //      console.log(err);
-    //    });
-    console.log('ionViewDidLoad BankingDetailsPage');
-  }
-
-  goLogin(){
-    this.navCtrl.push("LoginPage");
-  }
-  goMyaccount() {
 
     var headers = new Headers();
     headers.append("Accept", 'application/json');
@@ -101,31 +73,43 @@ export class BankingDetailsPage {
    //pass to back-end
       console.log(this.registerForm.value);
       var postData = this.registerForm.value;
+     
+
 
 
       //THIS IS A BETTER WAY TO MAKE API CALLS
-    this.urlService.institutionList(postData)
-    .subscribe(res => {
-        // this.presentToast(res.msg, res.status);
-        console.log(res);
-        // alert(res);ss
-        this.alert.presentAlert("Notification", res.msg);
+    // this.urlService.institutionList(postData)
+    // .subscribe(res => {
+    //     // this.presentToast(res.msg, res.status);
+    //     console.log(res);
+    //     // alert(res);ss
+    //     this.alert.presentAlert("Notification", res.msg);
 
-        if (res.status=='OK') {
+    //     if (res.status=='OK') {
 
-        }
-    }, (err) => {
-        console.log(err);
-    });
+    //     }
+    // }, (err) => {
+    //     console.log(err);
+    // });
 
 
+    }
 
-    //this.navCtrl.push("MyaccountPage");
+  ionViewDidLoad() {
+    
+
+    console.log('ionViewDidLoad BankingDetailsPage');
   }
 
-  
-  goHome(id,){
 
+
+
+  goLogin(){
+    this.navCtrl.push("LoginPage");
+  }
+
+
+  goMyaccount(id) {
 
     this.storage.get('user_id').then((val) => {
       console.log(String(val));
@@ -160,7 +144,7 @@ export class BankingDetailsPage {
        });
   
           const loading= this.loadingCtrl.create({
-        content: "Checking code...",
+        content: "Saving...",
         duration: 3000
       });
       loading.present();
@@ -176,12 +160,12 @@ export class BankingDetailsPage {
         ]
       });
       alert.present();
-  
-      //this.navCtrl.setRoot("HomePage");
-
     });
+    this.navCtrl.setRoot("MyaccountPage");
+  }
 
-
+  
+  goHome(){
    this.navCtrl.setRoot("HomePage");
 
   }

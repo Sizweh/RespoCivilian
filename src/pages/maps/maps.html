@@ -1,18 +1,19 @@
 
 <ion-content text-center>
     <br>
-    <div id="pac-container" class="input-icons" text-center  >
-        <input text-align=center value="" id="pac-input" type="text" style="width: 100%; border: 1px solid #38414a;  
+
+    <div class="register-fields" [formGroup]='map1Form' >  
+
+    <div id="pac-container" class="input-icons" text-center >
+        <input formControlName="map1" text-align=center value="" id="pac-input" type="text" style="width: 100%; border: 1px solid #38414a;  
          padding: 10px; border-radius: 3px; box-sizing: border-box; resize: vertical; font-size: 17px;"
-    
+
             placeholder="Enter a Location">
-      <!-- <div id="pac-container" class="input-icons" text-center  >
-        <input text-align=center id="pac-input" type="text" style="width: 97%; border: 1px solid #ccc; 
-         padding: 10px; border-radius: 3px; box-sizing: border-box; resize: vertical;  border: 2px solid #38414a;  border-radius: 25px;  font-size: 17px;"
-    
-            placeholder="Search Location or Address"> -->
       </div>
+    </div>
+
       <br>
+
     <div id="map" style="width:500px; height:350px;">
   
   
@@ -20,11 +21,20 @@
     
 
     <br>
+
+    <!-- <div class="register-fields" [formGroup]='map2Form' >  -->
+
     <div id="infowindow-content"  style="font-size: 17px;  color:#38414a; font-weight: bold;">
+      <input  >
       <img src="" width="12" height="12" id="place-icon">
       <span id="place-name"  class="title"></span><br>
       <span id="place-address"></span>
-    </div>   
+      <input   id="place-address"  >
+    </div> 
+<!-- 
+  </div> -->
+     
+   
                 
                 
                 

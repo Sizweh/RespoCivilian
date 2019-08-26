@@ -220,10 +220,10 @@ export class UrlbaseProvider {
   }
 
   institutionList(data): Observable<any> {
-    return this.http.post<any>(this.apiUrl + 'org_List', data)
+    return this.http.post<any>(this.apiUrl + 'org_list', data)
       .pipe(
-        tap(_ => this.log('org_List')),
-        catchError(this.handleError('org_List', []))
+        tap(_ => this.log('org_list')),
+        catchError(this.handleError('org_list', []))
       );
 
   }

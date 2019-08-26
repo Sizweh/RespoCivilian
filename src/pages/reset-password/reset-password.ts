@@ -16,6 +16,8 @@ export class ResetPasswordPage {
   resetPasswordForm: FormGroup;
   numberType: string = 'number';
   numberIcon: string = 'eye-off';
+  user_id: any;
+  id: string;
 
 
   constructor(
@@ -28,6 +30,16 @@ export class ResetPasswordPage {
     public storage: Storage,
     private urlService: UrlbaseProvider,
     ) {
+
+      this.storage.get('user_id').then((val) => {
+        console.log(String(val));
+        this.user_id = String(val);  
+      });
+
+      this.storage.get('id').then((val) => {
+        console.log(String(val));
+        this.id = String(val);  
+      });
 
       this.resetPasswordForm = formBuilder.group({
         'email': ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern("")])],
@@ -80,7 +92,7 @@ export class ResetPasswordPage {
         console.log(err);
       });
 
-   // this.navCtrl.setRoot("Forgotpassword2Page");
+   this.navCtrl.setRoot("Forgotpassword2Page");
 
   }
 
