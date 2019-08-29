@@ -145,10 +145,10 @@ export class NextOfKinPage {
         this.prefered_hospital = val;
       });
     
-      this.storage.get('Medical_Aid_Status').then((val) => {
-        //  console.log(String(val));
-        this.Medical_Aid_Status = val;
-      });
+      // this.storage.get('Medical_Aid_Status').then((val) => {
+      //   //  console.log(String(val));
+      //   this.Medical_Aid_Status = val;
+      // });
     
 
 //////////////////nextofkin////////////////////////

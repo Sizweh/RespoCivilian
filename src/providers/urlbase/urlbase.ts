@@ -10,7 +10,7 @@ import { catchError, tap } from 'rxjs/operators';
 @Injectable()
 export class UrlbaseProvider {
 
- //apiUrl= 'http://quiet-tundra-56446.herokuapp.com/';
+//  apiUrl= 'http://quiet-tundra-56446.herokuapp.com/';
 
    apiUrl = 'http://46.101.169.33/api/civilian/';
  //apiUrl = 'http://127.0.0.1:8000/api/civilian/'
