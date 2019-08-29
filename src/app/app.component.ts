@@ -3,7 +3,10 @@ import { Nav,  Platform, MenuController,  } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder,} from '@angular/forms';
+import {HomePage} from "../pages/home/home";
+import {LoginPage} from "../pages/login/login";
+
 
 
 
@@ -22,7 +25,9 @@ export class MyApp {
 
   @ViewChild(Nav) nav: Nav;
   username:any; 
-  rootPage: any = 'HomePage';
+  rootPage: any = 'LoginPage';
+
+  
   // menu: true;
  
  
@@ -51,8 +56,21 @@ export class MyApp {
         'user_id': [''],
       })
 
-    this.initializeApp();
+    this.initializeApp(); {
+                        
+     
+
+      }
+
+  
+
+   
+  
     // used for an example of ngFor and navigation
+ 
+  
+
+    
     this.pages = [
     ];
     
@@ -91,6 +109,7 @@ export class MyApp {
     // this.sideMenu.hide();
     this.nav.setRoot('LoginPage');
     // this.menu.enable(true);
+    this.storage.clear();
     this.menu.close();
     }
   
@@ -163,7 +182,12 @@ export class MyApp {
     this.menu.enable(true);
     this.menu.close();
     }
+
+
+    
   
 }
 
 
+
+      

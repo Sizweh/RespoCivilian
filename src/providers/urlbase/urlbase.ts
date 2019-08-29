@@ -10,8 +10,10 @@ import { catchError, tap } from 'rxjs/operators';
 @Injectable()
 export class UrlbaseProvider {
 
-    // apiUrl = 'http://46.101.169.33/api/civilian/';
- apiUrl = 'http://127.0.0.1:8000/api/civilian/';
+ //apiUrl= 'http://quiet-tundra-56446.herokuapp.com/';
+
+   apiUrl = 'http://46.101.169.33/api/civilian/';
+ //apiUrl = 'http://127.0.0.1:8000/api/civilian/'
 
   constructor(public http: HttpClient) {
     console.log('Hello UrlbaseProvider Provider');
@@ -224,6 +226,22 @@ export class UrlbaseProvider {
       .pipe(
         tap(_ => this.log('org_list')),
         catchError(this.handleError('org_list', []))
+      );
+
+  }
+  specify(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'sendspecify_emerg', data)
+      .pipe(
+        tap(_ => this.log('sendspecify_emerg')),
+        catchError(this.handleError('sendspecify_emerg', []))
+      );
+
+  }
+  saveAddress(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + '', data)
+      .pipe(
+        tap(_ => this.log('')),
+        catchError(this.handleError('', []))
       );
 
   }

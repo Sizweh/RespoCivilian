@@ -17,87 +17,50 @@
 
 <br>
 
-<!-- <ion-row no-scrolling  *ngFor="let fault of student_collection"> -->
-
-  
-    <!-- <ion-card no-lines>  -->
   <!-- <ion-list *ngFor="let respo of institutions"> -->
 <div class="register-fields" [formGroup]="registerForm">
 
 
+   <ion-card no-lines> 
 
   <ion-item>
   <ion-input formControlName="org_id" placeholder="Institution" ></ion-input>
     <ion-select formControlName="org_id"  >
         <ion-label >Institution</ion-label>
       <ion-option value="2">MUT (Mangosuthu University of Technology)</ion-option>
-      <ion-option value="1">DUT</ion-option>
+      <ion-option value="1">DUT (Durban University of Technology)</ion-option>
     </ion-select>
   </ion-item>
+
+  <!-- <ion-row>
+      <b><p color="dakar"style="font-size: 15px;">
+        {{ orgInfo }}
+      </p></b>
+    </ion-row> -->
 
   <ion-item>
     <ion-input block formControlName="student_no" type="text" placeholder="Student No."></ion-input>
   </ion-item>
 
-<!-- <ion-item>
-    <ion-input
-      block
-      formControlName="name"
-      type="text"
-      placeholder="Name"
-    ></ion-input>
-  </ion-item>
+</ion-card>
 
-<ion-item>
-    <ion-input
-      block
-      formControlName="email"
-      type="text"
-      placeholder="Email"
-    ></ion-input>
-  </ion-item> 
 
-<ion-item>
-    <ion-input
-      block
-      formControlName="gender"
-      type="text"
-      placeholder="Gender"
-    ></ion-input>
-  </ion-item>
-
-<ion-item>
-    <ion-input
-      block
-      formControlName="dob"
-      type="text"
-      placeholder="Dob"
-    ></ion-input>
-  </ion-item>
-
-<ion-item>
-    <ion-input
-      block
-      formControlName="password"
-      type="password"
-      placeholder="Password"
-    ></ion-input>
-  </ion-item> -->
-
-<!-- <ion-item>
-    <ion-input
-      block
-      formControlName="phonenumber"
-      type="text"
-      placeholder="Cell Number"
-    ></ion-input>
-  </ion-item> -->
-
-  </div>
+</div>
 
 <!-- </ion-card>  -->
 
-  <!-- </ion-row> -->
+
+<!-- <ion-row no-scrolling  *ngFor="let fault of student_collection">
+
+  <ion-item no-lines text-left>
+    <ion-label floating>Institution</ion-label>
+    <ion-input formControlName="org_id" block value="{{fault.org_id}}"> </ion-input>
+  </ion-item>
+
+</ion-row> -->
+
+
+
         
 <br>
 <ion-row>
@@ -105,6 +68,8 @@
         <button   ion-button round color='secondary' block (click)="goMyaccount()()">Save</button>
       </ion-col>
 </ion-row>
+
+
 
 
 

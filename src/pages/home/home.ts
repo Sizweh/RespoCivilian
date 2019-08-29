@@ -5,15 +5,6 @@ import { HttpClient } from '@angular/common/http';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { MenuController } from 'ionic-angular';
 
-
-
-/**
- * Generated class for the HomePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-home',
@@ -22,6 +13,7 @@ import { MenuController } from 'ionic-angular';
 export class HomePage {
   playerId :any; 
   user_ids :any;
+  user_id: any;
 
 
   constructor(
@@ -129,6 +121,27 @@ otherCategories = [
 
 
 ionViewDidLoad() {
+
+  
+    this.storage.get('user_id').then((val) => {
+      console.log('cater db stuff');
+     console.log(val);
+     this.user_id = val;
+     console.log("note  login" + this.user_id)
+     if(this.user_id === null)
+     {
+       console.log("Note  login")
+       this.navCtrl.setRoot('LoginPage');
+        
+     }
+     else{
+ 
+     }
+      
+
+    });
+
+
   console.log('ionViewDidLoad HomePage');
 
   var notificationOpenedCallback = function(jsonData) {
@@ -173,11 +186,11 @@ this.storage.get('user_id').then((user_id) => {
     this.navCtrl.push('SelectResponderPage')
   }
 
-  goSpecifyEmergency(other){
-    this.storage.set('category', other);
+  // goSpecifyEmergency(other){
+  //   this.storage.set('category', other);
 
-    this.navCtrl.push('SpecifyEmergencyPage')
-  }
+  //   this.navCtrl.push('SpecifyEmergencyPage')
+  // }
 
   goLanding(){
     this.navCtrl.push('LandingPage')
@@ -188,7 +201,19 @@ this.storage.get('user_id').then((user_id) => {
     this.navCtrl.push('SelfAdmissionPage')
   }
 
+  goSpecifyEmergency(other){
 
+    this.storage.set('category', other);
+
+    this.storage.get('user_id').then((result) => {
+    this.storage.get('id').then((_result_) => {
+  
+      this.navCtrl.push("SpecifyEmergencyPage", {
+        user_id:result,
+        id:result,
+      });
+  });
+  });
 
 
  
@@ -201,5 +226,5 @@ this.storage.get('user_id').then((user_id) => {
 
 
 
-
+}
 

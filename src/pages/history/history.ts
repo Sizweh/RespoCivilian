@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
-import { FormGroup, FormBuilder, Validators, } from '@angular/forms';
+import { FormGroup, FormBuilder,} from '@angular/forms';
 import { AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 

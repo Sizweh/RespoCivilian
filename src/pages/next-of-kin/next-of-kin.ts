@@ -242,7 +242,7 @@ goVerifyAccount(){
        // this.presentToast(res.msg, res.status);
       console.log(res);
        // alert(res);
-    this.alert.presentAlert("Respo", 'Please try again... connecting to the server');
+    this.alert.presentAlert("Notification", res.msg);
        if (res.status=='OK') {
         //this.storage.set('nextofkinform', res.nextofkinform);
         //this.storage.set('nextofkinform', res.nextofkin_id);

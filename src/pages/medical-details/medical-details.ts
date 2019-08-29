@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Storage } from '@ionic/storage';
-import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
+// import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { AlertsProvider } from './../../providers/alerts/alerts';
 
 
@@ -22,21 +22,21 @@ export class MedicalDetailsPage {
     public formBuilder: FormBuilder,
     public storage: Storage,
     public alertCtrl: AlertController,
-    private urlService: UrlbaseProvider,
+   // private urlService: UrlbaseProvider,
     public alert: AlertsProvider,
    
     ) {
 
       this.medicaldetailsForm = formBuilder.group({
 
-        'member_no': ['', Validators.compose([Validators.required])],
-        'scheme_name': ['', Validators.compose([Validators.required])],
-        'partial_membership': ['', Validators.compose([Validators.required])],
+        'member_no': ['',],
+        'scheme_name': ['',],
+        'partial_membership': ['',],
 
 
-        'chronic_dis': ['', Validators.compose([Validators.required])],
-        'disability': ['', Validators.compose([Validators.required])],
-        'prefered_hospital': ['', Validators.compose([Validators.required])],
+        'chronic_dis': ['', ],
+        'disability': ['', ],
+        'prefered_hospital': ['',],
 
       })
 

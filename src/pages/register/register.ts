@@ -4,7 +4,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AlertsProvider } from './../../providers/alerts/alerts';
 import { HttpClient } from '@angular/common/http';
 import { MenuController } from 'ionic-angular';
-import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
+// import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { Storage } from '@ionic/storage';
 
 import { AlertController } from 'ionic-angular';
@@ -27,7 +27,7 @@ export class RegisterPage {
     public alert: AlertsProvider,
     public http: HttpClient,
     public menuCtrl: MenuController,
-    private urlService: UrlbaseProvider,
+    // private urlService: UrlbaseProvider,
     public storage: Storage,
     public alertCtrl: AlertController
 

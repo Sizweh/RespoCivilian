@@ -1,60 +1,42 @@
 
 <ion-content text-center>
-    <br>
+<br>
 
-    <div class="register-fields" [formGroup]='map1Form' >  
+<div class="register-fields" [formGroup]="map1Form">
 
-    <div id="pac-container" class="input-icons" text-center >
-        <input formControlName="map1" text-align=center value="" id="pac-input" type="text" style="width: 100%; border: 1px solid #38414a;  
-         padding: 10px; border-radius: 3px; box-sizing: border-box; resize: vertical; font-size: 17px;"
+<div id="pac-container" class="input-icons" text-center>
+<input formControlName="address" text-align=center value="" id="pac-input" type="text" style="width: 100%; border: 1px solid #38414a;  
+padding: 10px; border-radius: 3px; box-sizing: border-box; resize: vertical; font-size: 17px;"
+placeholder="Enter a Location">
+</div>
 
-            placeholder="Enter a Location">
-      </div>
-    </div>
+</div>
 
-      <br>
+<br>
+<div id="map" style="width:500px; height:300px;">
+</div>
 
-    <div id="map" style="width:500px; height:350px;">
-  
-  
-    </div>
-    
 
-    <br>
-
-    <!-- <div class="register-fields" [formGroup]='map2Form' >  -->
-
-    <div id="infowindow-content"  style="font-size: 17px;  color:#38414a; font-weight: bold;">
-      <input  >
-      <img src="" width="12" height="12" id="place-icon">
-      <span id="place-name"  class="title"></span><br>
-      <span id="place-address"></span>
-      <input   id="place-address"  >
-    </div> 
-<!-- 
-  </div> -->
-     
-   
-                
-                
-                
-                
+<br>
+<div id="infowindow-content"  style="font-size: 17px;  color:#38414a; font-weight: bold;">
+<img src="" width="12" height="12" id="place-icon">
+<span id="place-name" class="title"></span><br>
+<span id="place-address"></span>
+</div>  
+<br>         
               
-                
-                <button (click)="goLocation()" ion-button color="secondary"
-                  round>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Confirm Location
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                <br>
-                <br>
-                
-                <button (click)="goHome()" ion-button color="newcolor"
-                  round>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cancel
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                
-                
-                
-                
-                
+        
+<button (click)="goLocation()" ion-button color="secondary"
+round>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Confirm Location
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+<br>
+<br>
+
+<button (click)="goHome()" ion-button color="newcolor"
+round>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cancel
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button> 
+
+
 <br>
 <br>
                 
@@ -66,14 +48,5 @@ round>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 
 
  -->
-
-
-
-
-
-                
-                
-                
-                
-                
+              
 </ion-content>

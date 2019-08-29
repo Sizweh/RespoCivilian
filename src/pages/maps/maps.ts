@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, UrlSerializer} from 'ionic-angular';
-import { HttpClient } from '@angular/common/http';
+
 import { AlertsProvider } from './../../providers/alerts/alerts';
 import { Storage } from '@ionic/storage';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 
 declare var google;
@@ -49,6 +49,8 @@ responderDistance: any;
 
   map1Form: FormGroup;
   map2Form: FormGroup;
+  map_collection: any;
+
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -61,13 +63,13 @@ responderDistance: any;
 
       
       this.map1Form = formBuilder.group({
-        'map1': ['',],
+        'address': ['',],
        
       })
-      this.map2Form = formBuilder.group({
-        'map2': ['',],
+      // this.map2Form = formBuilder.group({
+      //   'map2': ['',],
      
-      })
+      // })
 
     
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
@@ -494,23 +496,6 @@ responderDistance: any;
        // document.getElementById('infowindow-content').innerHTML = "dsjfkjlkjslkjflkjsdlkjflksjl";
         
       });
-
-     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     //end intial map setup
     // var driverLatLng = {lat:this.driverLat, lng:this.driverLng};
     // console.log("driver");
@@ -673,11 +658,15 @@ function init(){
           }, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
               if (results[0]) {
+
+                console.log(event.latLng.lat());
+                console.log(event.latLng.lng());
+
                 
             
                 this.adressess = results[0].formatted_address; 
               
-                infowindow.setContent(this.adressess);
+                infowindow.setContent('My location');
                 document.getElementById('infowindow-content').innerHTML = this.adressess ;
                 // document.getElementById('infowindow-content').innerHTML = event.latLng ;
                
@@ -873,21 +862,29 @@ this.navCtrl.setRoot('HomePage')
 }
 goLocation(){
   
+
+
+  // var postData = this.map1Form.value;
+
+  // this.urlService.saveAddress(postData)
+  // .subscribe(res => {
+  //  this.map_collection = res;
+  //     if (res.status=='OK') {
+  //      }
+  // }, (err) => {
+  //     console.log(err);
+  // });
   
-  const value = this.map1Form.value;
-
-  this.storage.set('map1', value.map1);
-
-  // const value = this.map2Form.value;
-
-  // this.storage.set('map2', value.map2);
-
   var  Sear_location = document.getElementById('infowindow-content').innerText;
   
+  this.storage.set('address', Sear_location);
+
   this.navCtrl.setRoot("LocationPage", {
        sear_location:Sear_location,
   
  });
+
+ console.log(Sear_location);
 
 
 }

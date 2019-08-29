@@ -1,5 +1,5 @@
-import { Component, ɵConsole } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, LoadingController, Modal, ModalController, ModalOptions } from 'ionic-angular';
+import { Component, } from '@angular/core';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController, } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 
@@ -17,7 +17,6 @@ export class SelfAdmissionPage {
     public navParams: NavParams,
     public loadingCtrl: LoadingController,
     public alertCtrl:  AlertController,
-    private modal: ModalController,
     public storage: Storage,
     ) {
   }

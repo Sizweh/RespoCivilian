@@ -6,7 +6,7 @@
           <ion-icon name="menu"></ion-icon>
         </button>
       </ion-buttons>
-      <!-- <ion-title text-center>Edit Personal Details</ion-title> -->
+
 
     </ion-toolbar>
   </ion-navbar>
@@ -28,47 +28,31 @@
       <ion-label floating>Full Name </ion-label>
       <ion-input formControlName="fullName" floating block value="  {{ fault.name }}">
       </ion-input>
-      <!-- <div class="login-fields" [formGroup]="personalForm">
-</div> -->
-      <!-- <h1> Emergency type : {{ fault.emergency_type }}</h1> -->
-      <!-- <font size="3" color='#38414a'>Name :</font><br>
-<font size="3" color='#38414a'>DOB : {{ fault.dob }}</font><br>
-<font size="3" color='#38414a'>Email : {{ fault.email }}</font><br>
-<font size="3" color='#38414a'>Phone Number : {{ fault.phone_no }}</font><br>
-<font size="3" color='#38414a'>Gender : {{ fault.gender }}</font><br>
--->
     </ion-item>
 
     <ion-item text-left>
       <ion-label floating>Email </ion-label>
       <ion-input formControlName="email" block value="{{ fault.email }}">
       </ion-input>
-      <!-- <div class="login-fields" [formGroup]="personalForm">
-</div> -->
     </ion-item>         
                                               
     <ion-item text-left>
       <ion-label floating>Phone Number </ion-label>
       <ion-input formControlName="phonenumber" block value=" {{ fault.phone_no }}">
       </ion-input>
-      <!-- <div class="login-fields" [formGroup]="personalForm">
-</div> -->
     </ion-item>
 
     <ion-item text-left>
       <ion-label floating>Gender </ion-label>
       <ion-input formControlName="gender" block value="  {{ fault.gender }}">
       </ion-input>
-      <!-- <div class="login-fields" [formGroup]="personalForm">
-</div> -->
     </ion-item>
 
     <ion-item text-left>
       <ion-label floating>DOB </ion-label>
       <ion-input formControlName="myDate" block value="  {{ fault.dob }}">
       </ion-input>
-      <!-- <div class="login-fields" [formGroup]="personalForm">
-</div> -->
+
     </ion-item>
 
 
@@ -79,11 +63,7 @@
 
   </ion-row>
 
-  <!-- <br> -->
 
-  <!-- <button  icon-right ion-button round color='secondary' block (click)="goMyprofile()"> Save
-  <ion-icon name="paper"></ion-icon>
-  </button> -->
 
   <ion-row >
     <ion-col col-6>

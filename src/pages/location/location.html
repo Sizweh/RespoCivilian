@@ -1,68 +1,75 @@
 
 <ion-content text-center>
+  <br>
+  <br>
+
+  <ion-title>Confirm Request</ion-title>
 
 
-    <ion-title>Confirm Request</ion-title>
-
- <!-- <div class="register-fields" [formGroup]='mapForm' >  -->
-
- <div id="map">
-
-
+  <div [hidden] id="map" style="width:0px; height:0px;">
   </div>
-  <!-- </div> -->
+
   <br>
   <br>
 
 
-  
- 
-  
-  <div  id="infowind" style="font-size: 17px;  color:#38414a; font-weight: bold;">
+  <div id="infowind" style="font-size: 17px;  color:#38414a; font-weight: bold;">
+
     {{address_loacation}}
     <img src="" width="12" height="12" id="place-icon">
-    <span id="place-name"  class="title"></span><br>
+    <span id="place-name" class="title"></span><br>
     <span id=""></span>
 
-  </div> 
+  </div>
 
-  
-              <!-- <ion-row *ngFor="let respo of selectedResponder"> -->
+
+  <!-- <ion-row *ngFor="let detail of selectedResponder">
+    <ion-card>
+      <br>
+      <ion-item no-lines color=''>
+        <ion-avatar item-right>
+          <img src="{{ detail.company.profile }}">
+        </ion-avatar>
+        <font size="3" color='#38414a'><b>{{detail.company.company_name}}</b></font><br>
+      </ion-item>
+      <br>
+    </ion-card>
+  </ion-row> -->
+
+
               <ion-card>
-              
-                <ion-card-content >
+                <ion-card-content>
                   <ion-item no-lines text-left>
                     <ion-avatar item-right>
                       <img src="http://46.101.169.33/icons/citymed.jpg">
-                      <!-- {{ profile }} -->
+            
                     </ion-avatar>
                     <ion-row>
                       <b><p color="dakar"style="font-size: 15px;">
                         {{ responderName }}
                       </p></b>
                     </ion-row>
-                   
-
                      <!-- <ion-row>
                       <p style="font-size: 12px;"><b>
                          {{ responderDistance }} minutes away
                           1 minute away
                          </b>
-              
                       </p>
                     </ion-row> -->
-                  </ion-item>
+                   </ion-item>
                 </ion-card-content>
-              
               </ion-card>
-              <!-- </ion-row> -->
+          
               
-              
+              <br>
               <font size="4" color='#38414a'>Emergency Type</font>
               <br>
               <br>
               <font size="4" color='#f53d3d'>{{event}}</font><br>
-              <!-- <font size="4" color='#f53d3d'>{{specify_emergency}}</font> -->
+        
+       
+              <font size="4"    color='#f53d3d'>{{specify_emergency}}</font>
+
             
               <br>
           
@@ -79,3 +86,10 @@
             
               
               </ion-content>
+
+              <!-- <ion-list>
+                  <ion-item *ngIf="showText">
+                      <img src="../assets/imgs/dots.gif" height="50px" width="50px" >
+                      <font size="4" color='#f53d3d'>{{event}}</font><br>
+                 </ion-item>
+            </ion-list>  -->

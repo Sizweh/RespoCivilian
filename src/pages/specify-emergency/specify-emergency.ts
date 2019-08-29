@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { HttpClient } from '@angular/common/http';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder,FormGroup } from '@angular/forms';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { AlertsProvider } from './../../providers/alerts/alerts';
 
@@ -17,6 +17,8 @@ export class SpecifyEmergencyPage {
   specify_emergency :any;
   specifyForm: FormGroup;
   specify_collection:any;
+  id: any;
+  User_Id: any;
   
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -27,23 +29,31 @@ export class SpecifyEmergencyPage {
     public alert: AlertsProvider,
     ) {
 
+      this.id = navParams.get('data') ;
+      this.User_Id = navParams.get('user_id') ;
+
       this.specifyForm = formBuilder.group({
 
-      'specify_emergency': ['', Validators.compose([Validators.required])],
+        
+        'user_id': [ this.User_Id],
+          'id': [this.id,],
+
+      'specify_emergency': ['',],
 
       })
   }
 
-  otherCategories = [
-    {
-      faultID: 10,
-      category: "Other",
-      placeholder: "",
+  // otherCategories = [
+  //   {
+  //     faultID: 10,
+  //     // category: "Other",
+  //     formControlName: "emergency_type",
+  //     placeholder: "",
    
      
-    },
+  //   },
   
-  ];
+  // ];
   
   ionViewDidLoad() {
     console.log('ionViewDidLoad SpecifyEmergencyPage');
@@ -65,13 +75,6 @@ export class SpecifyEmergencyPage {
     const value = this.specifyForm.value;
     this.storage.set('specify_emergency', value.specify_emergency);
 
-    this.navCtrl.push('SelfAdmissionPage')
-  }
-
-
-  goSelectResponder(){
-
-  
 
     // var headers = new Headers();
     // headers.append("Accept", 'application/json');
@@ -85,6 +88,16 @@ export class SpecifyEmergencyPage {
     //   }, (err) => {
     //     console.log(err);
     //   });
+
+    this.navCtrl.push('SelfAdmissionPage')
+  }
+
+
+  goSelectResponder(){
+
+  
+
+ 
 
    this.navCtrl.push('SelectResponderPage')
   }

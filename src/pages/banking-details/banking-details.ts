@@ -54,49 +54,64 @@ export class BankingDetailsPage {
 
       'org_id': ['', Validators.compose([Validators.required])],
       'student_no': ['', Validators.compose([Validators.required])],
-      // 'email': ['', Validators.compose([Validators.required])],
-      // 'phone_no': ['', Validators.compose([Validators.required])],
-      // 'ems_lisence': ['', Validators.compose([Validators.required])],
-      // 'address': ['', Validators.compose([Validators.required])],
-      // 'city': ['', Validators.compose([Validators.required])],
-      // 'province': ['', Validators.compose([Validators.required])],
+ 
 
       
 
     })
 
-    var headers = new Headers();
-    headers.append("Accept", 'application/json');
-    headers.append('Content-Type', 'application/json' );
-  //  const requestOptions = new RequestOptions({ headers: headers });
-   
-   //pass to back-end
-      console.log(this.registerForm.value);
-      var postData = this.registerForm.value;
-     
-
-
-
-      //THIS IS A BETTER WAY TO MAKE API CALLS
-    // this.urlService.institutionList(postData)
-    // .subscribe(res => {
-    //     // this.presentToast(res.msg, res.status);
-    //     console.log(res);
-    //     // alert(res);ss
-    //     this.alert.presentAlert("Notification", res.msg);
-
-    //     if (res.status=='OK') {
-
-    //     }
-    // }, (err) => {
-    //     console.log(err);
-    // });
+  
+  
 
 
     }
 
   ionViewDidLoad() {
-    
+
+     // //pass to back-end
+      //    console.log(this.registerForm.value);
+      //    var postData = this.registerForm.value;
+      //       //THIS IS A BETTER WAY TO MAKE API CALLS
+      //  this.urlService.institutionList(postData)
+      //  .subscribe(res => {
+      //      // this.presentToast(res.msg, res.status);
+      //      console.log(res);
+      //      // alert(res);ss
+      //     // this.alert.presentAlert("Notification", res.msg);
+   
+      //      if (res.status=='OK') {
+   
+      //      }
+      //  }, (err) => {
+      //      console.log(err);
+      //  });
+
+      // var headers = new Headers();
+      // headers.append("Accept", 'application/json');
+      // headers.append('Content-Type', 'application/json' );
+ 
+     
+    //  //pass to back-end
+    //   //  console.log(this.historyForm.value);
+    //   var postData = this.registerForm.value;
+    //     // var postData = {user_id:val};
+    //      //var postData = {id:val};
+  
+    //     //THIS IS A BETTER WAY TO MAKE API CALLS
+    //   this.urlService.institutionList(postData)
+    //   .subscribe(res => {
+    //       // this.presentToast(res.msg, res.status);
+    //      // console.log(res.id);
+    //       //console.log(res.drop_off);
+    //      // this.alert.presentAlert("Notification", res.msg);
+    //    this.student_collection = res;
+    //       if (res.status=='OK') {
+    //         // localStorage.setItem('token', res.token);
+    //         //this.navCtrl.setRoot('HomePage');
+    //       }
+    //   }, (err) => {
+    //       console.log(err);
+    //   });
 
     console.log('ionViewDidLoad BankingDetailsPage');
   }
@@ -142,7 +157,7 @@ export class BankingDetailsPage {
        }, (err) => {
          console.log(err);
        });
-  
+
           const loading= this.loadingCtrl.create({
         content: "Saving...",
         duration: 3000

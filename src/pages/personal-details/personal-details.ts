@@ -59,25 +59,17 @@ export class PersonalDetailsPage {
     var headers = new Headers();
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
-  //  const requestOptions = new RequestOptions({ headers: headers });
-   
+
    //pass to back-end
-    //  console.log(this.historyForm.value);
+
       var postData = this.personalForm.value;
 
       //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.personalDetails(postData)
     .subscribe(res => {
-        // this.presentToast(res.msg, res.status);
-       // console.log(res.id);
-        //console.log(res.drop_off);
-       //// this.alert.presentAlert("Notification", res.msg);
      this.personal_collection = res;
         if (res.status=='OK') {
-      //    this.storage.set('user_name', res.user_name);
-        //  this.storage.set('user_id', res.user_id);
-          // localStorage.setItem('token', res.token);
-          //this.navCtrl.setRoot('HomePage');
+        
         }
     }, (err) => {
         console.log(err);
@@ -92,25 +84,14 @@ export class PersonalDetailsPage {
     this.storage.set('myDate', values.myDate);
     this.storage.set('email', values.email);
     this.storage.set('phonenumber', values.phonenumber);
-    // this.storage.set('password', values.password);
-    // this.storage.set('confirmPassword', values.confirmPassword);
-
 
     var postData = this.personalForm.value;
 
     //THIS IS A BETTER WAY TO MAKE API CALLS
   this.urlService.editPersonal(postData)
   .subscribe(res => {
-      // this.presentToast(res.msg, res.status);
-     // console.log(res.id);
-      //console.log(res.drop_off);
-     //// this.alert.presentAlert("Notification", res.msg);
    this.personal_collection = res;
       if (res.status=='OK') {
-    //    this.storage.set('user_name', res.user_name);
-      //  this.storage.set('user_id', res.user_id);
-        // localStorage.setItem('token', res.token);
-        //this.navCtrl.setRoot('HomePage');
        }
   }, (err) => {
       console.log(err);
@@ -126,15 +107,14 @@ export class PersonalDetailsPage {
   toast.onDidDismiss(() => {
     console.log('Dismissed toast');
   });
-
   toast.present();
-
 
     const loading= this.loadingCtrl.create({
       content: "saving...",
       duration: 700
     });
     loading.present();
+
      this.navCtrl.setRoot('MyprofilePage')
   
     }

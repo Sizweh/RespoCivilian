@@ -46,12 +46,20 @@ export class LoginPage {
     // private mainService: MainServiceProvider,
 
     ) {
+
+
+   
+
+
       this.menuCtrl.enable(false);
 
       this.loginForm = formBuilder.group({
         'phoneNumber': ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern("^[0-9]{10}")])],
         'password': ['', Validators.compose([Validators.minLength(4), Validators.maxLength(50), Validators.pattern('[a-zA-Z0-9._]+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$'), Validators.required])],
       })
+
+
+
   }
 
 
@@ -59,27 +67,24 @@ export class LoginPage {
   ionViewDidLoad() {
    console.log('ionViewDidLoad LoginPage');
 
-    // this.storage.get('user_id').then((val) => {
-    //   console.log('cater db stuff');
-    //  console.log(val);
-    //  this.user_id = val;
-    //  console.log("note  login" + this.user_id)
-    //  if(this.user_id === null)
-    //  {
-    //    console.log("Note  login")
+    this.storage.get('user_id').then((val) => {
+      console.log('cater db stuff');
+     console.log(val);
+     this.user_id = val;
+     console.log("note  login" + this.user_id)
+     if(this.user_id === null)
+     {
+       console.log("Note  login")
         
-    //  }
-    //  else{
-    //  this.navCtrl.setRoot('HomePage');
-    //  }
+     }
+     else{
+     this.navCtrl.setRoot('HomePage');
+     }
       
 
-    // });
-
-    
+    });
 
 
- 
   }
   hideShowPassword() {
     this.passwordType = this.passwordType === 'tel' ? 'password' : 'tel';
@@ -90,7 +95,8 @@ export class LoginPage {
   }
 
   goLogin(){
-   
+
+    
     var headers = new Headers();
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );

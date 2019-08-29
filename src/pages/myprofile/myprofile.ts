@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams,  AlertController, LoadingControlle
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
-import { FormGroup, FormBuilder, Validators, } from '@angular/forms';
+import { FormGroup, FormBuilder,} from '@angular/forms';
 import { Storage } from '@ionic/storage';
 
 
@@ -39,6 +39,7 @@ export class MyprofilePage {
     ) {
 
   }
+ 
 
  
 ionViewDidEnter()
@@ -127,14 +128,16 @@ ionViewDidEnter()
   this.navCtrl.setRoot('HomePage')
 
   }
-  goLogin(){
+  goLogin(user_id){
 
     const loading= this.loadingCtrl.create({
       content: "logging out...",
       duration: 2000
     });
     loading.present();
-  this.navCtrl.setRoot('LoginPage')
+
+    this.storage.clear();
+   this.navCtrl.setRoot('LoginPage')
 
   }
 
