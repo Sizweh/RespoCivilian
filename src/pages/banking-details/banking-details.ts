@@ -68,23 +68,23 @@ export class BankingDetailsPage {
 
   ionViewDidLoad() {
 
-     // //pass to back-end
-      //    console.log(this.registerForm.value);
-      //    var postData = this.registerForm.value;
-      //       //THIS IS A BETTER WAY TO MAKE API CALLS
-      //  this.urlService.institutionList(postData)
-      //  .subscribe(res => {
-      //      // this.presentToast(res.msg, res.status);
-      //      console.log(res);
-      //      // alert(res);ss
-      //     // this.alert.presentAlert("Notification", res.msg);
+     //pass to back-end
+         console.log(this.registerForm.value);
+         var postData = this.registerForm.value;
+            //THIS IS A BETTER WAY TO MAKE API CALLS
+       this.urlService.institutionList(postData)
+       .subscribe(res => {
+           // this.presentToast(res.msg, res.status);
+           console.log(res);
+           // alert(res);ss
+          // this.alert.presentAlert("Notification", res.msg);
    
-      //      if (res.status=='OK') {
+           if (res.status=='OK') {
    
-      //      }
-      //  }, (err) => {
-      //      console.log(err);
-      //  });
+           }
+       }, (err) => {
+           console.log(err);
+       });
 
       // var headers = new Headers();
       // headers.append("Accept", 'application/json');
@@ -181,6 +181,10 @@ export class BankingDetailsPage {
 
   
   goHome(){
+
+
+
+    
    this.navCtrl.setRoot("HomePage");
 
   }

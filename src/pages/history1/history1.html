@@ -36,7 +36,7 @@
 
                 <ion-row no-lines *ngFor="let fault of history_collection">
           
-                      <ion-item color=''no-lines  text-left>
+                      <ion-item color='light'no-lines  text-left>
                         <!-- <h1 color='newcolor'> Emergency type : {{ fault.emergency_type }}</h1> -->
                         <font size="3" color='#38414a'> Emergency type :<b> {{ fault.emergency_type }}</b></font><br>
                         <!-- <font size="3" color='#38414a'>Pick-Up : {{ fault.pick_up }}</font><br>
@@ -50,8 +50,8 @@
   
  
               <ion-row no-lines *ngFor="let fault of history_collection">
-                  <br>
-                  <ion-title text-center>Responder</ion-title>
+                  <!-- <br>
+                  <ion-title text-center>Responder</ion-title> -->
     
                   <ion-item no-lines color=''>
                 
@@ -66,16 +66,20 @@
                      <font size="3" color='#38414a'> {{ fault.company_id }}</font><br>           
                     <!-- <p>1 minute away.</p> -->
                   </ion-item>
-                  <ion-col color="secondary" >
-                      <a ion-button full class="gl" icon-right color="secondary" href="tel:+2780 033 3911">Call Responder
-                          <ion-icon name="md-call"></ion-icon>
-                       </a>
-                  </ion-col>
+            
               
 
                 </ion-row>
 
         </div>
+
+        <ion-row>
+        <ion-col col-6>
+            <a ion-button round outline small class="gl" icon-right color="secondary" href="tel:+2780 033 3911">Call Responder
+                <ion-icon name="md-call"></ion-icon>
+             </a>
+        </ion-col>
+      </ion-row>
 
 
       

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,  AlertController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,  AlertController, LoadingController, MenuController  } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
@@ -36,6 +36,7 @@ export class MyprofilePage {
     public formBuilder: FormBuilder,
     private transfer: FileTransfer,
     private camera: Camera,
+    public menuCtrl: MenuController,
     ) {
 
   }
@@ -137,6 +138,7 @@ ionViewDidEnter()
     loading.present();
 
     this.storage.clear();
+    this.menuCtrl.enable(false);
    this.navCtrl.setRoot('LoginPage')
 
   }

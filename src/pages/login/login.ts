@@ -30,6 +30,7 @@ export class LoginPage {
   user_id:any;
   passwordType: string = 'password';
   passwordIcon: string = 'eye-off';
+  sideMenu: any;
  
   constructor(
     // private http: HttpClient,
@@ -50,8 +51,11 @@ export class LoginPage {
 
    
 
-
+       
       this.menuCtrl.enable(false);
+      this.menuCtrl.close();
+
+  
 
       this.loginForm = formBuilder.group({
         'phoneNumber': ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern("^[0-9]{10}")])],
@@ -66,6 +70,9 @@ export class LoginPage {
 
   ionViewDidLoad() {
    console.log('ionViewDidLoad LoginPage');
+
+  // this.menu.close();
+
 
     this.storage.get('user_id').then((val) => {
       console.log('cater db stuff');
@@ -94,7 +101,7 @@ export class LoginPage {
     console.log('Remember token new state:' + this.remembertoken);
   }
 
-  goLogin(){
+  goHome(){
 
     
     var headers = new Headers();

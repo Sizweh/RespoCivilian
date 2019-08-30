@@ -4,8 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
 import { FormGroup, FormBuilder,} from '@angular/forms';
-import {HomePage} from "../pages/home/home";
-import {LoginPage} from "../pages/login/login";
+
 
 
 
@@ -57,15 +56,8 @@ export class MyApp {
       })
 
     this.initializeApp(); {
-                        
-     
-
       }
 
-  
-
-   
-  
     // used for an example of ngFor and navigation
  
   

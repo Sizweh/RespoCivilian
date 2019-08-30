@@ -28,8 +28,7 @@ export class NextOfKinPage {
   email:any;
   password:any;
   confirmPassword:any;
-  // org_name:any;
-  // // student_no:any;
+
 
   phone:any;
   relationship:any;
@@ -103,14 +102,7 @@ export class NextOfKinPage {
       //  console.log(String(val));
       this.confirmPassword = val;
     });
-    // this.storage.get('org_name').then((val) => {
-    //   //  console.log(String(val));
-    //   this.org_name = val;
-    // });
-    // this.storage.get('student_no').then((val) => {
-    //   //  console.log(String(val));
-    //   this.student_no = val;
-    // });
+   
   
     
     //////////////////medical////////////////////////
@@ -213,10 +205,7 @@ goVerifyAccount(){
    gender: this.gender,
    myDate: this.myDate,
    email: this.email,
-  //  student_no: this.student_no,
-  //  org_name: this.org_name,
-  //  password: 'ffffff',
- 
+
    password:this.password,
 //  confirmPassword: this.confirmPassword,
    status:'fffffff'
@@ -239,15 +228,10 @@ goVerifyAccount(){
      //THIS IS A BETTER WAY TO MAKE API CALLS
      this.urlService.register(this.Userdata)
      .subscribe(res => {
-       // this.presentToast(res.msg, res.status);
       console.log(res);
-       // alert(res);
     this.alert.presentAlert("Notification", res.msg);
        if (res.status=='OK') {
-        //this.storage.set('nextofkinform', res.nextofkinform);
-        //this.storage.set('nextofkinform', res.nextofkin_id);
         this.navCtrl.push("VerifyAccountPage");
-         // localStorage.setItem('token', res.token);
       }
      }, (err) => {
        console.log(err);
