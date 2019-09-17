@@ -16,7 +16,7 @@ import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 })
 export class ConfirmPage {
   civilianLat : any;
-  civilianId  : string;
+  civilianId  : any;
   civilianLng : any;
   driverLat   : any;
   driverLng   : any;
@@ -106,11 +106,16 @@ export class ConfirmPage {
      
     }
     
-    this.urlService.checkRespoAccept( this.userDetails)
+    this.urlService.checkRespoAccept(this.userDetails)
     .subscribe(res => {
         // this.presentToast(res.msg, res.status);
         console.log(res);
         if (res.status=='accepted') {
+          this.alert.presentAlert("Notification", res.msg);
+          this.subscription.unsubscribe();
+          this.navCtrl.push('CountDownPage');
+        }
+        if (res.status=='canceled') {
           this.alert.presentAlert("Notification", res.msg);
           this.subscription.unsubscribe();
           this.navCtrl.push('CountDownPage');

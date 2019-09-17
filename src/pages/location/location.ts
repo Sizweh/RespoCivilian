@@ -49,6 +49,7 @@ responderDistance: any;
   zone: any;
     address: any;
     address_loacation : any ; 
+    additional_address : any ; 
     
     map2Form: FormGroup;
     showText: boolean;
@@ -59,6 +60,7 @@ responderDistance: any;
     responderName: any;
     responderId: any;
     company_name: any;
+    forWho: any;
     
 
   constructor(public navCtrl: NavController, 
@@ -68,16 +70,6 @@ responderDistance: any;
     public loadingCtrl: LoadingController,
     private urlService: UrlbaseProvider,
     ) {
-
-
-
-        // this.map2Form = formBuilder.group({
-        //     'address': ['',],
-           
-        //   })
-
-
-
         this.storage.get('selected_responder').then((val) => {
             console.log('respo db stuff');
             console.log(val);
@@ -93,24 +85,35 @@ responderDistance: any;
           }); 
 
         this.address_loacation = navParams.get('sear_location') ;
+       this.additional_address = navParams.get('number') ;
     //console.log('ssssssssssssss'+ this.address_loacation );
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
     this.autocomplete = { input: '' };
     this.autocompleteItems = []
   }
 
-  
-
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad LocationPage');
 
-    
     this.storage.get('address').then((val) => {
         //  console.log(String(val));
         this.address = val;
       });
 
+      
+    this.storage.get('additional_address').then((val) => {
+        //  console.log(String(val));
+        this.additional_address = val;
+      });
+    this.storage.get('forWho').then((val) => {
+        //  console.log(String(val));
+        this.forWho = val;
+      });
+
+    // this.storage.get('forSomeone').then((val) => {
+    //     //  console.log(String(val));
+    //     this.forSomeone = val;
+    //   });
 
     this.storage.get('specify_emergency').then((val) => {
       //  console.log(String(val));
@@ -148,14 +151,10 @@ setTimeout(()=>{
   }
   googleMap() {
 
-
     this.storage.get('address').then((val) => {
         //  console.log(String(val));
         this.address = val;
       });
- 
- 
-
  
     this.storage.get('category').then((val) => {
       console.log('cater db stuff');
@@ -164,13 +163,6 @@ setTimeout(()=>{
       this.event = val.category;
     });
     
-    // this.storage.get('address_loacation').then((val) => {
-    //   console.log('cater db stuff');
-    //   console.log(val);
-    //   this.address_loacation = val;
-    //   this.address_loacation = val.address_loacation;
-    // });
-
     this.storage.get('specify_emergency').then((val) => {
       console.log('c db stuff');
       console.log(val);
@@ -461,7 +453,7 @@ setTimeout(()=>{
       var infowindowContent = document.getElementById('infowindow-content');
       // infowindow.setContent();
 
-      var  image = "http://46.101.169.33/icons/fixed5.png";
+      var  image = "https://blooming-waters-81867.herokuapp.com/icons/fixed5.png";
       var marker = new google.maps.Marker({
         map: that.map,
         // anchorPoint: new google.maps.Point(0, -29),
@@ -543,7 +535,7 @@ setTimeout(()=>{
         }
 
         //marker for user/civilian location
-        var  image = "http://46.101.169.33/icons/fixed5.png";
+        var  image = "https://blooming-waters-81867.herokuapp.com/icons/fixed5.png";
         var markerCivilian;
         markerCivilian = new google.maps.Marker({
           position: pos,
@@ -647,35 +639,23 @@ infoWindow.open(map);
 goConfirm(){
 
     this.Userdata = { 
-
         address:this.address,
-
-
     }
-
-
-
   let that = this;
   this.userDetails = {
-
-    
 
     'civilian_id': this.civilianId,
     'lat': that.civilianLat,//current lat
      'lng': that.civilianLng,//current lng
     'driver_id': this.selectedResponder.id,
     'company_id': this.selectedResponder.company.id,
- 
     'emergency_type': this.event,
     'specify_emergency': this.specify_emergency,
     'address':this.address,
-
-     
-    // 'address_loacation': this.address_loacation,
+    'additional_address':this.additional_address,
+    'forWho':this.forWho,
+ 
   }
-
-
-
   this.urlService.makeRequest(this.userDetails)
     .subscribe(res => {
       // this.presentToast(res.msg, res.status);
@@ -684,33 +664,29 @@ goConfirm(){
       var msg = res.msg;
       var status = res.status;
       var reqId = res.request_id;
-    //   var adId = res.address_loacation;
+
       var specify = res.specify_emergency;
 
       const loader = this.loadingCtrl.create({
         content: "Sending request...",
         duration: 3000
       });
-
       if (status == "error") {
           console.log(msg + 'server')
         this.alert.presentAlert("Respo", 'Please try again... connecting to the server');
       }
-      
       if (status == "OK") {
         loader.present();
         this.storage.set('request_id', reqId);
         this.storage.set('specify_emergency', specify);
         this.storage.remove( 'specify_emergency');
-        // this.storage.set('address_loacation', adId);
-      
-
+       
         this.navCtrl.push("ConfirmPage");
       }
     }, (err) => {
       console.log(err);
     });
-
+   // this.navCtrl.push("ConfirmPage");
 }
 
 goMaps(){

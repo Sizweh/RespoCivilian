@@ -1,19 +1,18 @@
 
 <ion-content text-center>
-<br>
+
 
 <div class="register-fields" [formGroup]="map1Form">
 
 <div id="pac-container" class="input-icons" text-center>
-<input formControlName="address" text-align=center value="" id="pac-input" type="text" style="width: 100%; border: 1px solid #38414a;  
-padding: 10px; border-radius: 3px; box-sizing: border-box; resize: vertical; font-size: 17px;"
+<input formControlName="address" text-align=center value="" id="pac-input" type="text" style="width: 100%;   
+padding: 10px; box-sizing: border-box; resize: vertical; font-size: 17px;"
 placeholder="Enter a Location">
 </div>
 
 </div>
 
-<br>
-<div id="map" style="width:500px; height:300px;">
+<div id="map" style="width:500px; height:200px;">
 </div>
 
 
@@ -23,9 +22,15 @@ placeholder="Enter a Location">
 <span id="place-name" class="title"></span><br>
 <span id="place-address"></span>
 </div>  
-<br>         
-              
         
+<br> 
+<div class="register-fields" [formGroup]="map2Form">
+<input  formControlName="additional_address" id="add"  value="" type="text" placeholder="add e.g room 25 (optinal)"   style="    border: none;
+border-bottom: 1px solid #38414a; width: 90%; padding: 12px; font-size: 16px; "  >
+</div>
+       
+<br>          
+<br>          
 <button (click)="goLocation()" ion-button color="secondary"
 round>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Confirm Location
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>

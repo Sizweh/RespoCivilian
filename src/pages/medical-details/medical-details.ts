@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Storage } from '@ionic/storage';
-// import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
+import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { AlertsProvider } from './../../providers/alerts/alerts';
 
 
@@ -16,13 +16,14 @@ export class MedicalDetailsPage {
 
   medicaldetailsForm: FormGroup;
   localStorage: any;
+  medical_collection: any;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public formBuilder: FormBuilder,
     public storage: Storage,
     public alertCtrl: AlertController,
-   // private urlService: UrlbaseProvider,
+    private urlService: UrlbaseProvider,
     public alert: AlertsProvider,
    
     ) {
@@ -46,6 +47,23 @@ export class MedicalDetailsPage {
     }
 
   ionViewDidLoad() {
+
+    var headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json' );
+
+      //THIS IS A BETTER WAY TO MAKE API CALLS
+    this.urlService.medList()
+    .subscribe(res => {
+      //console.log(res)
+     this.medical_collection = res;
+        if (res.status=='OK') {
+        }
+    }, (err) => {
+        console.log(err);
+    });
+
+
     console.log('ionViewDidLoad MedicalDetailsPage');
   }
 
@@ -68,10 +86,6 @@ const value = this.medicaldetailsForm.value;
    this.storage.set('chronic_dis', value.chronic_dis);
    this.storage.set('disability', value.disability);
    this.storage.set('prefered_hospital', value.prefered_hospital);
-
-  
-  
-  
 
    this.navCtrl.push('NextOfKinPage')
   }

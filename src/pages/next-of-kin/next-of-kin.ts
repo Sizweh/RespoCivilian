@@ -60,9 +60,18 @@ export class NextOfKinPage {
         'surname': ['', Validators.compose([Validators.required])],
         'phone': ['', Validators.compose([Validators.required])],
         'relationship': ['', Validators.compose([Validators.required])],
+        'remembertoken': ['', Validators.compose([Validators.required])],
     
       })
   
+  }
+
+  tel='';
+
+  convert(){
+    if(this.tel.substr(0,1)==='0'){
+      this.tel='27'+this.tel.substr(1);
+    }
   }
 
   updateToken() {
@@ -208,7 +217,7 @@ goVerifyAccount(){
 
    password:this.password,
 //  confirmPassword: this.confirmPassword,
-   status:'fffffff'
+  //  status:'fffffff'
   
  }
  
@@ -220,7 +229,7 @@ goVerifyAccount(){
 
   //pass to back-end
      console.log(this.nextofkinForm.value);
-     var postData = this.nextofkinForm.value;
+     //var postData = this.nextofkinForm.value;
    
    // postData['user_role']=  "Civilian";
 

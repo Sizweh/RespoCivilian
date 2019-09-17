@@ -6,19 +6,28 @@ import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
 import { UrlbaseProvider } from '../../providers/urlbase/urlbase';
 
+
+
 @IonicPage()
 @Component({
   selector: 'page-banking-details',
   templateUrl: 'banking-details.html',
 })
 export class BankingDetailsPage {
+
+  org_Id: any;
+  institutionList = [];
   remembertoken: boolean;
 
   registerForm: FormGroup;
+  register1Form: FormGroup;
  student_collection: any;
   id: any;
   User_Id: any;
   user_id: any;
+  org_id: string;
+  categoria: any;
+  NETP: any;
   
 
   constructor(public navCtrl: NavController, 
@@ -31,7 +40,9 @@ export class BankingDetailsPage {
     private storage: Storage,
     public formBuilder: FormBuilder,
     private urlService: UrlbaseProvider,
-    ) { 
+    ) {
+      
+      
 
 
       this.storage.get('user_id').then((val) => {
@@ -44,74 +55,51 @@ export class BankingDetailsPage {
         this.id = String(val);  
       });
 
+      this.storage.get('org_id').then((val) => {
+        console.log(String(val));
+        this.org_Id = String(val);  
+      });
+
       // this.id = navParams.get('data') ;
       // this.User_Id = navParams.get('user_id') ;
+      // this.org_Id = navParams.get('org_id') ;
 
       this.registerForm = formBuilder.group({
+        
+      'user_id': ['',],
+      'id': ['',],
 
-        // 'user_id': [this.User_Id,],
-        // 'id': [this.id,],
 
-      'org_id': ['', Validators.compose([Validators.required])],
+
+
+      'org_id': ['',],
       'student_no': ['', Validators.compose([Validators.required])],
- 
-
-      
-
+        
     })
-
-  
-  
 
 
     }
 
+
+    
+
   ionViewDidLoad() {
 
-     //pass to back-end
-         console.log(this.registerForm.value);
-         var postData = this.registerForm.value;
-            //THIS IS A BETTER WAY TO MAKE API CALLS
-       this.urlService.institutionList(postData)
-       .subscribe(res => {
-           // this.presentToast(res.msg, res.status);
-           console.log(res);
-           // alert(res);ss
-          // this.alert.presentAlert("Notification", res.msg);
-   
-           if (res.status=='OK') {
-   
-           }
-       }, (err) => {
-           console.log(err);
-       });
+    var headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json' );
 
-      // var headers = new Headers();
-      // headers.append("Accept", 'application/json');
-      // headers.append('Content-Type', 'application/json' );
- 
-     
-    //  //pass to back-end
-    //   //  console.log(this.historyForm.value);
-    //   var postData = this.registerForm.value;
-    //     // var postData = {user_id:val};
-    //      //var postData = {id:val};
-  
-    //     //THIS IS A BETTER WAY TO MAKE API CALLS
-    //   this.urlService.institutionList(postData)
-    //   .subscribe(res => {
-    //       // this.presentToast(res.msg, res.status);
-    //      // console.log(res.id);
-    //       //console.log(res.drop_off);
-    //      // this.alert.presentAlert("Notification", res.msg);
-    //    this.student_collection = res;
-    //       if (res.status=='OK') {
-    //         // localStorage.setItem('token', res.token);
-    //         //this.navCtrl.setRoot('HomePage');
-    //       }
-    //   }, (err) => {
-    //       console.log(err);
-    //   });
+      //THIS IS A BETTER WAY TO MAKE API CALLS
+    this.urlService.institutionList()
+    .subscribe(res => {
+      //console.log(res)
+     this.student_collection = res;
+        if (res.status=='OK') {
+        }
+    }, (err) => {
+        console.log(err);
+    });
+
 
     console.log('ionViewDidLoad BankingDetailsPage');
   }
@@ -119,9 +107,9 @@ export class BankingDetailsPage {
 
 
 
-  goLogin(){
-    this.navCtrl.push("LoginPage");
-  }
+  // goLogin(){
+  //   this.navCtrl.push("LoginPage");
+  // }
 
 
   goMyaccount(id) {
@@ -180,14 +168,35 @@ export class BankingDetailsPage {
   }
 
   
-  goHome(){
+  goChat(){
+
+    var headers = new Headers();
+      headers.append("Accept", 'application/json');
+      headers.append('Content-Type', 'application/json' );
+ 
+
+        //THIS IS A BETTER WAY TO MAKE API CALLS
+      this.urlService.institutionList()
+      .subscribe(res => {
+
+        //console.log(res)
+       this.student_collection = res;
+          if (res.status=='OK') {
+     
+          }
+      }, (err) => {
+          console.log(err);
+      });
 
 
 
-    
-   this.navCtrl.setRoot("HomePage");
+
+  // this.navCtrl.push("ChatPage");
 
   }
+
+
+
 
 
 

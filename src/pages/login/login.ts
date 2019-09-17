@@ -47,24 +47,39 @@ export class LoginPage {
     // private mainService: MainServiceProvider,
 
     ) {
-
-
-   
-
-       
+ 
       this.menuCtrl.enable(false);
       this.menuCtrl.close();
 
-  
-
       this.loginForm = formBuilder.group({
-        'phoneNumber': ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern("^[0-9]{10}")])],
-        'password': ['', Validators.compose([Validators.minLength(4), Validators.maxLength(50), Validators.pattern('[a-zA-Z0-9._]+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$'), Validators.required])],
+        'phoneNumber': ['', Validators.compose([Validators.required, Validators.minLength(11), Validators.pattern("^[0-9]{11}")])],
+        'password': ['',],
       })
 
-
-
   }
+
+  // Validators.compose([Validators.minLength(4), Validators.maxLength(50), Validators.pattern('[a-zA-Z0-9._]+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$'), Validators.required])
+
+  tel='';
+
+  convert(){
+    if(this.tel.substr(0,1)==='0'){
+      this.tel='27'+this.tel.substr(1);
+    }
+  }
+  
+
+
+  ionViewDidEnter() {
+
+this.menuCtrl.enable(false);
+  this.menuCtrl.close();
+    this.menuCtrl.swipeEnable(false);
+
+    // If you have more than one side menu, use the id like below
+    // this.menu.swipeEnable(false, 'menu1');
+  }
+
 
 
 
@@ -132,6 +147,36 @@ export class LoginPage {
         console.log(err);
     });
 
+  }
+
+
+
+  goRegister(){
+    this.navCtrl.push("RegisterPage");
+  }
+
+  
+  goBankingDetails(){
+    this.navCtrl.push("BankingDetailsPage");
+  }
+
+  goResetPassword(){
+    this.navCtrl.push("ResetPasswordPage");
+  }
+
+
+
+ 
+
+}
+
+
+
+
+
+
+
+
 
     //END API CALL
       // this.http.post("http://03e873a6.ngrok.io/api/civilian/loginCivilian", postData)
@@ -163,54 +208,3 @@ export class LoginPage {
     //     console.log(error);
     //   });
   
-
-  }
-
-
-
-  goRegister(){
-    this.navCtrl.push("RegisterPage");
-  }
-
-  
-  goBankingDetails(){
-    this.navCtrl.push("BankingDetailsPage");
-  }
-
-  goResetPassword(){
-    this.navCtrl.push("ResetPasswordPage");
-  }
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
- 
-
-}

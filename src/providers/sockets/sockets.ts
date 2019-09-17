@@ -11,7 +11,7 @@ export class SocketsProvider {
     * @private
     * @description              The URI where the Socket.io server is running
     */
-   private _SERVER: string 	=	'REMOTE-ADDRESS-OF-NODE-SERVER';
+   // private _SERVER: string 	=	'REMOTE-ADDRESS-OF-NODE-SERVER';
   pollServer: any;
 
   constructor(public http: HttpClient,

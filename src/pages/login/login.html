@@ -1,7 +1,7 @@
-<ion-content padding="true" class="manual-ios-statusbar-padding">
+<ion-content padding="true" scroll="false" class="manual-ios-statusbar-padding">
 <div>
 
-<img class="logo" src="http://46.101.169.33/img/respo2.png"
+<img class="logo" src="https://blooming-waters-81867.herokuapp.com/img/respo2.png"
 style="display: block; width: 48%; height: auto; margin-left: auto; margin-right: auto;">
 </div>
 
@@ -9,10 +9,10 @@ style="display: block; width: 48%; height: auto; margin-left: auto; margin-right
 <br>
 <br>
 
-<div class="login-fields" [formGroup]="loginForm">
+<div  scroll="false" class="login-fields" [formGroup]="loginForm">
 
 <ion-item>
-<ion-input block formControlName="phoneNumber" minLength="10" maxLength="10" type="tel" placeholder="Cell Number">
+<ion-input [(ngModel)]='tel' (ionBlur)="convert()" block formControlName="phoneNumber" minLength="11" maxLength="11" type="tel" placeholder="Cell Number">
 </ion-input>
 </ion-item>
 

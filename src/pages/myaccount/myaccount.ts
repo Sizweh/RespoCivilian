@@ -9,11 +9,23 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'myaccount.html',
 })
 export class MyaccountPage {
+  org_Id: string;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     private storage: Storage,
     ) {
+
+      this.storage.get('org_id').then((val) => {
+        console.log(String(val));
+        this.org_Id = String(val);  
+      });
+
+
+
+
+
+
   }
 
   ionViewDidLoad() {
@@ -32,13 +44,17 @@ export class MyaccountPage {
   goBankingDetails(){
     
     this.storage.get('user_id').then((result) => {
+  this.storage.get('org_id').then((result) => {
     
        this.navCtrl.push("BankingDetailsPage", {
           user_id:result,
+          org_id:result,
+
           // id:result,
         });
 
       });
+    });
 
         }
     

@@ -16,7 +16,7 @@
       <ion-input placeholder="Scheme Name" type="text"></ion-input>
       <ion-select formControlName="scheme_name">
           <ion-label>Scheme Name</ion-label>
-        <ion-option value="Assupol_Life">Assupol Life</ion-option>
+        <!-- <ion-option value="Assupol_Life">Assupol Life</ion-option>
         <ion-option value="Gems">Gems</ion-option>
         <ion-option value="Discovery">Discovery</ion-option>
         <ion-option  value="SABC Medical Aid Scheme">SABC Medical Aid Scheme </ion-option>
@@ -26,7 +26,12 @@
         <ion-option  value="SPECTRAMED">SpectraMed  </ion-option>
         <ion-option  value="TSOGO">Tsogo Sun Group Medical Scheme </ion-option>
         <ion-option  value="TRANSMED">TransMed Medical Fund </ion-option>
-        <ion-option  value="TOPMED">TopMed Medical Scheme  </ion-option>
+        <ion-option  value="TOPMED">TopMed Medical Scheme  </ion-option> -->
+
+        <div *ngFor="let fault of medical_collection">
+            <ion-option >{{fault.company_name}}</ion-option>
+          </div>
+
       </ion-select>
     </ion-item>
 
@@ -49,6 +54,7 @@
       <ion-input placeholder="Chronic Disease" type="text"></ion-input>
       <ion-select formControlName="chronic_dis">
           <ion-label>Chronic Disease</ion-label>
+
         <ion-option>None</ion-option>
         <ion-option>ALS</ion-option>
         <ion-option>Asthma</ion-option>
@@ -64,7 +70,6 @@
       <ion-input placeholder="Disability" type="text"></ion-input>
       <ion-select formControlName="disability">
         <ion-label>Disability</ion-label>
-        <ion-option>None</ion-option>
         <ion-option>Yes</ion-option>
         <ion-option>No</ion-option>
       </ion-select>
@@ -82,7 +87,8 @@
     </ion-col>
     <ion-col col-6>
       <button ion-button round block color='secondary' (click)="goNextOfKin()">
-        Next</button>
+        Next
+      </button>
     </ion-col>
   </ion-row>
 

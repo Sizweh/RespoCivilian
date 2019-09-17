@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams} from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import { HttpClient } from '@angular/common/http';
+// import { HttpClient } from '@angular/common/http';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { MenuController } from 'ionic-angular';
 
@@ -14,69 +14,77 @@ export class HomePage {
   playerId :any; 
   user_ids :any;
   user_id: any;
-
+  
+  responderId: any;
+  responderPlate: any;
+  responderDistance: any;
+  reqId: any;
+  subscription: any;
+  alert: any;
+  civilianId: any;
+  userDetails: any;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     private storage: Storage,
-    private http: HttpClient,
+    // private http: HttpClient,
     private urlService: UrlbaseProvider,
     public menuCtrl: MenuController,
 
    
     ) {
-      this.menuCtrl.enable(true);
+    this.menuCtrl.enable(true);
 
 }
 faultCategories = [
   {
     faultID: 1,
     category: "Vehicle Accident",
-    imageUrl: "http://46.101.169.33/icons/vehicleaccident.png",
+    imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/vehicleaccident.png",
     icon: "alarm"
    
   },
   {
     faultID: 2,
     category: "Heart Attack",
-    imageUrl: "http://46.101.169.33/icons/heartattack.png",
+    imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/heartattack.png",
     icon: "alarm"
   },
   {
     faultID: 3,
     category: "Severe Bleeding",
-    imageUrl: "http://46.101.169.33/icons/severebleeding.png",
+    imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/severebleeding.png",
     icon: "alarm"
   },
   {
     faultID: 4,
     category: "Burns",
-    imageUrl: "http://46.101.169.33/icons/burns.png",
+    imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/burns.png",
     icon: "alarm"
   },
   {
     faultID: 5,
     category: "Difficulty Breathing",
-    imageUrl: "http://46.101.169.33/icons/difficultbreathing.png",
+    imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/difficultbreathing.png",
     icon: "alarm"
   },
   {
     faultID: 6,
     category: "Fainting",
-    imageUrl: "http://46.101.169.33/icons/fainting.png",
+    imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/fainting.png",
     icon: "alarm"
   },
   {
     faultID: 7,
     category: "Snake Bite",
-    imageUrl: "http://46.101.169.33/icons/snakebite.png",
+    imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/snakebite.png",
     icon: "alarm"
   },
   {
     faultID: 8,
     category: "Labour",
-    imageUrl: "http://46.101.169.33/icons/labour.png",
+    imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/labour.png",
     icon: "alarm"
     
     
@@ -84,7 +92,7 @@ faultCategories = [
   {
     faultID: 9,
     category: "Falling",
-    imageUrl: "http://46.101.169.33/icons/R10.jpg",
+    imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/R10.jpg",
     icon: "alarm"
     
     
@@ -92,7 +100,7 @@ faultCategories = [
   {
     faultID: 10,
     category: "Seizure",
-    imageUrl: "http://46.101.169.33/icons/R12.jpg",
+    imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/R12.jpg",
     icon: "alarm"
     
     
@@ -109,7 +117,7 @@ otherCategories = [
   {
     faultID: 11,
     category: "Other",
-    imageUrl: "http://46.101.169.33/icons/R8.png",
+    imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/R8.png",
     icon: "alarm"
    
   },
@@ -221,7 +229,36 @@ this.storage.get('user_id').then((user_id) => {
 
 
 }
+checkAccept() {
 
+  this.userDetails={
+    'user_id': this.civilianId,
+    'driver_id': this.responderId,
+    'request_id': this.reqId,
+   
+  }
+  
+  this.urlService.checkRespoAccept( this.userDetails)
+  .subscribe(res => {
+      // this.presentToast(res.msg, res.status);
+      console.log(res);
+      if (res.status=='accepted') {
+        this.alert.presentAlert("Notification", res.msg);
+        this.subscription.unsubscribe();
+        this.navCtrl.push('CountDownPage');
+      }
+      if (res.status=='canceled') {
+        this.alert.presentAlert("Notification", res.msg);
+        this.subscription.unsubscribe();
+        this.navCtrl.push('CountDownPage');
+      }
+  }, (err) => {
+      console.log(err);
+  });
+
+
+}
+ 
 
 
 

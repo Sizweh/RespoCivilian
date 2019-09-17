@@ -22,7 +22,7 @@
       <ion-row no-lines *ngFor="let fault of history_collection">
 
           <ion-card   no-lines>
-            <ion-item (click)="goHistory1(fault.id, fault.user_id)" color='light'no-lines  text-left>
+            <ion-item (click)="goHistory1(fault.id, fault.user_id, fault.company_id)" color='light'no-lines  text-left>
               <!-- <h1 color='newcolor'> Emergency type : {{ fault.emergency_type }}</h1> -->
               <font size="3" color='#38414a'> Emergency type :<b> {{ fault.emergency_type }}</b></font><br>
               <!-- <font size="3" color='#38414a'>Pick-Up : {{ fault.pick_up }}</font><br>

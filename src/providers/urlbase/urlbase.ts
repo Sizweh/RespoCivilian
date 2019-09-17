@@ -10,10 +10,10 @@ import { catchError, tap } from 'rxjs/operators';
 @Injectable()
 export class UrlbaseProvider {
 
-//  apiUrl= 'https://quiet-tundra-56446.herokuapp.com/';
+ apiUrl= 'https://blooming-waters-81867.herokuapp.com/api/civilian/';     
 
-  //  apiUrl = 'http://46.101.169.33/api/civilian/';
-apiUrl = 'http://127.0.0.1:8000/api/civilian/';
+//  apiUrl = 'http://46.101.169.33/api/civilian/';
+// apiUrl = 'http://127.0.0.1:8000/api/civilian/';
 
   constructor(public http: HttpClient) {
     console.log('Hello UrlbaseProvider Provider');
@@ -50,6 +50,13 @@ apiUrl = 'http://127.0.0.1:8000/api/civilian/';
       .pipe(
         tap(_ => this.log('history')),
         catchError(this.handleError('history', []))
+      );
+  }
+  companydetails (data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'companydetails', data)
+      .pipe(
+        tap(_ => this.log('companydetails')),
+        catchError(this.handleError('companydetails', []))
       );
   }
 
@@ -192,8 +199,8 @@ apiUrl = 'http://127.0.0.1:8000/api/civilian/';
         catchError(this.handleError('changepassword', []))
       );
   }
-  medList(data): Observable<any> {
-    return this.http.post<any>(this.apiUrl + 'medical_aidlist', data)
+  medList(): Observable<any> {
+    return this.http.get<any>(this.apiUrl + 'medical_aidlist')
       .pipe(
         tap(_ => this.log('medical_aidlist ')),
         catchError(this.handleError('medical_aidlist ', []))
@@ -222,13 +229,14 @@ apiUrl = 'http://127.0.0.1:8000/api/civilian/';
 
   }
 
-  institutionList(data): Observable<any> {
-    return this.http.post<any>(this.apiUrl + 'org_list', data)
+  institutionList(): Observable<any> { 
+    return this.http.get<any>(this.apiUrl + 'org_list')
       .pipe(
         tap(_ => this.log('org_list')),
         catchError(this.handleError('org_list', []))
       );
 
+      
   }
   specify(data): Observable<any> {
     return this.http.post<any>(this.apiUrl + 'sendspecify_emerg', data)
@@ -238,14 +246,7 @@ apiUrl = 'http://127.0.0.1:8000/api/civilian/';
       );
 
   }
-  saveAddress(data): Observable<any> {
-    return this.http.post<any>(this.apiUrl + '', data)
-      .pipe(
-        tap(_ => this.log('')),
-        catchError(this.handleError('', []))
-      );
 
-  }
 
   
 

@@ -64,7 +64,8 @@ export class SelfAdmissionPage {
 
 
 
-goForSelf(){    
+goForSelf(){ 
+     
 this.navCtrl.push("ForSelfPage");
 }
 
@@ -78,9 +79,25 @@ console.log(+ "ForSomeone");
 }
 
 
+
+
+goSelectResponderfor(){
+
+ 
+this.storage.set('forWho', 'FM');
+console.log('for me clicked');  
+
+this.navCtrl.push("SelectResponderPage");
+}
+
+
+
+
 goSelectResponder(){
-  this.storage.set('forSomeone', 'Yes');
-  console.log('for someone clicked');    
+
+  this.storage.set('forWho', 'FS');
+  console.log('for someone clicked'); 
+
 this.navCtrl.push("SelectResponderPage");
 }
 

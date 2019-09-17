@@ -21,6 +21,8 @@ export class HistoryPage {
   emergency_type:any;
   Userdata: any;
   user_id: any;
+  company_id: any;
+  company_Id: any;
   pick_up: any;
   toConcat:any;
   User_Id :any;
@@ -38,6 +40,7 @@ export class HistoryPage {
 
       this.id = navParams.get('data') ;
       this.User_Id = navParams.get('user_id') ;
+      this.company_Id = navParams.get('company_id') ;
 
    
 
@@ -83,11 +86,13 @@ this.storage.get('user_id').then((val) => {
 
 
 
-  goHistory1(id, user_id){ 
+  goHistory1(id, user_id, company_id ){ 
         
     this.navCtrl.push("History1Page", {
       data: id,
-      user_id:user_id
+      user_id:user_id,
+      company_id:company_id,
+
     });
  
     }

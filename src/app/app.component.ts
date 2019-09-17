@@ -29,8 +29,7 @@ export class MyApp {
   
   // menu: true;
  
- 
-
+  
  
 
   pages: Array<{ title: string, component: any , icon:string}>;
@@ -44,6 +43,8 @@ export class MyApp {
     private storage: Storage,
     public formBuilder: FormBuilder,
     ) {
+
+
 
       this.storage.get('user_name').then((val) => {
         console.log(String(val));
@@ -88,7 +89,7 @@ export class MyApp {
 
    //   Can only work when we compile for mobile and not on desktop
       window["plugins"].OneSignal
-         .startInit("422a9798-6102-4c4b-8d59-bd1bebcd6810", "316673984537")
+         .startInit("c92bb615-7c1e-4a91-8e4d-e4d3d771c165", "384977991016")
         .handleNotificationOpened(notificationOpenedCallback)
         .endInit();
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder,FormGroup } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { AlertsProvider } from './../../providers/alerts/alerts';
@@ -42,8 +42,8 @@ export class ResetPasswordPage {
       });
 
       this.resetPasswordForm = formBuilder.group({
-        'email': ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern("")])],
-        'password': ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.pattern("")])],
+        'email': ['',],
+        // 'password': ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.pattern("")])],
       })
     }
 

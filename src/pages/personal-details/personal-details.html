@@ -37,8 +37,8 @@
     </ion-item>         
                                               
     <ion-item text-left>
-      <ion-label floating>Phone Number </ion-label>
-      <ion-input formControlName="phonenumber" block value=" {{ fault.phone_no }}">
+      <ion-label floating>Phone Number</ion-label>
+      <ion-input [(ngModel)]='tel' (ionBlur)="convert()" formControlName="phonenumber" block value=" {{ fault.phone_no }}" minLength="11" maxLength="11">
       </ion-input>
     </ion-item>
 

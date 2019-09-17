@@ -24,74 +24,84 @@
             
             <ion-row no-lines *ngFor="let fault of history_collection">
 
-                <!-- <ion-card no-lines> -->
+               
                   <ion-item color='light'no-lines  text-left>
-                    <!-- <h1 color='newcolor'> Emergency type : {{ fault.emergency_type }}</h1>  -->
+                  
                     <font size="3" color='#38414a'>Pick-Up : <b>{{ fault.pick_up }}</b></font><br>
                     <font size="3" color='#38414a'>Drop-off : {{ fault.drop_off }}</font><br> 
-                    <!-- <font size="3" color='#38414a'>Responder : {{ fault.driver_name }}</font><br> -->
+              
                   </ion-item>
-                <!-- </ion-card> -->
+              
               </ion-row>
 
                 <ion-row no-lines *ngFor="let fault of history_collection">
           
                       <ion-item color='light'no-lines  text-left>
-                        <!-- <h1 color='newcolor'> Emergency type : {{ fault.emergency_type }}</h1> -->
-                        <font size="3" color='#38414a'> Emergency type :<b> {{ fault.emergency_type }}</b></font><br>
-                        <!-- <font size="3" color='#38414a'>Pick-Up : {{ fault.pick_up }}</font><br>
-                        <font size="3" color='#38414a'>Drop-off : {{ fault.drop_off }}</font><br> -->
+                        <font size="3" color='#38414a'>Emergency type :<b> {{ fault.emergency_type }}</b></font><br>
                         <font size="3" color='#38414a'>Status : {{ fault.status }}</font><br>
-                        <!-- <font size="3" color='#38414a'>Responder : {{ fault.driver_name }}</font><br> -->
                         <font size="3" color='#38414a'>Date : {{ fault.created_at }}</font><br>
+                        <!-- <font size="3" color='#38414a'>Company id : {{ fault.company_id }}</font><br> -->
                       </ion-item>
+
+                      <!-- <button hreround (click)="goLanding(fault.company_id)" ion-button color="newcolor"
+                      >Responder details
+                    </button> -->
+
                   </ion-row>
+
+                </div>
                  
-  
- 
-              <ion-row no-lines *ngFor="let fault of history_collection">
-                  <!-- <br>
-                  <ion-title text-center>Responder</ion-title> -->
-    
-                  <ion-item no-lines color=''>
-                
-                    <ion-avatar item-right>
-                      <img src="../../assets/CITIMED.jpg">
-                    </ion-avatar>
-                       <!-- <h1 color='newcolor'> Emergency type : {{ fault.emergency_type }}</h1>  -->
-                    <!-- <font size="3" color='#38414a'><b>Pick-Up : <b>{{ fault.pick_up }}</b></font><br> -->
-                    <!-- <p href="tel:+2787463734"><b>Cell: </b> {{detail.phone_no}}</p> -->
-                  
-<br>
-                     <font size="3" color='#38414a'> {{ fault.company_id }}</font><br>           
+
+                    <br>
+                   
+
+        
+              <ion-row  no-lines *ngFor="let fault of history1_collection"> 
+
+           
+                <ion-title text-center>Responder details</ion-title>
+
+                <ion-card>
+
+                    <div class="register-fields" [formGroup]="history1Form">
+                   <ion-item  no-lines color='light'>      
+                     <ion-avatar item-right>
+                      <img src="{{ fault.profile }}">                                                        
+                    </ion-avatar> 
+                     <!-- <font size="3" color='#38414a'> {{ responderName }} </font><br>             -->      
                     <!-- <p>1 minute away.</p> -->
-                  </ion-item>
+                    <font size="3" color='#38414a'> {{ fault.company_name }} </font><br>  
+
+                   </ion-item>
+
+                   <ion-col col-6>
+                    <a ion-button clear  round outline small class="gl" icon-right color="secondary" href="tel:+27800333911">Call Responder
+                        <ion-icon name="md-call"></ion-icon>
+                     </a>
+                </ion-col>
+              </div>
+
+              </ion-card>
+                  
+               
             
-              
+               </ion-row>
+            
 
-                </ion-row>
+             
 
-        </div>
 
-        <ion-row>
-        <ion-col col-6>
-            <a ion-button round outline small class="gl" icon-right color="secondary" href="tel:+2780 033 3911">Call Responder
-                <ion-icon name="md-call"></ion-icon>
-             </a>
-        </ion-col>
-      </ion-row>
+               
+
+     
+
+   
 
 
       
-               <!-- <ion-col>
-                   <button full   color='newcolor' ion-button icon-right  (click)="goSupport()">
-                     
-                      <ion-label >Send Message</ion-label>
-                    </button> 
-                 </ion-col> -->
       
             
-      
+                
 
 
 

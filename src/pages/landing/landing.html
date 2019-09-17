@@ -12,32 +12,8 @@
 </ion-header>
 
 <ion-content text-center no-padding >
-<br>
-      <ion-row no-lines *ngFor="let fault of faultCategories">
-        <ion-card no-lines>
-          
-            <ion-item no-lines (click)="goLocation(fault)" text-right>
-                <ion-avatar item-start>
-                  <img [src]="fault.imageUrl">
-                </ion-avatar>
-                <h1></h1>
-                <font size="3" color='#38414a'>{{ fault.category }}</font >
-              </ion-item>
-        </ion-card> 
-      </ion-row>
 
 
-     <ion-card> 
-      <ion-item (click)="goSpecifyEmergency(other)"  no-lines text-right>
-          <ion-avatar item-start>
-            <img src="../../assets/icons/B8A.png">
-          </ion-avatar>
-          <h1></h1>
-          <font size="3" color='#38414a'>Other</font>
-        
-        </ion-item>
-      </ion-card>  
-<br>
 
 
 
