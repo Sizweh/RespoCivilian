@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
 import { FormGroup, FormBuilder,} from '@angular/forms';
+import {OneSignal} from '@ionic-native/onesignal/ngx';
 
 
 
@@ -13,6 +14,7 @@ import { FormGroup, FormBuilder,} from '@angular/forms';
   templateUrl: 'app.html'
 })
 export class MyApp {
+  userId: string;
   [x: string]: any;
  
 
@@ -24,7 +26,7 @@ export class MyApp {
 
   @ViewChild(Nav) nav: Nav;
   username:any; 
-  rootPage: any = 'LoginPage';
+  rootPage: any = 'HomePage';
 
   
   // menu: true;
@@ -41,14 +43,19 @@ export class MyApp {
     public splashScreen: SplashScreen, 
     public menu: MenuController,
     private storage: Storage,
+    private oneSignal: OneSignal,
     public formBuilder: FormBuilder,
     ) {
 
 
 
       this.storage.get('user_name').then((val) => {
-        console.log(String(val));
+        //console.log(String(val));
         this.username = String(val);  
+      });
+      this.storage.get('user_id').then((val) => {
+       // console.log(String(val));
+        this.userId = String(val);  
       });
    
 
@@ -92,6 +99,24 @@ export class MyApp {
          .startInit("c92bb615-7c1e-4a91-8e4d-e4d3d771c165", "384977991016")
         .handleNotificationOpened(notificationOpenedCallback)
         .endInit();
+        
+
+        // window["plugins"].OneSignal.sendTag("user_id", this.userId);
+        // console.log("tags sent");
+        
+        // this.oneSignal.getIds().then((id) => {
+        //   console.log(id);
+        //   let alert = this.alertCtrl.create({
+        //       title: 'playerId',
+        //       message: JSON.stringify(id),
+        //       buttons: [{
+        //         text: 'Ok',
+        //         role: 'ok'
+        //       }]
+        //     });
+        //     alert.present();
+        // });
+    
 
     });
   }

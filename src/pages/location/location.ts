@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController,} from 'ionic-angular';
-
 import { AlertsProvider } from './../../providers/alerts/alerts';
 import { Storage } from '@ionic/storage';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
@@ -23,7 +22,6 @@ map         : any;
 infoWindow  : any;
 marker      : any;
 event       : any;
-
 civilianLat : any;
 civilianId  : any;
 civilianLng : any;
@@ -43,24 +41,24 @@ specify: any;
 driver_name: any;
 responderPlate: any;
 responderDistance: any;
-  GoogleAutocomplete: any;
-  autocomplete: { input: string; };
-  autocompleteItems: any[];
-  zone: any;
-    address: any;
-    address_loacation : any ; 
-    additional_address : any ; 
-    
-    map2Form: FormGroup;
-    showText: boolean;
-    Sear_location: any;
-    pick_up: any;
-    allResponders: any;
-    selectedResponder: any; 
-    responderName: any;
-    responderId: any;
-    company_name: any;
-    forWho: any;
+GoogleAutocomplete: any;
+autocomplete: { input: string; };
+autocompleteItems: any[];
+zone: any;
+address: any;
+address_loacation : any ; 
+additional_address : any ; 
+
+map2Form: FormGroup;
+showText: boolean;
+Sear_location: any;
+pick_up: any;
+allResponders: any;
+selectedResponder: any; 
+responderName: any;
+responderId: any;
+company_name: any;
+forWho: any;
     
 
   constructor(public navCtrl: NavController, 
@@ -70,55 +68,37 @@ responderDistance: any;
     public loadingCtrl: LoadingController,
     private urlService: UrlbaseProvider,
     ) {
-        this.storage.get('selected_responder').then((val) => {
-            console.log('respo db stuff');
-            console.log(val);
-            this.selectedResponder = [val];
-            this.responderId = val.id;
-            this.responderName = val.driver_name;
-            // alert(this.responderName);
-            var randomnumber = Math.floor(Math.random() * (7 - 1 + 1)) + 1;
-            this.responderDistance = randomnumber;
-    
-            //polling, should look for alternatives
-           // this.timeInt();
-          }); 
 
-        this.address_loacation = navParams.get('sear_location') ;
-       this.additional_address = navParams.get('number') ;
-    //console.log('ssssssssssssss'+ this.address_loacation );
-    this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
-    this.autocomplete = { input: '' };
-    this.autocompleteItems = []
+this.storage.get('selected_responder').then((val) => {
+
+    this.selectedResponder = [val];
+    this.responderId = val.id;
+    this.responderName = val.driver_name;
+    var randomnumber = Math.floor(Math.random() * (7 - 1 + 1)) + 1;
+    this.responderDistance = randomnumber;
+    }); 
+     
+      this.address_loacation = navParams.get('sear_location');
+      this.additional_address = navParams.get('number');
+      //console.log('ssssssssssssss'+ this.address_loacation );
+      this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
+      this.autocomplete = { input: '' };
+      this.autocompleteItems = []
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LocationPage');
 
-    this.storage.get('address').then((val) => {
-        //  console.log(String(val));
-        this.address = val;
-      });
-
-      
+  
     this.storage.get('additional_address').then((val) => {
-        //  console.log(String(val));
         this.additional_address = val;
       });
+
     this.storage.get('forWho').then((val) => {
-        //  console.log(String(val));
         this.forWho = val;
       });
 
-    // this.storage.get('forSomeone').then((val) => {
-    //     //  console.log(String(val));
-    //     this.forSomeone = val;
-    //   });
-
-    this.storage.get('specify_emergency').then((val) => {
-      //  console.log(String(val));
-      this.specifyEmergency = val;
-    });
+ 
 
 
     this.showText = true;
@@ -143,46 +123,43 @@ setTimeout(()=>{
         });
       });
   }
+
+
   ngOnInit() {
     let that = this;
     setTimeout(function () {
       that.googleMap();
     }, 2000)
   }
+
+
   googleMap() {
 
-    this.storage.get('address').then((val) => {
-        //  console.log(String(val));
+    this.storage.get('specify_emergency').then((val) => {
+        this.specifyEmergency = val;
+       this.storage.remove( 'specify_emergency');
+      });
+
+    this.storage.get('category').then((val) => {
+        // console.log('cater db stuff');
+        // console.log(val);
+        this.category = val;
+        this.event = val.category;
+      });
+      
+      this.storage.get('user_id').then((val) => {
+        // console.log('user db stuff');
+        // console.log(val);
+        this.civilianId = val;
+      });
+
+      this.storage.get('address').then((val) => {
         this.address = val;
       });
- 
-    this.storage.get('category').then((val) => {
-      console.log('cater db stuff');
-      console.log(val);
-      this.category = val;
-      this.event = val.category;
-    });
-    
-    this.storage.get('specify_emergency').then((val) => {
-      console.log('c db stuff');
-      console.log(val);
-      this.specify_emergency = val;
-      this.specifyEmergency= val.specify_emergency;
 
-     this.storage.remove( 'specify_emergency');
-    //   this.storage.clear();
-    });
- 
-    this.storage.get('user_id').then((val) => {
-      console.log('user db stuff');
-      console.log(val);
-      this.civilianId = val;
-      // alert(val);
-    });
-
-    this.storage.get('selected_responder').then((val) => {
-        console.log('respo db stuff');
-        console.log(val);
+      this.storage.get('selected_responder').then((val) => {
+        //console.log('respo db stuff');
+        //console.log(val);
         this.selectedResponder = val;
         this.responderId = val.id;
         this.responderName = val.driver_name;
@@ -193,7 +170,6 @@ setTimeout(()=>{
         //polling, should look for alternatives
        // this.timeInt();
       }); 
-
 
 
     let that = this;
@@ -672,7 +648,7 @@ goConfirm(){
         duration: 3000
       });
       if (status == "error") {
-          console.log(msg + 'server')
+         // console.log(msg + 'server')
         this.alert.presentAlert("Respo", 'Please try again... connecting to the server');
       }
       if (status == "OK") {
@@ -684,7 +660,7 @@ goConfirm(){
         this.navCtrl.push("ConfirmPage");
       }
     }, (err) => {
-      console.log(err);
+     // console.log(err);
     });
    // this.navCtrl.push("ConfirmPage");
 }

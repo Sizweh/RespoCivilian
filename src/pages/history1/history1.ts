@@ -50,37 +50,29 @@ export class History1Page {
     public view: ViewController,
     ) {
 
-     
-
-      
-
       this.storage.get('selected_responder').then((val) => {
-
         console.log('cd db stuff');
         console.log(val);
         this.selectedResponder = val;
         this.responderId = val.id;
         this.request_id = val.reqId;
         this.responderName= val.driver_name;
-
-        this.storage.get('request_id');
-  
       });
 
-        this.storage.get('id').then((val) => {
-        console.log(String(val));
-        this.id = String(val);  
-      });
+      //   this.storage.get('id').then((val) => {
+      //   console.log(String(val));
+      //   this.id = String(val);  
+      // });
 
         this.storage.get('user_id').then((val) => {
         console.log(String(val));
         this.user_id = String(val);  
       });
 
-        this.storage.get('company_id').then((val) => {
-        console.log(String(val));
-        this.company_id = String(val);  
-      });
+      //   this.storage.get('company_id').then((val) => {
+      //   console.log(String(val));
+      //   this.company_id = String(val);  
+      // });
       
 
       this.id = navParams.get('data') ;
@@ -88,20 +80,12 @@ export class History1Page {
       this.company_Id = navParams.get('company_id') ;
      
       this.historyForm = formBuilder.group({
-     
-
         'user_id': [this.User_Id,],
         'id': [this.id,],
-        
-        
       })
+
       this.history1Form = formBuilder.group({
-   
         'company_id': [this.company_Id],
-        // 'user_id': [this.User_Id,],
-        // 'id': [this.id,],
-     
-        
       })
   }
 
@@ -112,45 +96,26 @@ export class History1Page {
   ionViewDidLoad() {
     console.log('ionViewDidLoad History1Page');
 
-    
-
-
       var headers = new Headers();
       headers.append("Accept", 'application/json');
       headers.append('Content-Type', 'application/json' );
-    //  const requestOptions = new RequestOptions({ headers: headers });
-     
-     //pass to back-end
-      //  console.log(this.historyForm.value);
-
-      var postData = this.historyForm.value;
-        // var postData = {user_id:val};
-         //var postData = {id:val};
   
+     //pass to back-end
+      var postData = this.historyForm.value;
         //THIS IS A BETTER WAY TO MAKE API CALLS
       this.urlService.viewhistory(postData)
       .subscribe(res => {
-          // this.presentToast(res.msg, res.status);
-         // console.log(res.id);
-          //console.log(res.drop_off);
-         // this.alert.presentAlert("Notification", res.msg);
        this.history_collection = res;
           if (res.status=='OK') {
-            // localStorage.setItem('token', res.token);
-            //this.navCtrl.setRoot('HomePage');
           }
       }, (err) => {
           console.log(err);
       });
 
-      var headers = new Headers();
-      headers.append("Accept", 'application/json');
-      headers.append('Content-Type', 'application/json' );
-    //  const requestOptions = new RequestOptions({ headers: headers });
+      // var headers = new Headers();
+      // headers.append("Accept", 'application/json');
+      // headers.append('Content-Type', 'application/json' );
      
-     //pass to back-end
-      //  console.log(this.historyForm.value);
-  
      var postData = this.history1Form.value;
     
       this.urlService.companydetails(postData)
@@ -162,8 +127,6 @@ export class History1Page {
           if (res.status=='OK') {
           
             this.storage.set('request_id', reqId);
-            // localStorage.setItem('token', res.token);
-            //this.navCtrl.setRoot('HomePage');
           }
       }, (err) => {
           console.log(err);
@@ -172,66 +135,6 @@ export class History1Page {
 
   }
 
-
-
-  ionViewWillLoad() {
- 
- 
-    }
-
-
-
-
-
-
-
-
-    goLanding(){
-
-
-
-      var headers = new Headers();
-      headers.append("Accept", 'application/json');
-      headers.append('Content-Type', 'application/json' );
-    //  const requestOptions = new RequestOptions({ headers: headers });
-     
-     //pass to back-end
-      //  console.log(this.historyForm.value);
-  
-     var postData = this.historyForm.value;
-    
-      this.urlService.companydetails(postData)
-      .subscribe(res => {
-        console.log(res);
-        var reqId = res.request_id;
-  
-       this.history1_collection = res;
-          if (res.status=='OK') {
-          
-            this.storage.set('request_id', reqId);
-            // localStorage.setItem('token', res.token);
-            //this.navCtrl.setRoot('HomePage');
-          }
-      }, (err) => {
-          console.log(err);
-      }); 
-
-
-   // this.navCtrl.push('LandingPage')
-  }
-
-
-
-  // goLanding(company_id){ 
-
-   
-        
-  //   // this.navCtrl.push("LandingPage", {
-   
-  //   //   company_id:company_id
-  //   // });
- 
-  //   }
 
 
 }

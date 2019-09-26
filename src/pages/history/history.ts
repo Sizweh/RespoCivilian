@@ -46,6 +46,10 @@ export class HistoryPage {
 
       this.historyForm = formBuilder.group({
         'user_id': ['',],
+
+        'myDate': ['',],
+
+
         
       })
   }

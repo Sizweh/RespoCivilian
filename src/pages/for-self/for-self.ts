@@ -33,16 +33,6 @@ export class ForSelfPage {
       this.id = navParams.get('data') ;
       this.User_Id = navParams.get('user_id') ;
 
-      this.storage.get('user_id').then((val) => {
-        console.log(String(val));
-        this.  toConcat =   this.UserId =String(val); 
-      });
-
-      this.storage.get('id').then((val) => {
-        console.log(String(val));
-        this.id = String(val);  
-      });
-
    
       this.registerForm = formBuilder.group({
 
@@ -55,15 +45,17 @@ export class ForSelfPage {
     })
 
 
-
   }
 
   ionViewDidLoad() {
+    console.log('ionViewDidLoad ForSelfPage');
+
+
     this.storage.get('user_id').then((val) => {
       console.log(String(val));
       this.  toConcat =   this.UserId =String(val); 
 
-      var headers = new Headers();
+    var headers = new Headers();
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
    //pass to back-end
@@ -78,15 +70,13 @@ export class ForSelfPage {
         console.log(err);
     });
 
-    });
+  });
     
 
-    console.log('ionViewDidLoad ForSelfPage');
+   
   }
 
-  goHome() {
-    this.navCtrl.setRoot("HomePage");
-  }
+
 
  goMyaccount(){ 
 
@@ -95,7 +85,6 @@ export class ForSelfPage {
   this.storage.set('org_id', values.org_id);
   this.storage.set('student_no', values.student_no);
  
-
   var headers = new Headers();
   headers.append("Accept", 'application/json');
   headers.append('Content-Type', 'application/json' );
@@ -116,13 +105,10 @@ export class ForSelfPage {
     duration: 3000,
     position: 'bottom'
   });
-
   toast.onDidDismiss(() => {
     console.log('Dismissed toast');
   });
-
   toast.present();
-
   const loading= this.loadingCtrl.create({
     content: "saving...",
     duration: 700

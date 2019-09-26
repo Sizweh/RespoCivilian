@@ -25,32 +25,32 @@
   <div no-scrolling                                                                                                                                                                                                                                                                            class="login-fields" [formGroup]="personalForm">
 
     <ion-item text-left>
-      <ion-label floating>Full Name </ion-label>
-      <ion-input formControlName="fullName" floating block value="  {{ fault.name }}">
+      <ion-label stacked>Full Name </ion-label>
+      <ion-input formControlName="fullName" floating block value="{{ fault.name }}">
       </ion-input>
     </ion-item>
 
     <ion-item text-left>
-      <ion-label floating>Email </ion-label>
+      <ion-label stacked>Email </ion-label>
       <ion-input formControlName="email" block value="{{ fault.email }}">
       </ion-input>
     </ion-item>         
                                               
     <ion-item text-left>
-      <ion-label floating>Phone Number</ion-label>
-      <ion-input [(ngModel)]='tel' (ionBlur)="convert()" formControlName="phonenumber" block value=" {{ fault.phone_no }}" minLength="11" maxLength="11">
+      <ion-label stacked>Phone Number</ion-label>
+      <ion-input [(ngModel)]='tel' (ionBlur)="convert()" type='tel' formControlName="phonenumber" block value="{{ fault.phone_no }}" minLength="11" maxLength="11">
       </ion-input>
     </ion-item>
 
     <ion-item text-left>
-      <ion-label floating>Gender </ion-label>
-      <ion-input formControlName="gender" block value="  {{ fault.gender }}">
+      <ion-label stacked>Gender </ion-label>
+      <ion-input formControlName="gender" block value="{{ fault.gender }}">
       </ion-input>
     </ion-item>
 
     <ion-item text-left>
-      <ion-label floating>DOB </ion-label>
-      <ion-input formControlName="myDate" block value="  {{ fault.dob }}">
+      <ion-label stacked>DOB </ion-label>
+      <ion-input formControlName="myDate" block value="{{ fault.dob }}">
       </ion-input>
 
     </ion-item>

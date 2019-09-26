@@ -57,13 +57,13 @@ export class SelectResponderPage {
   
   goRequestElse(respo) {
        this.storage.set('selected_responder', respo);
-    console.log(respo);
+   // console.log(respo);
     this.navCtrl.push('RequestElsePage')
   }
   
   goMaps(respo) {
     this.storage.set('selected_responder', respo);
-    console.log(respo);
+   // console.log(respo);
     this.navCtrl.push('MapsPage')
   }
   

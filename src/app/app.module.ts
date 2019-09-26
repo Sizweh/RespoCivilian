@@ -24,6 +24,7 @@ import { File } from '@ionic-native/file/ngx';
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 import { SocketsProvider } from '../providers/sockets/sockets';
 import { SelectSearchableModule } from 'ionic-select-searchable';
+import { OneSignal } from '@ionic-native/onesignal/ngx'
 
 const config: SocketIoConfig = { url: 'http://localhost:3001', options:{}};
 
@@ -62,6 +63,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options:{}};
   providers: [
     StatusBar,
     SplashScreen,
+    OneSignal,
     ImagePicker,
     FileChooser,
     {provide: ErrorHandler, useClass: IonicErrorHandler},

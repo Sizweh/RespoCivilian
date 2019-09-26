@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder,FormGroup } from '@angular/forms';
-import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
+//import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { AlertsProvider } from './../../providers/alerts/alerts';
 
 @IonicPage()
@@ -23,7 +23,7 @@ export class SpecifyEmergencyPage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     private storage: Storage,
-    private urlService: UrlbaseProvider,
+    //private urlService: UrlbaseProvider,
     public http: HttpClient,
     public formBuilder: FormBuilder,
     public alert: AlertsProvider,
@@ -34,26 +34,12 @@ export class SpecifyEmergencyPage {
 
       this.specifyForm = formBuilder.group({
 
-        
         'user_id': [ this.User_Id],
-          'id': [this.id,],
-
-      'specify_emergency': ['',],
-
+        'id': [this.id,],
+        'specify_emergency': ['',],
       })
   }
 
-  // otherCategories = [
-  //   {
-  //     faultID: 10,
-  //     // category: "Other",
-  //     formControlName: "emergency_type",
-  //     placeholder: "",
-   
-     
-  //   },
-  
-  // ];
   
   ionViewDidLoad() {
     console.log('ionViewDidLoad SpecifyEmergencyPage');
@@ -74,8 +60,6 @@ export class SpecifyEmergencyPage {
 
     const value = this.specifyForm.value;
     this.storage.set('specify_emergency', value.specify_emergency);
-
-
     // var headers = new Headers();
     // headers.append("Accept", 'application/json');
     // headers.append('Content-Type', 'application/json');
@@ -94,11 +78,6 @@ export class SpecifyEmergencyPage {
 
 
   goSelectResponder(){
-
-  
-
- 
-
    this.navCtrl.push('SelectResponderPage')
   }
 

@@ -23,19 +23,19 @@
 
       
 <ion-item>
-  <ion-input formControlName="org_id" placeholder="Institution" ></ion-input>
+  <ion-input formControlName="org_id" placeholder="Organization" ></ion-input>
     <ion-select formControlName="org_id">
       <ion-label>Institution</ion-label> 
 
       <div *ngFor="let fault of student_collection">
-        <ion-option  value="{{ fault.id}}">{{fault.org_name}}</ion-option>
+        <ion-option  value="{{ fault.id}}">{{fault.Org_name}}</ion-option>
       </div>
 
     </ion-select>
   </ion-item>
   
   <ion-item>
-    <ion-input block formControlName="student_no" type="text" placeholder="Student No."></ion-input>
+    <ion-input block formControlName="student_no" type="text" placeholder="Reference No."></ion-input>
   </ion-item>
 
 

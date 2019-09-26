@@ -15,6 +15,7 @@ export class UrlbaseProvider {
 //  apiUrl = 'http://46.101.169.33/api/civilian/';
 // apiUrl = 'http://127.0.0.1:8000/api/civilian/';
 
+
   constructor(public http: HttpClient) {
     console.log('Hello UrlbaseProvider Provider');
   }
@@ -220,35 +221,28 @@ export class UrlbaseProvider {
         catchError(this.handleError('studentDetails', []))
       );
   }
+  institutionList(): Observable<any> {
+    return this.http.get<any>(this.apiUrl + 'org_list')
+      .pipe(
+        tap(_ => this.log('org_list')),
+        catchError(this.handleError('org_list', [])),
+      );
+  }
   editDetails(data): Observable<any> {
     return this.http.post<any>(this.apiUrl + 'org_change', data)
       .pipe(
         tap(_ => this.log('org_change')),
         catchError(this.handleError('org_change', []))
       );
-
   }
 
-  institutionList(): Observable<any> { 
-    return this.http.get<any>(this.apiUrl + 'org_list')
-      .pipe(
-        tap(_ => this.log('org_list')),
-        catchError(this.handleError('org_list', []))
-      );
-
-      
-  }
   specify(data): Observable<any> {
     return this.http.post<any>(this.apiUrl + 'sendspecify_emerg', data)
       .pipe(
         tap(_ => this.log('sendspecify_emerg')),
         catchError(this.handleError('sendspecify_emerg', []))
       );
-
   }
-
-
-  
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

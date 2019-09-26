@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,  AlertController, LoadingController, ToastController  } from 'ionic-angular';
-import { FormGroup,  FormBuilder, Validators,  } from '@angular/forms'; 
+import { IonicPage, NavController, NavParams,  AlertController, LoadingController} from 'ionic-angular';
+import { FormGroup,  FormBuilder, Validators} from '@angular/forms'; 
 import { AlertsProvider } from './../../providers/alerts/alerts';
 import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
@@ -16,18 +16,15 @@ import { UrlbaseProvider } from '../../providers/urlbase/urlbase';
 export class BankingDetailsPage {
 
   org_Id: any;
-  institutionList = [];
   remembertoken: boolean;
-
   registerForm: FormGroup;
   register1Form: FormGroup;
- student_collection: any;
+  student_collection: any;
   id: any;
   User_Id: any;
   user_id: any;
   org_id: string;
-  categoria: any;
-  NETP: any;
+
   
 
   constructor(public navCtrl: NavController, 
@@ -35,42 +32,23 @@ export class BankingDetailsPage {
     public alert: AlertsProvider,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
-    private toastCtrl: ToastController,
+
     public http: HttpClient,
     private storage: Storage,
     public formBuilder: FormBuilder,
     private urlService: UrlbaseProvider,
     ) {
       
-      
-
-
       this.storage.get('user_id').then((val) => {
         console.log(String(val));
         this.user_id = String(val);  
       });
 
-      this.storage.get('id').then((val) => {
-        console.log(String(val));
-        this.id = String(val);  
-      });
-
-      this.storage.get('org_id').then((val) => {
-        console.log(String(val));
-        this.org_Id = String(val);  
-      });
-
-      // this.id = navParams.get('data') ;
-      // this.User_Id = navParams.get('user_id') ;
-      // this.org_Id = navParams.get('org_id') ;
 
       this.registerForm = formBuilder.group({
         
       'user_id': ['',],
       'id': ['',],
-
-
-
 
       'org_id': ['',],
       'student_no': ['', Validators.compose([Validators.required])],
@@ -79,9 +57,6 @@ export class BankingDetailsPage {
 
 
     }
-
-
-    
 
   ionViewDidLoad() {
 
@@ -92,24 +67,18 @@ export class BankingDetailsPage {
       //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.institutionList()
     .subscribe(res => {
-      //console.log(res)
      this.student_collection = res;
         if (res.status=='OK') {
         }
     }, (err) => {
-        console.log(err);
+        console.log(err);  
     });
-
-
+   
     console.log('ionViewDidLoad BankingDetailsPage');
   }
 
 
 
-
-  // goLogin(){
-  //   this.navCtrl.push("LoginPage");
-  // }
 
 
   goMyaccount(id) {
@@ -138,7 +107,6 @@ export class BankingDetailsPage {
     // THIS IS A BETTER WAY TO MAKE API CALLS
        this.urlService.orgList(collection)
        .subscribe(res => {
-         // this.presentToast(res.msg, res.status);
         console.log(res);
          if (res.status=='OK') {
         }
@@ -168,32 +136,7 @@ export class BankingDetailsPage {
   }
 
   
-  goChat(){
 
-    var headers = new Headers();
-      headers.append("Accept", 'application/json');
-      headers.append('Content-Type', 'application/json' );
- 
-
-        //THIS IS A BETTER WAY TO MAKE API CALLS
-      this.urlService.institutionList()
-      .subscribe(res => {
-
-        //console.log(res)
-       this.student_collection = res;
-          if (res.status=='OK') {
-     
-          }
-      }, (err) => {
-          console.log(err);
-      });
-
-
-
-
-  // this.navCtrl.push("ChatPage");
-
-  }
 
 
 

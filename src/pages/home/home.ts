@@ -1,19 +1,21 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams} from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-// import { HttpClient } from '@angular/common/http';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { MenuController } from 'ionic-angular';
+import { OneSignal } from '@ionic-native/onesignal/ngx';
 
 @IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
 })
+
 export class HomePage {
   playerId :any; 
   user_ids :any;
   user_id: any;
+  userId: any;
   
   responderId: any;
   responderPlate: any;
@@ -23,15 +25,15 @@ export class HomePage {
   alert: any;
   civilianId: any;
   userDetails: any;
+  OneSignal: any;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     private storage: Storage,
-    // private http: HttpClient,
     private urlService: UrlbaseProvider,
     public menuCtrl: MenuController,
-
+    private oneSignal: OneSignal,
    
     ) {
     this.menuCtrl.enable(true);
@@ -86,30 +88,19 @@ faultCategories = [
     category: "Labour",
     imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/labour.png",
     icon: "alarm"
-    
-    
   },
   {
     faultID: 9,
     category: "Falling",
     imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/R10.jpg",
     icon: "alarm"
-    
-    
   },
   {
     faultID: 10,
     category: "Seizure",
     imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/R12.jpg",
     icon: "alarm"
-    
-    
   },
-
- 
-
-
- 
 ];
 
  
@@ -130,52 +121,53 @@ otherCategories = [
 
 ionViewDidLoad() {
 
-  
     this.storage.get('user_id').then((val) => {
-      console.log('cater db stuff');
-     console.log(val);
+    //   console.log('cater db stuff');
+    //  console.log(val);
      this.user_id = val;
-     console.log("note  login" + this.user_id)
+    // console.log("note  login" + this.user_id)
      if(this.user_id === null)
      {
-       console.log("Note  login")
-       this.navCtrl.setRoot('LoginPage');
-        
+      // console.log("Note  login")
+       this.navCtrl.setRoot('LoginPage');  
      }
      else{
- 
      }
-      
-
     });
 
-
-  console.log('ionViewDidLoad HomePage');
+  //console.log('ionViewDidLoad HomePage');
 
   var notificationOpenedCallback = function(jsonData) {
     console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
   };
 
- // window["plugins"].OneSignal
- //   .startInit("422a9798-6102-4c4b-8d59-bd1bebcd6810", "316673984537")
-//    .handleNotificationOpened(notificationOpenedCallback)
-//    .endInit();
+ window["plugins"].OneSignal
+ .startInit("c92bb615-7c1e-4a91-8e4d-e4d3d771c165", "384977991016")
+   .handleNotificationOpened(notificationOpenedCallback)
+   .endInit();
    
-  window["plugins"].OneSignal.getIds(function(ids) {
-      this.playerId =  ids.userId
-     // alert(this.playerId)
+//   window["plugins"].OneSignal.getIds(function(ids) {
+//       this.playerId =  ids.userId
+//      // alert(this.playerId)
+// });
+// //  alert(this.playerId)
+
+this.storage.get('user_id').then((val) => {
+window["plugins"].OneSignal.sendTag("user_id", this.user_id);
+ // console.log("tags sent");
+  this.user_id = String(val);  
 });
+
+
 this.storage.get('user_id').then((user_id) => {
- // console.log(user_id);
    this.user_ids = 'user_id' ; 
 });
 
-  var postData ={user_id:this.user_ids , playerId:this.playerId };
+ var postData ={user_id:this.user_ids , playerId:this.playerId };
 
   this.urlService.updatePlayerId(postData)
   .subscribe(res => {
   console.log(res);
-  
   if (res.status=='OK') {
     console.log("playeId updated.");
   }  else {
@@ -188,45 +180,22 @@ this.storage.get('user_id').then((user_id) => {
    
 }
 
-  goLocation(fault){
-    this.storage.set('category', fault);
-    
-    this.navCtrl.push('SelectResponderPage')
-  }
 
-  // goSpecifyEmergency(other){
-  //   this.storage.set('category', other);
-
-  //   this.navCtrl.push('SpecifyEmergencyPage')
-  // }
-
-  goLanding(){
-    this.navCtrl.push('LandingPage')
-  }
-  
   goSelfAdmission(fault){
     this.storage.set('category', fault);
     this.navCtrl.push('SelfAdmissionPage')
   }
 
   goSpecifyEmergency(other){
-
     this.storage.set('category', other);
-
     this.storage.get('user_id').then((result) => {
     this.storage.get('id').then((_result_) => {
-  
       this.navCtrl.push("SpecifyEmergencyPage", {
         user_id:result,
         id:result,
       });
   });
-  });
-
-
- 
-
-
+});
 
 }
 checkAccept() {

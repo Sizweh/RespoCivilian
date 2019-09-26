@@ -48,22 +48,22 @@ export class ConfirmPage {
   
      
       this.storage.get('user_id').then((val) => {
-        console.log('user db stuff');
-        console.log(val);
+       // console.log('user db stuff');
+       // console.log(val);
         this.civilianId = val;
         // alert(val);
         
       });
       this.storage.get('request_id').then((val) => {
-        console.log('request db stuff');
-        console.log(val);
+       // console.log('request db stuff');
+       // console.log(val);
         this.reqId = val;
         // alert(val);
         
       });
       this.storage.get('selected_responder').then((val) => {
-        console.log('respo db stuff');
-        console.log(val);
+       // console.log('respo db stuff');
+       // console.log(val);
         this.selectedResponder = [val];
         this.responderId = val.id;
         this.responderName = val.driver_name;
@@ -109,7 +109,7 @@ export class ConfirmPage {
     this.urlService.checkRespoAccept(this.userDetails)
     .subscribe(res => {
         // this.presentToast(res.msg, res.status);
-        console.log(res);
+       // console.log(res);
         if (res.status=='accepted') {
           this.alert.presentAlert("Notification", res.msg);
           this.subscription.unsubscribe();
@@ -121,7 +121,7 @@ export class ConfirmPage {
           this.navCtrl.push('CountDownPage');
         }
     }, (err) => {
-        console.log(err);
+        //console.log(err);
     });
 
 

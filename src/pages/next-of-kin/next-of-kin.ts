@@ -60,7 +60,7 @@ export class NextOfKinPage {
         'surname': ['', Validators.compose([Validators.required])],
         'phone': ['', Validators.compose([Validators.required])],
         'relationship': ['', Validators.compose([Validators.required])],
-        'remembertoken': ['', Validators.compose([Validators.required])],
+        // 'remembertoken': ['', Validators.compose([Validators.required])],
     
       })
   
@@ -226,7 +226,6 @@ goVerifyAccount(){
   headers.append('Content-Type', 'application/json' );
  //  const requestOptions = new RequestOptions({ headers: headers });
 
-
   //pass to back-end
      console.log(this.nextofkinForm.value);
      //var postData = this.nextofkinForm.value;
@@ -237,7 +236,7 @@ goVerifyAccount(){
      //THIS IS A BETTER WAY TO MAKE API CALLS
      this.urlService.register(this.Userdata)
      .subscribe(res => {
-      console.log(res);
+     // console.log(res);
     this.alert.presentAlert("Notification", res.msg);
        if (res.status=='OK') {
         this.navCtrl.push("VerifyAccountPage");

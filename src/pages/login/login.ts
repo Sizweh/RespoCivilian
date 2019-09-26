@@ -52,7 +52,7 @@ export class LoginPage {
       this.menuCtrl.close();
 
       this.loginForm = formBuilder.group({
-        'phoneNumber': ['', Validators.compose([Validators.required, Validators.minLength(11), Validators.pattern("^[0-9]{11}")])],
+        'phoneNumber': [ Validators.compose([Validators.required, Validators.minLength(11), Validators.pattern("^[0-9]{11}")])],
         'password': ['',],
       })
 
@@ -90,13 +90,13 @@ this.menuCtrl.enable(false);
 
 
     this.storage.get('user_id').then((val) => {
-      console.log('cater db stuff');
-     console.log(val);
+      //console.log('cater db stuff');
+     //console.log(val);
      this.user_id = val;
-     console.log("note  login" + this.user_id)
+     //console.log("note  login" + this.user_id)
      if(this.user_id === null)
      {
-       console.log("Note  login")
+      // console.log("Note  login")
         
      }
      else{
@@ -113,52 +113,37 @@ this.menuCtrl.enable(false);
     this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';
   }
   updateToken() {
-    console.log('Remember token new state:' + this.remembertoken);
+    //console.log('Remember token new state:' + this.remembertoken);
   }
 
   goHome(){
 
-    
     var headers = new Headers();
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
-  //  const requestOptions = new RequestOptions({ headers: headers });
-   
    //pass to back-end
-      console.log(this.loginForm.value);
+
+      //console.log(this.loginForm.value);
       var postData = this.loginForm.value;
-
-
       //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.login(postData)
     .subscribe(res => {
-        // this.presentToast(res.msg, res.status);
-        console.log(res);
-        // alert(res);ss
         this.alert.presentAlert("Notification", res.msg);
-
         if (res.status=='OK') {
           this.storage.set('user_name', res.user_name);
           this.storage.set('user_id', res.user_id);
-          // localStorage.setItem('token', res.token);
           this.navCtrl.setRoot('HomePage');
         }
     }, (err) => {
-        console.log(err);
+       // console.log(err);
     });
 
   }
-
-
 
   goRegister(){
     this.navCtrl.push("RegisterPage");
   }
 
-  
-  goBankingDetails(){
-    this.navCtrl.push("BankingDetailsPage");
-  }
 
   goResetPassword(){
     this.navCtrl.push("ResetPasswordPage");
