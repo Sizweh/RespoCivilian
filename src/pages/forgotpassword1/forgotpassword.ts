@@ -1,6 +1,9 @@
 import { Component, } from '@angular/core';
-import { IonicPage, NavController, AlertController, NavParams, ToastController } from 'ionic-angular';
-import { FormBuilder } from '@angular/forms';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FormGroup,  FormBuilder} from '@angular/forms'; 
+import { Storage } from '@ionic/storage';
+import { UrlbaseProvider } from '../../providers/urlbase/urlbase';
+import { AlertController, LoadingController, ToastController } from 'ionic-angular';
 
 
 
@@ -16,26 +19,49 @@ export class ForgotpasswordPage {
    phone_number: string = "";
   create_password: string = "";
   confirm_password: string = "";
-
-
-
-
-
-
-
-
-
-
+  beneficiaryForm: FormGroup;
+  ben_collection: any;
+  User_Id: any;
+  id: any;
   constructor(public navCtrl: NavController, 
-    public alertCtrl: AlertController, 
+
     public formBuilder: FormBuilder, 
     public toastCtrl: ToastController,
+    private storage: Storage,
+    private urlService: UrlbaseProvider,
+    public alertCtrl: AlertController,
+    public loadingCtrl: LoadingController,
     public navParams: NavParams) {
-    
-
      
 
+     
+      this.id = navParams.get('data') ;
+      this.User_Id = navParams.get('user_id') ;
 
+      this.beneficiaryForm = formBuilder.group({
+
+        // 'user_id': [this.User_ID,],
+        'user_id': ['16'],
+        'id': ['1'],
+        
+        'name': ['',],
+        'phone': ['',],
+        'gender': ['',],
+        'dob': ['',],
+        'allergies': ['',],
+        'relationship': ['',],
+        'email': ['',],
+
+      })
+
+    }
+
+    tel='';
+
+    convert(){
+      if(this.tel.substr(0,1)==='0'){
+        this.tel='27'+this.tel.substr(1);
+      }
     }
   
     
@@ -46,6 +72,27 @@ export class ForgotpasswordPage {
 
 
   ionViewDidLoad() {
+
+    var headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json' );
+  //  const requestOptions = new RequestOptions({ headers: headers });
+   
+   //   pass to back-end
+    //  console.log(this.historyForm.value);
+      var postData = this.beneficiaryForm.value;
+
+   //THIS IS A BETTER WAY TO MAKE API CALLS
+    this.urlService.viewbeneficiary(postData)
+    .subscribe(res => {
+     this.ben_collection = res;
+        if (res.status=='OK') {
+        }
+    }, (err) => {
+        console.log(err);
+    });
+
+
     console.log('ionViewDidLoad ForgotPasswordPage');{
       
     }
@@ -53,9 +100,36 @@ export class ForgotpasswordPage {
   }
   goLogin(){
     this.navCtrl.setRoot('LoginPage')
- 
+  }
+  goMyBeneficiaries(){
 
 
+
+    
+    let toast = this.toastCtrl.create({
+      message: 'Beneficiary details edited successfully',
+      duration: 3000,
+      position: 'bottom'
+    });
+  
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+  
+    toast.present();
+  
+  
+  
+      const loading= this.loadingCtrl.create({
+        content: "saving...",
+        duration: 700
+      });
+      loading.present();
+
+
+
+
+    this.navCtrl.setRoot('MyBeneficiariesPage')
   }
 
 

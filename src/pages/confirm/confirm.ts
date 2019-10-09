@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 // import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
 import { AlertsProvider } from './../../providers/alerts/alerts';
-
+import { CallNumber } from '@ionic-native/call-number';
 import { interval } from 'rxjs/observable/interval';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 
@@ -42,6 +42,7 @@ export class ConfirmPage {
     private urlService: UrlbaseProvider,
     public alert: AlertsProvider,
     private storage: Storage,
+    public callNumber: CallNumber,
     ) 
     
     {
@@ -126,4 +127,14 @@ export class ConfirmPage {
 
 
   }
+
+  callNow(number) {
+    this.callNumber.callNumber(number, true)
+      .then(res => console.log('Launched dialer!', res))
+      .catch(err => console.log('Error launching dialer', err));
+      console.log('phone_no')
+  }
+
+
+
 }

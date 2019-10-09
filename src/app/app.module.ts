@@ -9,7 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpClientModule } from '@angular/common/http'
 import { HttpModule } from '@angular/http';
-import { AuthProvider } from '../providers/auth/auth';
+
 import { ToastProvider } from '../providers/toast/toast';
 import { AlertsProvider } from '../providers/alerts/alerts';
 import { PipesModule } from '../pipes/pipes.module';
@@ -17,10 +17,10 @@ import { UrlbaseProvider } from '../providers/urlbase/urlbase';
 
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { IonicStorageModule } from '@ionic/storage';
-import { FileChooser } from '@ionic-native/file-chooser';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
-import { File } from '@ionic-native/file/ngx';
+// import { FileChooser } from '@ionic-native/file-chooser';
+// import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+// import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
+// import { File } from '@ionic-native/file/ngx';
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 import { SocketsProvider } from '../providers/sockets/sockets';
 import { SelectSearchableModule } from 'ionic-select-searchable';
@@ -65,19 +65,19 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options:{}};
     SplashScreen,
     OneSignal,
     ImagePicker,
-    FileChooser,
+    // FileChooser,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
 
-    AuthProvider,
+   
     AlertsProvider,
     ToastProvider,
     CallNumber,
     Contacts,
     // HttpModule,
     UrlbaseProvider,
-    Camera,
-    FileTransfer,
-    File,
+    // Camera,
+    // FileTransfer,
+    // File,
     SocketsProvider,
     
     HttpModule,

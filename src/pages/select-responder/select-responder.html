@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
   <ion-navbar color="newcolor">
     <ion-toolbar mode="ios">
       <ion-buttons start>
@@ -6,17 +6,25 @@
           <ion-icon name="menu"></ion-icon>
            </button>
           </ion-buttons>
-         <!-- <ion-title>Select Responder</ion-title> -->
        <ion-buttons end>
       </ion-buttons>
     </ion-toolbar>
   </ion-navbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content text-center> 
-    <br>
-    <ion-title>Select Responder</ion-title>
+    
+  
+    <!-- <ion-title>Select Responder</ion-title> -->
+
       <br>
+      
+      <div id="pac-container" class="input-icons" text-center>
+        <input  text-align=center value="" id="responder-input" type="text" style="width: 100%;   
+        padding: 10px; box-sizing: border-box; resize: vertical; font-size: 17px;"
+        placeholder="Search for Responder">
+        </div>
+
 <!-- <ion-item (click)="goConfirm()"> -->
       <!-- <ion-list *ngFor="let respo of allResponders"> -->
       <ion-row *ngFor="let respo of allResponders">
@@ -24,7 +32,7 @@
        <ion-card>
           <ion-card-content>
 
-              <ion-item (click)="goMaps(respo)" text-left>
+              <ion-item (click)="goLocation(respo)" text-left>
 
                   <ion-avatar item-right>
                     <img src="{{ respo.company.profile }}">
@@ -76,6 +84,11 @@
       </ion-card> 
 
       </ion-row>
+
+      <!-- <button clear icon-right ion-button block round  color="dakar" (click)="goMaps()">
+      Back
+        <ion-icon name=""></ion-icon>
+      </button> -->
 
 
  <!-- &nbsp;<h5>Request for someone else:</h5> -->

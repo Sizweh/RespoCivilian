@@ -40,7 +40,6 @@ export class BankingDetailsPage {
     ) {
       
       this.storage.get('user_id').then((val) => {
-        console.log(String(val));
         this.user_id = String(val);  
       });
 
@@ -60,19 +59,19 @@ export class BankingDetailsPage {
 
   ionViewDidLoad() {
 
-    var headers = new Headers();
-    headers.append("Accept", 'application/json');
-    headers.append('Content-Type', 'application/json' );
+    // var headers = new Headers();
+    // headers.append("Accept", 'application/json');
+    // headers.append('Content-Type', 'application/json' );
 
-      //THIS IS A BETTER WAY TO MAKE API CALLS
-    this.urlService.institutionList()
-    .subscribe(res => {
-     this.student_collection = res;
-        if (res.status=='OK') {
-        }
-    }, (err) => {
-        console.log(err);  
-    });
+    //   //THIS IS A BETTER WAY TO MAKE API CALLS
+    // this.urlService.institutionList()
+    // .subscribe(res => {
+    //  this.student_collection = res;
+    //     if (res.status=='OK') {
+    //     }
+    // }, (err) => {
+    //     console.log(err);  
+    // });
    
     console.log('ionViewDidLoad BankingDetailsPage');
   }

@@ -6,9 +6,6 @@ import { FormGroup, FormBuilder, } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 
-
-
-
 @IonicPage()
 @Component({
   selector: 'page-history1',
@@ -69,10 +66,7 @@ export class History1Page {
         this.user_id = String(val);  
       });
 
-      //   this.storage.get('company_id').then((val) => {
-      //   console.log(String(val));
-      //   this.company_id = String(val);  
-      // });
+     
       
 
       this.id = navParams.get('data') ;
@@ -88,7 +82,6 @@ export class History1Page {
         'company_id': [this.company_Id],
       })
   }
-
 
 
 
@@ -133,6 +126,13 @@ export class History1Page {
       }); 
   
 
+  }
+
+  callNow(number) {
+    this.callNumber.callNumber(number, true)
+      .then(res => console.log('Launched dialer!', res))
+      .catch(err => console.log('Error launching dialer', err));
+     
   }
 
 

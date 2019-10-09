@@ -17,7 +17,8 @@
 
   <div id="infowind" style="font-size: 17px;  color:#38414a; font-weight: bold;">
 
-    {{address_loacation}}
+    {{address}}
+    <!-- {{address_loacation}} -->
     <!-- <img src="" width="12" height="12" id="place-icon">
     <span id="place-name" class="title"></span><br>
     <span id=""></span> -->
@@ -48,9 +49,7 @@
               <ion-card color='light'>
                 <ion-card-content text-center >
                   <ion-item color='light' text-center>
-
                       <font  size="3" color='#38414a'> Responder name : {{ responderName }}</font>
-             
                      <!-- <ion-row>
                       <p style="font-size: 12px;"><b>
                          {{ responderDistance }} minutes away
@@ -82,8 +81,8 @@
               <br>
               <br>
              
-              <button (click)="goMaps()" ion-button color="newcolor"
-                round>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Back
+              <button (click)="goHome()" ion-button color="newcolor"
+                round>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cancel
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
             
               

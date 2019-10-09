@@ -17,6 +17,7 @@ export class MedicalDetailsPage {
   medicaldetailsForm: FormGroup;
   localStorage: any;
   medical_collection: any;
+  student_collection: any;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -33,11 +34,12 @@ export class MedicalDetailsPage {
         'member_no': ['',],
         'scheme_name': ['',],
         'partial_membership': ['',],
-
-
-        'chronic_dis': ['', ],
-        'disability': ['', ],
         'prefered_hospital': ['',],
+
+        
+
+        'org_id': ['',],
+        'student_no': ['',]
 
       })
 
@@ -63,6 +65,20 @@ export class MedicalDetailsPage {
         console.log(err);
     });
 
+    // var headers = new Headers();
+    // headers.append("Accept", 'application/json');
+    // headers.append('Content-Type', 'application/json' );
+
+      //THIS IS A BETTER WAY TO MAKE API CALLS
+    this.urlService.institutionList()
+    .subscribe(res => {
+     this.student_collection = res;
+        if (res.status=='OK') {
+        }
+    }, (err) => {
+        console.log(err);  
+    });
+
 
     console.log('ionViewDidLoad MedicalDetailsPage');
   }
@@ -83,9 +99,10 @@ const value = this.medicaldetailsForm.value;
    this.storage.set('member_no', value.member_no);
    this.storage.set('scheme_name', value.scheme_name);  
    this.storage.set('partial_membership', value.partial_membership);
-   this.storage.set('chronic_dis', value.chronic_dis);
-   this.storage.set('disability', value.disability);
    this.storage.set('prefered_hospital', value.prefered_hospital);
+   
+   this.storage.set('org_id', value.org_id);
+   this.storage.set('student_no', value.student_no);
 
    this.navCtrl.push('NextOfKinPage')
   }

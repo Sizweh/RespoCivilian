@@ -2,32 +2,20 @@
   <br>
   <br>
 
-  <h6 (click)="go()">Medical Aid Details (Fill in if on Medical Aid) </h6>
+ 
 
-  <br>
+<font size="3" color='#38414a'><b>Note:&nbsp;</b>Medical Aid Details (Fill in if on Medical Aid).</font>
 
-<!-- <font (click)="go()" size="4" color='#488aff'>Medical Aid Details (optional) </font><br> -->
+<br>
 
-
-  <div class="login-fields" [formGroup]="medicaldetailsForm">
+<div class="login-fields" [formGroup]="medicaldetailsForm">
 
     
   <ion-item>
       <ion-input placeholder="Scheme Name" type="text"></ion-input>
       <ion-select formControlName="scheme_name">
           <ion-label>Scheme Name</ion-label>
-        <!-- <ion-option value="Assupol_Life">Assupol Life</ion-option>
-        <ion-option value="Gems">Gems</ion-option>
-        <ion-option value="Discovery">Discovery</ion-option>
-        <ion-option  value="SABC Medical Aid Scheme">SABC Medical Aid Scheme </ion-option>
-        <ion-option  value="SasolMed">SasolMed </ion-option>
-        <ion-option  value="SELFMED">SelfMed Medical Scheme </ion-option>
-        <ion-option  value="SUREMED">SureMed Health  </ion-option>
-        <ion-option  value="SPECTRAMED">SpectraMed  </ion-option>
-        <ion-option  value="TSOGO">Tsogo Sun Group Medical Scheme </ion-option>
-        <ion-option  value="TRANSMED">TransMed Medical Fund </ion-option>
-        <ion-option  value="TOPMED">TopMed Medical Scheme  </ion-option> -->
-
+        
         <div *ngFor="let fault of medical_collection">
             <ion-option >{{fault.company_name}}</ion-option>
           </div>
@@ -35,47 +23,36 @@
       </ion-select>
     </ion-item>
 
-    <ion-item>
-      <ion-input formControlName="member_no" placeholder="Membership No" type="text"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-input formControlName="member_no" placeholder="Membership No" type="text"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-input formControlName="partial_membership" placeholder="Partial Membership" type="text"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-input formControlName="partial_membership" placeholder="Partial Membership" type="text"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-input formControlName="prefered_hospital" placeholder="Preferred Hospital" type="text"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-input formControlName="prefered_hospital" placeholder="Preferred Hospital" type="text"></ion-input>
+      </ion-item>
+<br>
 <br>
 
-    <h6 text-center>Medical History</h6>
+<font size="3" color='#38414a'><b>Note:&nbsp;</b>Fill in only if you're part of any Organization.</font>
 
-    <ion-item>
-      <ion-input placeholder="Chronic Disease" type="text"></ion-input>
-      <ion-select formControlName="chronic_dis">
-          <ion-label>Chronic Disease</ion-label>
-
-        <ion-option>None</ion-option>
-        <ion-option>ALS</ion-option>
-        <ion-option>Asthma</ion-option>
-        <ion-option>Cancer</ion-option>
-        <ion-option>Eating Disorders</ion-option>
-        <ion-option>Heart Disease</ion-option>
-        <ion-option>Obesity</ion-option>
+<ion-item>
+    <ion-input formControlName="org_id" placeholder="Organization" ></ion-input>
+      <ion-select formControlName="org_id">
+        <ion-label>Institution</ion-label> 
+        <div *ngFor="let fault of student_collection">
+          <ion-option  value="{{ fault.id}}">{{fault.Org_name}}</ion-option>
+        </div>
       </ion-select>
     </ion-item>
-
+    
     <ion-item>
-      <!-- <ion-label>Disability</ion-label> -->
-      <ion-input placeholder="Disability" type="text"></ion-input>
-      <ion-select formControlName="disability">
-        <ion-label>Disability</ion-label>
-        <ion-option>Yes</ion-option>
-        <ion-option>No</ion-option>
-      </ion-select>
+      <ion-input block formControlName="student_no" type="text" placeholder="Reference No. "></ion-input>
     </ion-item>
 
- 
 
   </div>
 
@@ -94,3 +71,32 @@
 
   <!-- [disabled]="!medicaldetailsForm.valid" -->
 </ion-content>
+
+
+
+<!-- <h6 text-center>Medical History</h6>
+
+<ion-item>
+  <ion-input placeholder="Chronic Disease" type="text"></ion-input>
+  <ion-select formControlName="chronic_dis">
+      <ion-label>Chronic Disease</ion-label>
+
+    <ion-option>None</ion-option>
+    <ion-option>ALS</ion-option>
+    <ion-option>Asthma</ion-option>
+    <ion-option>Cancer</ion-option>
+    <ion-option>Eating Disorders</ion-option>
+    <ion-option>Heart Disease</ion-option>
+    <ion-option>Obesity</ion-option>
+  </ion-select>
+</ion-item>
+
+<ion-item>
+
+  <ion-input placeholder="Disability" type="text"></ion-input>
+  <ion-select formControlName="disability">
+    <ion-label>Disability</ion-label>
+    <ion-option>Yes</ion-option>
+    <ion-option>No</ion-option>
+  </ion-select>
+</ion-item> -->

@@ -78,7 +78,7 @@ this.storage.get('selected_responder').then((val) => {
     this.responderDistance = randomnumber;
     }); 
      
-      this.address_loacation = navParams.get('sear_location');
+      this.address = navParams.get('sear_location');
       this.additional_address = navParams.get('number');
       //console.log('ssssssssssssss'+ this.address_loacation );
       this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
@@ -94,11 +94,21 @@ this.storage.get('selected_responder').then((val) => {
         this.additional_address = val;
       });
 
+    this.storage.get('address').then((val) => {
+        this.address = val;
+      });
+
     this.storage.get('forWho').then((val) => {
         this.forWho = val;
       });
 
  
+      this.storage.get('specify_emergency').then((val) => {
+        // console.log('c db stuff');
+        // console.log(val);
+        this.specify_emergency = val;
+        this.specify_emergency = val.specify_emergency;
+      });
 
 
     this.showText = true;
@@ -136,8 +146,8 @@ setTimeout(()=>{
   googleMap() {
 
     this.storage.get('specify_emergency').then((val) => {
-        this.specifyEmergency = val;
-       this.storage.remove( 'specify_emergency');
+        this.specify_emergency = val;
+      // this.storage.remove( 'specify_emergency');
       });
 
     this.storage.get('category').then((val) => {
@@ -622,7 +632,7 @@ goConfirm(){
 
     'civilian_id': this.civilianId,
     'lat': that.civilianLat,//current lat
-     'lng': that.civilianLng,//current lng
+    'lng': that.civilianLng,//current lng
     'driver_id': this.selectedResponder.id,
     'company_id': this.selectedResponder.company.id,
     'emergency_type': this.event,
@@ -667,6 +677,14 @@ goConfirm(){
 
 goMaps(){
 this.navCtrl.setRoot('MapsPage')
+
+}
+goSelectResponder(){
+this.navCtrl.push('SelectResponderPage')
+
+}
+goHome(){
+this.navCtrl.setRoot('HomePage')
 
 }
 

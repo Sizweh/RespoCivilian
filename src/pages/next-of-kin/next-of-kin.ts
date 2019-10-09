@@ -43,6 +43,8 @@ export class NextOfKinPage {
   chronic_dis:any;
   disability:any;
   Medical_Aid_Status:any;
+  org_id: any;
+  student_no: any;
 
 
   constructor(public navCtrl: NavController, 
@@ -60,6 +62,9 @@ export class NextOfKinPage {
         'surname': ['', Validators.compose([Validators.required])],
         'phone': ['', Validators.compose([Validators.required])],
         'relationship': ['', Validators.compose([Validators.required])],
+
+        'chronic_dis': ['', Validators.compose([Validators.required])],
+        'disability': ['', Validators.compose([Validators.required])],
         // 'remembertoken': ['', Validators.compose([Validators.required])],
     
       })
@@ -146,10 +151,15 @@ export class NextOfKinPage {
         this.prefered_hospital = val;
       });
     
-      // this.storage.get('Medical_Aid_Status').then((val) => {
-      //   //  console.log(String(val));
-      //   this.Medical_Aid_Status = val;
-      // });
+      this.storage.get('org_id').then((val) => {
+        //  console.log(String(val));
+        this.org_id = val;
+      });
+    
+      this.storage.get('student_no ').then((val) => {
+        //  console.log(String(val));
+        this.student_no = val;
+      });
     
 
 //////////////////nextofkin////////////////////////
@@ -188,6 +198,9 @@ goVerifyAccount(){
   this.storage.set('phone', value.phone);
   this.storage.set('relationship', value.relationship);
 
+  this.storage.set('chronic_dis', value.chronic_dis);
+  this.storage.set('disability', value.disability);
+
   this.Userdata = { 
 
     //medical//
@@ -199,6 +212,8 @@ goVerifyAccount(){
    partial_membership:this.partial_membership,
    prefered_hospital:this.prefered_hospital,
    medical_aid_status:this.Medical_Aid_Status,
+   org_id:this.org_id,
+   student_no:this.student_no,
  
     //nextofkin//
  
@@ -227,7 +242,7 @@ goVerifyAccount(){
  //  const requestOptions = new RequestOptions({ headers: headers });
 
   //pass to back-end
-     console.log(this.nextofkinForm.value);
+    // console.log(this.nextofkinForm.value);
      //var postData = this.nextofkinForm.value;
    
    // postData['user_role']=  "Civilian";

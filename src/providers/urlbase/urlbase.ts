@@ -10,10 +10,10 @@ import { catchError, tap } from 'rxjs/operators';
 @Injectable()
 export class UrlbaseProvider {
 
- apiUrl= 'https://blooming-waters-81867.herokuapp.com/api/civilian/';     
+//  apiUrl= 'https://blooming-waters-81867.herokuapp.com/api/civilian/';     
 
 //  apiUrl = 'http://46.101.169.33/api/civilian/';
-// apiUrl = 'http://127.0.0.1:8000/api/civilian/';
+apiUrl = 'http://127.0.0.1:8000/api/civilian/';
 
 
   constructor(public http: HttpClient) {
@@ -241,6 +241,36 @@ export class UrlbaseProvider {
       .pipe(
         tap(_ => this.log('sendspecify_emerg')),
         catchError(this.handleError('sendspecify_emerg', []))
+      );
+  }
+  beneficiary(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'addBeneficiaries', data)
+      .pipe(
+        tap(_ => this.log('addBeneficiaries')),
+        catchError(this.handleError('addBeneficiaries', []))
+      );
+  }
+
+  editbeneficiary(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'EditBeneficiaries', data)
+      .pipe(
+        tap(_ => this.log('EditBeneficiaries')),
+        catchError(this.handleError('EditBeneficiaries', []))
+      );
+  }
+  deleletbeneficiary(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'DeleteBeneficiaries', data)
+      .pipe(
+        tap(_ => this.log('DeleteBeneficiaries')),
+        catchError(this.handleError('DeleteBeneficiaries', []))
+      );
+  }
+
+  viewbeneficiary(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'ViewBeneficiaries', data)
+      .pipe(
+        tap(_ => this.log('ViewBeneficiaries')),
+        catchError(this.handleError('ViewBeneficiaries', []))
       );
   }
 

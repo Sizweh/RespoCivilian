@@ -11,6 +11,9 @@ import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 })
 export class SelectResponderPage {
   allResponders: any;
+  additional_address: any;
+  address: any;
+  address_loacation: any;
 
 
   constructor(
@@ -25,6 +28,18 @@ export class SelectResponderPage {
               this.allResponders = res;
             }, (err) => {
               console.log(err);
+            });
+
+
+          this.address_loacation = navParams.get('sear_location');
+          this.additional_address = navParams.get('number');
+
+
+            this.storage.get('additional_address').then((val) => {
+              this.additional_address = val;
+            });
+            this.storage.get('address').then((val) => {
+              this.address = val;
             });
 
        //oninit
@@ -60,11 +75,14 @@ export class SelectResponderPage {
    // console.log(respo);
     this.navCtrl.push('RequestElsePage')
   }
+  goMaps() {
+    this.navCtrl.setRoot("MapsPage")
+  }
   
-  goMaps(respo) {
+  goLocation(respo) {
     this.storage.set('selected_responder', respo);
    // console.log(respo);
-    this.navCtrl.push('MapsPage')
+    this.navCtrl.push('LocationPage')
   }
   
 

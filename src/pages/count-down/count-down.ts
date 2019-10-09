@@ -50,4 +50,12 @@ export class CountDownPage {
   goChat1(){
     this.navCtrl.push('Chat1Page')
   }
+
+  callNow(number) {
+    this.callNumber.callNumber(number, true)
+      .then(res => console.log('Launched dialer!', res))
+      .catch(err => console.log('Error launching dialer', err));
+      console.log('phone_no')
+  }
+  
 }

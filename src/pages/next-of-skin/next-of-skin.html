@@ -19,15 +19,12 @@
 
 <ion-row no-lines *ngFor="let fault of skin_collection">
 
-<ion-card (click)="goModal"  no-lines>
+<ion-card no-lines>
 
  <div class="login-fields">
    
     <ion-item color='light'   button-right>
       <font size="3" color='#38414a'>{{ fault.name }} &nbsp;{{ fault.surname }}</font><br>
- 
-
-    
     </ion-item>
     <ion-input type="hidden" [(ngModel)]="User_Id" value="{{ fault.user_id}}" >
            

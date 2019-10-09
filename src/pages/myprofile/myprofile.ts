@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,  AlertController, LoadingController, MenuController  } from 'ionic-angular';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
+// import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+// import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { FormGroup, FormBuilder,} from '@angular/forms';
 import { Storage } from '@ionic/storage';
@@ -34,8 +34,8 @@ export class MyprofilePage {
     private urlService: UrlbaseProvider,
     private storage: Storage,
     public formBuilder: FormBuilder,
-    private transfer: FileTransfer,
-    private camera: Camera,
+    // private transfer: FileTransfer,
+    // private camera: Camera,
     public menuCtrl: MenuController,
     ) {
 
@@ -82,48 +82,48 @@ ionViewDidEnter()
 
   }
 
-  getImage() {
-    const options: CameraOptions = {
-      quality: 100,
-      destinationType: this.camera.DestinationType.FILE_URI,
-      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
-    }
+  // getImage() {
+  //   const options: CameraOptions = {
+  //     quality: 100,
+  //     destinationType: this.camera.DestinationType.FILE_URI,
+  //     sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
+  //   }
   
-    this.camera.getPicture(options).then((imageData) => {
-      this.imageURI = imageData;
-    }, (err) => {
-      console.log(err);
-     // this.presentToast(err);
-    });
-  }
+  //   this.camera.getPicture(options).then((imageData) => {
+  //     this.imageURI = imageData;
+  //   }, (err) => {
+  //     console.log(err);
+  //    // this.presentToast(err);
+  //   });
+  // }
 
-  uploadFile() {
-    let loader = this.loadingCtrl.create({
-      content: "Uploading..."
-    });
-    loader.present();
-    const fileTransfer: FileTransferObject = this.transfer.create();
+  // uploadFile() {
+  //   let loader = this.loadingCtrl.create({
+  //     content: "Uploading..."
+  //   });
+  //   loader.present();
+  //   const fileTransfer: FileTransferObject = this.transfer.create();
   
-    let options: FileUploadOptions = {
-      fileKey: 'ionicfile',
-      fileName: 'ionicfile',
-      chunkedMode: false,
-      mimeType: "image/jpeg",
-      headers: {}
-    }
+  //   let options: FileUploadOptions = {
+  //     fileKey: 'ionicfile',
+  //     fileName: 'ionicfile',
+  //     chunkedMode: false,
+  //     mimeType: "image/jpeg",
+  //     headers: {}
+  //   }
   
-    fileTransfer.upload(this.imageURI, 'http://46.101.169.33:/api/uploadImage', options)
-      .then((data) => {
-      console.log(data+" Uploaded Successfully");
-      this.imageFileName = "http://46.101.169.33:/static/images/ionicfile.jpg"
-      loader.dismiss();
-      //this.presentToast("Image uploaded successfully");
-    }, (err) => {
-      console.log(err);
-      loader.dismiss();
-      //this.presentToast(err);
-    });
-  }
+  //   fileTransfer.upload(this.imageURI, 'http://46.101.169.33:/api/uploadImage', options)
+  //     .then((data) => {
+  //     console.log(data+" Uploaded Successfully");
+  //     this.imageFileName = "http://46.101.169.33:/static/images/ionicfile.jpg"
+  //     loader.dismiss();
+  //     //this.presentToast("Image uploaded successfully");
+  //   }, (err) => {
+  //     console.log(err);
+  //     loader.dismiss();
+  //     //this.presentToast(err);
+  //   });
+  // }
 
   goHome(){
   this.navCtrl.setRoot('HomePage')

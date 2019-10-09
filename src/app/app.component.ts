@@ -72,6 +72,18 @@ export class MyApp {
 
     
     this.pages = [
+
+      // { title: 'Home', component: "HomePage", icon: 'home' },
+      // { title: 'My Account', component: "MyaccountPage", icon: 'person'},
+      // { title: 'Add Beneficiary', component: "BeneficiaryPage", icon: 'home' },
+      // { title: 'Payment Details', component: "BankDetailsPage", icon: 'chatbubbles' },
+      // { title: 'History', component: "HistoryPage", icon: 'document' },
+  
+      // { title: 'Support', component: "SupportPage", icon: 'help'},
+      // { title: 'About', component: "AboutPage", icon: 'information-circle'},
+
+
+
     ];
     
 
@@ -197,6 +209,18 @@ export class MyApp {
 
   goMyProfile(){
     this.nav.setRoot('MyprofilePage');
+    this.menu.enable(true);
+    this.menu.close();
+    }
+
+    goMyBeneficiaries(){
+    this.nav.setRoot('MyBeneficiariesPage');
+    this.menu.enable(true);
+    this.menu.close();
+    }
+
+    goBankDetails(){
+    this.nav.setRoot('BankDetailsPage');
     this.menu.enable(true);
     this.menu.close();
     }

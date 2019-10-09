@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 // import { HttpClient } from '@angular/common/http';
 import { AlertsProvider } from './../../providers/alerts/alerts';
-import { AuthProvider } from './../../providers/auth/auth'
+
 import { Storage } from '@ionic/storage';
 import { MenuController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
@@ -39,7 +39,7 @@ export class LoginPage {
     public navParams: NavParams,
     public formBuilder: FormBuilder,
     public alert: AlertsProvider,
-    public auth: AuthProvider,
+
     private storage: Storage,
     public menuCtrl: MenuController,
     private urlService: UrlbaseProvider,

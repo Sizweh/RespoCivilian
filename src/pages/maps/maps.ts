@@ -113,15 +113,15 @@ additional_address : any ;
       this.civilianId = val;
     });
 
-    this.storage.get('selected_responder').then((val) => {
-      // console.log('respo db stuff');
-      // console.log(val);
-      this.selectedResponder = val;
-      this.responderName = val.driver_name;
-      // alert(this.responderName);
-      var randomnumber = Math.floor(Math.random() * (7 - 1 + 1)) + 1;
-      this.responderDistance = randomnumber;
-    });
+    // this.storage.get('selected_responder').then((val) => {
+    //   // console.log('respo db stuff');
+    //   // console.log(val);
+    //   this.selectedResponder = val;
+    //   this.responderName = val.driver_name;
+    //   // alert(this.responderName);
+    //   var randomnumber = Math.floor(Math.random() * (7 - 1 + 1)) + 1;
+    //   this.responderDistance = randomnumber;
+    // });
 
     let that = this;
     //intial map setup, if no geolaction available
@@ -508,12 +508,19 @@ infowindow.open(that.map, markerCivilian );
 
         // var  test = document.getElementById('infowindow-content');
     //end intial map setup
-    // var driverLatLng = {lat:this.driverLat, lng:this.driverLng};
+   // var driverLatLng = {lat:this.driverLat, lng:this.driverLng};
     // console.log("driver");
     // console.log(driverLatLng);
 
 var geocoder = new google.maps.Geocoder();
 var location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+
+let la = position.coords.latitude;
+let lo= position.coords.longitude;
+
+// this.storage.set('lat', la);
+// this.storage.set('long', lo);
 
 geocoder.geocode({'latLng':location}, function (results, status) {
 if(status == google.maps.GeocoderStatus.OK){
@@ -566,23 +573,20 @@ ionViewDidLoad() {
 console.log('ionViewDidLoad MapsPage');
 }
 
-
-
-
-
 goHome(){
 this.navCtrl.setRoot('HomePage')
 }
 
-  goLocation() {
+goSelectResponder() {
 
     var Sear_location = document.getElementById('infowindow-content').innerText;
     var number = (<HTMLInputElement>document.getElementById("add")).value;
     this.storage.set('address', Sear_location);
     this.storage.set('additional_address', number);
+  
 
-    this.navCtrl.setRoot("LocationPage", {
-      sear_location: Sear_location,  number:number
+    this.navCtrl.push("SelectResponderPage", {
+      sear_location: Sear_location,  number:number 
     });
     //console.log(Sear_location);
     //console.log(number);

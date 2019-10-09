@@ -71,5 +71,25 @@ export class MyaccountPage {
       });
 
         }
+
+  goMedicalHistory(user_id){
+    this.storage.get('user_id').then((result) => {
+    
+        this.navCtrl.push("MedicalHistoryPage", {
+          user_id:result,
+        });
+    });
+    
+        
+        }
+    
+        goNextOfSkin(){
+    this.storage.get('user_id').then((result) => {
+    
+        this.navCtrl.push("NextOfSkinPage", {
+          user_id:result,
+        });
+    });
+        }
     
 }

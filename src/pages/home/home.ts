@@ -43,16 +43,17 @@ faultCategories = [
   {
     faultID: 1,
     category: "Vehicle Accident",
-    imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/vehicleaccident.png",
+    imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/vehicleaccident.png", 
     icon: "alarm"
    
   },
   {
     faultID: 2,
-    category: "Heart Attack",
-    imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/heartattack.png",
+    category: "Chest Pains",
+    imageUrl: "../../assets/icons/R1.png",
     icon: "alarm"
   },
+
   {
     faultID: 3,
     category: "Severe Bleeding",
@@ -68,7 +69,7 @@ faultCategories = [
   {
     faultID: 5,
     category: "Difficulty Breathing",
-    imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/difficultbreathing.png",
+    imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/R12.jpg",
     icon: "alarm"
   },
   {
@@ -91,14 +92,14 @@ faultCategories = [
   },
   {
     faultID: 9,
-    category: "Falling",
+    category: "Collapse",
     imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/R10.jpg",
     icon: "alarm"
   },
   {
     faultID: 10,
-    category: "Seizure",
-    imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/R12.jpg",
+    category: "Fitting",
+    imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/R11.jpg",
     icon: "alarm"
   },
 ];
@@ -134,6 +135,8 @@ ionViewDidLoad() {
      else{
      }
     });
+
+
 
   //console.log('ionViewDidLoad HomePage');
 
@@ -234,3 +237,85 @@ checkAccept() {
 
 }
 
+
+
+
+
+
+
+
+// faultCategories = [
+//   {
+//     faultID: 1,
+//     category: "Vehicle Accident",
+//     imageUrl: "../../assets/icons/R7.png", 
+//     icon: "alarm"
+   
+//   },
+//   {
+//     faultID: 2,
+//     category: "Heart Attack",
+//     imageUrl: "../../assets/icons/R3.png",
+//     icon: "alarm"
+//   },
+//   {
+//     faultID: 3,
+//     category: "Severe Bleeding",
+//     imageUrl: "../../assets/icons/R5.png",
+//     icon: "alarm"
+//   },
+//   {
+//     faultID: 4,
+//     category: "Burns",
+//     imageUrl: "../../assets/icons/R9.png",
+//     icon: "alarm"
+//   },
+//   {
+//     faultID: 5,
+//     category: "Difficulty Breathing",
+//     imageUrl: "../../assets/icons/R12.jpg",
+//     icon: "alarm"
+//   },
+//   {
+//     faultID: 6,
+//     category: "Fainting",
+//     imageUrl: "../../assets/icons/R2.png",
+//     icon: "alarm"
+//   },
+//   {
+//     faultID: 7,
+//     category: "Snake Bite",
+//     imageUrl: "../../assets/icons/R6.png",
+//     icon: "alarm"
+//   },
+//   {
+//     faultID: 8,
+//     category: "Labour",
+//     imageUrl: "../../assets/icons/R4.png",
+//     icon: "alarm"
+//   },
+//   {
+//     faultID: 9,
+//     category: "Falling",
+//     imageUrl: "../../assets/icons/R10.jpg",
+//     icon: "alarm"
+//   },
+//   {
+//     faultID: 10,
+//     category: "Seizure",
+//     imageUrl: "../../assets/icons/R11.jpg",
+//     icon: "alarm"
+//   },
+// ];
+
+ 
+// otherCategories = [
+//   {
+//     faultID: 11,
+//     category: "Other",
+//     imageUrl: "../../assets/icons/R8.png",
+//     icon: "alarm"
+   
+//   },
+
+// ];

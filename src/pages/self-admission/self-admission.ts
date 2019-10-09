@@ -69,36 +69,40 @@ goForSelf(){
 this.navCtrl.push("ForSelfPage");
 }
 
-goForSomeone(data){
+goHome(){
 
-this.storage.set('ForSomeone', 'Yes');
-console.log(+ "ForSomeone");
-    console.log(data);
-
- // this.navCtrl.push("ForSomeonePage");
+  this.navCtrl.setRoot ("HomePage");
 }
 
 
 
 
-goSelectResponderfor(){
+goMaps2(){
 
  
 this.storage.set('forWho', 'FM');
 console.log('for me clicked');  
 
-this.navCtrl.push("SelectResponderPage");
+this.navCtrl.push("MapsPage");
 }
 
 
 
 
-goSelectResponder(){
+goLocation(){
 
   this.storage.set('forWho', 'FS');
   console.log('for someone clicked'); 
 
-this.navCtrl.push("SelectResponderPage");
+this.navCtrl.push("MapsPage");
+}
+
+goMaps(){
+
+  this.storage.set('forWho', 'FB');
+  //console.log('for someone clicked'); 
+
+this.navCtrl.push("MapsPage");
 }
 
 }

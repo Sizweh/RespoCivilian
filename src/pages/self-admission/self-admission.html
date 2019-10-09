@@ -24,15 +24,31 @@
 <br>
 
 
-          <button icon-right ion-button block round  color="danger" (click)="goSelectResponderfor()">
-            For Me
-            <ion-icon name=""></ion-icon>
-          </button>
+    <button icon-right ion-button block round  color="danger" (click)="goMaps2()">
+      For Me
+      <ion-icon name=""></ion-icon>
+    </button>
    <br>
+
+   <button icon-right ion-button block color="newcolor" round  [disabled] (click)="goMaps()">
+    For Beneficiary
+    <ion-icon name=""></ion-icon>
+ </button>
+
    <br>
-          <button icon-right ion-button block color="dakar" round  [disabled] (click)="goSelectResponder()">
+          <button icon-right ion-button block color="newcolor" round  [disabled] (click)="goMaps()">
              For Someone else
              <ion-icon name=""></ion-icon>
           </button>
+
+         
+
+          <!-- <br>
+          <br>
+
+          <button clear icon-right ion-button block color="dakar" round  [disabled] (click)="goHome()">
+             Back
+             <ion-icon name=""></ion-icon>
+          </button> -->
     
 </ion-content>
