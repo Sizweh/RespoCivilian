@@ -37,21 +37,33 @@
 <br>
 <br>
 
-<font size="3" color='#38414a'><b>Note:&nbsp;</b>Fill in only if you're part of any Organization.</font>
+<h6 text-center>Medical History</h6>
 
 <ion-item>
-    <ion-input formControlName="org_id" placeholder="Organization" ></ion-input>
-      <ion-select formControlName="org_id">
-        <ion-label>Institution</ion-label> 
-        <div *ngFor="let fault of student_collection">
-          <ion-option  value="{{ fault.id}}">{{fault.Org_name}}</ion-option>
-        </div>
-      </ion-select>
-    </ion-item>
-    
-    <ion-item>
-      <ion-input block formControlName="student_no" type="text" placeholder="Reference No. "></ion-input>
-    </ion-item>
+  <ion-input placeholder="Chronic Disease" type="text"></ion-input>
+  <ion-select formControlName="chronic_dis">
+      <ion-label>Chronic Disease</ion-label>
+
+    <ion-option>None</ion-option>
+    <ion-option>ALS</ion-option>
+    <ion-option>Asthma</ion-option>
+    <ion-option>Cancer</ion-option>
+    <ion-option>Eating Disorders</ion-option>
+    <ion-option>Heart Disease</ion-option>
+    <ion-option>Obesity</ion-option>
+  </ion-select>
+</ion-item>
+
+<ion-item>
+
+  <ion-input placeholder="Disability" type="text"></ion-input>
+  <ion-select formControlName="disability">
+    <ion-label>Disability</ion-label>
+    <ion-option>Yes</ion-option>
+    <ion-option>No</ion-option>
+  </ion-select>
+</ion-item>
+
 
 
   </div>

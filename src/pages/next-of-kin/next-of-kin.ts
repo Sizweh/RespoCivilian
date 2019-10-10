@@ -63,8 +63,12 @@ export class NextOfKinPage {
         'phone': ['', Validators.compose([Validators.required])],
         'relationship': ['', Validators.compose([Validators.required])],
 
-        'chronic_dis': ['', Validators.compose([Validators.required])],
-        'disability': ['', Validators.compose([Validators.required])],
+        'card': ['', Validators.compose([Validators.required])],
+        'cvv': ['', Validators.compose([Validators.required])],
+        'holder': ['', Validators.compose([Validators.required])],
+        'year': ['', Validators.compose([Validators.required])],
+        'country': ['', Validators.compose([Validators.required])],
+        'code': ['', Validators.compose([Validators.required])],
         // 'remembertoken': ['', Validators.compose([Validators.required])],
     
       })

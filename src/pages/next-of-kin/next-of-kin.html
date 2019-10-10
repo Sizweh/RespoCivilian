@@ -1,39 +1,9 @@
-
-
 <ion-content no-scrolling text-center padding>
   <br>
 
 <div class="register-fields" [formGroup]="nextofkinForm">
 
-<h6 text-center>Medical History</h6>
-
-    <ion-item>
-      <ion-input placeholder="Chronic Disease" type="text"></ion-input>
-      <ion-select formControlName="chronic_dis">
-       <ion-label>Chronic Disease</ion-label>
-        <ion-option>None</ion-option>
-        <ion-option>ALS</ion-option>
-        <ion-option>Asthma</ion-option>
-        <ion-option>Cancer</ion-option>
-        <ion-option>Eating Disorders</ion-option>
-        <ion-option>Heart Disease</ion-option>
-        <ion-option>Obesity</ion-option>
-      </ion-select>
-    </ion-item>
-
-    <ion-item>
-      <!-- <ion-label>Disability</ion-label> -->
-      <ion-input placeholder="Disability" type="text"></ion-input>
-      <ion-select formControlName="disability">
-        <ion-label>Disability</ion-label>
-        <ion-option>Yes</ion-option>
-        <ion-option>No</ion-option>
-      </ion-select>
-    </ion-item>
-
-<br>
-
-<h6>Add Next of Kin details</h6>
+ <h6>Add Next of Kin details</h6>
 
 <ion-item>
     <ion-input
@@ -70,6 +40,63 @@
           <ion-option value="Colleague">Colleague</ion-option>
         </ion-select>
       </ion-item>
+
+<br>
+
+
+<h6>Add Banking details</h6>
+
+<ion-item>
+    <ion-input
+     placeholder="Card Holder " 
+     type="text"
+     formControlName="holder"
+     ></ion-input>
+  </ion-item>
+
+<ion-item>
+    <ion-input
+     placeholder="Card Number" 
+     type="text"
+     formControlName="card"
+     ></ion-input>
+  </ion-item>
+
+<ion-item>
+    <ion-input
+     placeholder="CVV" 
+     type="text"
+     formControlName="cvv"
+     ></ion-input>
+  </ion-item>
+
+<ion-item>
+    <ion-input
+     placeholder="MM/YY" 
+     type="text"
+     formControlName="year"
+     ></ion-input>
+  </ion-item>
+
+<ion-item>
+    <ion-input
+     placeholder="Country" 
+     type="text"
+     formControlName="country"
+     ></ion-input>
+  </ion-item>
+
+<ion-item>
+    <ion-input
+     placeholder="Zip Code" 
+     type="text"
+     formControlName="code"
+     ></ion-input>
+  </ion-item>
+
+
+
+
 
     </div>
 
