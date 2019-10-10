@@ -44,7 +44,7 @@ export class ChangePasswordPage {
 
         'password': ['', Validators.compose([Validators.required, Validators.maxLength(6)])],
         'new_password': ['', Validators.compose([Validators.required, Validators.maxLength(6)])],
-        'confirmPassword': ['', Validators.compose([Validators.required, Validators.maxLength(6) ])],
+  
       })
   }
 
@@ -81,7 +81,7 @@ export class ChangePasswordPage {
 
     this.storage.set('password', values.password);
     this.storage.set('new_password', values.new_password);
-    this.storage.set('confirmPassword', values.confirmPassword);
+ 
 
 
     var postData = this.passwordForm.value;

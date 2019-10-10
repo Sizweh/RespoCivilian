@@ -3,17 +3,19 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { of } from 'rxjs/observable/of';
 import { catchError, tap } from 'rxjs/operators';
-/*
-/*
-  Generated class for the UrlbaseProvider provider.
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
+
+
+
 @Injectable()
 export class UrlbaseProvider {
-    // apiUrl = 'http://46.101.169.33/api/civilian/';
-  apiUrl = 'http://127.0.0.1:8000/api/civilian/';
+
+//  apiUrl= 'https://blooming-waters-81867.herokuapp.com/api/civilian/';     
+
+//  apiUrl = 'http://46.101.169.33/api/civilian/';
+apiUrl = 'http://127.0.0.1:8000/api/civilian/';
+
+
   constructor(public http: HttpClient) {
     console.log('Hello UrlbaseProvider Provider');
   }
@@ -33,6 +35,7 @@ export class UrlbaseProvider {
       .pipe(
         tap(_ => this.log('registerCivilian')),
         catchError(this.handleError('registerCivilian', []))
+
       );
   }
   //pass test on local
@@ -48,6 +51,13 @@ export class UrlbaseProvider {
       .pipe(
         tap(_ => this.log('history')),
         catchError(this.handleError('history', []))
+      );
+  }
+  companydetails (data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'companydetails', data)
+      .pipe(
+        tap(_ => this.log('companydetails')),
+        catchError(this.handleError('companydetails', []))
       );
   }
 
@@ -133,13 +143,7 @@ export class UrlbaseProvider {
         catchError(this.handleError('support', []))
       );
   }
-  // specify(data): Observable<any> {
-  //   return this.http.post<any>(this.apiUrl + 'specify', data)
-  //     .pipe(
-  //       tap(_ => this.log('specify')),
-  //       catchError(this.handleError('specify', []))
-  //     );
-  // }
+
   reset(data): Observable<any> {
     return this.http.post<any>(this.apiUrl + 'resetPassword', data)
       .pipe(
@@ -183,10 +187,10 @@ export class UrlbaseProvider {
       );
   }
   deleteNext(data): Observable<any> {
-    return this.http.post<any>(this.apiUrl + 'deleteNextofKin', data)
+    return this.http.post<any>(this.apiUrl + 'deletenextofkin', data)
       .pipe(
-        tap(_ => this.log('deleteNextofKin')),
-        catchError(this.handleError('deleteNextofKin', []))
+        tap(_ => this.log('deletenextofkin')),
+        catchError(this.handleError('deletenextofkin', []))
       );
   }
   changePassword(data): Observable<any> {
@@ -196,8 +200,8 @@ export class UrlbaseProvider {
         catchError(this.handleError('changepassword', []))
       );
   }
-  medList(data): Observable<any> {
-    return this.http.post<any>(this.apiUrl + 'medical_aidlist', data)
+  medList(): Observable<any> {
+    return this.http.get<any>(this.apiUrl + 'medical_aidlist')
       .pipe(
         tap(_ => this.log('medical_aidlist ')),
         catchError(this.handleError('medical_aidlist ', []))
@@ -217,32 +221,58 @@ export class UrlbaseProvider {
         catchError(this.handleError('studentDetails', []))
       );
   }
+  institutionList(): Observable<any> {
+    return this.http.get<any>(this.apiUrl + 'org_list')
+      .pipe(
+        tap(_ => this.log('org_list')),
+        catchError(this.handleError('org_list', [])),
+      );
+  }
   editDetails(data): Observable<any> {
-    return this.http.post<any>(this.apiUrl + 'updateDetails', data)
+    return this.http.post<any>(this.apiUrl + 'org_change', data)
       .pipe(
-        tap(_ => this.log('updateDetails')),
-        catchError(this.handleError('updateDetails', []))
+        tap(_ => this.log('org_change')),
+        catchError(this.handleError('org_change', []))
       );
-
-  }
-  deleteForm(data): Observable<any> {
-    return this.http.post<any>(this.apiUrl + 'updateDetails', data)
-      .pipe(
-        tap(_ => this.log('updateDetails')),
-        catchError(this.handleError('updateDetails', []))
-      );
-
-  }
-  institutionList(data): Observable<any> {
-    return this.http.post<any>(this.apiUrl + 'Org_List', data)
-      .pipe(
-        tap(_ => this.log('Org_List')),
-        catchError(this.handleError('Org_List', []))
-      );
-
   }
 
-  
+  specify(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'sendspecify_emerg', data)
+      .pipe(
+        tap(_ => this.log('sendspecify_emerg')),
+        catchError(this.handleError('sendspecify_emerg', []))
+      );
+  }
+  beneficiary(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'addBeneficiaries', data)
+      .pipe(
+        tap(_ => this.log('addBeneficiaries')),
+        catchError(this.handleError('addBeneficiaries', []))
+      );
+  }
+
+  editbeneficiary(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'EditBeneficiaries', data)
+      .pipe(
+        tap(_ => this.log('EditBeneficiaries')),
+        catchError(this.handleError('EditBeneficiaries', []))
+      );
+  }
+  deleletbeneficiary(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'DeleteBeneficiaries', data)
+      .pipe(
+        tap(_ => this.log('DeleteBeneficiaries')),
+        catchError(this.handleError('DeleteBeneficiaries', []))
+      );
+  }
+
+  viewbeneficiary(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'ViewBeneficiaries', data)
+      .pipe(
+        tap(_ => this.log('ViewBeneficiaries')),
+        catchError(this.handleError('ViewBeneficiaries', []))
+      );
+  }
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

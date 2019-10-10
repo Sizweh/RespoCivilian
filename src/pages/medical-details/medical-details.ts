@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { AlertsProvider } from './../../providers/alerts/alerts';
@@ -16,6 +16,8 @@ export class MedicalDetailsPage {
 
   medicaldetailsForm: FormGroup;
   localStorage: any;
+  medical_collection: any;
+  student_collection: any;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -29,14 +31,15 @@ export class MedicalDetailsPage {
 
       this.medicaldetailsForm = formBuilder.group({
 
-        'member_no': ['', Validators.compose([Validators.required])],
-        'scheme_name': ['', Validators.compose([Validators.required])],
-        'partial_membership': ['', Validators.compose([Validators.required])],
+        'member_no': ['',],
+        'scheme_name': ['',],
+        'partial_membership': ['',],
+        'prefered_hospital': ['',],
 
+        
 
-        'chronic_dis': ['', Validators.compose([Validators.required])],
-        'disability': ['', Validators.compose([Validators.required])],
-        'prefered_hospital': ['', Validators.compose([Validators.required])],
+        'org_id': ['',],
+        'student_no': ['',]
 
       })
 
@@ -46,6 +49,37 @@ export class MedicalDetailsPage {
     }
 
   ionViewDidLoad() {
+
+    var headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json' );
+
+      //THIS IS A BETTER WAY TO MAKE API CALLS
+    this.urlService.medList()
+    .subscribe(res => {
+      //console.log(res)
+     this.medical_collection = res;
+        if (res.status=='OK') {
+        }
+    }, (err) => {
+        console.log(err);
+    });
+
+    // var headers = new Headers();
+    // headers.append("Accept", 'application/json');
+    // headers.append('Content-Type', 'application/json' );
+
+      //THIS IS A BETTER WAY TO MAKE API CALLS
+    this.urlService.institutionList()
+    .subscribe(res => {
+     this.student_collection = res;
+        if (res.status=='OK') {
+        }
+    }, (err) => {
+        console.log(err);  
+    });
+
+
     console.log('ionViewDidLoad MedicalDetailsPage');
   }
 
@@ -65,13 +99,10 @@ const value = this.medicaldetailsForm.value;
    this.storage.set('member_no', value.member_no);
    this.storage.set('scheme_name', value.scheme_name);  
    this.storage.set('partial_membership', value.partial_membership);
-   this.storage.set('chronic_dis', value.chronic_dis);
-   this.storage.set('disability', value.disability);
    this.storage.set('prefered_hospital', value.prefered_hospital);
-
-  
-  
-  
+   
+   this.storage.set('org_id', value.org_id);
+   this.storage.set('student_no', value.student_no);
 
    this.navCtrl.push('NextOfKinPage')
   }

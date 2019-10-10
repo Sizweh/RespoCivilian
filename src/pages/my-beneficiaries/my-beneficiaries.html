@@ -1,0 +1,70 @@
+<ion-header >
+    <ion-navbar color='newcolor'>
+      <ion-toolbar color='newcolor'  mode="ios">
+        <ion-buttons start>
+          <button ion-button icon-only menuToggle>
+            <ion-icon  name="menu"></ion-icon>
+          </button>
+        </ion-buttons>
+        <ion-title text-center>View</ion-title>
+      </ion-toolbar>
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content padding>
+
+    <ion-row no-scrolling no-lines *ngFor="let fault of ben_collection">
+<br>
+  <ion-card>
+
+   <div class="login-fields">
+
+      <ion-item>
+          <h2>{{ phone }}View Beneficiaries</h2>
+      </ion-item> 
+          
+
+
+ <!-- <font size="3" color='#38414a'>{{ fault.name }} &nbsp;{{ fault.phone }}</font><br> -->
+          <!-- <ion-input formControlName="name" block >
+            </ion-input> -->
+      </div>
+
+
+<ion-col>
+    <button button-end button-right  ion-button icon-start clear small (click)="goForgotpassword(fault.id, fault.user_id)">
+        <ion-icon color='primary' name=""></ion-icon>
+        <ion-label color='primary'> View More </ion-label>
+      </button>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button button-right button-right  ion-button icon-start clear small (click)="goHome(fault.id)">
+      <ion-icon color='danger' name=""></ion-icon>
+      <ion-label color='danger'>Delete</ion-label>
+    </button>
+  
+  </ion-col>
+
+
+  </ion-card>
+    </ion-row>
+
+
+  <br>
+
+ 
+
+    <!-- <div *ngIf="benefit_collection"> -->
+     <button icon-right  ion-button round color='newcolor'  (click)="goBeneficiary()"> 
+            Add Beneficiaries
+            <ion-icon name=""></ion-icon>
+          </button>
+    
+    <!-- </div> -->
+
+    <!-- <ion-item  (click)="goBeneficiary()">
+        <h2>Add Beneficiaries</h2>
+        </ion-item> -->
+
+    
+
+</ion-content>

@@ -43,26 +43,22 @@
      
         <ion-item text-left>
             <ion-label floating >Phone Number</ion-label>
-            <ion-input minLength="10" maxLength="10" formControlName="phone" block value="{{ fault.phone }}">
+            <ion-input [(ngModel)]='tel' (ionBlur)="convert()" minLength="11" maxLength="11" formControlName="phone" block value="{{ fault.phone }}">
             </ion-input>
             <!-- <div class="login-fields" [formGroup]="personalForm">
                       </div> -->
           </ion-item>
      
-        <ion-item text-left>
+        <!-- < <ion-item text-left>
             <ion-label floating >Email</ion-label>
             <ion-input formControlName="email" block value="{{ fault.email }}">
             </ion-input>
-            <!-- <div class="login-fields" [formGroup]="personalForm">
-                      </div> -->
-          </ion-item>
+          </ion-item>  -->
 
         <ion-item text-left>
             <ion-label floating >Relationship</ion-label>
             <ion-input formControlName="relationship" block value="{{ fault.relationship }}">
             </ion-input>
-            <!-- <div class="login-fields" [formGroup]="personalForm">
-                      </div> -->
           </ion-item>
 
 <br>

@@ -1,115 +1,107 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams} from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import { HttpClient } from '@angular/common/http';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { MenuController } from 'ionic-angular';
-
-
-
-/**
- * Generated class for the HomePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { OneSignal } from '@ionic-native/onesignal/ngx';
 
 @IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
 })
+
 export class HomePage {
   playerId :any; 
   user_ids :any;
-
+  user_id: any;
+  userId: any;
+  
+  responderId: any;
+  responderPlate: any;
+  responderDistance: any;
+  reqId: any;
+  subscription: any;
+  alert: any;
+  civilianId: any;
+  userDetails: any;
+  OneSignal: any;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     private storage: Storage,
-    private http: HttpClient,
     private urlService: UrlbaseProvider,
     public menuCtrl: MenuController,
-
+    private oneSignal: OneSignal,
    
     ) {
-      this.menuCtrl.enable(true);
+    this.menuCtrl.enable(true);
 
 }
 faultCategories = [
   {
     faultID: 1,
     category: "Vehicle Accident",
-    imageUrl: "http://46.101.169.33/icons/vehicleaccident.png",
+    imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/vehicleaccident.png", 
     icon: "alarm"
    
   },
   {
     faultID: 2,
-    category: "Heart Attack",
-    imageUrl: "http://46.101.169.33/icons/heartattack.png",
+    category: "Chest Pains",
+    imageUrl: "../../assets/icons/R1.png",
     icon: "alarm"
   },
+
   {
     faultID: 3,
     category: "Severe Bleeding",
-    imageUrl: "http://46.101.169.33/icons/severebleeding.png",
+    imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/severebleeding.png",
     icon: "alarm"
   },
   {
     faultID: 4,
     category: "Burns",
-    imageUrl: "http://46.101.169.33/icons/burns.png",
+    imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/burns.png",
     icon: "alarm"
   },
   {
     faultID: 5,
     category: "Difficulty Breathing",
-    imageUrl: "http://46.101.169.33/icons/difficultbreathing.png",
+    imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/R12.jpg",
     icon: "alarm"
   },
   {
     faultID: 6,
     category: "Fainting",
-    imageUrl: "http://46.101.169.33/icons/fainting.png",
+    imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/fainting.png",
     icon: "alarm"
   },
   {
     faultID: 7,
     category: "Snake Bite",
-    imageUrl: "http://46.101.169.33/icons/snakebite.png",
+    imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/snakebite.png",
     icon: "alarm"
   },
   {
     faultID: 8,
     category: "Labour",
-    imageUrl: "http://46.101.169.33/icons/labour.png",
+    imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/labour.png",
     icon: "alarm"
-    
-    
   },
   {
     faultID: 9,
-    category: "Falling",
-    imageUrl: "http://46.101.169.33/icons/R10.jpg",
+    category: "Collapse",
+    imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/R10.jpg",
     icon: "alarm"
-    
-    
   },
   {
     faultID: 10,
-    category: "Seizure",
-    imageUrl: "http://46.101.169.33/icons/R12.jpg",
+    category: "Fitting",
+    imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/R11.jpg",
     icon: "alarm"
-    
-    
   },
-
- 
-
-
- 
 ];
 
  
@@ -117,7 +109,7 @@ otherCategories = [
   {
     faultID: 11,
     category: "Other",
-    imageUrl: "http://46.101.169.33/icons/R8.png",
+    imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/R8.png",
     icon: "alarm"
    
   },
@@ -129,32 +121,56 @@ otherCategories = [
 
 
 ionViewDidLoad() {
-  console.log('ionViewDidLoad HomePage');
+
+    this.storage.get('user_id').then((val) => {
+    //   console.log('cater db stuff');
+    //  console.log(val);
+     this.user_id = val;
+    // console.log("note  login" + this.user_id)
+     if(this.user_id === null)
+     {
+      // console.log("Note  login")
+       this.navCtrl.setRoot('LoginPage');  
+     }
+     else{
+     }
+    });
+
+
+
+  //console.log('ionViewDidLoad HomePage');
 
   var notificationOpenedCallback = function(jsonData) {
     console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
   };
 
- // window["plugins"].OneSignal
- //   .startInit("422a9798-6102-4c4b-8d59-bd1bebcd6810", "316673984537")
-//    .handleNotificationOpened(notificationOpenedCallback)
-//    .endInit();
+ window["plugins"].OneSignal
+ .startInit("c92bb615-7c1e-4a91-8e4d-e4d3d771c165", "384977991016")
+   .handleNotificationOpened(notificationOpenedCallback)
+   .endInit();
    
-  window["plugins"].OneSignal.getIds(function(ids) {
-      this.playerId =  ids.userId
-     // alert(this.playerId)
+//   window["plugins"].OneSignal.getIds(function(ids) {
+//       this.playerId =  ids.userId
+//      // alert(this.playerId)
+// });
+// //  alert(this.playerId)
+
+this.storage.get('user_id').then((val) => {
+window["plugins"].OneSignal.sendTag("user_id", this.user_id);
+ // console.log("tags sent");
+  this.user_id = String(val);  
 });
+
+
 this.storage.get('user_id').then((user_id) => {
- // console.log(user_id);
    this.user_ids = 'user_id' ; 
 });
 
-  var postData ={user_id:this.user_ids , playerId:this.playerId };
+ var postData ={user_id:this.user_ids , playerId:this.playerId };
 
   this.urlService.updatePlayerId(postData)
   .subscribe(res => {
   console.log(res);
-  
   if (res.status=='OK') {
     console.log("playeId updated.");
   }  else {
@@ -167,31 +183,55 @@ this.storage.get('user_id').then((user_id) => {
    
 }
 
-  goLocation(fault){
-    this.storage.set('category', fault);
-    
-    this.navCtrl.push('SelectResponderPage')
-  }
 
-  goSpecifyEmergency(other){
-    this.storage.set('category', other);
-
-    this.navCtrl.push('SpecifyEmergencyPage')
-  }
-
-  goLanding(){
-    this.navCtrl.push('LandingPage')
-  }
-  
   goSelfAdmission(fault){
     this.storage.set('category', fault);
     this.navCtrl.push('SelfAdmissionPage')
   }
 
+  goSpecifyEmergency(other){
+    this.storage.set('category', other);
+    this.storage.get('user_id').then((result) => {
+    this.storage.get('id').then((_result_) => {
+      this.navCtrl.push("SpecifyEmergencyPage", {
+        user_id:result,
+        id:result,
+      });
+  });
+});
+
+}
+checkAccept() {
+
+  this.userDetails={
+    'user_id': this.civilianId,
+    'driver_id': this.responderId,
+    'request_id': this.reqId,
+   
+  }
+  
+  this.urlService.checkRespoAccept( this.userDetails)
+  .subscribe(res => {
+      // this.presentToast(res.msg, res.status);
+      console.log(res);
+      if (res.status=='accepted') {
+        this.alert.presentAlert("Notification", res.msg);
+        this.subscription.unsubscribe();
+        this.navCtrl.push('CountDownPage');
+      }
+      if (res.status=='canceled') {
+        this.alert.presentAlert("Notification", res.msg);
+        this.subscription.unsubscribe();
+        this.navCtrl.push('CountDownPage');
+      }
+  }, (err) => {
+      console.log(err);
+  });
 
 
-
+}
  
+
 
 
 
@@ -203,3 +243,79 @@ this.storage.get('user_id').then((user_id) => {
 
 
 
+
+// faultCategories = [
+//   {
+//     faultID: 1,
+//     category: "Vehicle Accident",
+//     imageUrl: "../../assets/icons/R7.png", 
+//     icon: "alarm"
+   
+//   },
+//   {
+//     faultID: 2,
+//     category: "Heart Attack",
+//     imageUrl: "../../assets/icons/R3.png",
+//     icon: "alarm"
+//   },
+//   {
+//     faultID: 3,
+//     category: "Severe Bleeding",
+//     imageUrl: "../../assets/icons/R5.png",
+//     icon: "alarm"
+//   },
+//   {
+//     faultID: 4,
+//     category: "Burns",
+//     imageUrl: "../../assets/icons/R9.png",
+//     icon: "alarm"
+//   },
+//   {
+//     faultID: 5,
+//     category: "Difficulty Breathing",
+//     imageUrl: "../../assets/icons/R12.jpg",
+//     icon: "alarm"
+//   },
+//   {
+//     faultID: 6,
+//     category: "Fainting",
+//     imageUrl: "../../assets/icons/R2.png",
+//     icon: "alarm"
+//   },
+//   {
+//     faultID: 7,
+//     category: "Snake Bite",
+//     imageUrl: "../../assets/icons/R6.png",
+//     icon: "alarm"
+//   },
+//   {
+//     faultID: 8,
+//     category: "Labour",
+//     imageUrl: "../../assets/icons/R4.png",
+//     icon: "alarm"
+//   },
+//   {
+//     faultID: 9,
+//     category: "Falling",
+//     imageUrl: "../../assets/icons/R10.jpg",
+//     icon: "alarm"
+//   },
+//   {
+//     faultID: 10,
+//     category: "Seizure",
+//     imageUrl: "../../assets/icons/R11.jpg",
+//     icon: "alarm"
+//   },
+// ];
+
+ 
+// otherCategories = [
+//   {
+//     faultID: 11,
+//     category: "Other",
+//     imageUrl: "../../assets/icons/R8.png",
+//     icon: "alarm"
+   
+//   },
+
+// ];

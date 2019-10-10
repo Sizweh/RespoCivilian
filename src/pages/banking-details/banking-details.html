@@ -12,116 +12,56 @@
   <br>
  
 
-<h5></h5>
-<font size="3" color='#38414a'><b>Note:&nbsp;  </b>  Fill in this form or register <b>Once</b>, only if you're a Student at a  <b>University or College.</b></font><br>
+
+<!-- <font size="3" color='#38414a'><b>Note:&nbsp;  </b>  Fill in this form or register <b>Once</b>, only if you're a Student at a  <b>University or College.</b></font><br>
 
 <br>
 
-<!-- <ion-row no-scrolling  *ngFor="let fault of student_collection"> -->
 
-  
-    <!-- <ion-card no-lines>  -->
-
+      
 <div class="register-fields" [formGroup]="registerForm">
 
-
-
-  <ion-item>
-    <!-- <ion-label >Institution</ion-label> -->
-    <ion-input   placeholder="Institution"  ></ion-input>
+      
+<ion-item>
+  <ion-input formControlName="org_id" placeholder="Organization" ></ion-input>
     <ion-select formControlName="org_id">
-      <ion-option value="MUT">MUT(Mangosuthu University of Technology)</ion-option>
-      <ion-option value="DUT">DUT(Durban University of Technology)</ion-option>
-      <ion-option value="UKZN">UKZN (University of Kwazulu Natal)</ion-option>
-      <ion-option value="Damelin">Damelin</ion-option>
+      <ion-label>Institution</ion-label> 
+
+      <div *ngFor="let fault of student_collection">
+        <ion-option  value="{{ fault.id}}">{{fault.Org_name}}</ion-option>
+      </div>
 
     </ion-select>
   </ion-item>
-
+  
   <ion-item>
-    <ion-input block formControlName="student_no" type="number" placeholder="Student No." ></ion-input>
+    <ion-input block formControlName="student_no" type="text" placeholder="Reference No."></ion-input>
   </ion-item>
 
-<!-- <ion-item>
-    <ion-input
-      block
-      formControlName="name"
-      type="text"
-      placeholder="Name"
-    ></ion-input>
-  </ion-item>
 
-<ion-item>
-    <ion-input
-      block
-      formControlName="email"
-      type="text"
-      placeholder="Email"
-    ></ion-input>
-  </ion-item> 
-
-<ion-item>
-    <ion-input
-      block
-      formControlName="gender"
-      type="text"
-      placeholder="Gender"
-    ></ion-input>
-  </ion-item>
-
-<ion-item>
-    <ion-input
-      block
-      formControlName="dob"
-      type="text"
-      placeholder="Dob"
-    ></ion-input>
-  </ion-item>
-
-<ion-item>
-    <ion-input
-      block
-      formControlName="password"
-      type="password"
-      placeholder="Password"
-    ></ion-input>
-  </ion-item> -->
-
-<!-- <ion-item>
-    <ion-input
-      block
-      formControlName="phonenumber"
-      type="text"
-      placeholder="Cell Number"
-    ></ion-input>
-  </ion-item> -->
+</div> -->
 
 
- 
 
-  </div>
 
 <!-- </ion-card>  -->
 
-  <!-- </ion-row> -->
+
+
+
+
+
         
-
-
 <br>
-<ion-row>
-    <!-- <ion-col col-6>
-      <button ion-button clear color='newcolor' block (click)="goMyaccount()" >back</button>
-     </ion-col> -->
+<!-- <ion-row>
       <ion-col col-6>
-        <button   ion-button round color='secondary' block (click)="goHome()">Save</button>
+        <button   ion-button round color='secondary' block (click)="goMyaccount()()">Save</button>
       </ion-col>
-      <!-- <ion-col col-6>
-        <button  [disabled]="!registerForm.valid"  ion-button round color='secondary' block (click)="goHome()">Save</button>
-      </ion-col> -->
-</ion-row>
+</ion-row> -->
 
 
 
+<!-- <button clear small  ion-button round color='secondary' block (click)="goChat()">list</button> -->
 
 </ion-content>
 

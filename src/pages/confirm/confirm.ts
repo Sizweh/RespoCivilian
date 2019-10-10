@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 // import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
 import { AlertsProvider } from './../../providers/alerts/alerts';
-
+import { CallNumber } from '@ionic-native/call-number';
 import { interval } from 'rxjs/observable/interval';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 
@@ -16,7 +16,7 @@ import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 })
 export class ConfirmPage {
   civilianLat : any;
-  civilianId  : string;
+  civilianId  : any;
   civilianLng : any;
   driverLat   : any;
   driverLng   : any;
@@ -42,28 +42,29 @@ export class ConfirmPage {
     private urlService: UrlbaseProvider,
     public alert: AlertsProvider,
     private storage: Storage,
+    public callNumber: CallNumber,
     ) 
     
     {
   
      
       this.storage.get('user_id').then((val) => {
-        console.log('user db stuff');
-        console.log(val);
+       // console.log('user db stuff');
+       // console.log(val);
         this.civilianId = val;
         // alert(val);
         
       });
       this.storage.get('request_id').then((val) => {
-        console.log('request db stuff');
-        console.log(val);
+       // console.log('request db stuff');
+       // console.log(val);
         this.reqId = val;
         // alert(val);
         
       });
       this.storage.get('selected_responder').then((val) => {
-        console.log('respo db stuff');
-        console.log(val);
+       // console.log('respo db stuff');
+       // console.log(val);
         this.selectedResponder = [val];
         this.responderId = val.id;
         this.responderName = val.driver_name;
@@ -106,19 +107,34 @@ export class ConfirmPage {
      
     }
     
-    this.urlService.checkRespoAccept( this.userDetails)
+    this.urlService.checkRespoAccept(this.userDetails)
     .subscribe(res => {
         // this.presentToast(res.msg, res.status);
-        console.log(res);
-        if (res.status=='OK') {
+       // console.log(res);
+        if (res.status=='accepted') {
+          this.alert.presentAlert("Notification", res.msg);
+          this.subscription.unsubscribe();
+          this.navCtrl.push('CountDownPage');
+        }
+        if (res.status=='canceled') {
           this.alert.presentAlert("Notification", res.msg);
           this.subscription.unsubscribe();
           this.navCtrl.push('CountDownPage');
         }
     }, (err) => {
-        console.log(err);
+        //console.log(err);
     });
 
 
   }
+
+  callNow(number) {
+    this.callNumber.callNumber(number, true)
+      .then(res => console.log('Launched dialer!', res))
+      .catch(err => console.log('Error launching dialer', err));
+      console.log('phone_no')
+  }
+
+
+
 }

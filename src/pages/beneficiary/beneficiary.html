@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-navbar color='newcolor' >
+     <ion-toolbar color='newcolor'  mode="ios">
+      <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+     </button>
+    <!-- <ion-title>Beneficiary</ion-title> -->
+   </ion-toolbar>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+
+<ion-title text-center>Add Beneficiary</ion-title>
+<br>
+
+<div class="register-fields" [formGroup]="beneficiaryForm">
+
+<ion-item>
+    <ion-input block formControlName="name" type="text" placeholder="Name"></ion-input>
+  </ion-item>
+
+<ion-item>
+    <ion-input block formControlName="relationship" type="text" placeholder="Relationship"></ion-input>
+  </ion-item>
+
+<ion-item>
+    <ion-input minLength="11" maxLength="11" block formControlName="phone" type="tel" placeholder="Phone No."></ion-input>
+  </ion-item>
+
+<ion-item>
+    <ion-input block formControlName="email" type="text" placeholder="Email"></ion-input>
+  </ion-item>
+
+<ion-item>
+    <ion-input block formControlName="gender" type="text" placeholder="Gender"></ion-input>
+  </ion-item>
+
+<ion-item>
+    <ion-input block formControlName="dob" type="text" placeholder="D.O.B"></ion-input>
+  </ion-item>
+
+<ion-item>
+    <ion-input block formControlName="allergies" type="text" placeholder="Allergies"></ion-input>
+  </ion-item>
+
+
+
+
+</div>
+<br>
+
+<ion-row>
+    <ion-col col-6>
+      <button icon-right ion-button block round color="secondary" (click)="goMyBeneficiaries()">
+        Save
+      </button>
+    </ion-col>
+  </ion-row>
+
+
+
+</ion-content>

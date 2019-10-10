@@ -219,21 +219,6 @@ export class SupportPage {
     });
     toast.present();
 
-    // let alert = this.alertCtrl.create({
-    //   title: 'Message sent ',
-    //   message: '',
-    //   buttons: [
-    //     {
-    //       text: 'OK',
-    //       handler: () => {
-    //        alert.present();
-    //       }
-    //     }
-    //   ]
-    // });
-  //  });
-    //alert.present();
-   // this.navCtrl.setRoot("HomePage");
   }
 
 
@@ -273,7 +258,7 @@ export class SupportPage {
             userId: this.toUser._id,
             username: this.toUser.username,
             pic: this.toUser.pic,
-            text: 'Welcome to Respo'
+            text: 'Dear valued user, thank you for sending us a message. Our team will get back to you via your email as soon as possible.'
           };
         this.messages.push(replyData);
         this.scrollToBottom();

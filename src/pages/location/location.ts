@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, UrlSerializer} from 'ionic-angular';
-import { HttpClient } from '@angular/common/http';
+import { IonicPage, NavController, NavParams, LoadingController,} from 'ionic-angular';
 import { AlertsProvider } from './../../providers/alerts/alerts';
 import { Storage } from '@ionic/storage';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
+import {  FormGroup } from '@angular/forms';
 
 
 declare var google;
@@ -17,12 +17,11 @@ declare var google;
 
 export class LocationPage implements OnInit {
 
-
+Userdata: any;
 map         : any;
 infoWindow  : any;
 marker      : any;
 event       : any;
-
 civilianLat : any;
 civilianId  : any;
 civilianLng : any;
@@ -35,18 +34,32 @@ driversDistance: any;//distance between driver and civilian should be
 userDetails: any;
 category: any;
 specify_emergency: any;
+specifyEmergency: any;
+specify: any;
 
-selectedResponder      : any; 
-responderName: any;
+
 driver_name: any;
 responderPlate: any;
 responderDistance: any;
-  GoogleAutocomplete: any;
-  autocomplete: { input: string; };
-  autocompleteItems: any[];
-  zone: any;
-    address: any;
-    address_loacation : any ; 
+GoogleAutocomplete: any;
+autocomplete: { input: string; };
+autocompleteItems: any[];
+zone: any;
+address: any;
+address_loacation : any ; 
+additional_address : any ; 
+
+map2Form: FormGroup;
+showText: boolean;
+Sear_location: any;
+pick_up: any;
+allResponders: any;
+selectedResponder: any; 
+responderName: any;
+responderId: any;
+company_name: any;
+forWho: any;
+    
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -55,12 +68,56 @@ responderDistance: any;
     public loadingCtrl: LoadingController,
     private urlService: UrlbaseProvider,
     ) {
-        this.address_loacation = navParams.get('sear_location') ;
-    //console.log('ssssssssssssss'+ this.address_loacation );
-    this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
-    this.autocomplete = { input: '' };
-    this.autocompleteItems = []
+
+this.storage.get('selected_responder').then((val) => {
+
+    this.selectedResponder = [val];
+    this.responderId = val.id;
+    this.responderName = val.driver_name;
+    var randomnumber = Math.floor(Math.random() * (7 - 1 + 1)) + 1;
+    this.responderDistance = randomnumber;
+    }); 
+     
+      this.address = navParams.get('sear_location');
+      this.additional_address = navParams.get('number');
+      //console.log('ssssssssssssss'+ this.address_loacation );
+      this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
+      this.autocomplete = { input: '' };
+      this.autocompleteItems = []
   }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad LocationPage');
+
+  
+    this.storage.get('additional_address').then((val) => {
+        this.additional_address = val;
+      });
+
+    this.storage.get('address').then((val) => {
+        this.address = val;
+      });
+
+    this.storage.get('forWho').then((val) => {
+        this.forWho = val;
+      });
+
+ 
+      this.storage.get('specify_emergency').then((val) => {
+        // console.log('c db stuff');
+        // console.log(val);
+        this.specify_emergency = val;
+        this.specify_emergency = val.specify_emergency;
+      });
+
+
+    this.showText = true;
+
+setTimeout(()=>{  
+      this.showText = true;
+ },3000);
+
+}
   updateSearchResults() {
     if (this.autocomplete.input == '') {
       this.autocompleteItems = [];
@@ -76,54 +133,54 @@ responderDistance: any;
         });
       });
   }
+
+
   ngOnInit() {
     let that = this;
     setTimeout(function () {
       that.googleMap();
     }, 2000)
   }
+
+
   googleMap() {
- 
- 
 
- 
+    this.storage.get('specify_emergency').then((val) => {
+        this.specify_emergency = val;
+      // this.storage.remove( 'specify_emergency');
+      });
+
     this.storage.get('category').then((val) => {
-      console.log('cater db stuff');
-      console.log(val);
-      this.category = val;
-      this.event = val.category;
-    });
-    this.storage.get('search_addres').then((val) => {
-      console.log('cater db stuff');
-      console.log(val);
-      this.address = val;
-      this.event = val.address;
-    });
-    // this.storage.get('specify_emergency').then((val) => {
-    //   console.log('cater db stuff');
-    //   console.log(val);
-    //   this.specify_emergency = val;
-    //   this.event = val.specify_emergency;
-    // });
+        // console.log('cater db stuff');
+        // console.log(val);
+        this.category = val;
+        this.event = val.category;
+      });
+      
+      this.storage.get('user_id').then((val) => {
+        // console.log('user db stuff');
+        // console.log(val);
+        this.civilianId = val;
+      });
 
+      this.storage.get('address').then((val) => {
+        this.address = val;
+      });
 
-    this.storage.get('user_id').then((val) => {
-      console.log('user db stuff');
-      console.log(val);
-      this.civilianId = val;
-      // alert(val);
-    });
+      this.storage.get('selected_responder').then((val) => {
+        //console.log('respo db stuff');
+        //console.log(val);
+        this.selectedResponder = val;
+        this.responderId = val.id;
+        this.responderName = val.driver_name;
+        // alert(this.responderName);
+        var randomnumber = Math.floor(Math.random() * (7 - 1 + 1)) + 1;
+        this.responderDistance = randomnumber;
 
-    this.storage.get('selected_responder').then((val) => {
-      console.log('respo db stuff');
-      console.log(val);
-      this.selectedResponder = val;
-      this.responderName = val.driver_name;
-      console.log(this.responderName + "ddddddddddddddd");
-      // alert(this.responderName);
-      var randomnumber = Math.floor(Math.random() * (7 - 1 + 1)) + 1;
-      this.responderDistance = randomnumber;
-    });
+        //polling, should look for alternatives
+       // this.timeInt();
+      }); 
+
 
     let that = this;
     //intial map setup, if no geolaction available
@@ -132,14 +189,6 @@ responderDistance: any;
       center: { lat: -29.856278, lng: 31.028828 },
 
       disableDefaultUI: true,
-
-
-
-
-
-
-
-
 
       
      styles:[
@@ -384,45 +433,13 @@ responderDistance: any;
             ]
         }
     ]
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-    });
- 
-
    
-        
-       
-
-    
-
+    });
         
       var infowindowContent = document.getElementById('infowindow-content');
       // infowindow.setContent();
 
-      var  image = "http://46.101.169.33/icons/fixed5.png";
+      var  image = "https://blooming-waters-81867.herokuapp.com/icons/fixed5.png";
       var marker = new google.maps.Marker({
         map: that.map,
         // anchorPoint: new google.maps.Point(0, -29),
@@ -432,16 +449,11 @@ responderDistance: any;
 
       });
 
-
-
-
         var geocodr = new google.maps.Geocoder();
         
-            
-       
         marker.addListener('dragend', function(event)  {
             
-       //   alert(event.latLng.lat() + ' ' +  event.latLng.lng());
+       //  alert(event.latLng.lat() + ' ' +  event.latLng.lng());
        geocodr.geocode({
           'latLng': event.latLng
           }, function(results, status) {
@@ -452,31 +464,10 @@ responderDistance: any;
               
                 infowindow.setContent(this.adressess);
                 
-                
-
               }
             }
           });
       });
-
-
-       
-       
-
-     
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     //end intial map setup
@@ -530,7 +521,7 @@ responderDistance: any;
         }
 
         //marker for user/civilian location
-        var  image = "http://46.101.169.33/icons/fixed5.png";
+        var  image = "https://blooming-waters-81867.herokuapp.com/icons/fixed5.png";
         var markerCivilian;
         markerCivilian = new google.maps.Marker({
           position: pos,
@@ -544,17 +535,12 @@ responderDistance: any;
         var geocoder  = new google.maps.Geocoder();  
         var location  = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); 
         
-        
         geocoder.geocode({'latLng': location}, function (results, status) {
           if(status == google.maps.GeocoderStatus.OK) {           
           var add=results[0].formatted_address;         
-          document.getElementById('infowindow-content').innerHTML=add;
-
-          
+         // document.getElementById('infowindow-content').innerHTML=add;    
           }
           });
-
-
         marker.addListener('click', toggleBounce);
         function toggleBounce() {
           if (marker.getAnimation() !== null) {
@@ -563,15 +549,10 @@ responderDistance: any;
             marker.setAnimation(google.maps.Animation.BOUNCE);
           }
         }
-
             var infowindow = new google.maps.InfoWindow();
             infowindow.setContent("My location");
             infowindow.open(that.map, markerCivilian);
             // document.getElementById("emegencyButtons").style.display ='';
-            
-
-
-
         // var geocodr = new google.maps.Geocoder();
         // markerCivilian.addListener('dragend', function(event)  {
           
@@ -585,17 +566,10 @@ responderDistance: any;
     //             this.adressess = results[0].formatted_address; 
               
     //             infowindow.setContent(this.adressess);
-              
-                
-
     //           }
     //         }
     //       });
     //   });
-
-      
-
-
 
         that.infoWindow.open(that.map);
         that.map.setCenter(pos);
@@ -646,24 +620,28 @@ infoWindow.setContent(browserHasGeolocation ?
 infoWindow.open(map);
 }
 
-ionViewDidLoad() {
-console.log('ionViewDidLoad LocationPage');
-}
+
 
 goConfirm(){
 
+    this.Userdata = { 
+        address:this.address,
+    }
   let that = this;
   this.userDetails = {
+
     'civilian_id': this.civilianId,
     'lat': that.civilianLat,//current lat
     'lng': that.civilianLng,//current lng
     'driver_id': this.selectedResponder.id,
     'company_id': this.selectedResponder.company.id,
     'emergency_type': this.event,
-    // 'specify_emergency': this.event    
+    'specify_emergency': this.specify_emergency,
+    'address':this.address,
+    'additional_address':this.additional_address,
+    'forWho':this.forWho,
+ 
   }
-
-
   this.urlService.makeRequest(this.userDetails)
     .subscribe(res => {
       // this.presentToast(res.msg, res.status);
@@ -673,56 +651,40 @@ goConfirm(){
       var status = res.status;
       var reqId = res.request_id;
 
+      var specify = res.specify_emergency;
+
       const loader = this.loadingCtrl.create({
         content: "Sending request...",
         duration: 3000
       });
       if (status == "error") {
-        this.alert.presentAlert("Respo", 'Please try again... connecting serve');
+         // console.log(msg + 'server')
+        this.alert.presentAlert("Respo", 'Please try again... connecting to the server');
       }
-      
       if (status == "OK") {
         loader.present();
         this.storage.set('request_id', reqId);
+        this.storage.set('specify_emergency', specify);
+        this.storage.remove( 'specify_emergency');
+       
         this.navCtrl.push("ConfirmPage");
       }
     }, (err) => {
-      console.log(err);
+     // console.log(err);
     });
-
-
-// return console.log(this.userDetails);
-// this.http.post("http://03e873a6.ngrok.io/api/civilian/makeRequest", this.userDetails)//testing on devapp
-// this.http.post("http://46.101.169.33/api/civilian/makeRequest", this.userDetails)//live    
-// this.http.post("http://127.0.0.1:8000/api/civilian/makeRequest", this.userDetails)//local
-// .subscribe(data => {
-//  console.log(data);
-
-//   var msg = data['msg'];
-//   var status = data['status'];
-//   var reqId = data['request_id'];
-
-//   const loader = this.loadingCtrl.create({
-//     content: "Sending request...",
-//     duration: 3000
-//   });
-
-//   this.alert.presentAlert("Notification", msg);
-
-//   if (status == "OK") {
-//     loader.present();
-//     this.storage.set('request_id', reqId);
-//     this.navCtrl.push("ConfirmPage");
-//   } 
-
-//  }, error => {
-//   console.log(error);
-// });
-// this.navCtrl.push('ConfirmPage')
+   // this.navCtrl.push("ConfirmPage");
 }
 
 goMaps(){
 this.navCtrl.setRoot('MapsPage')
+
+}
+goSelectResponder(){
+this.navCtrl.push('SelectResponderPage')
+
+}
+goHome(){
+this.navCtrl.setRoot('HomePage')
 
 }
 

@@ -13,19 +13,26 @@
     <ion-card>
         <ion-item no-lines color='light'>
           <ion-avatar item-right>
-            <img src="../../assets/CITIMED.jpg">
+            <img src="{{ detail.company.profile }}">
           </ion-avatar>
           <font size="3" color='#38414a'><b>{{detail.company.company_name}}</b></font><br>
-          <!-- <p href="tel:+2787463734"><b>Cell: </b> {{detail.phone_no}}</p> -->
-          <!-- <p><b>Plate number: </b>{{detail.license_no}}</p> -->
-          <!-- <p>1 minute away.</p> -->
         </ion-item>
-        <ion-col color="secondary" >
-            <a ion-button clear class="gl" icon-right outline color="secondary" href="tel:+27764616736">Call Responder
-                <!-- <ion-icon name="md-call"></ion-icon> -->
-             </a>
-        </ion-col>
+        
+        <button icon-right clear color='secondary' small round ion-button (click)="callNow (detail.phone_no)">Call Responder
+          <!-- <ion-icon name="md-call"></ion-icon> -->
+        </button>
         </ion-card>
+
+  </ion-row>
+  <br>
+  <br>
+  <button ion-button color='newcolor' round full (click)="goHome()">Back Home</button>
+  <br>
+
+  
+</ion-content>
+
+
 
     <!-- <ion-card >
         <ion-item color='light'>
@@ -38,15 +45,4 @@
         <p>Plate number:{{detail.license_no}}</p>
       </ion-item>
     </ion-card> -->
-
-  </ion-row>
-
-  <!-- <a ion-button class="gl" outline color="secondary" href="tel:+2787463734">Call Responder</a> -->
-  <br>
-  <br>
-  <button ion-button color='newcolor' round full (click)="goHome()">Back Home</button>
-  <br>
-  <!-- <button ion-button clear  color='light' round full (click)="goArrival()">On Arrival</button> -->
-
-
-</ion-content>
+      <!-- <a ion-button class="gl" outline color="secondary" href="tel:+2787463734">Call Responder</a> -->

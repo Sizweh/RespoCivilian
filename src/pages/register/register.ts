@@ -4,7 +4,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AlertsProvider } from './../../providers/alerts/alerts';
 import { HttpClient } from '@angular/common/http';
 import { MenuController } from 'ionic-angular';
-import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
+// import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { Storage } from '@ionic/storage';
 
 import { AlertController } from 'ionic-angular';
@@ -27,26 +27,32 @@ export class RegisterPage {
     public alert: AlertsProvider,
     public http: HttpClient,
     public menuCtrl: MenuController,
-    private urlService: UrlbaseProvider,
+    // private urlService: UrlbaseProvider,
     public storage: Storage,
     public alertCtrl: AlertController
 
     ) {
 
       this.menuCtrl.enable(false);
+     
 
       this.registerForm = formBuilder.group({
         'fullName': ['', Validators.compose([Validators.required])],
-        // 'org_name': ['', Validators.compose([Validators.required])],
-        // 'student_no': ['', Validators.compose([Validators.required])],
         'gender': ['', Validators.compose([Validators.required])],
         'myDate': ['', Validators.compose([Validators.required])],
-        'phonenumber': ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern("^[0-9]{10}")])],
+        'phonenumber': ['', Validators.compose([Validators.required, Validators.minLength(11), Validators.pattern("^[0-9]{11}")])],
         'email': ['', Validators.compose([Validators.minLength(4), Validators.maxLength(50), Validators.pattern('[a-zA-Z0-9._]+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$'), Validators.required])],
         'password': ['', Validators.compose([Validators.required, Validators.minLength(6)])],
         'confirmPassword': ['', Validators.compose([Validators.required, Validators.minLength(6) ])],
       })
    
+  }
+  phone='';
+
+  convert(){
+    if(this.phone.substr(0,1)==='0'){
+      this.phone='27'+this.phone.substr(1);
+    }
   }
 
   ionViewDidLoad() {

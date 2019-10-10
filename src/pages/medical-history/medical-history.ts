@@ -4,9 +4,6 @@ import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { FormGroup, FormBuilder, Validators, } from '@angular/forms';
 import { AlertController, LoadingController, ToastController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import { SelectSearchableComponent } from 'ionic-select-searchable';
-
-
 
 
 @IonicPage()

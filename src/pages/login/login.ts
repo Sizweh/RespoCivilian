@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 // import { HttpClient } from '@angular/common/http';
 import { AlertsProvider } from './../../providers/alerts/alerts';
-import { AuthProvider } from './../../providers/auth/auth'
+
 import { Storage } from '@ionic/storage';
 import { MenuController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
@@ -27,8 +27,10 @@ export class LoginPage {
   loginForm: FormGroup;
   playerId :any; 
   username :any;
+  user_id:any;
   passwordType: string = 'password';
   passwordIcon: string = 'eye-off';
+  sideMenu: any;
  
   constructor(
     // private http: HttpClient,
@@ -37,7 +39,7 @@ export class LoginPage {
     public navParams: NavParams,
     public formBuilder: FormBuilder,
     public alert: AlertsProvider,
-    public auth: AuthProvider,
+
     private storage: Storage,
     public menuCtrl: MenuController,
     private urlService: UrlbaseProvider,
@@ -45,28 +47,65 @@ export class LoginPage {
     // private mainService: MainServiceProvider,
 
     ) {
+ 
       this.menuCtrl.enable(false);
+      this.menuCtrl.close();
 
       this.loginForm = formBuilder.group({
-        'phoneNumber': ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern("^[0-9]{10}")])],
-        'password': ['', Validators.compose([Validators.minLength(4), Validators.maxLength(50), Validators.pattern('[a-zA-Z0-9._]+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$'), Validators.required])],
+        'phoneNumber': [ Validators.compose([Validators.required, Validators.minLength(11), Validators.pattern("^[0-9]{11}")])],
+        'password': ['',],
       })
-  }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
 
-    this.storage.get('user_name').then((val) => {
-      console.log('cater db stuff');
-      console.log(val);
-      this.username = val;
-   
+  }
+
+  // Validators.compose([Validators.minLength(4), Validators.maxLength(50), Validators.pattern('[a-zA-Z0-9._]+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$'), Validators.required])
+
+  tel='';
+
+  convert(){
+    if(this.tel.substr(0,1)==='0'){
+      this.tel='27'+this.tel.substr(1);
+    }
+  }
+  
+
+
+  ionViewDidEnter() {
+
+this.menuCtrl.enable(false);
+  this.menuCtrl.close();
+    this.menuCtrl.swipeEnable(false);
+
+    // If you have more than one side menu, use the id like below
+    // this.menu.swipeEnable(false, 'menu1');
+  }
+
+
+
+
+  ionViewDidLoad() {
+   console.log('ionViewDidLoad LoginPage');
+
+  // this.menu.close();
+
+
+    this.storage.get('user_id').then((val) => {
+      //console.log('cater db stuff');
+     //console.log(val);
+     this.user_id = val;
+     //console.log("note  login" + this.user_id)
+     if(this.user_id === null)
+     {
+      // console.log("Note  login")
+        
+     }
+     else{
+     this.navCtrl.setRoot('HomePage');
+     }
       
+
     });
 
-    if  (!this.username){
-
-     this.navCtrl.setRoot('HomePage');
-    }
 
   }
   hideShowPassword() {
@@ -74,38 +113,54 @@ export class LoginPage {
     this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';
   }
   updateToken() {
-    console.log('Remember token new state:' + this.remembertoken);
+    //console.log('Remember token new state:' + this.remembertoken);
   }
 
-  goLogin(){
-   
+  goHome(){
+
     var headers = new Headers();
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
-  //  const requestOptions = new RequestOptions({ headers: headers });
-   
    //pass to back-end
-      console.log(this.loginForm.value);
+
+      //console.log(this.loginForm.value);
       var postData = this.loginForm.value;
-
-
       //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.login(postData)
     .subscribe(res => {
-        // this.presentToast(res.msg, res.status);
-        console.log(res);
-        // alert(res);ss
         this.alert.presentAlert("Notification", res.msg);
-
         if (res.status=='OK') {
           this.storage.set('user_name', res.user_name);
           this.storage.set('user_id', res.user_id);
-          // localStorage.setItem('token', res.token);
           this.navCtrl.setRoot('HomePage');
         }
     }, (err) => {
-        console.log(err);
+       // console.log(err);
     });
+
+  }
+
+  goRegister(){
+    this.navCtrl.push("RegisterPage");
+  }
+
+
+  goResetPassword(){
+    this.navCtrl.push("ResetPasswordPage");
+  }
+
+
+
+ 
+
+}
+
+
+
+
+
+
+
 
 
     //END API CALL
@@ -138,54 +193,3 @@ export class LoginPage {
     //     console.log(error);
     //   });
   
-
-  }
-
-
-
-  goRegister(){
-    this.navCtrl.push("RegisterPage");
-  }
-
-  
-  goBankingDetails(){
-    this.navCtrl.push("BankingDetailsPage");
-  }
-
-  goResetPassword(){
-    this.navCtrl.push("ResetPasswordPage");
-  }
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
- 
-
-}

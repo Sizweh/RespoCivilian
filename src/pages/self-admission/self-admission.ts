@@ -1,5 +1,5 @@
-import { Component, ɵConsole } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, LoadingController, Modal, ModalController, ModalOptions } from 'ionic-angular';
+import { Component, } from '@angular/core';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController, } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 
@@ -17,7 +17,6 @@ export class SelfAdmissionPage {
     public navParams: NavParams,
     public loadingCtrl: LoadingController,
     public alertCtrl:  AlertController,
-    private modal: ModalController,
     public storage: Storage,
     ) {
   }
@@ -65,24 +64,45 @@ export class SelfAdmissionPage {
 
 
 
-goForSelf(){    
+goForSelf(){ 
+     
 this.navCtrl.push("ForSelfPage");
 }
 
-goForSomeone(data){
+goHome(){
 
-this.storage.set('ForSomeone', 'Yes');
-console.log(+ "ForSomeone");
-    console.log(data);
-
- // this.navCtrl.push("ForSomeonePage");
+  this.navCtrl.setRoot ("HomePage");
 }
 
 
-goSelectResponder(){
-  this.storage.set('forSomeone', 'Yes');
-  console.log('for someone clicked');    
-this.navCtrl.push("SelectResponderPage");
+
+
+goMaps2(){
+
+ 
+this.storage.set('forWho', 'FM');
+console.log('for me clicked');  
+
+this.navCtrl.push("MapsPage");
+}
+
+
+
+
+goLocation(){
+
+  this.storage.set('forWho', 'FS');
+  console.log('for someone clicked'); 
+
+this.navCtrl.push("MapsPage");
+}
+
+goMaps(){
+
+  this.storage.set('forWho', 'FB');
+  //console.log('for someone clicked'); 
+
+this.navCtrl.push("MapsPage");
 }
 
 }

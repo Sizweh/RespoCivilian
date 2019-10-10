@@ -28,8 +28,7 @@ export class NextOfKinPage {
   email:any;
   password:any;
   confirmPassword:any;
-  // org_name:any;
-  // // student_no:any;
+
 
   phone:any;
   relationship:any;
@@ -44,6 +43,8 @@ export class NextOfKinPage {
   chronic_dis:any;
   disability:any;
   Medical_Aid_Status:any;
+  org_id: any;
+  student_no: any;
 
 
   constructor(public navCtrl: NavController, 
@@ -61,9 +62,21 @@ export class NextOfKinPage {
         'surname': ['', Validators.compose([Validators.required])],
         'phone': ['', Validators.compose([Validators.required])],
         'relationship': ['', Validators.compose([Validators.required])],
+
+        'chronic_dis': ['', Validators.compose([Validators.required])],
+        'disability': ['', Validators.compose([Validators.required])],
+        // 'remembertoken': ['', Validators.compose([Validators.required])],
     
       })
   
+  }
+
+  tel='';
+
+  convert(){
+    if(this.tel.substr(0,1)==='0'){
+      this.tel='27'+this.tel.substr(1);
+    }
   }
 
   updateToken() {
@@ -103,14 +116,7 @@ export class NextOfKinPage {
       //  console.log(String(val));
       this.confirmPassword = val;
     });
-    // this.storage.get('org_name').then((val) => {
-    //   //  console.log(String(val));
-    //   this.org_name = val;
-    // });
-    // this.storage.get('student_no').then((val) => {
-    //   //  console.log(String(val));
-    //   this.student_no = val;
-    // });
+   
   
     
     //////////////////medical////////////////////////
@@ -145,9 +151,14 @@ export class NextOfKinPage {
         this.prefered_hospital = val;
       });
     
-      this.storage.get('Medical_Aid_Status').then((val) => {
+      this.storage.get('org_id').then((val) => {
         //  console.log(String(val));
-        this.Medical_Aid_Status = val;
+        this.org_id = val;
+      });
+    
+      this.storage.get('student_no ').then((val) => {
+        //  console.log(String(val));
+        this.student_no = val;
       });
     
 
@@ -187,6 +198,9 @@ goVerifyAccount(){
   this.storage.set('phone', value.phone);
   this.storage.set('relationship', value.relationship);
 
+  this.storage.set('chronic_dis', value.chronic_dis);
+  this.storage.set('disability', value.disability);
+
   this.Userdata = { 
 
     //medical//
@@ -198,6 +212,8 @@ goVerifyAccount(){
    partial_membership:this.partial_membership,
    prefered_hospital:this.prefered_hospital,
    medical_aid_status:this.Medical_Aid_Status,
+   org_id:this.org_id,
+   student_no:this.student_no,
  
     //nextofkin//
  
@@ -213,13 +229,10 @@ goVerifyAccount(){
    gender: this.gender,
    myDate: this.myDate,
    email: this.email,
-  //  student_no: this.student_no,
-  //  org_name: this.org_name,
-  //  password: 'ffffff',
- 
+
    password:this.password,
 //  confirmPassword: this.confirmPassword,
-   status:'fffffff'
+  //  status:'fffffff'
   
  }
  
@@ -228,10 +241,9 @@ goVerifyAccount(){
   headers.append('Content-Type', 'application/json' );
  //  const requestOptions = new RequestOptions({ headers: headers });
 
-
   //pass to back-end
-     console.log(this.nextofkinForm.value);
-     var postData = this.nextofkinForm.value;
+    // console.log(this.nextofkinForm.value);
+     //var postData = this.nextofkinForm.value;
    
    // postData['user_role']=  "Civilian";
 
@@ -239,16 +251,10 @@ goVerifyAccount(){
      //THIS IS A BETTER WAY TO MAKE API CALLS
      this.urlService.register(this.Userdata)
      .subscribe(res => {
-       // this.presentToast(res.msg, res.status);
-      console.log(res);
-       // alert(res);
-       this.alert.presentAlert("Notification", res.msg);
- 
+     // console.log(res);
+    this.alert.presentAlert("Notification", res.msg);
        if (res.status=='OK') {
-        //this.storage.set('nextofkinform', res.nextofkinform);
-        //this.storage.set('nextofkinform', res.nextofkin_id);
         this.navCtrl.push("VerifyAccountPage");
-         // localStorage.setItem('token', res.token);
       }
      }, (err) => {
        console.log(err);

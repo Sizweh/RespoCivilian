@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { HttpClient } from '@angular/common/http';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
+import { FormBuilder,FormGroup } from '@angular/forms';
+//import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { AlertsProvider } from './../../providers/alerts/alerts';
 
 @IonicPage()
@@ -14,37 +14,32 @@ import { AlertsProvider } from './../../providers/alerts/alerts';
 export class SpecifyEmergencyPage {
 
   username :any;
-  //specify_emergency :any;
+  specify_emergency :any;
   specifyForm: FormGroup;
   specify_collection:any;
+  id: any;
+  User_Id: any;
   
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     private storage: Storage,
-    private urlService: UrlbaseProvider,
+    //private urlService: UrlbaseProvider,
     public http: HttpClient,
     public formBuilder: FormBuilder,
     public alert: AlertsProvider,
     ) {
 
+      this.id = navParams.get('data') ;
+      this.User_Id = navParams.get('user_id') ;
+
       this.specifyForm = formBuilder.group({
 
-      'specify_emergency': ['', Validators.compose([Validators.required])],
-
+        'user_id': [ this.User_Id],
+        'id': [this.id,],
+        'specify_emergency': ['',],
       })
   }
 
-  otherCategories = [
-    {
-      faultID: 10,
-      category: "Other",
-      placeholder: "",
-      imageUrl: "http://46.101.169.33/icons/R8.png",
-      icon: "alarm"
-     
-    },
-  
-  ];
   
   ionViewDidLoad() {
     console.log('ionViewDidLoad SpecifyEmergencyPage');
@@ -59,16 +54,12 @@ export class SpecifyEmergencyPage {
   goHome(){
     this.navCtrl.setRoot('HomePage')
   }
+
+  
   goSelfAdmission(){
-    this.navCtrl.push('SelfAdmissionPage')
-  }
-
-
-  goSelectResponder(){
 
     const value = this.specifyForm.value;
     this.storage.set('specify_emergency', value.specify_emergency);
-
     // var headers = new Headers();
     // headers.append("Accept", 'application/json');
     // headers.append('Content-Type', 'application/json');
@@ -82,6 +73,11 @@ export class SpecifyEmergencyPage {
     //     console.log(err);
     //   });
 
+    this.navCtrl.push('SelfAdmissionPage')
+  }
+
+
+  goSelectResponder(){
    this.navCtrl.push('SelectResponderPage')
   }
 

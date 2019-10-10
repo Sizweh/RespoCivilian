@@ -3,13 +3,18 @@ import { Nav,  Platform, MenuController,  } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder,} from '@angular/forms';
+import {OneSignal} from '@ionic-native/onesignal/ngx';
+
+
+
 
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
+  userId: string;
   [x: string]: any;
  
 
@@ -21,11 +26,12 @@ export class MyApp {
 
   @ViewChild(Nav) nav: Nav;
   username:any; 
-  rootPage: any = 'LoginPage';
+  rootPage: any = 'HomePage';
+
+  
   // menu: true;
  
- 
-
+  
  
 
   pages: Array<{ title: string, component: any , icon:string}>;
@@ -37,12 +43,19 @@ export class MyApp {
     public splashScreen: SplashScreen, 
     public menu: MenuController,
     private storage: Storage,
+    private oneSignal: OneSignal,
     public formBuilder: FormBuilder,
     ) {
 
+
+
       this.storage.get('user_name').then((val) => {
-        console.log(String(val));
+        //console.log(String(val));
         this.username = String(val);  
+      });
+      this.storage.get('user_id').then((val) => {
+       // console.log(String(val));
+        this.userId = String(val);  
       });
    
 
@@ -50,9 +63,27 @@ export class MyApp {
         'user_id': [''],
       })
 
-    this.initializeApp();
+    this.initializeApp(); {
+      }
+
     // used for an example of ngFor and navigation
+ 
+  
+
+    
     this.pages = [
+
+      // { title: 'Home', component: "HomePage", icon: 'home' },
+      // { title: 'My Account', component: "MyaccountPage", icon: 'person'},
+      // { title: 'Add Beneficiary', component: "BeneficiaryPage", icon: 'home' },
+      // { title: 'Payment Details', component: "BankDetailsPage", icon: 'chatbubbles' },
+      // { title: 'History', component: "HistoryPage", icon: 'document' },
+  
+      // { title: 'Support', component: "SupportPage", icon: 'help'},
+      // { title: 'About', component: "AboutPage", icon: 'information-circle'},
+
+
+
     ];
     
 
@@ -77,9 +108,27 @@ export class MyApp {
 
    //   Can only work when we compile for mobile and not on desktop
       window["plugins"].OneSignal
-         .startInit("422a9798-6102-4c4b-8d59-bd1bebcd6810", "316673984537")
+         .startInit("c92bb615-7c1e-4a91-8e4d-e4d3d771c165", "384977991016")
         .handleNotificationOpened(notificationOpenedCallback)
         .endInit();
+        
+
+        // window["plugins"].OneSignal.sendTag("user_id", this.userId);
+        // console.log("tags sent");
+        
+        // this.oneSignal.getIds().then((id) => {
+        //   console.log(id);
+        //   let alert = this.alertCtrl.create({
+        //       title: 'playerId',
+        //       message: JSON.stringify(id),
+        //       buttons: [{
+        //         text: 'Ok',
+        //         role: 'ok'
+        //       }]
+        //     });
+        //     alert.present();
+        // });
+    
 
     });
   }
@@ -90,6 +139,7 @@ export class MyApp {
     // this.sideMenu.hide();
     this.nav.setRoot('LoginPage');
     // this.menu.enable(true);
+    this.storage.clear();
     this.menu.close();
     }
   
@@ -162,7 +212,24 @@ export class MyApp {
     this.menu.enable(true);
     this.menu.close();
     }
+
+    goMyBeneficiaries(){
+    this.nav.setRoot('MyBeneficiariesPage');
+    this.menu.enable(true);
+    this.menu.close();
+    }
+
+    goBankDetails(){
+    this.nav.setRoot('BankDetailsPage');
+    this.menu.enable(true);
+    this.menu.close();
+    }
+
+
+    
   
 }
 
 
+
+      

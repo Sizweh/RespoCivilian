@@ -44,12 +44,20 @@ export class ModalPage {
 
         'name': ['', Validators.compose([Validators.required])],
         'surname': ['', Validators.compose([Validators.required])],
-        'phone': ['', Validators.compose([Validators.required, Validators.minLength(10)])],
-        'email': ['', Validators.compose([Validators.required])],
+        'phone': ['', Validators.compose([Validators.required, Validators.minLength(11)])],
+        // 'email': ['', Validators.compose([Validators.required])],
         'relationship': ['', Validators.compose([Validators.required])],
 
       })
 
+  }
+
+  tel='';
+
+  convert(){
+    if(this.tel.substr(0,1)==='0'){
+      this.tel='27'+this.tel.substr(1);
+    }
   }
 
   ionViewDidLoad() {
@@ -58,25 +66,16 @@ export class ModalPage {
     var headers = new Headers();
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
-  //  const requestOptions = new RequestOptions({ headers: headers });
-   
+    
    //pass to back-end
-    //  console.log(this.historyForm.value);
+
       var postData = this.skinForm.value;
 
       //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.getpenextOfKin(postData)
     .subscribe(res => {
-        // this.presentToast(res.msg, res.status);
-       // console.log(res.id);
-        //console.log(res.drop_off);
-       //// this.alert.presentAlert("Notification", res.msg);
      this.skin_collection = res;
         if (res.status=='OK') {
-      //    this.storage.set('user_name', res.user_name);
-        //  this.storage.set('user_id', res.user_id);
-          // localStorage.setItem('token', res.token);
-          //this.navCtrl.setRoot('HomePage');
         }
     }, (err) => {
         console.log(err);
@@ -87,7 +86,6 @@ export class ModalPage {
   // const data = this.navParams.get('data');
   // console.log(data);
   // }
-
   // closeModal() {
   //   const data = {
   //    name: 'john doe',
@@ -97,26 +95,7 @@ export class ModalPage {
   // }
 
  
-  // goHome(){
-  //   const loading= this.loadingCtrl.create({
-  //     content: "Checking code...",
-  //     duration: 3000
-  //   });
-  //   loading.present();
-  //   let alert = this.alertCtrl.create({
-  //     title: 'Self Admission',
-  //     message: 'Admission details sent successfully, your medical aid will reply with confirmation',
-  //     buttons: [
-  //       {
-  //         text: 'OK',
-  //         handler: () => {
-  //         }
-  //       }
-  //     ]
-  //   });
-  //   alert.present();
-  //   this.navCtrl.setRoot("HomePage");
-  //   }
+
 
   goMyprofile() {
 
@@ -124,7 +103,7 @@ export class ModalPage {
     this.storage.set('name', values.name);
     this.storage.set('surname', values.surname);
     this.storage.set('phone', values.phone);
-    this.storage.set('email', values.email);
+    // this.storage.set('email', values.email);
     this.storage.set('relationship', values.relationship);
 
     var headers = new Headers();
@@ -136,16 +115,8 @@ export class ModalPage {
     //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.editNext(postData)
       .subscribe(res => {
-        // this.presentToast(res.msg, res.status);
-        // console.log(res.id);
-        //console.log(res.drop_off);
-        //// this.alert.presentAlert("Notification", res.msg);
          this.skin_collection = res;
         if (res.status == 'OK') {
-          //    this.storage.set('user_name', res.user_name);
-          //  this.storage.set('user_id', res.user_id);
-          // localStorage.setItem('token', res.token);
-          //this.navCtrl.setRoot('HomePage');
         }
       }, (err) => {
         console.log(err);

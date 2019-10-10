@@ -3,9 +3,37 @@
 <ion-content no-scrolling text-center padding>
   <br>
 
-<h6>Add Next of Kin details</h6>
-
 <div class="register-fields" [formGroup]="nextofkinForm">
+
+<h6 text-center>Medical History</h6>
+
+    <ion-item>
+      <ion-input placeholder="Chronic Disease" type="text"></ion-input>
+      <ion-select formControlName="chronic_dis">
+       <ion-label>Chronic Disease</ion-label>
+        <ion-option>None</ion-option>
+        <ion-option>ALS</ion-option>
+        <ion-option>Asthma</ion-option>
+        <ion-option>Cancer</ion-option>
+        <ion-option>Eating Disorders</ion-option>
+        <ion-option>Heart Disease</ion-option>
+        <ion-option>Obesity</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <!-- <ion-label>Disability</ion-label> -->
+      <ion-input placeholder="Disability" type="text"></ion-input>
+      <ion-select formControlName="disability">
+        <ion-label>Disability</ion-label>
+        <ion-option>Yes</ion-option>
+        <ion-option>No</ion-option>
+      </ion-select>
+    </ion-item>
+
+<br>
+
+<h6>Add Next of Kin details</h6>
 
 <ion-item>
     <ion-input
@@ -24,20 +52,19 @@
   </ion-item>
   
   <ion-item>
-      <ion-input 
+      <ion-input [(ngModel)]='tel' (ionBlur)="convert()"
       placeholder="Phone Number" 
-      type="number"
+      type="tel"
       formControlName="phone"
-      maxLength="10"
+      minLength="11"
+       maxLength="11"
       ></ion-input>
     </ion-item>
 
- 
-
     <ion-item>
-        <!-- <ion-label>Relationship</ion-label> -->
-        <ion-input placeholder="Relationship" type="text"></ion-input>
+        <ion-input formControlName="relationship" placeholder="Relationship" type="text"></ion-input>
         <ion-select formControlName="relationship"  >
+            <ion-label>Relationship</ion-label>
           <ion-option value="Family Member">Family Member</ion-option>
           <ion-option value="Friend">Friend</ion-option>
           <ion-option value="Colleague">Colleague</ion-option>
@@ -46,20 +73,21 @@
 
     </div>
 
-<!-- <h6 (click)="goNextofkin2()">Next of Kin 2 (Optional) </h6> -->
+
    <br>
    <br>
 
    <font (click)="goFaq()" size="2" color='#488aff'>Read Terms & Conditions Here</font>
 
+   <!-- <div class="register-fields" [formGroup]="nextofkinForm"> -->
+      <div class="remember_token" >
+          <ion-item no-lines>
+              <ion-label>I Accept The Terms & Conditions</ion-label>
+              <ion-checkbox [(ngModel)]="remembertoken"></ion-checkbox>
+            </ion-item>
+          </div>
 
-    <div class="remember_token">
-        <ion-item no-lines>
-           <ion-label>I Accept The Terms & Conditions</ion-label>
-           <ion-checkbox [(ngModel)]="remembertoken" (ionChange)="updateToken()"></ion-checkbox>
-         </ion-item>
-       </div>
-
+<!-- </div> -->
 
 <br>
     <ion-row>
@@ -67,7 +95,7 @@
           <button ion-button clear color='newcolor' block (click)="goLogin()"> Cancel</button>
          </ion-col>
           <ion-col col-6>
-            <button   ion-button round color='secondary' block (click)="goVerifyAccount()"> Done</button>
+            <button  [disabled]="!nextofkinForm.valid"  ion-button round color='secondary' block (click)="goVerifyAccount()"> Done</button>
           </ion-col>
        </ion-row>
 
