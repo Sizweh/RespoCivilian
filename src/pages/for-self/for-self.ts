@@ -84,17 +84,7 @@ export class ForSelfPage {
    
   this.storage.set('org_id', values.org_id);
   this.storage.set('student_no', values.student_no);
-<<<<<<< HEAD
-  // this.storage.set('email', values.email);       
-  // this.storage.set('name', values.name);
-  // this.storage.set('gender', values.gender);
-  // this.storage.set('dob', values.dob);
-  // this.storage.set('password', values.password);
-  // this.storage.set('phonenumber', values.phonenumber);
-
-=======
  
->>>>>>> a2e48bfb54f0cd6de584d310908ae8a2f42e2238
   var headers = new Headers();
   headers.append("Accept", 'application/json');
   headers.append('Content-Type', 'application/json' );
