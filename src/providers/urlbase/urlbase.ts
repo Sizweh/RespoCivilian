@@ -10,10 +10,10 @@ import { catchError, tap } from 'rxjs/operators';
 @Injectable()
 export class UrlbaseProvider {
 
- apiUrl= 'https://blooming-waters-81867.herokuapp.com/api/civilian/';     
+//  apiUrl= 'https://blooming-waters-81867.herokuapp.com/api/civilian/';     
 
 //  apiUrl = 'http://46.101.169.33/api/civilian/';
-// apiUrl = 'http://127.0.0.1:8000/api/civilian/';
+apiUrl = 'http://127.0.0.1:8000/api/civilian/';
 
 
   constructor(public http: HttpClient) {
@@ -271,6 +271,13 @@ export class UrlbaseProvider {
       .pipe(
         tap(_ => this.log('ViewBeneficiaries')),
         catchError(this.handleError('ViewBeneficiaries', []))
+      );
+  }
+  beneficiaries(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'beneficiaries', data)
+      .pipe(
+        tap(_ => this.log('beneficiaries')),
+        catchError(this.handleError('beneficiaries', []))
       );
   }
 

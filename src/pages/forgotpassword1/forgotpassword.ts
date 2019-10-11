@@ -43,6 +43,10 @@ export class ForgotpasswordPage {
         // 'user_id': [this.User_ID,],
         'user_id': ['16'],
         'id': ['1'],
+       
+        // 'user_id': [this.User_Id,],
+        // 'id': [this.id,],
+
         
         'name': ['',],
         'phone': ['',],
@@ -63,7 +67,6 @@ export class ForgotpasswordPage {
         this.tel='27'+this.tel.substr(1);
       }
     }
-  
     
 
 
@@ -83,7 +86,7 @@ export class ForgotpasswordPage {
       var postData = this.beneficiaryForm.value;
 
    //THIS IS A BETTER WAY TO MAKE API CALLS
-    this.urlService.viewbeneficiary(postData)
+    this.urlService.beneficiaries(postData)
     .subscribe(res => {
      this.ben_collection = res;
         if (res.status=='OK') {
@@ -101,9 +104,27 @@ export class ForgotpasswordPage {
   goLogin(){
     this.navCtrl.setRoot('LoginPage')
   }
+  
   goMyBeneficiaries(){
 
+    var headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json' );
+  //  const requestOptions = new RequestOptions({ headers: headers });
+   
+   //   pass to back-end
+    //  console.log(this.historyForm.value);
+      var postData = this.beneficiaryForm.value;
 
+   //THIS IS A BETTER WAY TO MAKE API CALLS
+    this.urlService.editbeneficiary(postData)
+    .subscribe(res => {
+     this.ben_collection = res;
+        if (res.status=='OK') {
+        }
+    }, (err) => {
+        console.log(err);
+    });
 
     
     let toast = this.toastCtrl.create({

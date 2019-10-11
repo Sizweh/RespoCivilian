@@ -16,6 +16,7 @@ export class BeneficiaryPage {
   user_id: any;
   ben_collection: any;
   id: string;
+  User_Id: any;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -27,16 +28,19 @@ export class BeneficiaryPage {
     private toastCtrl: ToastController
     ) {
 
-      this.storage.get('user_id').then((val) => {
-        this.user_id = String(val);  
-      });
+      // this.storage.get('user_id').then((val) => {
+      //   this.user_id = String(val);  
+      // });
 
-      this.storage.get('id').then((val) => {
-        this.id = String(val);  
-      });
+      // this.storage.get('id').then((val) => {
+      //   this.id = String(val);  
+      // });
+
+      this.User_Id = navParams.get('user_id') ;
 
       this.beneficiaryForm = formBuilder.group({
         
+        // 'user_id': [this.User_Id],
         'user_id': ['16',],
         'id': ['1',],
   
@@ -60,8 +64,6 @@ export class BeneficiaryPage {
   }
 
   ionViewDidLoad() {
-
-
     console.log('ionViewDidLoad BeneficiaryPage');
   }
 
@@ -120,7 +122,7 @@ export class BeneficiaryPage {
       loading.present();
 
 
-   // this.navCtrl.setRoot('MyBeneficiariesPage')
+    this.navCtrl.setRoot('MyBeneficiariesPage')
   }
 
 }

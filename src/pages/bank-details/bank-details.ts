@@ -48,24 +48,6 @@ export class BankDetailsPage {
   }
 
   ionViewDidLoad() {
-
-    var headers = new Headers();
-    headers.append("Accept", 'application/json');
-    headers.append('Content-Type', 'application/json' );
-
-    var postData = this.benForm.value;
-
-   //THIS IS A BETTER WAY TO MAKE API CALLS
-    this.urlService.viewbeneficiary(postData)
-    .subscribe(res => {
-     this.ben_collection = res;
-        if (res.status=='OK') {
-        }
-    }, (err) => {
-        console.log(err);
-    });
-
-
     console.log('ionViewDidLoad BankDetailsPage');
   }
 

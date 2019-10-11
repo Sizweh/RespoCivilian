@@ -13,7 +13,7 @@ import { AlertController, LoadingController } from 'ionic-angular';
 })
 export class MyBeneficiariesPage {
 
-  benForm: FormGroup;
+  beneficiaryForm: FormGroup;
   ben_collection: any;
   User_Id: any;
   id: any;
@@ -46,14 +46,14 @@ export class MyBeneficiariesPage {
       this.User_Id = navParams.get('user_id') ;
       // this.id = navParams.get('id') ;
   
-      this.benForm = formBuilder.group({
+      this.beneficiaryForm = formBuilder.group({
 
-        // 'user_id': [this.User_ID,],
-        'user_id': ['16'],
+        'user_id': [this.User_Id,],
+        // 'user_id': ['16'],
         // 'id': ['1'],
         
         // 'name': ['',],
-        // 'phone': ['',],
+        'phone': ['',],
       })
   }
 
@@ -66,7 +66,7 @@ export class MyBeneficiariesPage {
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
 
-    var postData = this.benForm.value;
+    var postData = this.beneficiaryForm.value;
 
    //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.viewbeneficiary(postData)
@@ -91,13 +91,12 @@ export class MyBeneficiariesPage {
   //   this.navCtrl.push('ForgotpasswordPage')
   // }
 
-  goBeneficiary(){
-    this.storage.get('user_id').then((result) => {
-    
+  goBeneficiary(id,user_id){
        this.navCtrl.push("BeneficiaryPage", {
-          user_id:result,
+          // user_id:result,
+          data: id,
+          user_id:user_id
         });
-    });
    }
 
    goForgotpassword(){
@@ -137,7 +136,7 @@ export class MyBeneficiariesPage {
               handler: () => {
                 this.storage.set('Medical_Aid_Status', 'Yes');
                 console.log('Agree clicked'); 
-                this.navCtrl.setRoot('HomePage'); 
+                this.navCtrl.setRoot('MyBeneficiariesPage'); 
               }
             },
             {
