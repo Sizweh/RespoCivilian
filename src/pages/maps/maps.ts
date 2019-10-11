@@ -516,8 +516,8 @@ var geocoder = new google.maps.Geocoder();
 var location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
 
-let la = position.coords.latitude;
-let lo= position.coords.longitude;
+// let la = position.coords.latitude;
+// let lo= position.coords.longitude;
 
 // this.storage.set('lat', la);
 // this.storage.set('long', lo);
