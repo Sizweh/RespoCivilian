@@ -35,8 +35,13 @@ export class MedicalDetailsPage {
         'scheme_name': ['',],
         'partial_membership': ['',],
         'prefered_hospital': ['',],
-        'chronic_dis': ['',],
-        'disability': ['',]
+        // 'chronic_dis': ['',],
+        // 'disability': ['',]
+
+        'name': ['',],
+        'surname': ['',],
+        'phone': ['',],
+        'relationship': ['',],
 
       })
 
@@ -98,8 +103,10 @@ const value = this.medicaldetailsForm.value;
    this.storage.set('partial_membership', value.partial_membership);
    this.storage.set('prefered_hospital', value.prefered_hospital);
    
-   this.storage.set('chronic_dis', value.chronic_dis);
-   this.storage.set('disability', value.disability);
+   this.storage.set('name', value.name);
+   this.storage.set('surname', value.surname);
+   this.storage.set('phone', value.phone);
+   this.storage.set('relationship', value.relationship);
 
    this.navCtrl.push('NextOfKinPage')
   }

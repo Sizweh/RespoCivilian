@@ -45,6 +45,12 @@ export class NextOfKinPage {
   Medical_Aid_Status:any;
   org_id: any;
   student_no: any;
+  paymentBrand: any;
+  cardHolder: any;
+  cardNo: any;
+  expiryMonth: any;
+  expiryYear: any;
+  CVV: any;
 
 
   constructor(public navCtrl: NavController, 
@@ -58,10 +64,10 @@ export class NextOfKinPage {
 
       this.nextofkinForm = formBuilder.group({
 
-        'name': ['', Validators.compose([Validators.required])],
-        'surname': ['', Validators.compose([Validators.required])],
-        'phone': ['', Validators.compose([Validators.required])],
-        'relationship': ['', Validators.compose([Validators.required])],
+        // 'name': ['', Validators.compose([Validators.required])],
+        // 'surname': ['', Validators.compose([Validators.required])],
+        // 'phone': ['', Validators.compose([Validators.required])],
+        // 'relationship': ['', Validators.compose([Validators.required])],
 
         'paymentBrand': ['', Validators.compose([Validators.required])],
         'cardHolder': ['', Validators.compose([Validators.required])],
@@ -126,21 +132,22 @@ export class NextOfKinPage {
     
     //////////////////medical////////////////////////
     
+     
+      
+      // this.storage.get('chronic_dis').then((val) => {
+      //   //  console.log(String(val));
+      //   this.chronic_dis = val;
+      // });
+    
+      // this.storage.get('disability').then((val) => {
+      //   //  console.log(String(val));
+      //   this.disability = val;
+      // }); 
       this.storage.get('member_no').then((val) => {
         //  console.log(String(val));
         this.member_no = val;
       }); 
-      
-      this.storage.get('chronic_dis').then((val) => {
-        //  console.log(String(val));
-        this.chronic_dis = val;
-      });
-    
-      this.storage.get('disability').then((val) => {
-        //  console.log(String(val));
-        this.disability = val;
-      }); 
-      
+
       this.storage.get('scheme_name').then((val) => {
         //  console.log(String(val));
         this.scheme_name = val;
@@ -155,39 +162,56 @@ export class NextOfKinPage {
         //  console.log(String(val));
         this.prefered_hospital = val;
       });
+
+      this.storage.get('name').then((val) => {
+        //  console.log(String(val));
+        this.name = val;
+      });
+      
+      this.storage.get('surname').then((val) => {
+        //  console.log(String(val));
+        this.surname = val;
+      });
+      
+      this.storage.get('phone').then((val) => {
+        //  console.log(String(val));
+        this.phone = val;
+      });
+      
+      this.storage.get('relationship').then((val) => {
+        //  console.log(String(val));
+        this.relationship = val;
+      });
     
-      // this.storage.get('org_id').then((val) => {
-      //   //  console.log(String(val));
-      //   this.org_id = val;
-      // });
-    
-      // this.storage.get('student_no ').then((val) => {
-      //   //  console.log(String(val));
-      //   this.student_no = val;
-      // });
+      
     
 
 //////////////////nextofkin////////////////////////
     
-this.storage.get('name').then((val) => {
-  //  console.log(String(val));
-  this.name = val;
-});
-
-this.storage.get('surname').then((val) => {
-  //  console.log(String(val));
-  this.surname = val;
-});
-
-this.storage.get('phone').then((val) => {
-  //  console.log(String(val));
-  this.phone = val;
-});
-
-this.storage.get('relationship').then((val) => {
-  //  console.log(String(val));
-  this.relationship = val;
-});
+this.storage.get('paymentBrand').then((val) => {
+        //  console.log(String(val));
+        this.paymentBrand = val;
+      });
+      this.storage.get('cardHolder ').then((val) => {
+        //  console.log(String(val));
+        this.cardHolder = val;
+      });
+      this.storage.get('cardNo ').then((val) => {
+        //  console.log(String(val));
+        this.cardNo = val;
+      });
+      this.storage.get('expiryMonth ').then((val) => {
+        //  console.log(String(val));
+        this.expiryMonth = val;
+      });
+      this.storage.get('expiryYear ').then((val) => {
+        //  console.log(String(val));
+        this.expiryYear = val;
+      });
+      this.storage.get('CVV ').then((val) => {
+        //  console.log(String(val));
+        this.CVV = val;
+      });
 
 
 
@@ -198,10 +222,12 @@ goVerifyAccount(){
 
   const value = this.nextofkinForm.value;
    
-  this.storage.set('name', value.name);
-  this.storage.set('surname', value.surname);
-  this.storage.set('phone', value.phone);
-  this.storage.set('relationship', value.relationship);
+  this.storage.set('paymentBrand', value.paymentBrand);
+  this.storage.set('cardHolder', value.cardHolder);
+  this.storage.set('cardNo', value.cardNo);
+  this.storage.set('expiryMonth', value.expiryMonth);
+  this.storage.set('expiryYear', value.expiryYear);
+  this.storage.set('CVV', value.CVV);
 
   // this.storage.set('chronic_dis', value.chronic_dis);
   // this.storage.set('disability', value.disability);
@@ -210,23 +236,29 @@ goVerifyAccount(){
 
     //medical//
  
-   chronic_dis:this.chronic_dis,
-   disability:this.disability,
+  //  chronic_dis:this.chronic_dis,
+  //  disability:this.disability,
    scheme_name:this.scheme_name,
    member_no:this.member_no,
    partial_membership:this.partial_membership,
    prefered_hospital:this.prefered_hospital,
    medical_aid_status:this.Medical_Aid_Status,
-  //  org_id:this.org_id,
-  //  student_no:this.student_no,
- 
-    //nextofkin//
- 
+
    name: value.name,
    surname: value.surname,
    phone:value.phone,
    relationship:value.relationship,
+ 
+    //nextofkin//
 
+   paymentBrand: value.paymentBrand,
+   cardHolder: value.cardHolder,
+   cardNo:value.cardNo,
+   expiryMonth:value.expiryMonth,
+   expiryYear: value.expiryYear,
+   CVV: value.CVV,
+   
+ 
    //register//
  
    fullName: this.fullName,
@@ -234,10 +266,9 @@ goVerifyAccount(){
    gender: this.gender,
    myDate: this.myDate,
    email: this.email,
-
    password:this.password,
 //  confirmPassword: this.confirmPassword,
-  //  status:'fffffff'
+ 
   
  }
  

@@ -186,7 +186,7 @@ goMaps(){
       
   this.storage.set('forWho', 'FB');
   //console.log('for someone clicked'); 
-  var user2: string;
+ // var user2: string;
   //this.urlService.viewbeneficiary(this.name).then(res => {
           console.log(name);
       //})
@@ -195,15 +195,17 @@ goMaps(){
      // });
   let alert = this.alertCtrl.create({
    //header: 'Radio',
+ 
     inputs: [
       {
         name: 'radio1',
         type: 'radio',
-        label: 'Radio 1',
-        value: 'name',
+        label: 'Akhona Mbhele',
+        value: 'Akhona Mbhele',
         // checked: true
-        
+       
       },
+      
       {
         name: 'radio2',
         type: 'radio',
@@ -229,7 +231,7 @@ goMaps(){
       }
     ]
   });
-
+  console.log(name);
  alert.present();
 
 
