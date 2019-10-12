@@ -29,14 +29,21 @@
       <ion-icon name=""></ion-icon>
     </button>
    <br>
+   <!-- <ion-row *ngFor="let fault of ben_collection"> -->
+   <div *ngIf="ben_collection">
 
-   <button icon-right ion-button block color="newcolor" round  [disabled] (click)="goMaps()">
+   <button icon-right ion-button block color="newcolor" round (click)="goMaps(ben_collection.name)">
     For Beneficiary
     <ion-icon name=""></ion-icon>
- </button>
+    </button>
+
+   <!-- </ion-row> -->
+</div>
+
+
 
    <br>
-          <button icon-right ion-button block color="newcolor" round  [disabled] (click)="goMaps()">
+          <button icon-right ion-button block color="newcolor" round  [disabled] (click)="goLocation()">
              For Someone else
              <ion-icon name=""></ion-icon>
           </button>

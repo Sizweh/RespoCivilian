@@ -63,12 +63,13 @@ export class NextOfKinPage {
         'phone': ['', Validators.compose([Validators.required])],
         'relationship': ['', Validators.compose([Validators.required])],
 
-        'card': ['', Validators.compose([Validators.required])],
-        'cvv': ['', Validators.compose([Validators.required])],
-        'holder': ['', Validators.compose([Validators.required])],
-        'year': ['', Validators.compose([Validators.required])],
-        'country': ['', Validators.compose([Validators.required])],
-        'code': ['', Validators.compose([Validators.required])],
+        'paymentBrand': ['', Validators.compose([Validators.required])],
+        'cardHolder': ['', Validators.compose([Validators.required])],
+        'cardNo': ['', Validators.compose([Validators.required])],
+        'expiryMonth': ['', Validators.compose([Validators.required])],
+        'expiryYear': ['', Validators.compose([Validators.required])],
+        'CVV': ['', Validators.compose([Validators.required])],
+       // 'code': ['', Validators.compose([Validators.required])],
         // 'remembertoken': ['', Validators.compose([Validators.required])],
     
       })
@@ -155,15 +156,15 @@ export class NextOfKinPage {
         this.prefered_hospital = val;
       });
     
-      this.storage.get('org_id').then((val) => {
-        //  console.log(String(val));
-        this.org_id = val;
-      });
+      // this.storage.get('org_id').then((val) => {
+      //   //  console.log(String(val));
+      //   this.org_id = val;
+      // });
     
-      this.storage.get('student_no ').then((val) => {
-        //  console.log(String(val));
-        this.student_no = val;
-      });
+      // this.storage.get('student_no ').then((val) => {
+      //   //  console.log(String(val));
+      //   this.student_no = val;
+      // });
     
 
 //////////////////nextofkin////////////////////////
@@ -202,8 +203,8 @@ goVerifyAccount(){
   this.storage.set('phone', value.phone);
   this.storage.set('relationship', value.relationship);
 
-  this.storage.set('chronic_dis', value.chronic_dis);
-  this.storage.set('disability', value.disability);
+  // this.storage.set('chronic_dis', value.chronic_dis);
+  // this.storage.set('disability', value.disability);
 
   this.Userdata = { 
 
@@ -216,8 +217,8 @@ goVerifyAccount(){
    partial_membership:this.partial_membership,
    prefered_hospital:this.prefered_hospital,
    medical_aid_status:this.Medical_Aid_Status,
-   org_id:this.org_id,
-   student_no:this.student_no,
+  //  org_id:this.org_id,
+  //  student_no:this.student_no,
  
     //nextofkin//
  
@@ -243,26 +244,17 @@ goVerifyAccount(){
   var headers = new Headers();
   headers.append("Accept", 'application/json');
   headers.append('Content-Type', 'application/json' );
- //  const requestOptions = new RequestOptions({ headers: headers });
-
-  //pass to back-end
-    // console.log(this.nextofkinForm.value);
-     //var postData = this.nextofkinForm.value;
-   
-   // postData['user_role']=  "Civilian";
-
-
      //THIS IS A BETTER WAY TO MAKE API CALLS
-     this.urlService.register(this.Userdata)
-     .subscribe(res => {
-     // console.log(res);
-    this.alert.presentAlert("Notification", res.msg);
-       if (res.status=='OK') {
-        this.navCtrl.push("VerifyAccountPage");
-      }
-     }, (err) => {
-       console.log(err);
-     });
+    this.urlService.register(this.Userdata)
+    .subscribe(res => {
+    // console.log(res);
+  this.alert.presentAlert("Notification", res.msg);
+      if (res.status=='OK') {
+      this.navCtrl.push("VerifyAccountPage");
+    }
+    }, (err) => {
+      console.log(err);
+    });
 
        //    this.http.post("http://46.101.169.33/api/civilian/registerCivilian", postData)
    

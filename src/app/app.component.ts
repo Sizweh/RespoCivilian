@@ -187,6 +187,17 @@ export class MyApp {
   this.menu.enable(true);
   this.menu.close();
       }
+      goMyBeneficiaries(){
+
+    this.storage.get('user_id').then((result) => {
+      this.nav.setRoot("MyBeneficiariesPage", {
+        user_id:result,
+        //id:result,
+      });
+  });
+  this.menu.enable(true);
+  this.menu.close();
+      }
       
     goSupport(){
 
@@ -213,11 +224,12 @@ export class MyApp {
     this.menu.close();
     }
 
-    goMyBeneficiaries(){
-    this.nav.setRoot('MyBeneficiariesPage');
-    this.menu.enable(true);
-    this.menu.close();
-    }
+    // goMyBeneficiaries(){
+      
+    // this.nav.setRoot('MyBeneficiariesPage');
+    // this.menu.enable(true);
+    // this.menu.close();
+    // }
 
     goBankDetails(){
     this.nav.setRoot('BankDetailsPage');

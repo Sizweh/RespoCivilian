@@ -19,6 +19,7 @@ export class MyBeneficiariesPage {
   id: any;
   user_id: any;
   phone: any;
+  user_Id: string;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -30,9 +31,9 @@ export class MyBeneficiariesPage {
     ) {
 
       
-      // this.storage.get('user_id').then((val) => {
-      //   this.user_Id = String(val);  
-      // });
+      this.storage.get('user_id').then((val) => {
+        this.user_Id = String(val);  
+      });
 
       // this.storage.get('id').then((val) => {
       //   this.id = String(val);  
@@ -43,14 +44,14 @@ export class MyBeneficiariesPage {
 
 
       this.id = navParams.get('data') ;
-      this.User_Id = navParams.get('user_id') ;
+      this.user_Id = navParams.get('user_id') ;
       // this.id = navParams.get('id') ;
   
       this.beneficiaryForm = formBuilder.group({
 
-        'user_id': [this.User_Id,],
-        // 'user_id': ['16'],
-        // 'id': ['1'],
+       'user_id': [this.user_Id,],
+        //'user_id': ['16'],
+        //'id': ['1'],
         
         // 'name': ['',],
         'phone': ['',],
@@ -60,7 +61,7 @@ export class MyBeneficiariesPage {
 
   ionViewDidLoad() {
 
-    // this.storage.get('user_id').then((result) => {
+    // this.storage.get('user_id').then((val) => {
 
     var headers = new Headers();
     headers.append("Accept", 'application/json');
@@ -77,6 +78,9 @@ export class MyBeneficiariesPage {
     }, (err) => {
         console.log(err);
       });
+      
+   
+      // this.user_Id = String(val);  
 //  });
 
 
@@ -91,24 +95,31 @@ export class MyBeneficiariesPage {
   //   this.navCtrl.push('ForgotpasswordPage')
   // }
 
-  goBeneficiary(id,user_id){
-       this.navCtrl.push("BeneficiaryPage", {
-          // user_id:result,
-          data: id,
-          user_id:user_id
-        });
-   }
+  // goBeneficiary(id,user_id){
+  //      this.navCtrl.push("BeneficiaryPage", {
+  //         // user_id:result,
+  //         data: id,
+  //         user_id:user_id
+  //       });
+  //  }
 
-   goForgotpassword(){
+   goBeneficiary(){
     this.storage.get('user_id').then((result) => {
-    
-       this.navCtrl.push("ForgotpasswordPage", {
+       this.navCtrl.push("BeneficiaryPage", {
           user_id:result,
         });
     });
    }
 
-   goHome(id){
+  goForgotpassword(id,user_id){    
+    this.navCtrl.push("ForgotpasswordPage", {
+      data: id,
+      user_id:user_id
+    });
+ 
+    }
+
+   goMyBeneficiaries(id){
 
     var headers = new Headers();
     headers.append("Accept", 'application/json');

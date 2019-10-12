@@ -21,8 +21,12 @@ export class ForgotpasswordPage {
   confirm_password: string = "";
   beneficiaryForm: FormGroup;
   ben_collection: any;
-  User_Id: any;
+ 
   id: any;
+  user_Id: any;
+  User_Id: any;
+  toConcat: string;
+  UserId: string;
   constructor(public navCtrl: NavController, 
 
     public formBuilder: FormBuilder, 
@@ -37,15 +41,16 @@ export class ForgotpasswordPage {
      
       this.id = navParams.get('data') ;
       this.User_Id = navParams.get('user_id') ;
+      // this.id = navParams.get('id') ;
 
       this.beneficiaryForm = formBuilder.group({
 
         // 'user_id': [this.User_ID,],
-        'user_id': ['16'],
-        'id': ['1'],
+        // 'user_id': ['16'],
+        // 'id': ['3'],
        
-        // 'user_id': [this.User_Id,],
-        // 'id': [this.id,],
+        'user_id': [this.User_Id,],
+        'id': [this.id,],
 
         
         'name': ['',],
@@ -74,7 +79,11 @@ export class ForgotpasswordPage {
 
 
 
-  ionViewDidLoad() {
+  ionViewDidLoad(id) {
+
+    // this.storage.get('id').then((val) => {
+    //   console.log(String(val));
+    //   this.  toConcat =   this.UserId =String(val); 
 
     var headers = new Headers();
     headers.append("Accept", 'application/json');
@@ -84,6 +93,8 @@ export class ForgotpasswordPage {
    //   pass to back-end
     //  console.log(this.historyForm.value);
       var postData = this.beneficiaryForm.value;
+      
+      // var postData = {id:val};
 
    //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.beneficiaries(postData)
@@ -95,6 +106,8 @@ export class ForgotpasswordPage {
         console.log(err);
     });
 
+  // });
+
 
     console.log('ionViewDidLoad ForgotPasswordPage');{
       
@@ -104,8 +117,8 @@ export class ForgotpasswordPage {
   goLogin(){
     this.navCtrl.setRoot('LoginPage')
   }
-  
-  goMyBeneficiaries(){
+
+  goHome(){
 
     var headers = new Headers();
     headers.append("Accept", 'application/json');
@@ -150,7 +163,7 @@ export class ForgotpasswordPage {
 
 
 
-    this.navCtrl.setRoot('MyBeneficiariesPage')
+    this.navCtrl.setRoot('HomePage')
   }
 
 

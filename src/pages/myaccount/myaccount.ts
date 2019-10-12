@@ -62,26 +62,20 @@ export class MyaccountPage {
   goForSelf(){
     
     this.storage.get('user_id').then((result) => {
-    
        this.navCtrl.push("ForSelfPage", {
           user_id:result,
           // id:result,
         });
-
       });
-
         }
 
   goMedicalHistory(user_id){
     this.storage.get('user_id').then((result) => {
-    
         this.navCtrl.push("MedicalHistoryPage", {
           user_id:result,
         });
-    });
-    
-        
-        }
+    })
+      }
     
         goNextOfSkin(){
     this.storage.get('user_id').then((result) => {
