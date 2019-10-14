@@ -30,12 +30,6 @@ export class NextOfKinPage {
   confirmPassword:any;
 
 
-  phone:any;
-  relationship:any;
-  name:any;
-  surname:any;
-
-
   partial_membership:any;
   member_no:any;
   scheme_name:any;
@@ -43,8 +37,13 @@ export class NextOfKinPage {
   chronic_dis:any;
   disability:any;
   Medical_Aid_Status:any;
-  org_id: any;
-  student_no: any;
+  phone:any;
+  relationship:any;
+  name:any;
+  surname:any;
+
+  // org_id: any;
+  // student_no: any;
   paymentBrand: any;
   cardHolder: any;
   cardNo: any;
@@ -64,17 +63,13 @@ export class NextOfKinPage {
 
       this.nextofkinForm = formBuilder.group({
 
-        // 'name': ['', Validators.compose([Validators.required])],
-        // 'surname': ['', Validators.compose([Validators.required])],
-        // 'phone': ['', Validators.compose([Validators.required])],
-        // 'relationship': ['', Validators.compose([Validators.required])],
-
         'paymentBrand': ['', Validators.compose([Validators.required])],
         'cardHolder': ['', Validators.compose([Validators.required])],
         'cardNo': ['', Validators.compose([Validators.required])],
         'expiryMonth': ['', Validators.compose([Validators.required])],
         'expiryYear': ['', Validators.compose([Validators.required])],
         'CVV': ['', Validators.compose([Validators.required])],
+
        // 'code': ['', Validators.compose([Validators.required])],
         // 'remembertoken': ['', Validators.compose([Validators.required])],
     
@@ -133,16 +128,6 @@ export class NextOfKinPage {
     //////////////////medical////////////////////////
     
      
-      
-      // this.storage.get('chronic_dis').then((val) => {
-      //   //  console.log(String(val));
-      //   this.chronic_dis = val;
-      // });
-    
-      // this.storage.get('disability').then((val) => {
-      //   //  console.log(String(val));
-      //   this.disability = val;
-      // }); 
       this.storage.get('member_no').then((val) => {
         //  console.log(String(val));
         this.member_no = val;
@@ -243,11 +228,10 @@ goVerifyAccount(){
    partial_membership:this.partial_membership,
    prefered_hospital:this.prefered_hospital,
    medical_aid_status:this.Medical_Aid_Status,
-
-   name: value.name,
-   surname: value.surname,
-   phone:value.phone,
-   relationship:value.relationship,
+   name: this.name,
+   surname: this.surname,
+   phone:this.phone,
+   relationship:this.relationship,
  
     //nextofkin//
 
