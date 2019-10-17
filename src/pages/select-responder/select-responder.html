@@ -27,7 +27,7 @@
 
 <!-- <ion-item (click)="goConfirm()"> -->
       <!-- <ion-list *ngFor="let respo of allResponders"> -->
-      <ion-row *ngFor="let respo of allResponders">
+      <ion-row *ngFor="let respo of allResponders; let i = index">
       
        <ion-card>
           <ion-card-content>
@@ -39,43 +39,19 @@
                   </ion-avatar>
 
                    <!-- <ion-row>   
-                      <p style="font-size: 12px;"><b>Responder Name:</b> 
+                      <p style="font-size: 12px;">
                         {{ respo.driver_name }}
                       </p>
                   </ion-row> -->
-                  <!-- <ion-row>   
-                    <p style="float:left; font-size: 12px;"><b>Company Name:</b> 
-                      {{ respo.company.company_name }}
-                    </p>
-                  </ion-row> -->
+              
 
                   <font size="3" color='#38414a'><b>{{ respo.company.company_name }}</b></font><br>
-                  <!-- <font size="2" color='#38414a'>{{ respo.phone_no }}</font><br> -->
-                  <!-- <font size="2" color='#38414a'> Closest Base : 5 kms away </font><br> -->
-
-                  <!-- <ion-row>   
-                      <p style="float:left; font-size: 12px;"><b>Cell Number:</b>
-                         {{ respo.phone_no }}
-                      </p>
-                    </ion-row> -->
-          
-                  <!-- <ion-row>   
-                      <p style="float:left; font-size: 12px;"><b>Email:</b> 
-                        {{ respo.email}}
-                      </p>
-                  </ion-row>
-
-                  <ion-row>   
-                      <p style="float:left; font-size: 12px;"><b>Plate Number:</b>
-                        {{ respo.license_no }}
-                      </p>
-                    </ion-row>
-
-                  <ion-row>   
+            
+                <ion-row>   
                     <p style="float:left; font-size: 12px;"><b></b> 
-                      1 minute away
+                    Distance: {{responder_positions[i].distance}} km
                     </p>
-                </ion-row> -->
+                </ion-row> 
                  
              </ion-item>
 

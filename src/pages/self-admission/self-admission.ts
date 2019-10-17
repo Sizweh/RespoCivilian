@@ -34,13 +34,6 @@ export class SelfAdmissionPage {
         this.user_Id = String(val);  
       });
 
-      // this.storage.get('id').then((val) => {
-      //   this.id = String(val);  
-      // });
-      // this.storage.get('phone').then((val) => {
-      //   this.phone = String(val);  
-      // });
-
 
       this.id = navParams.get('data') ;
       this.user_Id = navParams.get('user_id') ;
@@ -48,8 +41,8 @@ export class SelfAdmissionPage {
   
       this.beneficiaryForm = formBuilder.group({
 
-      //  'user_id': [this.user_Id,],
-        'user_id': ['16'],
+       'user_id': [this.user_Id,],
+        // 'user_id': ['16'],
         //'id': ['1'],
         
         // 'name': ['',],
@@ -66,21 +59,21 @@ export class SelfAdmissionPage {
 
     // this.storage.get('user_id').then((val) => {
 
-    var headers = new Headers();
-    headers.append("Accept", 'application/json');
-    headers.append('Content-Type', 'application/json' );
+  //   var headers = new Headers();
+  //   headers.append("Accept", 'application/json');
+  //   headers.append('Content-Type', 'application/json' );
 
-    var postData = this.beneficiaryForm.value;
+  //   var postData = this.beneficiaryForm.value;
 
-   //THIS IS A BETTER WAY TO MAKE API CALLS
-    this.urlService.viewbeneficiary(postData)
-    .subscribe(res => {
-     this.ben_collection = res;
-        if (res.status=='OK') {
-        }
-    }, (err) => {
-        console.log(err);
-      });
+  //  //THIS IS A BETTER WAY TO MAKE API CALLS
+  //   this.urlService.viewbeneficiary(postData)
+  //   .subscribe(res => {
+  //    this.ben_collection = res;
+  //       if (res.status=='OK') {
+  //       }
+  //   }, (err) => {
+  //       console.log(err);
+  //     });
       
    
       // this.user_Id = String(val);  
@@ -165,94 +158,30 @@ goLocation(){
 this.navCtrl.push("MapsPage");
 }
 
-goMaps(){
-  
-  var headers = new Headers();
-  headers.append("Accept", 'application/json');
-  headers.append('Content-Type', 'application/json' );
+// goChat2(){
+//   this.storage.set('forWho', 'FB');
+// this.navCtrl.push("Chat2Page");
+// }
 
-  var postData = this.beneficiaryForm.value;
 
- //THIS IS A BETTER WAY TO MAKE API CALLS
-  this.urlService.viewbeneficiary(postData)
-  .subscribe(res => {
-   this.ben_collection = res;
-      if (res.status=='OK') {
-      }
-  }, (err) => {
-      console.log(err);
-    });
- 
-      
+
+
+
+goChat2(){
   this.storage.set('forWho', 'FB');
-  //console.log('for someone clicked'); 
- // var user2: string;
-  //this.urlService.viewbeneficiary(this.name).then(res => {
-          console.log(name);
-      //})
-     // .catch((error) => {
-        
-     // });
-  let alert = this.alertCtrl.create({
-   //header: 'Radio',
- 
-    inputs: [
-      {
-        name: 'radio1',
-        type: 'radio',
-        label: 'Akhona Mbhele',
-        value: 'Akhona Mbhele',
-        // checked: true
-       
-      },
-      
-      {
-        name: 'radio2',
-        type: 'radio',
-        label: 'Radio 2',
-        value: 'value2'
-      },
-
-    ],
-    buttons: [
-      {
-        text: 'Cancel',
-        role: 'cancel',
-        cssClass: 'secondary',
-        handler: () => {
-          console.log('Confirm Cancel');
-        }
-      }, {
-        text: 'Ok',
-        handler: () => {
-          console.log('Confirm Ok');
-          this.navCtrl.push('MapsPage'); 
-        }
-      }
-    ]
-  });
-  console.log(name);
- alert.present();
-
-
-  // let alert = this.alertCtrl.create({
-  //       title: 'Self Admission',
-  //       message: 'Admission details sent successfully, your medical aid will reply with confirmation',
-  //       buttons: [
-  //         {
-  //           text: 'OK',
-  //           handler: () => {
-  //           }
-  //         }
-  //       ]
-  //     });
-  //     alert.present();
-
-
-
-  
-//this.navCtrl.push("MapsPage");
+  this.storage.get('user_id').then((result) => {
+   this.navCtrl.push("Chat2Page", {
+       user_id:result,
+     });
+  });   
 }
+
+
+
+
+
+
+
 
 }
 

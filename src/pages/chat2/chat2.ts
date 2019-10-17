@@ -1,136 +1,80 @@
-import { FormControl, FormBuilder } from '@angular/forms';
-import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, Content, ModalController } from 'ionic-angular';
-
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component } from '@angular/core';
+import { IonicPage, NavController, ModalController, AlertController, LoadingController, NavParams, } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 @IonicPage()
 @Component({
   selector: 'page-chat2',
   templateUrl: 'chat2.html'
 })
 export class Chat2Page {
-  toUser = {
-    _id: '534b8e5aaa5e7afc1b23e69b',
-    pic: 'assets/imgs/avatar/support.png',
-    username: 'MUFSAS Support',
-  };
 
-  user = {
-    _id: '534b8fb2aa5e7afc1b23e69c',
-    pic: 'assets/imgs/avatar/marty-avatar.png',
-    username: 'Marty',
-  };
+  beneficiaryForm: FormGroup;
+  ben_collection: any;
+  id: any;
+  user_Id: any;
+ 
 
-  doneLoading = false;
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    public formBuilder: FormBuilder, 
+    public modalctrl: ModalController,
+    public loadingCtrl: LoadingController,
+    public alertCtrl:  AlertController,
+    public storage: Storage,
+    private urlService: UrlbaseProvider,
+  
+    ) {
 
-  messages = [
-    {
-      _id: 1,
-      date: new Date(),
-      userId: this.user._id,
-      username: this.user.username,
-      pic: this.user.pic,
-      text: 'OH CRAP!!'
-    },
-    {
-      _id: 2,
-      date: new Date(),
-      userId: this.toUser._id,
-      username: this.toUser.username,
-      pic: this.toUser.pic,
-      text: 'what??'
-    },
-    {
-      _id: 3,
-      date: new Date(),
-      userId: this.toUser._id,
-      username: this.toUser.username,
-      pic: this.toUser.pic,
-      text: 'Pretty long message with lots of content'
-    },
-    {
-      _id: 4,
-      date: new Date(),
-      userId: this.user._id,
-      username: this.user.username,
-      pic: this.user.pic,
-      text: 'Pretty long message with even way more of lots and lots of content'
-    },
-    {
-      _id: 5,
-      date: new Date(),
-      userId: this.user._id,
-      username: this.user.username,
-      pic: this.user.pic,
-      text: 'what??'
-    },
-    {
-      _id: 6,
-      date: new Date(),
-      userId: this.toUser._id,
-      username: this.toUser.username,
-      pic: this.toUser.pic,
-      text: 'yes!'
-    }
-  ];
+      
+      this.id = navParams.get('data') ;
+      this.user_Id = navParams.get('user_id') ;
+      // this.id = navParams.get('id') ;
+  
+      this.beneficiaryForm = formBuilder.group({
 
-  @ViewChild(Content) content: Content;
-
-  public messageForm: any;
-  chatBox: any;
-
-  constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public modalctrl: ModalController) {
-    this.messageForm = formBuilder.group({
-      message: new FormControl('')
-    });
-    this.chatBox = '';
+       'user_id': [this.user_Id,],
+        // 'user_id': ['16'],
+        //'id': ['1'],
+        
+        // 'name': ['',],
+        'Beneficiary_id': ['',],
+      })
 
   }
 
-  send(message) {
-    if (message && message !== '') {
-      // this.messageService.sendMessage(chatId, message);
+  ionViewDidLoad() {
 
-      const messageData =
-        {
-          toId: this.toUser._id,
-          _id: 6,
-          date: new Date(),
-          userId: this.user._id,
-          username: this.toUser.username,
-          pic: this.toUser.pic,
-          text: message
-        };
+    var headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json' );
 
-      this.messages.push(messageData);
-      this.scrollToBottom();
+    var postData = this.beneficiaryForm.value;
 
-      setTimeout(() => {
-        const replyData =
-          {
-            toId: this.toUser._id,
-            _id: 6,
-            date: new Date(),
-            userId: this.toUser._id,
-            username: this.toUser.username,
-            pic: this.toUser.pic,
-            text: 'Just a quick reply'
-          };
-        this.messages.push(replyData);
-        this.scrollToBottom();
-      }, 1000);
-    }
-    this.chatBox = '';
+   //THIS IS A BETTER WAY TO MAKE API CALLS
+    this.urlService.viewbeneficiary(postData)
+    .subscribe(res => {
+     this.ben_collection = res;
+        if (res.status=='OK') {
+        }
+    }, (err) => {
+        console.log(err);
+      });
+
+
+
+
+    console.log('ionViewDidLoad Chat2Page');
   }
 
-  scrollToBottom() {
-    setTimeout(() => {
-      this.content.scrollToBottom();
-    }, 100);
+  goMaps(){
+
+   const value = this.beneficiaryForm.value;
+   this.storage.set('Beneficiary_id', value.Beneficiary_id);
+    this.navCtrl.setRoot ("MapsPage");
   }
 
-  rateSupport(){
-    let ratingModal = this.modalctrl.create("RatingPage");
-    ratingModal.present();
-  }
+
 
 }

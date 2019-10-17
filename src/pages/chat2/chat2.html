@@ -1,89 +1,49 @@
 <ion-header>
-        <ion-navbar>
-          <ion-toolbar mode="ios">
-            <ion-buttons start>
-      
-              <button ion-button icon-only menuToggle>
-                <ion-icon  name="menu"></ion-icon>
-              </button>
-            </ion-buttons>
-            <ion-title>Chat 2</ion-title>
-              
-          </ion-toolbar>
-        </ion-navbar>
-      </ion-header>
+    <ion-navbar color="newcolor">
+      <ion-toolbar color="newcolor" mode="ios">
+        <ion-buttons start>
+         <button color='light' ion-button icon-only menuToggle>
+         <ion-icon name="menu"></ion-icon>
+        </button>
+       </ion-buttons>
+      <ion-title text-center></ion-title>
+    </ion-toolbar>
+  </ion-navbar>
+</ion-header>
     
 <ion-content padding >
 
-    <div
-    *ngFor="let message of messages"
-    class="message-wrapper"
-    on-hold="onMessageHold($event, $index, message)"
-  >
-    <div *ngIf="user._id !== message.userId">
-      <!-- <img class="profile-pic left" [src]="toUser.pic" /> -->
-      <!--  wave-->
-      <div class="chat-bubble left slide-left">
-        <div class="message" [innerHTML]="message.text" autolinker></div>
+    <ion-title text-center>Select Beneficiary</ion-title>
 
-        <div class="message-detail">
-          <!-- <span (click)="viewProfile(message)" class="bold">{{toUser.username}}</span>, -->
-        
-          >
-        </div>
-      </div>
-    </div>
+    <br>
 
-    <div *ngIf="user._id === message.userId">
-      <!-- <img (click)="viewProfile(message)" class="profile-pic right" [src]="user.pic" onerror="onProfilePicError(this)" /> -->
+    <div class="login-fields" [formGroup]="beneficiaryForm">
 
-      <div class="chat-bubble right slide-right">
-        <div class="message" [innerHTML]="message.text" autolinker></div>
-
-        <div class="message-detail">
-          <!-- <span (click)="viewProfile(message)" class="bold">{{user.username}}</span>, -->
-        
-          >
-        </div>
-      </div>
-    </div>
-
-    <div class="cf"></div>
-  </div>
-
-
-
-    <p>&nbsp;&nbsp;It is a pleasure to respond to all citizens.<br>
-      &nbsp;&nbsp;<b>07 April 2018</b>
-  
-     <p> 
-      
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-
-  <ion-footer>
-      <ion-item>
-          <ion-input
+    <ion-item>
+        <ion-input placeholder="Beneficiary" type="text"></ion-input>
+        <ion-select formControlName="Beneficiary_id">
+            <ion-label>Select Beneficiary</ion-label>
           
-            [(ngModel)]="chatBox"
-            placeholder="Send a message..."
-          ></ion-input>
-          <button ion-button clear (click)="send(chatBox)" item-end>
-            <ion-icon class="footer-btn" name="send"></ion-icon>
+          <div *ngFor="let fault of ben_collection">
+              <ion-option value="{{ fault.id}}">{{fault.name}}</ion-option>
+            </div>
+  
+        </ion-select>
+      </ion-item>
+
+    </div>
+
+    <br>
+
+    <ion-row>
+        <ion-col col-6>
+          <button  ion-button round block color='secondary' (click)="goMaps()">
+            Next
           </button>
-        </ion-item>
-      
-      </ion-footer>
+        </ion-col>
+      </ion-row>
+
+
+
+  
 </ion-content>

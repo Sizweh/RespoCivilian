@@ -4,6 +4,7 @@ import { AlertsProvider } from './../../providers/alerts/alerts';
 import { Storage } from '@ionic/storage';
 //import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Geolocation } from '@ionic-native/geolocation';
 
 
 declare var google;
@@ -49,6 +50,7 @@ map1Form: FormGroup;
 map2Form: FormGroup;
 map_collection: any;
 additional_address : any ; 
+  geoLatitude: number;
 
 
   constructor(public navCtrl: NavController, 
@@ -58,6 +60,8 @@ additional_address : any ;
     public loadingCtrl: LoadingController,
    // private urlService: UrlbaseProvider,
     public formBuilder: FormBuilder,
+    private geolocation: Geolocation,
+
     ) {
 
       
@@ -526,7 +530,7 @@ geocoder.geocode({'latLng':location}, function (results, status) {
 if(status == google.maps.GeocoderStatus.OK){
 
   var add = results [0].formatted_address;
-  document.getElementById('infowindow-content').innerText = add;
+  // document.getElementById('infowindow-content').innerText = add;
 }
 });
         var geocodrr = new google.maps.Geocoder();
@@ -570,6 +574,14 @@ if(status == google.maps.GeocoderStatus.OK){
 
 
 ionViewDidLoad() {
+
+  this.geolocation.getCurrentPosition().then((data)=>{
+    this.geoLatitude = data.coords.latitude;
+    var tut =(`Lat : ${data.coords.latitude  } and Long : ${data.coords.longitude  }`);
+    console.log(tut);
+    document.getElementById('infowindow-content').innerHTML = tut;     
+  });
+
 console.log('ionViewDidLoad MapsPage');
 }
 
@@ -581,7 +593,14 @@ goSelectResponder() {
 
     var Sear_location = document.getElementById('infowindow-content').innerText;
     var number = (<HTMLInputElement>document.getElementById("add")).value;
-    this.storage.set('address', Sear_location);
+
+    this.geolocation.getCurrentPosition({enableHighAccuracy:true}).then((data)=>{
+      this.storage.set('Latitude',data.coords.latitude);
+      this.storage.set('Longitude',data.coords.longitude);
+    })
+
+
+    // this.storage.set('address', Sear_location);
     this.storage.set('additional_address', number);
   
 

@@ -4,6 +4,7 @@ import { AlertsProvider } from './../../providers/alerts/alerts';
 import { Storage } from '@ionic/storage';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import {  FormGroup } from '@angular/forms';
+import { Geolocation } from '@ionic-native/geolocation';
 
 
 declare var google;
@@ -59,6 +60,9 @@ responderName: any;
 responderId: any;
 company_name: any;
 forWho: any;
+    Latitude: any;
+    Longitude: any;
+  geoLatitude: number;
     
 
   constructor(public navCtrl: NavController, 
@@ -67,7 +71,15 @@ forWho: any;
     private storage: Storage,
     public loadingCtrl: LoadingController,
     private urlService: UrlbaseProvider,
+    private geolocation: Geolocation,
     ) {
+
+      this.geolocation.getCurrentPosition().then((data)=>{
+        this.geoLatitude = data.coords.latitude;
+        var tut =(`Lat : ${data.coords.latitude  } and Long : ${data.coords.longitude  }`);
+        console.log(tut);
+        document.getElementById('infowindow-content').innerHTML = tut;     
+      });
 
 this.storage.get('selected_responder').then((val) => {
 
@@ -89,6 +101,17 @@ this.storage.get('selected_responder').then((val) => {
   ionViewDidLoad() {
     console.log('ionViewDidLoad LocationPage');
 
+    
+
+      this.geolocation.getCurrentPosition().then((data)=>{
+        this.geoLatitude = data.coords.latitude;
+        var tut =(`Lat : ${data.coords.latitude  } and Long : ${data.coords.longitude  }`);
+        console.log(tut);
+        document.getElementById('infowindow-content').innerHTML = tut;     
+      });
+    
+    
+
   
     this.storage.get('additional_address').then((val) => {
         this.additional_address = val;
@@ -96,6 +119,12 @@ this.storage.get('selected_responder').then((val) => {
 
     this.storage.get('address').then((val) => {
         this.address = val;
+      });
+    this.storage.get('Latitude').then((val) => {
+        this.Latitude = val;
+      });
+    this.storage.get('Longitude').then((val) => {
+        this.Longitude = val;
       });
 
     this.storage.get('forWho').then((val) => {
@@ -165,6 +194,14 @@ setTimeout(()=>{
 
       this.storage.get('address').then((val) => {
         this.address = val;
+      });
+
+      this.storage.get('Latitude').then((val) => {
+        this.Latitude = val;
+      });
+      
+    this.storage.get('Longitude').then((val) => {
+        this.Longitude = val;
       });
 
       this.storage.get('selected_responder').then((val) => {
@@ -631,8 +668,8 @@ goConfirm(){
   this.userDetails = {
 
     'civilian_id': this.civilianId,
-    'lat': that.civilianLat,//current lat
-    'lng': that.civilianLng,//current lng
+    // 'lat': that.civilianLat,//current lat
+    // 'lng': that.civilianLng,//current lng
     'driver_id': this.selectedResponder.id,
     'company_id': this.selectedResponder.company.id,
     'emergency_type': this.event,
@@ -640,6 +677,8 @@ goConfirm(){
     'address':this.address,
     'additional_address':this.additional_address,
     'forWho':this.forWho,
+    'Latitude':this.Latitude,
+    'Longitude':this.Longitude,
  
   }
   this.urlService.makeRequest(this.userDetails)

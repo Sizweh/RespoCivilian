@@ -30,12 +30,21 @@
      ></ion-input>
   </ion-item>
 
-<ion-item>
+<!-- <ion-item>
     <ion-input
      placeholder="Expiry Month" 
      type="text"
      formControlName="expiryMonth"
      ></ion-input>
+  </ion-item> -->
+
+  <ion-item>
+    <ion-label>Expiry Month</ion-label>
+    <ion-datetime
+      displayFormat="DD/MM/YYYY"
+      pickerFormat="DD MMMM YYYY"
+      formControlName="expiryMonth"
+    ></ion-datetime>
   </ion-item>
 
 <ion-item>
