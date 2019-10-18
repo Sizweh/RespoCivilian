@@ -22,9 +22,18 @@
     <ion-input block formControlName="name" type="text" placeholder="Name"></ion-input>
   </ion-item>
 
-<ion-item>
+<!-- <ion-item>
     <ion-input block formControlName="relationship" type="text" placeholder="Relationship"></ion-input>
-  </ion-item>
+  </ion-item> -->
+   <ion-item>
+        <ion-input formControlName="relationship" placeholder="Relationship" type="text"></ion-input>
+        <ion-select formControlName="relationship"  >
+            <ion-label>Relationship</ion-label>
+          <ion-option value="Family Member">Family Member</ion-option>
+          <ion-option value="Friend">Friend</ion-option>
+          <ion-option value="Colleague">Colleague</ion-option>
+        </ion-select>
+      </ion-item>
 
 <ion-item>
     <ion-input minLength="11" maxLength="11" block formControlName="phone" type="tel" placeholder="Phone No."></ion-input>
@@ -34,20 +43,33 @@
     <ion-input block formControlName="email" type="text" placeholder="Email"></ion-input>
   </ion-item>
 
-<ion-item>
-    <ion-input block formControlName="gender" type="text" placeholder="Gender"></ion-input>
-  </ion-item>
+  <ion-item>
+        <ion-input formControlName="gender" placeholder="Gender" type="text"></ion-input>
+        <ion-select formControlName="gender"  >
+            <ion-label>Gender</ion-label>
+          <ion-option value="Friend">Male</ion-option>
+          <ion-option value="Colleague">Female</ion-option>
+        </ion-select>
+      </ion-item>
 
-<ion-item>
+<!-- <ion-item>
     <ion-input block formControlName="dob" type="text" placeholder="D.O.B"></ion-input>
-  </ion-item>
+  </ion-item> -->
+
+      <ion-item>
+        <!-- <ion-label>Date of Birth</ion-label> -->
+         <ion-input formControlName="dob" placeholder="Date of Birth" type="text"></ion-input>
+        <ion-datetime
+          displayFormat="DD/MM/YYYY"
+          pickerFormat="DD MMMM YYYY"
+          formControlName="dob"
+        ></ion-datetime>
+      </ion-item>
+
 
 <ion-item>
     <ion-input block formControlName="allergies" type="text" placeholder="Allergies"></ion-input>
   </ion-item>
-
-
-
 
 
 </div>
@@ -55,7 +77,7 @@
 
 <ion-row>
     <ion-col col-6>
-      <button icon-right ion-button block round color="secondary" (click)="goMyBeneficiaries()">
+      <button icon-right ion-button block round color="secondary" (click)="goHome()">
         Save
       </button>
     </ion-col>

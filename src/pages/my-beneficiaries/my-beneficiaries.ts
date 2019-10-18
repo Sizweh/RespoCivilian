@@ -119,7 +119,7 @@ export class MyBeneficiariesPage {
  
     }
 
-   goMyBeneficiaries(id){
+   goHome(id){
 
     var headers = new Headers();
     headers.append("Accept", 'application/json');
@@ -147,7 +147,7 @@ export class MyBeneficiariesPage {
               handler: () => {
                 this.storage.set('Medical_Aid_Status', 'Yes');
                 console.log('Agree clicked'); 
-                this.navCtrl.setRoot('MyBeneficiariesPage'); 
+                this.navCtrl.setRoot('HomePage'); 
               }
             },
             {

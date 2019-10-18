@@ -117,16 +117,6 @@ additional_address : any ;
       this.civilianId = val;
     });
 
-    // this.storage.get('selected_responder').then((val) => {
-    //   // console.log('respo db stuff');
-    //   // console.log(val);
-    //   this.selectedResponder = val;
-    //   this.responderName = val.driver_name;
-    //   // alert(this.responderName);
-    //   var randomnumber = Math.floor(Math.random() * (7 - 1 + 1)) + 1;
-    //   this.responderDistance = randomnumber;
-    // });
-
     let that = this;
     //intial map setup, if no geolaction available
 
@@ -510,11 +500,6 @@ var infowindow = new google.maps.InfoWindow();
 infowindow.setContent(markerCivilian.title);
 infowindow.open(that.map, markerCivilian );
 
-        // var  test = document.getElementById('infowindow-content');
-    //end intial map setup
-   // var driverLatLng = {lat:this.driverLat, lng:this.driverLng};
-    // console.log("driver");
-    // console.log(driverLatLng);
 
 var geocoder = new google.maps.Geocoder();
 var location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -600,7 +585,7 @@ goSelectResponder() {
     })
 
 
-    // this.storage.set('address', Sear_location);
+     this.storage.set('address', Sear_location);
     this.storage.set('additional_address', number);
   
 

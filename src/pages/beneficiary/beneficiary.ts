@@ -40,10 +40,9 @@ export class BeneficiaryPage {
 
       this.beneficiaryForm = formBuilder.group({
         
-        // 'user_id': [this.User_Id],
-        'user_id': ['16',],
-        'id': ['1',],
-  
+        'user_id': [this.User_Id],
+        // 'user_id': ['16',],
+
         'name': ['',],
         'phone': ['',],
         'gender': ['',],
@@ -67,7 +66,7 @@ export class BeneficiaryPage {
     console.log('ionViewDidLoad BeneficiaryPage');
   }
 
-  goMyBeneficiaries(){
+  goHome(){
 
     const value = this.beneficiaryForm.value;
 
@@ -94,35 +93,21 @@ export class BeneficiaryPage {
     }, (err) => {
         console.log(err);
     });
-    
-
-  
-
-
-
-
     let toast = this.toastCtrl.create({
       message: 'Beneficiary added successfully',
       duration: 3000,
       position: 'bottom'
     });
-  
     toast.onDidDismiss(() => {
       console.log('Dismissed toast');
     });
-  
     toast.present();
-  
-  
-  
       const loading= this.loadingCtrl.create({
         content: "saving...",
         duration: 700
       });
       loading.present();
-
-
-    this.navCtrl.setRoot('MyBeneficiariesPage')
+    this.navCtrl.setRoot('HomePage')
   }
 
 }

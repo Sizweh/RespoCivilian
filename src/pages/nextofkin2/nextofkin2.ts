@@ -120,11 +120,9 @@ export class Nextofkin2Page {
       duration: 3000,
       position: 'bottom'
     });
-  
     toast.onDidDismiss(() => {
       console.log('Dismissed toast');
     });
-  
     toast.present();
 
 

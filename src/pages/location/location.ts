@@ -60,9 +60,11 @@ responderName: any;
 responderId: any;
 company_name: any;
 forWho: any;
-    Latitude: any;
-    Longitude: any;
-  geoLatitude: number;
+Latitude: any;
+Longitude: any;
+geoLatitude: number;
+Beneficiary_id: any;
+  request_id: any;
     
 
   constructor(public navCtrl: NavController, 
@@ -74,11 +76,8 @@ forWho: any;
     private geolocation: Geolocation,
     ) {
 
-      this.geolocation.getCurrentPosition().then((data)=>{
-        this.geoLatitude = data.coords.latitude;
-        var tut =(`Lat : ${data.coords.latitude  } and Long : ${data.coords.longitude  }`);
-        console.log(tut);
-        document.getElementById('infowindow-content').innerHTML = tut;     
+      this.storage.get('address').then((val) => {
+          this.address = val;
       });
 
 this.storage.get('selected_responder').then((val) => {
@@ -101,8 +100,7 @@ this.storage.get('selected_responder').then((val) => {
   ionViewDidLoad() {
     console.log('ionViewDidLoad LocationPage');
 
-    
-
+  
       this.geolocation.getCurrentPosition().then((data)=>{
         this.geoLatitude = data.coords.latitude;
         var tut =(`Lat : ${data.coords.latitude  } and Long : ${data.coords.longitude  }`);
@@ -113,6 +111,10 @@ this.storage.get('selected_responder').then((val) => {
     
 
   
+    this.storage.get('Beneficiary_id').then((val) => {
+        this.Beneficiary_id = val;
+      });
+      
     this.storage.get('additional_address').then((val) => {
         this.additional_address = val;
       });
@@ -131,12 +133,10 @@ this.storage.get('selected_responder').then((val) => {
         this.forWho = val;
       });
 
- 
       this.storage.get('specify_emergency').then((val) => {
-        // console.log('c db stuff');
-        // console.log(val);
         this.specify_emergency = val;
         this.specify_emergency = val.specify_emergency;
+      this.storage.remove( 'specify_emergency');
       });
 
 
@@ -176,7 +176,7 @@ setTimeout(()=>{
 
     this.storage.get('specify_emergency').then((val) => {
         this.specify_emergency = val;
-      // this.storage.remove( 'specify_emergency');
+      this.storage.remove( 'specify_emergency');
       });
 
     this.storage.get('category').then((val) => {
@@ -205,12 +205,9 @@ setTimeout(()=>{
       });
 
       this.storage.get('selected_responder').then((val) => {
-        //console.log('respo db stuff');
-        //console.log(val);
         this.selectedResponder = val;
         this.responderId = val.id;
         this.responderName = val.driver_name;
-        // alert(this.responderName);
         var randomnumber = Math.floor(Math.random() * (7 - 1 + 1)) + 1;
         this.responderDistance = randomnumber;
 
@@ -507,36 +504,10 @@ setTimeout(()=>{
       });
 
 
-    //end intial map setup
-    // var driverLatLng = {lat:this.driverLat, lng:this.driverLng};
-    // console.log("driver");
-    // console.log(driverLatLng);
+   
 
     var infowindow = new google.maps.InfoWindow();
-//DRIVER MARKER
 
-//   var markerRespo;
-//   markerRespo = new google.maps.Marker({
-//   position: driverLatLng,
-//   map: that.map,
-//   title: 'Responder driver location',
-//   draggable: false,
-//   icon: {                  
-//     url: "http://46.101.169.33/img/hospital.png"                           
-//   }
-
-//  }); 
-
-//  google.maps.event.addListener(markerRespo, 'click', (function(marker) {
-//             return function() {
-//               infowindow.setContent("sweet");
-//               infowindow.open(that.map, marker);
-//               // document.getElementById("emegencyButtons").style.display ='';
-
-//              }
-//           })(markerRespo));
-
-//END MARKER
 
 
   this.infoWindow = new google.maps.InfoWindow;
@@ -589,60 +560,14 @@ setTimeout(()=>{
             var infowindow = new google.maps.InfoWindow();
             infowindow.setContent("My location");
             infowindow.open(that.map, markerCivilian);
-            // document.getElementById("emegencyButtons").style.display ='';
-        // var geocodr = new google.maps.Geocoder();
-        // markerCivilian.addListener('dragend', function(event)  {
-          
-       //   alert(event.latLng.lat() + ' ' +  event.latLng.lng());
-    //    geocodr.geocode({
-    //       'latLng': event.latLng
-    //       }, function(results, status) {
-    //         if (status == google.maps.GeocoderStatus.OK) {
-    //           if (results[0]) {
-            
-    //             this.adressess = results[0].formatted_address; 
-              
-    //             infowindow.setContent(this.adressess);
-    //           }
-    //         }
-    //       });
-    //   });
+
 
         that.infoWindow.open(that.map);
         that.map.setCenter(pos);
 
       }, function () {
         this.handleLocationError(true, that.infoWindow, this.map.getCenter(), that.map);
-      });
-    //api call to get the closest most relevant driver 
-    // this.http.get("http://03e873a6.ngrok.io/api/civilian/showalldrivers", this.userDetails)//testing on devapp
-    // this.http.get("http://46.101.169.33/api/civilian/showalldrivers", this.userDetails)
-    //     this.http.get("http://127.0.0.1:8000/api/civilian/showalldrivers", this.userDetails)
-
-    // .subscribe(data => {
-    
-    // //set drivers coordinates and distance
-    // this.driverLat = parseFloat(data['aDriver']['lat']);
-    // this.driverLng = parseFloat(data['aDriver']['lng']);
-    // this.driversCompany = [data['driverETA']];
-
-    // //get distnace and company details
-    // this.driversDistance = data['distance'];
-    // this.driverETA = data['ETA'];
-    // this.driversCompany = [data['driverCompany']]
-    
-
-    // //  alert('1');
-    //   this.driver = [data['aDriver']];
-    //   console.log("this driver");
-    //   console.log(this.driver);
-    // //  console.log(this.responder);
-    //   console.log(data);
-    //   }, error => {
-    //   console.log(error);
-    // });
-    
-    
+      });    
 } else {
 // Browser doesn't support Geolocation
 this.handleLocationError(true, that.infoWindow, that.map.getCenter(), that.map);
@@ -668,8 +593,8 @@ goConfirm(){
   this.userDetails = {
 
     'civilian_id': this.civilianId,
-    // 'lat': that.civilianLat,//current lat
-    // 'lng': that.civilianLng,//current lng
+    'lat': that.civilianLat,//current lat
+    'lng': that.civilianLng,//current lng
     'driver_id': this.selectedResponder.id,
     'company_id': this.selectedResponder.company.id,
     'emergency_type': this.event,
@@ -679,6 +604,9 @@ goConfirm(){
     'forWho':this.forWho,
     'Latitude':this.Latitude,
     'Longitude':this.Longitude,
+    'Beneficiary_id':this.Beneficiary_id,
+    'request_id':this.request_id,
+
  
   }
   this.urlService.makeRequest(this.userDetails)
@@ -705,7 +633,6 @@ goConfirm(){
         this.storage.set('request_id', reqId);
         this.storage.set('specify_emergency', specify);
         this.storage.remove( 'specify_emergency');
-       
         this.navCtrl.push("ConfirmPage");
       }
     }, (err) => {
@@ -735,3 +662,30 @@ this.navCtrl.setRoot('HomePage')
 
 
 }
+    //api call to get the closest most relevant driver 
+    // this.http.get("http://03e873a6.ngrok.io/api/civilian/showalldrivers", this.userDetails)//testing on devapp
+    // this.http.get("http://46.101.169.33/api/civilian/showalldrivers", this.userDetails)
+    //     this.http.get("http://127.0.0.1:8000/api/civilian/showalldrivers", this.userDetails)
+
+    // .subscribe(data => {
+    
+    // //set drivers coordinates and distance
+    // this.driverLat = parseFloat(data['aDriver']['lat']);
+    // this.driverLng = parseFloat(data['aDriver']['lng']);
+    // this.driversCompany = [data['driverETA']];
+
+    // //get distnace and company details
+    // this.driversDistance = data['distance'];
+    // this.driverETA = data['ETA'];
+    // this.driversCompany = [data['driverCompany']]
+    
+
+    // //  alert('1');
+    //   this.driver = [data['aDriver']];
+    //   console.log("this driver");
+    //   console.log(this.driver);
+    // //  console.log(this.responder);
+    //   console.log(data);
+    //   }, error => {
+    //   console.log(error);
+    // });

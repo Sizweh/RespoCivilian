@@ -123,11 +123,8 @@ export class ForgotpasswordPage {
     var headers = new Headers();
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
-  //  const requestOptions = new RequestOptions({ headers: headers });
-   
-   //   pass to back-end
-    //  console.log(this.historyForm.value);
-      var postData = this.beneficiaryForm.value;
+
+     var postData = this.beneficiaryForm.value;
 
    //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.editbeneficiary(postData)
@@ -138,30 +135,20 @@ export class ForgotpasswordPage {
     }, (err) => {
         console.log(err);
     });
-
-    
     let toast = this.toastCtrl.create({
       message: 'Beneficiary details edited successfully',
       duration: 3000,
       position: 'bottom'
     });
-  
     toast.onDidDismiss(() => {
       console.log('Dismissed toast');
     });
-  
     toast.present();
-  
-  
-  
       const loading= this.loadingCtrl.create({
         content: "saving...",
         duration: 700
       });
       loading.present();
-
-
-
 
     this.navCtrl.setRoot('HomePage')
   }
@@ -172,23 +159,4 @@ export class ForgotpasswordPage {
 
 
 
-   
-  goForgotpassword2(){
-    this.navCtrl.push('Forgotpassword2Page')
-    if(this.phone_number=="0787463734"){
-      const toast = this.toastCtrl.create({
-        message: 'Password reset successfully',
-        duration: 3000
-      });
-      toast.present();
-    }else if (this.create_password=="12345"){}
-    const toast = this.toastCtrl.create({
-      message: 'Successfull...',
-      duration: 8000
-    });
-    toast.present();
-
-
-
-  }
 }

@@ -51,6 +51,7 @@ faultCategories = [
     faultID: 2,
     category: "Chest Pains",
     imageUrl: "../../assets/icons/R1.png",
+    // imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/R1.png", 
     icon: "alarm"
   },
 

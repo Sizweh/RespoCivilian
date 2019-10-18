@@ -63,9 +63,10 @@ export class NextOfKinPage {
 
       this.nextofkinForm = formBuilder.group({
 
-        'paymentBrand': ['', Validators.compose([Validators.required])],
+        'paymentBrand': ['',Validators.compose([Validators.required])],
         'cardHolder': ['', Validators.compose([Validators.required])],
-        'cardNo': ['', Validators.compose([Validators.required])],
+        // 'cardNo': ['', Validators.compose([Validators.required])],
+        'cardNo': ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern("^[0-9]{10}")])],
         'expiryMonth': ['', Validators.compose([Validators.required])],
         'expiryYear': ['', Validators.compose([Validators.required])],
         'CVV': ['', Validators.compose([Validators.required])],

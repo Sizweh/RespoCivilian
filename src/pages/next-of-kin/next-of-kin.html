@@ -6,13 +6,24 @@
 
 <h5>Banking details</h5>
 
-<ion-item>
+<!-- <ion-item>
     <ion-input
      placeholder="Payment Brand " 
      type="text"
      formControlName="paymentBrand"
      ></ion-input>
-  </ion-item>
+  </ion-item> -->
+    <ion-item>
+        <ion-input formControlName="paymentBrand" placeholder="Payment Brand" type="text"></ion-input>
+        <ion-select formControlName="paymentBrand"  >
+            <ion-label>Payment Brand</ion-label>
+          <ion-option value="visa">VISA</ion-option>
+          <ion-option value="elect">VisaElectron</ion-option>
+          <ion-option value="master">Master</ion-option>
+          <ion-option value="carte">CarteBleue</ion-option>
+          <ion-option value="discov">Discover</ion-option>
+        </ion-select>
+      </ion-item>
 
 <ion-item>
     <ion-input
@@ -27,33 +38,27 @@
      placeholder="Card Number" 
      type="text"
      formControlName="cardNo"
+      minLength="10"
+      maxLength="10"
      ></ion-input>
   </ion-item>
 
-<!-- <ion-item>
-    <ion-input
-     placeholder="Expiry Month" 
-     type="text"
-     formControlName="expiryMonth"
-     ></ion-input>
-  </ion-item> -->
 
   <ion-item>
-    <ion-label>Expiry Month</ion-label>
+    <!-- <ion-label>Expiry Month</ion-label> -->
+    <ion-input formControlName="expiryMonth" placeholder="Expiry Month" type="text"></ion-input>
     <ion-datetime
-      displayFormat="DD/MM/YYYY"
-      pickerFormat="DD MMMM YYYY"
+      displayFormat="MM"
+      pickerFormat="MMMM"
       formControlName="expiryMonth"
     ></ion-datetime>
   </ion-item>
 
-<ion-item>
-    <ion-input
-     placeholder="Expiry Year" 
-     type="text"
-     formControlName="expiryYear"
-     ></ion-input>
+  <ion-item>
+    <!-- <ion-label>Expiry Year</ion-label> -->
+    <ion-input formControlName="expiryYear" placeholder="Expiry Year" type="text"></ion-input>
   </ion-item>
+
 
 <ion-item>
     <ion-input
@@ -62,10 +67,6 @@
      formControlName="CVV"
      ></ion-input>
   </ion-item>
-
-
-
-
 
     </div>
 

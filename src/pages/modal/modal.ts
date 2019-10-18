@@ -97,7 +97,7 @@ export class ModalPage {
  
 
 
-  goMyprofile() {
+  goMyAccount() {
 
     const values = this.skinForm.value;
     this.storage.set('name', values.name);
@@ -139,7 +139,7 @@ export class ModalPage {
     });
     loading.present();
 
-      this.navCtrl.setRoot("MyprofilePage");
+      this.navCtrl.setRoot("MyAccountPage");
       }
 
 }

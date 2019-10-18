@@ -34,11 +34,6 @@ export class MedicalHistoryPage {
 
       this.id = navParams.get('data') ;
       this.User_Id = navParams.get('user_id') ;
-
-      // this.storage.get('user_id').then((val) => {
-      //   console.log(String(val));
-      //   this.  toConcat =   this.UserId =String(val); 
-      // });
    
       this.medicalForm = formBuilder.group({
         
@@ -96,36 +91,12 @@ export class MedicalHistoryPage {
     //THIS IS A BETTER WAY TO MAKE API CALLS
   this.urlService.editMedical(postData)
   .subscribe(res => {
-      // this.presentToast(res.msg, res.status);
-     // console.log(res.id);
-      //console.log(res.drop_off);
-     //// this.alert.presentAlert("Notification", res.msg);
    this.medical_collection = res;
       if (res.status=='OK') {
-    //    this.storage.set('user_name', res.user_name);
-      //  this.storage.set('user_id', res.user_id);
-        // localStorage.setItem('token', res.token);
-        //this.navCtrl.setRoot('HomePage');
        }
   }, (err) => {
       console.log(err);
   });
-
-  //   var headers = new Headers();
-  //   headers.append("Accept", 'application/json');
-  //   headers.append('Content-Type', 'application/json' );
-  //  //pass to back-end
-  //     var postData = this.medicalForm.value;
-  //     //THIS IS A BETTER WAY TO MAKE API CALLS
-  //   this.urlService.medList(postData)
-  //   .subscribe(res => {
-  //    this.medical_collection = res;
-  //       if (res.status=='OK') {
-  //       }
-  //   }, (err) => {
-  //       console.log(err);
-  //   });
-
 
   let toast = this.toastCtrl.create({
     message: 'Medical details edited successfully',
@@ -139,14 +110,17 @@ export class MedicalHistoryPage {
 
   toast.present();
 
-
-
     const loading= this.loadingCtrl.create({
       content: "saving...",
       duration: 700
     });
     loading.present();
-    this.navCtrl.setRoot('MyprofilePage')
+    
+
+
+    this.navCtrl.push('MyprofilePage');
+
+   
   
     }
 
