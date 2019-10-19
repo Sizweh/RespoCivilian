@@ -5,7 +5,7 @@ import { Storage } from '@ionic/storage';
 //import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Geolocation } from '@ionic-native/geolocation';
-
+import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 
 declare var google;
 
@@ -57,6 +57,7 @@ additional_address : any ;
     public navParams: NavParams,
     public alert: AlertsProvider,
     private storage: Storage,
+    private nativeGeocoder: NativeGeocoder,
     public loadingCtrl: LoadingController,
    // private urlService: UrlbaseProvider,
     public formBuilder: FormBuilder,
@@ -560,6 +561,8 @@ if(status == google.maps.GeocoderStatus.OK){
 
 ionViewDidLoad() {
 
+  
+
   this.geolocation.getCurrentPosition().then((data)=>{
     this.geoLatitude = data.coords.latitude;
     var tut =(`Lat : ${data.coords.latitude  } and Long : ${data.coords.longitude  }`);
@@ -567,8 +570,15 @@ ionViewDidLoad() {
     document.getElementById('infowindow-content').innerHTML = tut;     
   });
 
+  
+
 console.log('ionViewDidLoad MapsPage');
 }
+
+
+
+
+
 
 goHome(){
 this.navCtrl.setRoot('HomePage')

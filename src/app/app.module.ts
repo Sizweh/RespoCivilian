@@ -26,6 +26,8 @@ import { SocketsProvider } from '../providers/sockets/sockets';
 import { SelectSearchableModule } from 'ionic-select-searchable';
 import { OneSignal } from '@ionic-native/onesignal/ngx'
 import { Geolocation } from '@ionic-native/geolocation';
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 
 const config: SocketIoConfig = { url: 'http://localhost:3001', options:{}};
 
@@ -64,9 +66,11 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options:{}};
   providers: [
     StatusBar,
     Geolocation,
+    SocialSharing,
     SplashScreen,
     OneSignal,
     ImagePicker,
+    NativeGeocoder,
     // FileChooser,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
 

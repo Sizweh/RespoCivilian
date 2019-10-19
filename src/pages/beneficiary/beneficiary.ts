@@ -54,12 +54,14 @@ export class BeneficiaryPage {
           
       })
 
+  }
 
+  tel='';
 
-
-
-
-
+  convert(){
+    if(this.tel.substr(0,1)==='0'){
+      this.tel='27'+this.tel.substr(1);
+    }
   }
 
   ionViewDidLoad() {

@@ -13,10 +13,7 @@
 </ion-header> -->
 
 <ion-content text-center> 
-    
   
-    <!-- <ion-title>Select Responder</ion-title> -->
-
       <br>
       
       <div id="pac-container" class="input-icons" text-center>
@@ -27,7 +24,7 @@
 
 <!-- <ion-item (click)="goConfirm()"> -->
       <!-- <ion-list *ngFor="let respo of allResponders"> -->
-      <ion-row *ngFor="let respo of allResponders; let i = index">
+      <ion-row *ngFor="let respo of allResponders_Distance ">
       
        <ion-card>
           <ion-card-content>
@@ -38,18 +35,12 @@
                     <img src="{{ respo.company.profile }}">
                   </ion-avatar>
 
-                   <!-- <ion-row>   
-                      <p style="font-size: 12px;">
-                        {{ respo.driver_name }}
-                      </p>
-                  </ion-row> -->
-              
-
+  
                   <font size="3" color='#38414a'><b>{{ respo.company.company_name }}</b></font><br>
             
                 <ion-row>   
                     <p style="float:left; font-size: 12px;"><b></b> 
-                    Distance: {{responder_positions[i].distance}} km
+                    Distance: {{respo.distance}} km
                     </p>
                 </ion-row> 
                  
@@ -60,6 +51,15 @@
       </ion-card> 
 
       </ion-row>
+
+</ion-content>
+
+
+
+
+
+
+
 
       <!-- <button clear icon-right ion-button block round  color="dakar" (click)="goMaps()">
       Back
@@ -128,4 +128,3 @@
   <!-- </ion-list> -->
 
   <!-- </ion-item> -->
-</ion-content>

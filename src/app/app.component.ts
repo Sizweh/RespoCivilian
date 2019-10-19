@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
 import { FormGroup, FormBuilder,} from '@angular/forms';
 import {OneSignal} from '@ionic-native/onesignal/ngx';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 
 
@@ -45,6 +46,7 @@ export class MyApp {
     private storage: Storage,
     private oneSignal: OneSignal,
     public formBuilder: FormBuilder,
+    private socialSharing: SocialSharing
     ) {
 
 
@@ -237,7 +239,15 @@ export class MyApp {
     this.menu.close();
     }
 
+whatsappShare(index){
+  var msg  = this.compilemsg(index);
+   this.socialSharing.shareViaWhatsApp(msg, null, null);
+ }
 
+ facebookShare(index){
+   var msg  = this.compilemsg(index);
+    this.socialSharing.shareViaFacebook(msg, null, null);
+  }
     
   
 }

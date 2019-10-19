@@ -38,12 +38,12 @@ export class RegisterPage {
 
       this.registerForm = formBuilder.group({
         'fullName': ['', Validators.compose([Validators.required])],
-        'gender': ['', Validators.compose([Validators.required])],
-        'myDate': ['', Validators.compose([Validators.required])],
+        // 'gender': ['', Validators.compose([Validators.required])],
+        // 'myDate': ['', Validators.compose([Validators.required])],
         'phonenumber': ['', Validators.compose([Validators.required, Validators.minLength(11), Validators.pattern("^[0-9]{11}")])],
         'email': ['', Validators.compose([Validators.minLength(4), Validators.maxLength(50), Validators.pattern('[a-zA-Z0-9._]+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$'), Validators.required])],
         'password': ['', Validators.compose([Validators.required, Validators.minLength(6)])],
-        'confirmPassword': ['', Validators.compose([Validators.required, Validators.minLength(6) ])],
+        // 'confirmPassword': ['', Validators.compose([Validators.required, Validators.minLength(6) ])],
       })
    
   }
@@ -99,12 +99,12 @@ export class RegisterPage {
     // this.storage.set('student_no', values.student_no);
     // this.storage.set('org_name', values.org_name);
     this.storage.set('fullName', values.fullName);
-    this.storage.set('gender', values.gender);
-    this.storage.set('myDate', values.myDate);
+    // this.storage.set('gender', values.gender);
+    // this.storage.set('myDate', values.myDate);
     this.storage.set('email', values.email);
     this.storage.set('phonenumber', values.phonenumber);
     this.storage.set('password', values.password);
-    this.storage.set('confirmPassword', values.confirmPassword);
+    // this.storage.set('confirmPassword', values.confirmPassword);
 
 
     this.navCtrl.push('MedicalDetailsPage');
