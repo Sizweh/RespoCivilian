@@ -538,6 +538,9 @@ console.log();
                 infowindow.setContent(this.adressess);
                 document.getElementById('infowindow-content').innerHTML = this.adressess;
                 this.Adressess = this.adressess;
+                this.storage.set('Latitude',event.latLng.lat() );
+                this.storage.set('Longitude',event.latLng.lat() );
+
               }
             }
           });
@@ -581,7 +584,7 @@ ionViewDidLoad() {
 
         let RoundedLat = this.geoLatitude.toFixed(3);
         let RoundedLng = this.geoLongitude.toFixed(3);
-        var x = document.getElementById('getaccuracy');
+        var x = document.getElementById('infowindow-content');
         var GPS = (`<b>Your GPS coordinates:</b>  ${RoundedLat} ,  ${RoundedLng}`);
         x.innerHTML = GPS;
 
@@ -617,6 +620,8 @@ goSelectResponder() {
       this.storage.set('Latitude',data.coords.latitude);
       this.storage.set('Longitude',data.coords.longitude);
     })
+
+
 
 
      this.storage.set('address', Sear_location);
