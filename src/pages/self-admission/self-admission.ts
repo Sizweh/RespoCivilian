@@ -117,8 +117,8 @@ this.navCtrl.push("MapsPage");
 
 
 
-goChat2(){
-
+goChat2(e){
+  console.log(e);
   
   //  const value = this.beneficiaryForm.value;
   //  this.storage.set('Beneficiary_id', value.Beneficiary_id);
@@ -129,11 +129,12 @@ goChat2(){
   let opt =[];
 
   this.ben_collection.forEach((ben,index)=>{
+
     let inp ={
       name: 'radio1',
       type: 'radio',
       label: ben.name,
-      value: ben.Beneficiary_id,
+      value: ben.name,
       
     };
 
@@ -152,6 +153,7 @@ goChat2(){
      opt
     ,
     buttons: 
+    
 
 
     [
@@ -164,14 +166,19 @@ goChat2(){
         }
       }, {
         text: 'Ok',
-        handler: (e) => {
+        handler: (e) => {     
 
+          console.log(e);
           
+          const value = this.beneficiaryForm.value;
+   
+        
          this.navCtrl.push("MapsPage");
-       
 
+         this.storage.set('Beneficiary_id', value.Beneficiary_id);
             
         }
+        
    
       }
     ]
@@ -180,6 +187,8 @@ goChat2(){
 
  alert.present();
 
+
+//  this.storage.set('Beneficiary_id', this.Beneficiary_id)
 
 
 

@@ -390,7 +390,7 @@ additional_address : any ;
           that.civilianLng = pos.lng;
         }
 
-
+         
 
         var image = "https://blooming-waters-81867.herokuapp.com/icons/moving4.png";
         var marrkerCivilian;
@@ -417,7 +417,7 @@ additional_address : any ;
           animation: google.maps.Animation.DROP,
 
         });
-
+       
 
         var input = document.getElementById('pac-input');
         var autocomplete = new google.maps.places.Autocomplete(input);
@@ -504,6 +504,11 @@ infowindow.open(that.map, markerCivilian );
 var geocoder = new google.maps.Geocoder();
 var location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
+var lat = position.coords.latitude;
+var lng = position.coords.longitude;
+
+
+
 
 // let la = position.coords.latitude;
 // let lo= position.coords.longitude;
@@ -515,13 +520,17 @@ geocoder.geocode({'latLng':location}, function (results, status) {
 if(status == google.maps.GeocoderStatus.OK){
 
   var add = results [0].formatted_address;
+  console.log(lat);
+  console.log(lng);
   // document.getElementById('infowindow-content').innerText = add;
+ 
 }
 });
+
         var geocodrr = new google.maps.Geocoder();
 
         marrkerCivilian.addListener('dragend', function (event) {
-          //   alert(event.latLng.lat() + ' ' +  event.latLng.lng());
+            console.log(event.latLng.lat() + ' ' +  event.latLng.lng());
           geocodrr.geocode({
             'latLng': event.latLng
           }, function (results, status) {
@@ -560,6 +569,11 @@ if(status == google.maps.GeocoderStatus.OK){
 
 ionViewDidLoad() {
 
+  // console.log(tlat);
+  // console.log(lng);
+ // console.log(this.position.coords.latitude+" "+ position.coords.longitude)
+ console.log(this.latitude);
+
   this.geolocation.getCurrentPosition().then((data)=>{
     this.geoLatitude = data.coords.latitude;
     var tut =(`Lat : ${data.coords.latitude  } and Long : ${data.coords.longitude  }`);
@@ -569,12 +583,17 @@ ionViewDidLoad() {
 
 console.log('ionViewDidLoad MapsPage');
 }
+  latitude(latitude: any) {
+    throw new Error("Method not implemented.");
+  }
 
 goHome(){
 this.navCtrl.setRoot('HomePage')
 }
 
 goSelectResponder() {
+
+
 
     var Sear_location = document.getElementById('infowindow-content').innerText;
     var number = (<HTMLInputElement>document.getElementById("add")).value;
@@ -583,6 +602,10 @@ goSelectResponder() {
       this.storage.set('lat',data.coords.latitude);
       this.storage.set('lng',data.coords.longitude);
     })
+
+
+
+
 
 
      this.storage.set('address', Sear_location);
