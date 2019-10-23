@@ -112,6 +112,7 @@ export class SelectResponderPage {
 
   sortArray(){
     let newArr:any[] = [];
+<<<<<<< HEAD
 
     
     
@@ -125,6 +126,18 @@ export class SelectResponderPage {
 
     });
 
+=======
+    
+    this.allResponders_Distance.forEach((itm,i)=>{
+      
+
+      newArr[i]=itm.distance;
+
+    });
+
+  
+
+>>>>>>> b9085fa0bc9854ab61cc7e5e80959005fcb33ae1
     
     console.log("++++++++++++Printing new array++++++++++");
     console.log(newArr);

@@ -4,7 +4,10 @@ import { AlertsProvider } from './../../providers/alerts/alerts';
 import { Storage } from '@ionic/storage';
 //import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Geolocation } from '@ionic-native/geolocation';
+import { Geolocation,Geoposition } from '@ionic-native/geolocation';
+import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
+
+import { Platform } from 'ionic-angular';
 
 
 declare var google;
@@ -50,13 +53,20 @@ map1Form: FormGroup;
 map2Form: FormGroup;
 map_collection: any;
 additional_address : any ; 
-  geoLatitude: number;
+enableHighAccuracy:any;
+
+geoLatitude: number;
+geoLongitude: number;
+NativeGeocoderReverseResult:string="";
+ReverseGeocoding:any;
 
 
   constructor(public navCtrl: NavController, 
+    private plt: Platform,
     public navParams: NavParams,
     public alert: AlertsProvider,
     private storage: Storage,
+    private geocoder: NativeGeocoder,
     public loadingCtrl: LoadingController,
    // private urlService: UrlbaseProvider,
     public formBuilder: FormBuilder,
@@ -125,6 +135,7 @@ additional_address : any ;
       center: { lat: -29.856278, lng: 31.028828 },
 
       disableDefaultUI: true,
+      
       styles: [
         {
           "featureType": "all",
@@ -396,7 +407,6 @@ additional_address : any ;
         var marrkerCivilian;
         marrkerCivilian = new google.maps.Marker({
           position: pos,
-
           map: that.map,
           title: 'My location',
           draggable: true,
@@ -409,7 +419,6 @@ additional_address : any ;
         var markerCivilian;
         markerCivilian = new google.maps.Marker({
           position: pos,
-
           map: that.map,
           title: 'My location',
           draggable: false,
@@ -422,20 +431,14 @@ additional_address : any ;
         var input = document.getElementById('pac-input');
         var autocomplete = new google.maps.places.Autocomplete(input);
         autocomplete.bindTo('bounds', that.map);
-
         autocomplete.setFields(
           ['address_components', 'geometry', 'icon', 'name']);
-
-        // var infowindow = new google.maps.InfoWindow();
-
         autocomplete.addListener('place_changed', function () {
           infowindow.close();
 
 
           var geocodr = new google.maps.Geocoder();
           marrkerCivilian.addListener('dragend', function (event) {
-
-            //   alert(event.latLng.lat() + ' ' +  event.latLng.lng());
             geocodr.geocode({
               'latLng': event.latLng
             }, function (results, status) {
@@ -463,7 +466,7 @@ additional_address : any ;
             that.map.fitBounds(place.geometry.viewport);
           } else {
             that.map.setCenter(place.geometry.location);
-            that.map.setZoom(17);
+            that.map.setZoom(12);
 
           }
           marrkerCivilian.setPosition(place.geometry.location);
@@ -504,12 +507,17 @@ infowindow.open(that.map, markerCivilian );
 var geocoder = new google.maps.Geocoder();
 var location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
+<<<<<<< HEAD
 var lat = position.coords.latitude;
 var lng = position.coords.longitude;
 
 
 
 
+=======
+var lat = position.coords.longitude;
+console.log(lat);
+>>>>>>> b9085fa0bc9854ab61cc7e5e80959005fcb33ae1
 // let la = position.coords.latitude;
 // let lo= position.coords.longitude;
 
@@ -523,14 +531,27 @@ if(status == google.maps.GeocoderStatus.OK){
   console.log(lat);
   console.log(lng);
   // document.getElementById('infowindow-content').innerText = add;
+<<<<<<< HEAD
  
+=======
+  console.log(position.coords.latitude);
+>>>>>>> b9085fa0bc9854ab61cc7e5e80959005fcb33ae1
 }
+
 });
+<<<<<<< HEAD
 
         var geocodrr = new google.maps.Geocoder();
 
         marrkerCivilian.addListener('dragend', function (event) {
             console.log(event.latLng.lat() + ' ' +  event.latLng.lng());
+=======
+console.log();
+        var geocodrr = new google.maps.Geocoder();
+
+        marrkerCivilian.addListener('dragend', function (event) {
+        console.log(event.latLng.lat() + ' ' +  event.latLng.lng());
+>>>>>>> b9085fa0bc9854ab61cc7e5e80959005fcb33ae1
           geocodrr.geocode({
             'latLng': event.latLng
           }, function (results, status) {
@@ -540,6 +561,9 @@ if(status == google.maps.GeocoderStatus.OK){
                 infowindow.setContent(this.adressess);
                 document.getElementById('infowindow-content').innerHTML = this.adressess;
                 this.Adressess = this.adressess;
+                this.storage.set('Latitude',event.latLng.lat() );
+                this.storage.set('Longitude',event.latLng.lat() );
+
               }
             }
           });
@@ -569,23 +593,54 @@ if(status == google.maps.GeocoderStatus.OK){
 
 ionViewDidLoad() {
 
+<<<<<<< HEAD
   // console.log(tlat);
   // console.log(lng);
  // console.log(this.position.coords.latitude+" "+ position.coords.longitude)
  console.log(this.latitude);
 
   this.geolocation.getCurrentPosition().then((data)=>{
-    this.geoLatitude = data.coords.latitude;
-    var tut =(`Lat : ${data.coords.latitude  } and Long : ${data.coords.longitude  }`);
-    console.log(tut);
-    document.getElementById('infowindow-content').innerHTML = tut;     
-  });
+=======
 
-console.log('ionViewDidLoad MapsPage');
+  let option = {
+   enableHighAccuracy:true,
+   maximumAge: 100,
+   timeout:3000
+  };
+
+    this.geolocation.getCurrentPosition(option).then((data)=>{
+>>>>>>> b9085fa0bc9854ab61cc7e5e80959005fcb33ae1
+    this.geoLatitude = data.coords.latitude;
+    this.geoLongitude = data.coords.longitude;
+    this.enableHighAccuracy =  data.coords.accuracy ;
+
+        let RoundedLat = this.geoLatitude.toFixed(3);
+        let RoundedLng = this.geoLongitude.toFixed(3);
+        var x = document.getElementById('infowindow-content');
+        var GPS = (`<b>Your GPS coordinates:</b>  ${RoundedLat} ,  ${RoundedLng}`);
+        x.innerHTML = GPS;
+
+        console.log(RoundedLat);
+        console.log(RoundedLng);
+        
+    }); 
+  
+////////////////////////////////////////
+
+
+///////////////////////////////////
+ console.log('ionViewDidLoad MapsPage');
+
+ 
 }
   latitude(latitude: any) {
     throw new Error("Method not implemented.");
   }
+
+
+
+
+
 
 goHome(){
 this.navCtrl.setRoot('HomePage')
@@ -606,8 +661,11 @@ goSelectResponder() {
 
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> b9085fa0bc9854ab61cc7e5e80959005fcb33ae1
      this.storage.set('address', Sear_location);
     this.storage.set('additional_address', number);
   
