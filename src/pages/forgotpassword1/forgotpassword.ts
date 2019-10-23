@@ -1,6 +1,6 @@
 import { Component, } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { FormGroup,  FormBuilder} from '@angular/forms'; 
+import { FormGroup,  FormBuilder, Validators} from '@angular/forms'; 
 import { Storage } from '@ionic/storage';
 import { UrlbaseProvider } from '../../providers/urlbase/urlbase';
 import { AlertController, LoadingController, ToastController } from 'ionic-angular';
@@ -52,14 +52,14 @@ export class ForgotpasswordPage {
         'user_id': [this.User_Id,],
         'id': [this.id,],
 
-        
-        'name': ['',],
-        'phone': ['',],
-        'gender': ['',],
-        'dob': ['',],
-        'allergies': ['',],
-        'relationship': ['',],
-        'email': ['',],
+        'name': ['', Validators.compose([Validators.required])],
+        'phone': ['', Validators.compose([Validators.required])],
+        'gender': ['', Validators.compose([Validators.required])],
+        'dob': ['', Validators.compose([Validators.required])],
+        'allergies': ['', Validators.compose([Validators.required])],
+        'relationship': ['', Validators.compose([Validators.required])],
+        'email': ['', Validators.compose([Validators.required])],
+
 
       })
 

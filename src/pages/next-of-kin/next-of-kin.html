@@ -1,72 +1,49 @@
 <ion-content no-scrolling text-center padding>
   <br>
+ 
 
 <div class="register-fields" [formGroup]="nextofkinForm">
 
 
-<h5>Banking details</h5>
+<h5>Next of Kin details</h5>
 
-<!-- <ion-item>
+<ion-item>
     <ion-input
-     placeholder="Payment Brand " 
+     placeholder="Name" 
      type="text"
-     formControlName="paymentBrand"
+     formControlName="name"
      ></ion-input>
-  </ion-item> -->
+  </ion-item>
+
+  <ion-item>
+    <ion-input 
+    placeholder="Surname" 
+    type="text"
+    formControlName="surname"
+    ></ion-input>
+  </ion-item>
+  
+  <ion-item>
+      <ion-input [(ngModel)]='tel' (ionBlur)="convert()"
+      placeholder="Phone Number" 
+      type="tel"
+      formControlName="phone"
+      minLength="11"
+       maxLength="11"
+      ></ion-input>
+    </ion-item>
+
     <ion-item>
-        <ion-input formControlName="paymentBrand" placeholder="Payment Brand" type="text"></ion-input>
-        <ion-select formControlName="paymentBrand"  >
-            <ion-label>Payment Brand</ion-label>
-          <ion-option value="visa">VISA</ion-option>
-          <ion-option value="elect">VisaElectron</ion-option>
-          <ion-option value="master">Master</ion-option>
-          <ion-option value="carte">CarteBleue</ion-option>
-          <ion-option value="discov">Discover</ion-option>
+        <ion-input formControlName="relationship" placeholder="Relationship" type="text"></ion-input>
+        <ion-select formControlName="relationship"  >
+            <ion-label>Relationship</ion-label>
+          <ion-option value="Family Member">Family Member</ion-option>
+          <ion-option value="Friend">Friend</ion-option>
+          <ion-option value="Colleague">Colleague</ion-option>
         </ion-select>
       </ion-item>
 
-<ion-item>
-    <ion-input
-     placeholder="Card Holder" 
-     type="text"
-     formControlName="cardHolder"
-     ></ion-input>
-  </ion-item>
 
-<ion-item>
-    <ion-input
-     placeholder="Card Number" 
-     type="text"
-     formControlName="cardNo"
-      minLength="10"
-      maxLength="10"
-     ></ion-input>
-  </ion-item>
-
-
-  <ion-item>
-    <!-- <ion-label>Expiry Month</ion-label> -->
-    <ion-input formControlName="expiryMonth" placeholder="Expiry Month" type="text"></ion-input>
-    <ion-datetime
-      displayFormat="MM"
-      pickerFormat="MMMM"
-      formControlName="expiryMonth"
-    ></ion-datetime>
-  </ion-item>
-
-  <ion-item>
-    <!-- <ion-label>Expiry Year</ion-label> -->
-    <ion-input formControlName="expiryYear" placeholder="Expiry Year" type="text"></ion-input>
-  </ion-item>
-
-
-<ion-item>
-    <ion-input
-     placeholder="CVV" 
-     type="text"
-     formControlName="CVV"
-     ></ion-input>
-  </ion-item>
 
     </div>
 
@@ -92,10 +69,97 @@
           <button ion-button clear color='newcolor' block (click)="goLogin()"> Cancel</button>
          </ion-col>
           <ion-col col-6>
-            <button  [disabled]="!nextofkinForm.valid"  ion-button round color='secondary' block (click)="goVerifyAccount()"> Done</button>
+            <button  [disabled]="!nextofkinForm.valid"  ion-button round color='secondary' block (click)="goVerifyAccount()">Done</button>
           </ion-col>
        </ion-row>
 
        <!-- [disabled]="!nextofkinForm.valid" -->
 
 </ion-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <ion-item>
+    <ion-input
+     placeholder="Payment Brand " 
+     type="text"
+     formControlName="paymentBrand"
+     ></ion-input>
+  </ion-item> -->
+    <!-- <ion-item>
+        <ion-input formControlName="paymentBrand" placeholder="Payment Brand" type="text"></ion-input>
+        <ion-select formControlName="paymentBrand">
+            <ion-label>Payment Brand</ion-label>
+          <ion-option >VISA</ion-option>
+          <ion-option >VisaElectron</ion-option>
+          <ion-option >Master</ion-option>
+          <ion-option >CarteBleue</ion-option>
+          <ion-option >Discover</ion-option>
+        </ion-select>
+      </ion-item>
+
+<ion-item>
+    <ion-input
+     placeholder="Card Holder" 
+     type="text"
+     formControlName="cardHolder"
+     ></ion-input>
+  </ion-item>
+
+<ion-item>
+    <ion-input
+     placeholder="Card Number" 
+     type="text"
+     formControlName="cardNo"
+      minLength="15"
+      maxLength="20"
+     ></ion-input>
+  </ion-item>
+
+
+  <ion-item>
+  
+    <ion-input formControlName="expiryMonth" placeholder="Expiry Month" type="text"></ion-input>
+    <ion-datetime
+    formControlName="expiryMonth"
+      displayFormat="MM"
+      pickerFormat="DD MMMM YYYY"
+    ></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+   
+    <ion-input formControlName="expiryYear" placeholder="Expiry Year" type="text"></ion-input>
+  </ion-item>
+
+
+<ion-item>
+    <ion-input
+      minLength="3"
+      maxLength="3"
+     placeholder="CVV" 
+     type="text"
+     formControlName="CVV"
+     ></ion-input>
+  </ion-item> -->

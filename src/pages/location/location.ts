@@ -118,14 +118,17 @@ this.storage.get('selected_responder').then((val) => {
     this.storage.get('additional_address').then((val) => {
         this.additional_address = val;
       });
+    this.storage.get('request_id').then((val) => {
+        this.request_id = val;
+      });
 
     this.storage.get('address').then((val) => {
         this.address = val;
       });
-    this.storage.get('Latitude').then((val) => {
+    this.storage.get('lat').then((val) => {
         this.Latitude = val;
       });
-    this.storage.get('Longitude').then((val) => {
+    this.storage.get('lng').then((val) => {
         this.Longitude = val;
       });
 
@@ -196,11 +199,11 @@ setTimeout(()=>{
         this.address = val;
       });
 
-      this.storage.get('Latitude').then((val) => {
+      this.storage.get('lat').then((val) => {
         this.Latitude = val;
       });
       
-    this.storage.get('Longitude').then((val) => {
+    this.storage.get('lng').then((val) => {
         this.Longitude = val;
       });
 
@@ -593,17 +596,17 @@ goConfirm(){
   this.userDetails = {
 
     'civilian_id': this.civilianId,
-    'lat': that.civilianLat,//current lat
-    'lng': that.civilianLng,//current lng
-    'driver_id': this.selectedResponder.id,
+    'lat': this.Latitude,//current lat
+    'lng': this.Longitude,//current lng
+    'driver_id': this.selectedResponder.id, 
     'company_id': this.selectedResponder.company.id,
     'emergency_type': this.event,
     'specify_emergency': this.specify_emergency,
     'address':this.address,
     'additional_address':this.additional_address,
     'forWho':this.forWho,
-    'Latitude':this.Latitude,
-    'Longitude':this.Longitude,
+    // 'Latitude':this.Latitude,
+    // 'Longitude':this.Longitude,
     'Beneficiary_id':this.Beneficiary_id,
     'request_id':this.request_id,
 
@@ -618,6 +621,7 @@ goConfirm(){
       var status = res.status;
       var reqId = res.request_id;
 
+   
       var specify = res.specify_emergency;
 
       const loader = this.loadingCtrl.create({
@@ -630,7 +634,7 @@ goConfirm(){
       }
       if (status == "OK") {
         loader.present();
-        this.storage.set('request_id', reqId);
+      this.storage.set('request_id', reqId);
         this.storage.set('specify_emergency', specify);
         this.storage.remove( 'specify_emergency');
         this.navCtrl.push("ConfirmPage");

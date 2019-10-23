@@ -37,19 +37,12 @@ export class NextOfKinPage {
   chronic_dis:any;
   disability:any;
   Medical_Aid_Status:any;
+
   phone:any;
   relationship:any;
   name:any;
   surname:any;
 
-  // org_id: any;
-  // student_no: any;
-  paymentBrand: any;
-  cardHolder: any;
-  cardNo: any;
-  expiryMonth: any;
-  expiryYear: any;
-  CVV: any;
 
 
   constructor(public navCtrl: NavController, 
@@ -63,14 +56,19 @@ export class NextOfKinPage {
 
       this.nextofkinForm = formBuilder.group({
 
-        'paymentBrand': ['',Validators.compose([Validators.required])],
-        'cardHolder': ['', Validators.compose([Validators.required])],
-        // 'cardNo': ['', Validators.compose([Validators.required])],
-        'cardNo': ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern("^[0-9]{10}")])],
-        'expiryMonth': ['', Validators.compose([Validators.required])],
-        'expiryYear': ['', Validators.compose([Validators.required])],
-        'CVV': ['', Validators.compose([Validators.required])],
+        'name': ['', Validators.compose([Validators.required])],
+        'surname': ['', Validators.compose([Validators.required])],
+        'phone': ['', Validators.compose([Validators.required])],
+        'relationship': ['', Validators.compose([Validators.required])],
 
+
+        // 'paymentBrand': ['',Validators.compose([Validators.required])],
+        // 'cardHolder': ['', Validators.compose([Validators.required])],
+        // 'cardNo': ['', Validators.compose([Validators.required])],
+        // //'cardNo': ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern("^[0-9]{10}")])],
+        // 'expiryMonth': ['', Validators.compose([Validators.required])],
+        // 'expiryYear': ['', Validators.compose([Validators.required])],
+        // 'CVV': ['', Validators.compose([Validators.required])],
        // 'code': ['', Validators.compose([Validators.required])],
         // 'remembertoken': ['', Validators.compose([Validators.required])],
     
@@ -93,19 +91,12 @@ export class NextOfKinPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad NextOfKinPage');
 
+
     /////////////////register//////////////////
 
     this.storage.get('fullName').then((val) => {
       //  console.log(String(val));
       this.fullName = val;
-    });
-    this.storage.get('gender').then((val) => {
-      //  console.log(String(val));
-      this.gender = val;
-    });
-    this.storage.get('myDate').then((val) => {
-      //  console.log(String(val));
-      this.myDate = val;
     });
     this.storage.get('email').then((val) => {
       //  console.log(String(val));
@@ -123,12 +114,16 @@ export class NextOfKinPage {
       //  console.log(String(val));
       this.confirmPassword = val;
     });
-   
-  
-    
+     // this.storage.get('gender').then((val) => {
+    //   //  console.log(String(val));
+    //   this.gender = val;
+    // });
+    // this.storage.get('myDate').then((val) => {
+    //   //  console.log(String(val));
+    //   this.myDate = val;
+    // });
     //////////////////medical////////////////////////
     
-     
       this.storage.get('member_no').then((val) => {
         //  console.log(String(val));
         this.member_no = val;
@@ -148,7 +143,8 @@ export class NextOfKinPage {
         //  console.log(String(val));
         this.prefered_hospital = val;
       });
-
+//////////////////nextofkin////////////////////////
+    
       this.storage.get('name').then((val) => {
         //  console.log(String(val));
         this.name = val;
@@ -169,35 +165,6 @@ export class NextOfKinPage {
         this.relationship = val;
       });
     
-      
-    
-
-//////////////////nextofkin////////////////////////
-    
-this.storage.get('paymentBrand').then((val) => {
-        //  console.log(String(val));
-        this.paymentBrand = val;
-      });
-      this.storage.get('cardHolder ').then((val) => {
-        //  console.log(String(val));
-        this.cardHolder = val;
-      });
-      this.storage.get('cardNo ').then((val) => {
-        //  console.log(String(val));
-        this.cardNo = val;
-      });
-      this.storage.get('expiryMonth ').then((val) => {
-        //  console.log(String(val));
-        this.expiryMonth = val;
-      });
-      this.storage.get('expiryYear ').then((val) => {
-        //  console.log(String(val));
-        this.expiryYear = val;
-      });
-      this.storage.get('CVV ').then((val) => {
-        //  console.log(String(val));
-        this.CVV = val;
-      });
 
 
 
@@ -208,53 +175,35 @@ goVerifyAccount(){
 
   const value = this.nextofkinForm.value;
    
-  this.storage.set('paymentBrand', value.paymentBrand);
-  this.storage.set('cardHolder', value.cardHolder);
-  this.storage.set('cardNo', value.cardNo);
-  this.storage.set('expiryMonth', value.expiryMonth);
-  this.storage.set('expiryYear', value.expiryYear);
-  this.storage.set('CVV', value.CVV);
-
-  // this.storage.set('chronic_dis', value.chronic_dis);
-  // this.storage.set('disability', value.disability);
+  this.storage.set('name', value.name);
+  this.storage.set('surname', value.surname);
+  this.storage.set('phone', value.phone);
+  this.storage.set('relationship', value.relationship);
 
   this.Userdata = { 
-
     //medical//
- 
-  //  chronic_dis:this.chronic_dis,
-  //  disability:this.disability,
    scheme_name:this.scheme_name,
    member_no:this.member_no,
    partial_membership:this.partial_membership,
    prefered_hospital:this.prefered_hospital,
    medical_aid_status:this.Medical_Aid_Status,
+  //  chronic_dis:this.chronic_dis,
+  //  disability:this.disability,
+
+    //nextofkin//
    name: this.name,
    surname: this.surname,
    phone:this.phone,
    relationship:this.relationship,
  
-    //nextofkin//
-
-   paymentBrand: value.paymentBrand,
-   cardHolder: value.cardHolder,
-   cardNo:value.cardNo,
-   expiryMonth:value.expiryMonth,
-   expiryYear: value.expiryYear,
-   CVV: value.CVV,
-   
- 
    //register//
- 
    fullName: this.fullName,
    phonenumber: this.phonenumber,
-   gender: this.gender,
-   myDate: this.myDate,
    email: this.email,
    password:this.password,
-//  confirmPassword: this.confirmPassword,
- 
-  
+//  gender: this.gender,
+//  myDate: this.myDate,
+//  confirmPassword: this.confirmPassword, 
  }
  
   var headers = new Headers();
@@ -267,10 +216,59 @@ goVerifyAccount(){
   this.alert.presentAlert("Notification", res.msg);
       if (res.status=='OK') {
       this.navCtrl.push("VerifyAccountPage");
-    }
+      }
     }, (err) => {
       console.log(err);
     });
+
+ 
+}
+
+  
+  goLogin(){
+   this.navCtrl.setRoot('LoginPage')
+  }
+
+
+  goFaq(){
+    this.navCtrl.push('FaqPage')
+  }
+
+
+  goRegister(){
+     this.navCtrl.push('RegisterPage')
+  }
+  
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
        //    this.http.post("http://46.101.169.33/api/civilian/registerCivilian", postData)
    
@@ -291,27 +289,3 @@ goVerifyAccount(){
   //     });
   //}
   
- 
-}
-
-  
-goLogin(){
-this.navCtrl.setRoot('LoginPage')
-
-}
-
-
-  goFaq(){
-    this.navCtrl.push('FaqPage')
-  }
-
-
-  goRegister(){
-     this.navCtrl.push('RegisterPage')
-  }
-  
-
-
-
-
-}

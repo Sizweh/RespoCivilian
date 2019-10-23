@@ -580,8 +580,8 @@ goSelectResponder() {
     var number = (<HTMLInputElement>document.getElementById("add")).value;
 
     this.geolocation.getCurrentPosition({enableHighAccuracy:true}).then((data)=>{
-      this.storage.set('Latitude',data.coords.latitude);
-      this.storage.set('Longitude',data.coords.longitude);
+      this.storage.set('lat',data.coords.latitude);
+      this.storage.set('lng',data.coords.longitude);
     })
 
 

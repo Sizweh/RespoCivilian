@@ -1,88 +1,54 @@
 <ion-content text-center padding>
-    <br>
-  <h6>Medical Aid Details (Fill in if on medical aid)</h6>
   <br>
-
-<!-- <font size="3" color='#38414a'><b>Note:&nbsp;</b>Fill in if on Medical Aid.</font> -->
+  <br>
+  <!-- <h6>Medical Aid Details</h6> -->
+  <br>
 
 
 
 <div class="login-fields" [formGroup]="medicaldetailsForm">
 
-    
-  <ion-item>
-      <ion-input placeholder="Scheme Name" type="text"></ion-input>
-      <ion-select formControlName="scheme_name">
-          <ion-label>Scheme Name</ion-label>
-        
-        <div *ngFor="let fault of medical_collection">
-            <ion-option >{{fault.company_name}}</ion-option>
-          </div>
 
-      </ion-select>
-    </ion-item>
 
-      <ion-item>
-        <ion-input formControlName="member_no" placeholder="Membership No" type="text"></ion-input>
-      </ion-item>
 
-      <ion-item>
-        <ion-input formControlName="partial_membership" placeholder="Partial Membership" type="text"></ion-input>
-      </ion-item>
+ <br>
+ <br>
+ <br>
+ <br>
 
-      <ion-item>
-        <ion-input formControlName="prefered_hospital" placeholder="Preferred Hospital" type="text"></ion-input>
-      </ion-item>
-<br>
+   <button ion-button block  color='secondary' (click)="goForSelf()">Medical Aid</button>
 
-<h6>Next of Kin details</h6>
+    <br>
 
-<ion-item>
-    <ion-input
-     placeholder="Name" 
-     type="text"
-     formControlName="name"
-     ></ion-input>
-  </ion-item>
+  <button ion-button block  color='newcolor' (click)="goNextOfKin()">Non-Medical Aid / Cash</button>
 
-  <ion-item>
-    <ion-input 
-    placeholder="Surname" 
-    type="text"
-    formControlName="surname"
-    ></ion-input>
-  </ion-item>
+
   
-  <ion-item>
-      <ion-input [(ngModel)]='tel' (ionBlur)="convert()"
-      placeholder="Phone Number" 
-      type="tel"
-      formControlName="phone"
-      minLength="11"
-       maxLength="11"
-      ></ion-input>
-    </ion-item>
-
-    <ion-item>
-        <ion-input formControlName="relationship" placeholder="Relationship" type="text"></ion-input>
-        <ion-select formControlName="relationship"  >
-            <ion-label>Relationship</ion-label>
-          <ion-option value="Family Member">Family Member</ion-option>
-          <ion-option value="Friend">Friend</ion-option>
-          <ion-option value="Colleague">Colleague</ion-option>
-        </ion-select>
-      </ion-item>
-
-
-
-
-
 
   </div>
 
-  <br>
 
-  <ion-row>
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+</ion-content>
+<!-- <font size="3" color='#38414a'><b>Note:&nbsp;</b>Fill in if on Medical Aid.</font> -->
+
+
+  <!-- <ion-row>
     <ion-col col-6>
       <button ion-button block clear color='newcolor' (click)="goRegister()"> Back </button>
     </ion-col>
@@ -91,11 +57,9 @@
         Next
       </button>
     </ion-col>
-  </ion-row>
+  </ion-row> -->
 
   <!-- [disabled]="!medicaldetailsForm.valid" -->
-</ion-content>
-
 
 
 <!-- <h6 text-center>Medical History</h6>
@@ -124,3 +88,34 @@
     <ion-option>No</ion-option>
   </ion-select>
 </ion-item> -->
+
+  
+  <!-- <ion-item>
+      <ion-input placeholder="Scheme Name" type="text"></ion-input>
+      <ion-select formControlName="scheme_name">
+          <ion-label>Scheme Name</ion-label>
+        
+        <div *ngFor="let fault of medical_collection">
+            <ion-option >{{fault.company_name}}</ion-option>
+          </div>
+
+      </ion-select>
+    </ion-item>
+
+      <ion-item>
+        <ion-input formControlName="member_no" placeholder="Membership No" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input formControlName="partial_membership" placeholder="Partial Membership" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input formControlName="prefered_hospital" placeholder="Preferred Hospital" type="text"></ion-input>
+      </ion-item>
+<br> -->
+
+
+
+
+

@@ -31,17 +31,13 @@ export class MedicalDetailsPage {
 
       this.medicaldetailsForm = formBuilder.group({
 
-        'member_no': ['',],
-        'scheme_name': ['',],
-        'partial_membership': ['',],
-        'prefered_hospital': ['',],
+
+        // 'member_no': ['',],
+        // 'scheme_name': ['',],
+        // 'partial_membership': ['',],
+        // 'prefered_hospital': ['',],
         // 'chronic_dis': ['',],
         // 'disability': ['',]
-
-        'name': ['',],
-        'surname': ['',],
-        'phone': ['',],
-        'relationship': ['',],
 
       })
 
@@ -57,34 +53,34 @@ export class MedicalDetailsPage {
 
   ionViewDidLoad() {
 
-    var headers = new Headers();
-    headers.append("Accept", 'application/json');
-    headers.append('Content-Type', 'application/json' );
+    // var headers = new Headers();
+    // headers.append("Accept", 'application/json');
+    // headers.append('Content-Type', 'application/json' );
 
-      //THIS IS A BETTER WAY TO MAKE API CALLS
-    this.urlService.medList()
-    .subscribe(res => {
-      //console.log(res)
-     this.medical_collection = res;
-        if (res.status=='OK') {
-        }
-    }, (err) => {
-        console.log(err);
-    });
+    //   //THIS IS A BETTER WAY TO MAKE API CALLS
+    // this.urlService.medList()
+    // .subscribe(res => {
+    //   //console.log(res)
+    //  this.medical_collection = res;
+    //     if (res.status=='OK') {
+    //     }
+    // }, (err) => {
+    //     console.log(err);
+    // });
 
     // var headers = new Headers();
     // headers.append("Accept", 'application/json');
     // headers.append('Content-Type', 'application/json' );
 
       //THIS IS A BETTER WAY TO MAKE API CALLS
-    this.urlService.institutionList()
-    .subscribe(res => {
-     this.student_collection = res;
-        if (res.status=='OK') {
-        }
-    }, (err) => {
-        console.log(err);  
-    });
+    // this.urlService.institutionList()
+    // .subscribe(res => {
+    //  this.student_collection = res;
+    //     if (res.status=='OK') {
+    //     }
+    // }, (err) => {
+    //     console.log(err);  
+    // });
 
 
     console.log('ionViewDidLoad MedicalDetailsPage');
@@ -100,25 +96,18 @@ export class MedicalDetailsPage {
 
   goNextOfKin(){
 
-
-const value = this.medicaldetailsForm.value;
-
-   this.storage.set('member_no', value.member_no);
-   this.storage.set('scheme_name', value.scheme_name);  
-   this.storage.set('partial_membership', value.partial_membership);
-   this.storage.set('prefered_hospital', value.prefered_hospital);
+    
+       this.storage.set('MA', 'Non-Medical');
    
-   this.storage.set('name', value.name);
-   this.storage.set('surname', value.surname);
-   this.storage.set('phone', value.phone);
-   this.storage.set('relationship', value.relationship);
-
    this.navCtrl.push('NextOfKinPage')
   }
 
 
-  goRegister(){
-    this.navCtrl.push('RegisterPage')
+  goForSelf(){
+
+         this.storage.set('MA', 'Medical-Aid');
+
+    this.navCtrl.push('ForSelfPage')
   }
 
   goLogin(){

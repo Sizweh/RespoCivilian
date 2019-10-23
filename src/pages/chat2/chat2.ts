@@ -62,9 +62,6 @@ export class Chat2Page {
         console.log(err);
       });
 
-
-
-
     console.log('ionViewDidLoad Chat2Page');
   }
 

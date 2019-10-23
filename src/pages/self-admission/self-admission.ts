@@ -16,10 +16,12 @@ export class SelfAdmissionPage {
 
 
   beneficiaryForm: FormGroup;
-  ben_collection: any;
+  ben_collection: any[];
   user_Id: string;
   id: any;
   name: any;
+  Beneficiary_id: any;
+  user_id: string;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -31,7 +33,8 @@ export class SelfAdmissionPage {
     ) {
 
       this.storage.get('user_id').then((val) => {
-        this.user_Id = String(val);  
+        this.user_Id = String(val);
+
       });
 
 
@@ -41,12 +44,12 @@ export class SelfAdmissionPage {
   
       this.beneficiaryForm = formBuilder.group({
 
-       'user_id': [this.user_Id,],
+      'user_id': [this.user_Id,],
         // 'user_id': ['16'],
         //'id': ['1'],
         
         // 'name': ['',],
-        'name': ['',],
+        'Beneficiary_id': ['',],
       })
 
 
@@ -57,23 +60,24 @@ export class SelfAdmissionPage {
 
   ionViewDidLoad() {
 
+
     // this.storage.get('user_id').then((val) => {
 
-  //   var headers = new Headers();
-  //   headers.append("Accept", 'application/json');
-  //   headers.append('Content-Type', 'application/json' );
+    var headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json' );
 
-  //   var postData = this.beneficiaryForm.value;
+    var postData = this.beneficiaryForm.value;
 
-  //  //THIS IS A BETTER WAY TO MAKE API CALLS
-  //   this.urlService.viewbeneficiary(postData)
-  //   .subscribe(res => {
-  //    this.ben_collection = res;
-  //       if (res.status=='OK') {
-  //       }
-  //   }, (err) => {
-  //       console.log(err);
-  //     });
+   //THIS IS A BETTER WAY TO MAKE API CALLS
+    this.urlService.viewbeneficiary(postData)
+    .subscribe(res => {
+     this.ben_collection = res;
+        if (res.status=='OK') {
+        }
+    }, (err) => {
+        console.log(err);
+      });
       
    
       // this.user_Id = String(val);  
@@ -82,56 +86,11 @@ export class SelfAdmissionPage {
 
     console.log('ionViewDidLoad SelfAdmissionPage');
   }
-  // openModal() {
-  //   const myModalOptions: ModalOptions = {
-  //     enableBackdropDismiss: false
-  //   }
-  //   const myModalData = {
-  //     name: 'Paul Halliday',
-  //     occupation: 'Developer'
-  //   };
-  //   const myModal: Modal = this.modal.create('ModalPage', { data: myModalData }, myModalOptions);
-  //   myModal.present();
-  //   myModal.onDidDismiss((data) => {
-  //     console.log("I have dismissed");
-  //     console.log(data);
-  //   })
-  //   myModal.onDidDismiss((data) => {
-  //     console.log("I'm about to dismiss");
-  //     console.log(data);
-  //   })
-  // }
-
-  // goHome() {
-  //   const loading = this.loadingCtrl.create({
-  //     content: "Checking code...",
-  //     duration: 3000
-  //   });
-  //   loading.present();
-  //   let alert = this.alertCtrl.create({
-  //     title: 'Self Admission',
-  //     message: 'Admission details sent successfully, your medical aid will reply with confirmation',
-  //     buttons: [
-  //       {
-  //         text: 'OK',
-  //         handler: () => {
-  //         }
-  //       }
-  //     ]
-  //   });
-  //   alert.present();
-  //   this.navCtrl.setRoot("HomePage");
-  // }
 
 
 
-goForSelf(){ 
-     
-this.navCtrl.push("ForSelfPage");
-}
 
 goHome(){
-
   this.navCtrl.setRoot ("HomePage");
 }
 
@@ -139,22 +98,15 @@ goHome(){
 
 
 goMaps2(){
-
- 
 this.storage.set('forWho', 'FM');
 console.log('for me clicked');  
-
 this.navCtrl.push("MapsPage");
 }
 
 
-
-
-goLocation(){
-
+goMaps(){
   this.storage.set('forWho', 'FS');
   console.log('for someone clicked'); 
-
 this.navCtrl.push("MapsPage");
 }
 
@@ -165,15 +117,74 @@ this.navCtrl.push("MapsPage");
 
 
 
-
-
 goChat2(){
-  this.storage.set('forWho', 'FB');
-  this.storage.get('user_id').then((result) => {
-   this.navCtrl.push("Chat2Page", {
-       user_id:result,
-     });
-  });   
+
+  
+  //  const value = this.beneficiaryForm.value;
+  //  this.storage.set('Beneficiary_id', value.Beneficiary_id);
+
+     this.storage.set('forWho', 'FB');
+     this
+
+  let opt =[];
+
+  this.ben_collection.forEach((ben,index)=>{
+    let inp ={
+      name: 'radio1',
+      type: 'radio',
+      label: ben.name,
+      value: ben.Beneficiary_id,
+      
+    };
+
+    opt[index] =inp;
+
+    
+    
+  });
+  console.log(opt);
+
+  
+
+    const alert = this.alertCtrl.create({
+  
+    inputs:
+     opt
+    ,
+    buttons: 
+
+
+    [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        cssClass: 'secondary',
+        handler: () => {
+          console.log('Confirm Cancel');
+        }
+      }, {
+        text: 'Ok',
+        handler: (e) => {
+
+          
+         this.navCtrl.push("MapsPage");
+       
+
+            
+        }
+   
+      }
+    ]
+  });
+ 
+
+ alert.present();
+
+
+
+
+
+
 }
 
 
@@ -246,3 +257,45 @@ goChat2(){
 //   });
 
 //  alert.present();
+
+
+  // openModal() {
+  //   const myModalOptions: ModalOptions = {
+  //     enableBackdropDismiss: false
+  //   }
+  //   const myModalData = {
+  //     name: 'Paul Halliday',
+  //     occupation: 'Developer'
+  //   };
+  //   const myModal: Modal = this.modal.create('ModalPage', { data: myModalData }, myModalOptions);
+  //   myModal.present();
+  //   myModal.onDidDismiss((data) => {
+  //     console.log("I have dismissed");
+  //     console.log(data);
+  //   })
+  //   myModal.onDidDismiss((data) => {
+  //     console.log("I'm about to dismiss");
+  //     console.log(data);
+  //   })
+  // }
+
+  // goHome() {
+  //   const loading = this.loadingCtrl.create({
+  //     content: "Checking code...",
+  //     duration: 3000
+  //   });
+  //   loading.present();
+  //   let alert = this.alertCtrl.create({
+  //     title: 'Self Admission',
+  //     message: 'Admission details sent successfully, your medical aid will reply with confirmation',
+  //     buttons: [
+  //       {
+  //         text: 'OK',
+  //         handler: () => {
+  //         }
+  //       }
+  //     ]
+  //   });
+  //   alert.present();
+  //   this.navCtrl.setRoot("HomePage");
+  // }

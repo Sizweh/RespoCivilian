@@ -184,11 +184,21 @@ this.storage.get('user_id').then((user_id) => {
    
 }
 
-
   goSelfAdmission(fault){
+
+  this.storage.get('user_id').then((result) => {
     this.storage.set('category', fault);
-    this.navCtrl.push('SelfAdmissionPage')
-  }
+    this.navCtrl.push("SelfAdmissionPage", {
+      user_id:result,
+    });
+});
+    
+    }
+
+  // goSelfAdmission(fault){
+  //   this.storage.set('category', fault);
+  //   this.navCtrl.push('SelfAdmissionPage')
+  // }
 
   goSpecifyEmergency(other){
     this.storage.set('category', other);
@@ -233,7 +243,9 @@ checkAccept() {
 }
  
 
-
+goEmergencyNo(){
+this.navCtrl.setRoot('EmergencyNoPage')
+}
 
 
 }

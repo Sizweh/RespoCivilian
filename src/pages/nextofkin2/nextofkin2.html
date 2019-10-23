@@ -16,6 +16,7 @@
 
   <ion-title text-center>Add Next of Kin</ion-title>
 
+<br>
 
 <div class="register-fields" [formGroup]="nextofkin2Form">
 
@@ -56,8 +57,10 @@
     </ion-item> -->
  
     <ion-item>
-        <ion-label>Relationship</ion-label>
-        <ion-select  formControlName="relationship">
+       
+       <ion-input formControlName="relationship" placeholder="Relationship" type="text"></ion-input>
+        <ion-select formControlName="relationship">
+           <ion-label>Relationship</ion-label>
           <ion-option value="Family Member">Family Member</ion-option>
           <ion-option value="Friend">Friend</ion-option>
           <ion-option value="Colleague">Colleague</ion-option>
@@ -67,16 +70,10 @@
    </div>
 
    <br>
-   
 
-
-
-
-  
     
-          <button ion-button round color='secondary' block (click)="goMyprofile()"> Done</button>
+    <button ion-button round color='secondary' block (click)="goMyprofile()">Done</button>
       
         
-  
 
 </ion-content>

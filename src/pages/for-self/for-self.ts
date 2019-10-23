@@ -17,8 +17,9 @@ export class ForSelfPage {
   User_Id :any;
   id: any;
   toConcat:any;
-  registerForm: FormGroup;
+  medicaldetailsForm: FormGroup;
   student_collection: any;
+  medical_collection: any;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -29,97 +30,164 @@ export class ForSelfPage {
     public loadingCtrl: LoadingController,
     private toastCtrl: ToastController
     ) {
+      
+      // this.id = navParams.get('data') ;
+      // this.User_Id = navParams.get('user_id') ;
 
-      this.id = navParams.get('data') ;
-      this.User_Id = navParams.get('user_id') ;
+      this.medicaldetailsForm = formBuilder.group({
 
-   
-      this.registerForm = formBuilder.group({
+        'member_no': ['', Validators.compose([Validators.required])],
+        'scheme_name': ['', Validators.compose([Validators.required])],
+        'partial_membership': ['', Validators.compose([Validators.required])],
+        'prefered_hospital': ['', Validators.compose([Validators.required])],
 
-        'user_id': [this.User_Id,],
-        'id': [this.id,],
-
-      'org_id': ['', Validators.compose([Validators.required])],
-      'student_no': ['', Validators.compose([Validators.required])],
-
+      //   'user_id': [this.User_Id,],
+      //   'id': [this.id,],
     })
 
 
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ForSelfPage');
+ionViewDidLoad() {
 
+ var headers = new Headers();
+ headers.append("Accept", 'application/json');
+ headers.append('Content-Type', 'application/json' );
 
-    this.storage.get('user_id').then((val) => {
-      console.log(String(val));
-      this.  toConcat =   this.UserId =String(val); 
-
-    var headers = new Headers();
-    headers.append("Accept", 'application/json');
-    headers.append('Content-Type', 'application/json' );
-   //pass to back-end
-      var postData = {user_id:val};
       //THIS IS A BETTER WAY TO MAKE API CALLS
-    this.urlService.studentDetails(postData)
+    this.urlService.medList()
     .subscribe(res => {
-     this.student_collection = res;
+      //console.log(res)
+     this.medical_collection = res;
         if (res.status=='OK') {
         }
     }, (err) => {
         console.log(err);
     });
 
-  });
-    
+    console.log('ionViewDidLoad ForSelfPage');
+  }
 
-   
+
+  goNextOfKin(){
+
+  const value = this.medicaldetailsForm.value;
+
+   this.storage.set('member_no', value.member_no);
+   this.storage.set('scheme_name', value.scheme_name);  
+   this.storage.set('partial_membership', value.partial_membership);
+   this.storage.set('prefered_hospital', value.prefered_hospital);
+
+    this.navCtrl.push('NextOfKinPage')
   }
 
 
 
- goMyaccount(){ 
-
-  const values = this.registerForm.value;
-   
-  this.storage.set('org_id', values.org_id);
-  this.storage.set('student_no', values.student_no);
- 
-  var headers = new Headers();
-  headers.append("Accept", 'application/json');
-  headers.append('Content-Type', 'application/json' );
- //pass to back-end
-    var postData = this.registerForm.value;
-    //THIS IS A BETTER WAY TO MAKE API CALLS
-  this.urlService.editDetails(postData)
-  .subscribe(res => {
-   this.student_collection = res;
-      if (res.status=='OK') {
-      }
-  }, (err) => {
-      console.log(err);
-  });
-
-  let toast = this.toastCtrl.create({
-    message: 'Form edited successfully.',
-    duration: 3000,
-    position: 'bottom'
-  });
-  toast.onDidDismiss(() => {
-    console.log('Dismissed toast');
-  });
-  toast.present();
-  const loading= this.loadingCtrl.create({
-    content: "saving...",
-    duration: 700
-  });
-  loading.present();
-
-
- this.navCtrl.setRoot("MyaccountPage");
- }
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//  goMyaccount(){ 
+
+//   const values = this.registerForm.value;
+   
+//   this.storage.set('org_id', values.org_id);
+//   this.storage.set('student_no', values.student_no);
+ 
+//   var headers = new Headers();
+//   headers.append("Accept", 'application/json');
+//   headers.append('Content-Type', 'application/json' );
+//  //pass to back-end
+//     var postData = this.registerForm.value;
+//     //THIS IS A BETTER WAY TO MAKE API CALLS
+//   this.urlService.editDetails(postData)
+//   .subscribe(res => {
+//    this.student_collection = res;
+//       if (res.status=='OK') {
+//       }
+//   }, (err) => {
+//       console.log(err);
+//   });
+
+//   let toast = this.toastCtrl.create({
+//     message: 'Form edited successfully.',
+//     duration: 3000,
+//     position: 'bottom'
+//   });
+//   toast.onDidDismiss(() => {
+//     console.log('Dismissed toast');
+//   });
+//   toast.present();
+//   const loading= this.loadingCtrl.create({
+//     content: "saving...",
+//     duration: 700
+//   });
+//   loading.present();
+
+
+//  this.navCtrl.setRoot("MyaccountPage");
+//  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

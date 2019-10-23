@@ -15,13 +15,75 @@
 
 <ion-content text-center padding>
 
-<ion-title text-center>Edit Student details</ion-title>
 
-<ion-row no-lines *ngFor="let fault of student_collection">
+<h5>Medical Aid details</h5>
+<br>
+
+<div class="login-fields" [formGroup]="medicaldetailsForm">
+
+<ion-item>
+      <ion-input placeholder="Scheme Name" type="text"></ion-input>
+      <ion-select formControlName="scheme_name">
+          <ion-label>Scheme Name</ion-label>
+        
+        <div *ngFor="let fault of medical_collection">
+            <ion-option >{{fault.company_name}}</ion-option>
+          </div>
+
+      </ion-select>
+    </ion-item>
+
+      <ion-item>
+        <ion-input formControlName="member_no" placeholder="Membership No" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input formControlName="partial_membership" placeholder="Partial Membership" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input formControlName="prefered_hospital" placeholder="Preferred Hospital" type="text"></ion-input>
+      </ion-item>
+
+
+</div>
+
+
+
+      
+<br>
+
+<ion-grid>
+  <ion-row>
+    <ion-col col-6>
+      <button [disabled]="!medicaldetailsForm.valid" ion-button block color="secondary" round [disabled] (click)="goNextOfKin()">
+        Next
+      </button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+
+</ion-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <ion-row no-lines *ngFor="let fault of student_collection">
 <ion-card>
-
-
-<div class="login-fields" [formGroup]="registerForm">
 
 <ion-item no-lines text-left>
 <ion-label stacked>Organization No.</ion-label>
@@ -34,24 +96,5 @@
 <ion-input formControlName="student_no" block value="{{fault.student_no}}"> </ion-input>
 </ion-item>
 
-</div>
-
 </ion-card>
 </ion-row>
-
-
-      
-
-
-<ion-grid>
-  <ion-row>
-    <ion-col col-6>
-      <button ion-button block color="secondary" round [disabled] (click)="goMyaccount()">
-        Save
-      </button>
-    </ion-col>
-  </ion-row>
-</ion-grid>
-
-
-</ion-content>
