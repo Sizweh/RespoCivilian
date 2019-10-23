@@ -28,6 +28,8 @@ import { OneSignal } from '@ionic-native/onesignal/ngx'
 import { Geolocation } from '@ionic-native/geolocation';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
+import { GeocodeProvider } from '../providers/geocode/geocode';
+import { Network } from '@ionic-native/network';
 
 const config: SocketIoConfig = { url: 'http://localhost:3001', options:{}};
 
@@ -71,6 +73,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options:{}};
     OneSignal,
     ImagePicker,
     NativeGeocoder,
+    Network,
     // FileChooser,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
 
@@ -88,6 +91,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options:{}};
     
     HttpModule,
     SocketsProvider,
+    GeocodeProvider,
  
   
   

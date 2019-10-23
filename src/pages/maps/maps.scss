@@ -37,23 +37,32 @@ page-maps {
     color: red;
   }
 
-
-  .input-wrapper {
-    display:inline-block;
-    position: relative
-}
-.input-wrapper:after {
-    font-family: 'FontAwesome';
-    content: '\f274';
+  .searchSuggest {
+    display: inline-block;
+    width: 290px;
+    max-width: 100%;
     position: absolute;
-    right: 6px;
-}
+    margin-left: -250px;
+    transform: translate(-50px, 0);
+   }
+   .searchWrapper {
+    position: absolute;
+    top: 18px;
+    right: 1px;
+    width: auto;
+    margin: 10px 0;
+    z-index: 99;
+   }
+
+}  
+
+  
   // #infowindow-content .title {
   //       font-weight: bold;
   //       font-size: 1.2em !important;
         
   //     }
-    }
+    
     
 
 

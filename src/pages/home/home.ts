@@ -4,6 +4,8 @@ import { Storage } from '@ionic/storage';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { MenuController } from 'ionic-angular';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
+import { Network } from '@ionic-native/network';
+import { ToastController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -29,14 +31,42 @@ export class HomePage {
 
   constructor(
     public navCtrl: NavController, 
+    private toastCtrl: ToastController,
     public navParams: NavParams,
     private storage: Storage,
     private urlService: UrlbaseProvider,
     public menuCtrl: MenuController,
     private oneSignal: OneSignal,
+    private network: Network
    
     ) {
     this.menuCtrl.enable(true);
+
+
+
+    
+
+
+      
+      // We just got a connection but we need to wait briefly
+       // before we determine the connection type. Might need to wait.
+      // prior to doing any api requests as well.
+
+
+
+      // setTimeout(() => {
+      //   if (this.network.type === 'wifi') {
+      //     alert('we got a wifi connection, woohoo!');
+      //     console.log('we got a wifi connection, woohoo!');
+      //   }
+      // }, 3000);
+
+    
+  
+
+
+
+
 
 }
 faultCategories = [
@@ -188,6 +218,51 @@ this.storage.get('user_id').then((user_id) => {
   goSelfAdmission(fault){
     this.storage.set('category', fault);
     this.navCtrl.push('SelfAdmissionPage')
+
+    //
+    let disconnectSubscription = this.network.onDisconnect().subscribe(() => {
+      console.log('network was disconnected :-(');
+
+      let toast = this.toastCtrl.create({
+        message: 'Network disconnected',
+        // duration: 3000,
+        position: 'bottom',
+        closeButtonText: 'OK'
+      });
+        toast.present();
+    });
+    // stop disconnect watch
+    disconnectSubscription.unsubscribe();
+    
+    
+    // watch network for a connection
+    let connectSubscription = this.network.onConnect().subscribe(() => {
+      console.log('network connected!');
+      let toast = this.toastCtrl.create({
+        message: 'Network connected',
+        // duration: 3000,
+        position: 'bottom',
+        closeButtonText: 'OK'
+        // showCloseButton: ok,
+   
+      });
+        toast.present();
+
+
+      alert('network connected!');
+
+      });
+
+        // stop connect watch
+       connectSubscription.unsubscribe();
+
+
+
+
+
+
+
+
   }
 
   goSpecifyEmergency(other){
@@ -200,6 +275,40 @@ this.storage.get('user_id').then((user_id) => {
       });
   });
 });
+
+
+let disconnectSubscription = this.network.onDisconnect().subscribe(() => {
+  console.log('network was disconnected :-(');
+
+  let toast = this.toastCtrl.create({
+    message: 'Network disconnected',
+    duration: 3000,
+  });
+    toast.present();
+});
+// stop disconnect watch
+disconnectSubscription.unsubscribe();
+
+
+// watch network for a connection
+let connectSubscription = this.network.onConnect().subscribe(() => {
+  console.log('network connected!');
+  let toast = this.toastCtrl.create({
+    message: 'Network connected',
+    duration: 3000,
+  });
+    toast.present();
+
+
+  alert('network connected!');
+
+  });
+
+    // stop connect watch
+   connectSubscription.unsubscribe();
+
+
+
 
 }
 checkAccept() {
