@@ -341,7 +341,7 @@ goEmergencyNo(){
 
       message: 'Ooops, please check your network connection',
       position: 'Bottom',
-      closeButtonText: 'OK',
+      closeButtonText: 'OK', 
 
     }).present();
     });

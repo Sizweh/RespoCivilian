@@ -77,6 +77,8 @@ ReverseGeocoding:any;
       
       this.map1Form = formBuilder.group({
         'address': ['',],
+        
+
       })
 
       this.map2Form = formBuilder.group({
@@ -621,8 +623,8 @@ ionViewDidLoad() {
         x.innerHTML = GPS;
       
           
-        let L = document.getElementById('getLat')
-        let Ln = document.getElementById('getLong')
+        let L = document.getElementById('getLat');
+        let Ln = document.getElementById('getLong');
         L.innerHTML = RoundedLat;
         Ln.innerHTML = RoundedLng;
        
@@ -653,29 +655,37 @@ goHome(){
 this.navCtrl.setRoot('HomePage')
 }
 
-goSelectResponder() {
+goSelectResponder(getLat) {
 
-
+console.log(getLat)
 
     var Sear_location = document.getElementById('infowindow-content').innerText;
     var number = (<HTMLInputElement>document.getElementById("add")).value;
  
     // var abc = document.getElementById('getaccuracy').innerHTML
-    let L = document.getElementById('getLat')
-    let Ln = document.getElementById('getLong')
+    var RoundedLat = document.getElementById('getLat');
+    let Ln = document.getElementById('getLong');
 
 
 
     this.geolocation.getCurrentPosition({enableHighAccuracy:true}).then((data)=>{
-      this.storage.set('lat',data.coords.latitude.toFixed(3));
-      this.storage.set('lng',data.coords.longitude.toFixed(3));
+      this.storage.set('lat',data.coords.latitude);
+      this.storage.set('lng',data.coords.longitude);
+
+      this.storage.set('lng1',RoundedLat);
+
+      this.storage.set('getLat', RoundedLat);
+      this.storage.set('getLong', Ln);
+
     })
 
-    this.storage.set('Latitude',L);
-    this.storage.set('Longitude',Ln);
+    // this.storage.set('lat',L);
+    // this.storage.set('lng',Ln);
 
+// this.storage.set('getLat', L)
+// this.storage.set('getLong', Ln)
 
-     this.storage.set('address', Sear_location);
+    this.storage.set('address', Sear_location);
     this.storage.set('additional_address', number);
 
     // this.storage.set('ab', abc);

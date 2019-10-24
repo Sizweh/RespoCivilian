@@ -61,6 +61,9 @@ export class NextOfKinPage {
         'phone': ['', Validators.compose([Validators.required])],
         'relationship': ['', Validators.compose([Validators.required])],
 
+        updateToken() {
+          console.log('Remember token new state:' + this.remembertoken);
+        }
 
         // 'paymentBrand': ['',Validators.compose([Validators.required])],
         // 'cardHolder': ['', Validators.compose([Validators.required])],
@@ -84,13 +87,32 @@ export class NextOfKinPage {
     }
   }
 
-  updateToken() {
-    console.log('Remember token new state:' + this.remembertoken);
-  }
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad NextOfKinPage');
 
+    //////////////////nextofkin////////////////////////
+
+    this.storage.get('name').then((val) => {
+      //  console.log(String(val));
+      this.name = val;
+    });
+    
+    this.storage.get('surname').then((val) => {
+      //  console.log(String(val));
+      this.surname = val;
+    });
+    
+    this.storage.get('phone').then((val) => {
+      //  console.log(String(val));
+      this.phone = val;
+    });
+    
+    this.storage.get('relationship').then((val) => {
+      //  console.log(String(val));
+      this.relationship = val;
+    });
 
     /////////////////register//////////////////
 
@@ -143,27 +165,9 @@ export class NextOfKinPage {
         //  console.log(String(val));
         this.prefered_hospital = val;
       });
-//////////////////nextofkin////////////////////////
+
     
-      this.storage.get('name').then((val) => {
-        //  console.log(String(val));
-        this.name = val;
-      });
-      
-      this.storage.get('surname').then((val) => {
-        //  console.log(String(val));
-        this.surname = val;
-      });
-      
-      this.storage.get('phone').then((val) => {
-        //  console.log(String(val));
-        this.phone = val;
-      });
-      
-      this.storage.get('relationship').then((val) => {
-        //  console.log(String(val));
-        this.relationship = val;
-      });
+
     
 
 
@@ -183,16 +187,24 @@ goVerifyAccount(){
   
 
   this.Userdata = {
+
+  //nextofkin//
+  name: this.name,
+  surname: this.surname,
+  phone:this.phone,
+  relationship:this.relationship,
+
+
    //register//
    fullName: this.fullName,
    phonenumber: this.phonenumber,
    email: this.email,
    password:this.password,
-//  gender: this.gender,
-//  myDate: this.myDate,
-//  confirmPassword: this.confirmPassword, 
+// //  gender: this.gender,
+// //  myDate: this.myDate,
+// //  confirmPassword: this.confirmPassword, 
 
-   //medical//
+//    //medical//
   scheme_name:this.scheme_name,
   member_no:this.member_no,
   partial_membership:this.partial_membership,
@@ -201,11 +213,7 @@ goVerifyAccount(){
  //  chronic_dis:this.chronic_dis,
  //  disability:this.disability,
 
-    //nextofkin//
-    name: this.name,
-    surname: this.surname,
-    phone:this.phone,
-    relationship:this.relationship,
+
    
 
  }
