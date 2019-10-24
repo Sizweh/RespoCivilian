@@ -469,6 +469,13 @@ ReverseGeocoding:any;
             that.map.setZoom(12);
 
           }
+          var latcoords = place.geometry.location.lat().toFixed(3);
+          var lngcoords = place.geometry.location.lng().toFixed(3);
+          var z = document.getElementById('getaccuracy')
+          var display = (`<b>Your GPS coordinates:</b>  ${latcoords} ,  ${lngcoords}`);
+          z.innerHTML = display;
+
+
           marrkerCivilian.setPosition(place.geometry.location);
 
           marrkerCivilian.setVisible(true);
@@ -481,6 +488,11 @@ ReverseGeocoding:any;
               (place.address_components[2] && place.address_components[2].short_name || '')
             ].join(' ');
           }
+          console.log(latcoords);
+          console.log(lngcoords);
+
+
+          
           document.getElementById('infowindow-content').innerHTML = address;
 
           var inputValue = (<HTMLInputElement>document.getElementById('pac-input')).value;
@@ -529,6 +541,13 @@ console.log();
 
         marrkerCivilian.addListener('dragend', function (event) {
         console.log(event.latLng.lat() + ' ' +  event.latLng.lng());
+        var lat = event.latLng.lat().toFixed(3);
+        var longg = event.latLng.lng().toFixed(3);
+        var run  = (`<b>Your GPS coordinates:</b>  ${lat} ,  ${longg}`);
+        var u = document.getElementById('getaccuracy')
+
+        u.innerHTML=run;
+
           geocodrr.geocode({
             'latLng': event.latLng
           }, function (results, status) {
@@ -584,7 +603,7 @@ ionViewDidLoad() {
 
         let RoundedLat = this.geoLatitude.toFixed(3);
         let RoundedLng = this.geoLongitude.toFixed(3);
-        var x = document.getElementById('infowindow-content');
+        var x = document.getElementById('getaccuracy');
         var GPS = (`<b>Your GPS coordinates:</b>  ${RoundedLat} ,  ${RoundedLng}`);
         x.innerHTML = GPS;
 
@@ -615,6 +634,12 @@ goSelectResponder() {
 
     var Sear_location = document.getElementById('infowindow-content').innerText;
     var number = (<HTMLInputElement>document.getElementById("add")).value;
+ 
+    var u = document.getElementById('getaccuracy').innerHTML
+
+
+
+
 
     this.geolocation.getCurrentPosition({enableHighAccuracy:true}).then((data)=>{
       this.storage.set('Latitude',data.coords.latitude);
@@ -626,6 +651,9 @@ goSelectResponder() {
 
      this.storage.set('address', Sear_location);
     this.storage.set('additional_address', number);
+
+    this.storage.set('yyyy', u);
+    this.storage.set('mpume', u);
   
 
     this.navCtrl.push("SelectResponderPage", {
