@@ -507,17 +507,8 @@ infowindow.open(that.map, markerCivilian );
 var geocoder = new google.maps.Geocoder();
 var location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
-<<<<<<< HEAD
-var lat = position.coords.latitude;
-var lng = position.coords.longitude;
-
-
-
-
-=======
 var lat = position.coords.longitude;
 console.log(lat);
->>>>>>> b9085fa0bc9854ab61cc7e5e80959005fcb33ae1
 // let la = position.coords.latitude;
 // let lo= position.coords.longitude;
 
@@ -528,30 +519,27 @@ geocoder.geocode({'latLng':location}, function (results, status) {
 if(status == google.maps.GeocoderStatus.OK){
 
   var add = results [0].formatted_address;
-  console.log(lat);
-  console.log(lng);
+  // console.log(lat);
+  // console.log(lng);
   // document.getElementById('infowindow-content').innerText = add;
-<<<<<<< HEAD
- 
-=======
   console.log(position.coords.latitude);
->>>>>>> b9085fa0bc9854ab61cc7e5e80959005fcb33ae1
 }
 
 });
-<<<<<<< HEAD
-
-        var geocodrr = new google.maps.Geocoder();
-
-        marrkerCivilian.addListener('dragend', function (event) {
-            console.log(event.latLng.lat() + ' ' +  event.latLng.lng());
-=======
 console.log();
         var geocodrr = new google.maps.Geocoder();
 
         marrkerCivilian.addListener('dragend', function (event) {
         console.log(event.latLng.lat() + ' ' +  event.latLng.lng());
->>>>>>> b9085fa0bc9854ab61cc7e5e80959005fcb33ae1
+
+        var lat = event.latLng.lat().toFixed(3);
+        var long = event.latLng.lng().toFixed(3);
+        var siz = (`<b>Your GPS coordinates:</b>  ${lat} ,  ${long}`);
+        var ceesto = document.getElementById('getaccuracy')
+        ceesto.innerHTML = siz;
+        
+
+
           geocodrr.geocode({
             'latLng': event.latLng
           }, function (results, status) {
@@ -593,14 +581,6 @@ console.log();
 
 ionViewDidLoad() {
 
-<<<<<<< HEAD
-  // console.log(tlat);
-  // console.log(lng);
- // console.log(this.position.coords.latitude+" "+ position.coords.longitude)
- console.log(this.latitude);
-
-  this.geolocation.getCurrentPosition().then((data)=>{
-=======
 
   let option = {
    enableHighAccuracy:true,
@@ -609,14 +589,13 @@ ionViewDidLoad() {
   };
 
     this.geolocation.getCurrentPosition(option).then((data)=>{
->>>>>>> b9085fa0bc9854ab61cc7e5e80959005fcb33ae1
     this.geoLatitude = data.coords.latitude;
     this.geoLongitude = data.coords.longitude;
     this.enableHighAccuracy =  data.coords.accuracy ;
 
         let RoundedLat = this.geoLatitude.toFixed(3);
         let RoundedLng = this.geoLongitude.toFixed(3);
-        var x = document.getElementById('infowindow-content');
+        var x = document.getElementById('getaccuracy');
         var GPS = (`<b>Your GPS coordinates:</b>  ${RoundedLat} ,  ${RoundedLng}`);
         x.innerHTML = GPS;
 
@@ -652,22 +631,21 @@ goSelectResponder() {
 
     var Sear_location = document.getElementById('infowindow-content').innerText;
     var number = (<HTMLInputElement>document.getElementById("add")).value;
+    var phone = document.getElementById('getaccuracy').innerHTML
 
     this.geolocation.getCurrentPosition({enableHighAccuracy:true}).then((data)=>{
-      this.storage.set('lat',data.coords.latitude);
-      this.storage.set('lng',data.coords.longitude);
+      this.storage.set('lat',data.coords.latitude.toFixed(3));
+      this.storage.set('lng',data.coords.longitude.toFixed(3));
     })
 
 
 
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> b9085fa0bc9854ab61cc7e5e80959005fcb33ae1
      this.storage.set('address', Sear_location);
     this.storage.set('additional_address', number);
+
+    this.storage.set('lat1', phone);
+
   
 
     this.navCtrl.push("SelectResponderPage", {

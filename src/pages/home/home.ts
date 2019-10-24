@@ -218,7 +218,6 @@ this.storage.get('user_id').then((user_id) => {
 
   this.storage.get('user_id').then((result) => {
     this.storage.set('category', fault);
-<<<<<<< HEAD
     this.navCtrl.push("SelfAdmissionPage", {
       user_id:result,
     });
@@ -230,55 +229,6 @@ this.storage.get('user_id').then((user_id) => {
   //   this.storage.set('category', fault);
   //   this.navCtrl.push('SelfAdmissionPage')
   // }
-=======
-    this.navCtrl.push('SelfAdmissionPage')
-
-    //
-    let disconnectSubscription = this.network.onDisconnect().subscribe(() => {
-      console.log('network was disconnected :-(');
-
-      let toast = this.toastCtrl.create({
-        message: 'Network disconnected',
-        // duration: 3000,
-        position: 'bottom',
-        closeButtonText: 'OK'
-      });
-        toast.present();
-    });
-    // stop disconnect watch
-    disconnectSubscription.unsubscribe();
-    
-    
-    // watch network for a connection
-    let connectSubscription = this.network.onConnect().subscribe(() => {
-      console.log('network connected!');
-      let toast = this.toastCtrl.create({
-        message: 'Network connected',
-        // duration: 3000,
-        position: 'bottom',
-        closeButtonText: 'OK'
-        // showCloseButton: ok,
-   
-      });
-        toast.present();
-
-
-      alert('network connected!');
-
-      });
-
-        // stop connect watch
-       connectSubscription.unsubscribe();
-
-
-
-
-
-
-
-
-  }
->>>>>>> b9085fa0bc9854ab61cc7e5e80959005fcb33ae1
 
   goSpecifyEmergency(other){
     this.storage.set('category', other);

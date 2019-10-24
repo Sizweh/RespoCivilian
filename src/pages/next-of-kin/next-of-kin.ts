@@ -110,10 +110,10 @@ export class NextOfKinPage {
       //  console.log(String(val));
       this.password = val;
     });
-    this.storage.get('confirmPassword').then((val) => {
-      //  console.log(String(val));
-      this.confirmPassword = val;
-    });
+    // this.storage.get('confirmPassword').then((val) => {
+    //   //  console.log(String(val));
+    //   this.confirmPassword = val;
+    // });
      // this.storage.get('gender').then((val) => {
     //   //  console.log(String(val));
     //   this.gender = val;

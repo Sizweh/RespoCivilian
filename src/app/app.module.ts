@@ -27,12 +27,9 @@ import { SelectSearchableModule } from 'ionic-select-searchable';
 import { OneSignal } from '@ionic-native/onesignal/ngx'
 import { Geolocation } from '@ionic-native/geolocation';
 import { SocialSharing } from '@ionic-native/social-sharing';
-<<<<<<< HEAD
-=======
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 import { GeocodeProvider } from '../providers/geocode/geocode';
 import { Network } from '@ionic-native/network';
->>>>>>> b9085fa0bc9854ab61cc7e5e80959005fcb33ae1
 
 const config: SocketIoConfig = { url: 'http://localhost:3001', options:{}};
 
