@@ -45,8 +45,26 @@ export class HomePage {
 
 
     
-
-
+    this.network.onConnect().subscribe(()=>{
+      this.toastCtrl.create({
+  
+        message: 'hooray, we`re back on track',
+        position: 'Bottom',
+        closeButtonText: 'OK',
+      }).present();
+      });
+  
+      
+      this.network.onDisconnect().subscribe(()=>{
+      this.toastCtrl.create({
+  
+        message: 'Ooops, please check your network connection',
+        position: 'Bottom',
+        closeButtonText: 'OK',
+  
+      }).present();
+      });
+  
       
       // We just got a connection but we need to wait briefly
        // before we determine the connection type. Might need to wait.
@@ -308,7 +326,26 @@ checkAccept() {
  
 
 goEmergencyNo(){
-this.navCtrl.setRoot('EmergencyNoPage')
+  this.network.onConnect().subscribe(()=>{
+    this.toastCtrl.create({
+
+      message: 'hooray, we`re back on track',
+      position: 'Bottom',
+      closeButtonText: 'OK',
+    }).present();
+    });
+
+    
+    this.network.onDisconnect().subscribe(()=>{
+    this.toastCtrl.create({
+
+      message: 'Ooops, please check your network connection',
+      position: 'Bottom',
+      closeButtonText: 'OK',
+
+    }).present();
+    });
+//this.navCtrl.setRoot('EmergencyNoPage')
 }
 
 
