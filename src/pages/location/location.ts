@@ -19,6 +19,7 @@ declare var google;
 export class LocationPage implements OnInit {
 
 Userdata: any;
+L:any;
 map         : any;
 infoWindow  : any;
 marker      : any;
@@ -79,7 +80,7 @@ Beneficiary_id: any;
       this.storage.get('address').then((val) => {
           this.address = val;
       });
-
+     
 this.storage.get('selected_responder').then((val) => {
 
     this.selectedResponder = [val];
@@ -122,12 +123,23 @@ this.storage.get('selected_responder').then((val) => {
     this.storage.get('address').then((val) => {
         this.address = val;
       });
-    this.storage.get('Latitude').then((val) => {
-        this.Latitude = val;
-      });
-    this.storage.get('Longitude').then((val) => {
-        this.Longitude = val;
-      });
+    // this.storage.get('Latitude').then((val) => {
+    //     this.Latitude = val;
+    //   });
+    // this.storage.get('Longitude').then((val) => {
+    //     this.Longitude = val;
+    //   });
+
+    this.storage.get('lat').then((val) => {
+      this.address = val;
+  });
+  this.storage.get('long').then((val) => {
+      this.address = val;
+  });
+
+
+
+
 
     this.storage.get('forWho').then((val) => {
         this.forWho = val;
@@ -619,7 +631,9 @@ goConfirm(){
       var reqId = res.request_id;
 
       var specify = res.specify_emergency;
-
+      var L = document.getElementById('getLat').innerHTML
+      let Ln = document.getElementById('getLong').innerHTML
+  
       const loader = this.loadingCtrl.create({
         content: "Sending request...",
         duration: 3000
@@ -634,6 +648,9 @@ goConfirm(){
         this.storage.set('specify_emergency', specify);
         this.storage.remove( 'specify_emergency');
         this.navCtrl.push("ConfirmPage");
+
+        this.storage.set('lat',L);
+        this.storage.set('Long',Ln);
       }
     }, (err) => {
      // console.log(err);
