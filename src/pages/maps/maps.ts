@@ -469,6 +469,13 @@ ReverseGeocoding:any;
             that.map.setZoom(12);
 
           }
+          var latcoords = place.geometry.location.lat().toFixed(3);
+          var lngcoords = place.geometry.location.lng().toFixed(3);
+          var z = document.getElementById('getaccuracy')
+          var display = (`<b>Your GPS coordinates:</b>  ${latcoords} ,  ${lngcoords}`);
+          z.innerHTML = display;
+
+
           marrkerCivilian.setPosition(place.geometry.location);
 
           marrkerCivilian.setVisible(true);
@@ -481,6 +488,11 @@ ReverseGeocoding:any;
               (place.address_components[2] && place.address_components[2].short_name || '')
             ].join(' ');
           }
+          console.log(latcoords);
+          console.log(lngcoords);
+
+
+          
           document.getElementById('infowindow-content').innerHTML = address;
 
           var inputValue = (<HTMLInputElement>document.getElementById('pac-input')).value;
@@ -531,14 +543,12 @@ console.log();
 
         marrkerCivilian.addListener('dragend', function (event) {
         console.log(event.latLng.lat() + ' ' +  event.latLng.lng());
-
         var lat = event.latLng.lat().toFixed(3);
-        var long = event.latLng.lng().toFixed(3);
-        var siz = (`<b>Your GPS coordinates:</b>  ${lat} ,  ${long}`);
-        var ceesto = document.getElementById('getaccuracy')
-        ceesto.innerHTML = siz;
-        
+        var longg = event.latLng.lng().toFixed(3);
+        var run  = (`<b>Your GPS coordinates:</b>  ${lat} ,  ${longg}`);
+        var u = document.getElementById('getaccuracy')
 
+        u.innerHTML=run;
 
           geocodrr.geocode({
             'latLng': event.latLng
@@ -631,7 +641,11 @@ goSelectResponder() {
 
     var Sear_location = document.getElementById('infowindow-content').innerText;
     var number = (<HTMLInputElement>document.getElementById("add")).value;
-    var phone = document.getElementById('getaccuracy').innerHTML
+ 
+    var RoundedLat = document.getElementById('getaccuracy').innerHTML
+    var RoundedLng = document.getElementById('getaccuracy').innerHTML
+
+
 
     this.geolocation.getCurrentPosition({enableHighAccuracy:true}).then((data)=>{
       this.storage.set('lat',data.coords.latitude.toFixed(3));
@@ -644,7 +658,8 @@ goSelectResponder() {
      this.storage.set('address', Sear_location);
     this.storage.set('additional_address', number);
 
-    this.storage.set('lat1', phone);
+    this.storage.set('lat1', RoundedLat);
+    this.storage.set('lng1', RoundedLng);
 
   
 

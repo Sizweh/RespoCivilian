@@ -124,7 +124,7 @@ goChat2(e){
   //  this.storage.set('Beneficiary_id', value.Beneficiary_id);
 
      this.storage.set('forWho', 'FB');
-     this
+    
 
   let opt =[];
 
@@ -135,7 +135,7 @@ goChat2(e){
       type: 'radio',
       label: ben.name,
       value: ben.name,
-      
+    
     };
 
     opt[index] =inp;

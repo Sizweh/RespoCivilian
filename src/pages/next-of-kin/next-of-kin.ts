@@ -22,21 +22,21 @@ export class NextOfKinPage {
   Userdata: any;
 
   fullName:any;
-  gender:any;
-  myDate:any;
+  // gender:any;
+  // myDate:any;
   phonenumber:any;
   email:any;
   password:any;
-  confirmPassword:any;
+  // confirmPassword:any;
 
 
   partial_membership:any;
   member_no:any;
   scheme_name:any;
   prefered_hospital:any;
-  chronic_dis:any;
-  disability:any;
-  Medical_Aid_Status:any;
+  // chronic_dis:any;
+  // disability:any;
+  // Medical_Aid_Status:any;
 
   phone:any;
   relationship:any;
@@ -180,22 +180,9 @@ goVerifyAccount(){
   this.storage.set('phone', value.phone);
   this.storage.set('relationship', value.relationship);
 
-  this.Userdata = { 
-    //medical//
-   scheme_name:this.scheme_name,
-   member_no:this.member_no,
-   partial_membership:this.partial_membership,
-   prefered_hospital:this.prefered_hospital,
-   medical_aid_status:this.Medical_Aid_Status,
-  //  chronic_dis:this.chronic_dis,
-  //  disability:this.disability,
+  
 
-    //nextofkin//
-   name: this.name,
-   surname: this.surname,
-   phone:this.phone,
-   relationship:this.relationship,
- 
+  this.Userdata = {
    //register//
    fullName: this.fullName,
    phonenumber: this.phonenumber,
@@ -204,6 +191,23 @@ goVerifyAccount(){
 //  gender: this.gender,
 //  myDate: this.myDate,
 //  confirmPassword: this.confirmPassword, 
+
+   //medical//
+  scheme_name:this.scheme_name,
+  member_no:this.member_no,
+  partial_membership:this.partial_membership,
+  prefered_hospital:this.prefered_hospital,
+ // medical_aid_status:this.Medical_Aid_Status,
+ //  chronic_dis:this.chronic_dis,
+ //  disability:this.disability,
+
+    //nextofkin//
+    name: this.name,
+    surname: this.surname,
+    phone:this.phone,
+    relationship:this.relationship,
+   
+
  }
  
   var headers = new Headers();
