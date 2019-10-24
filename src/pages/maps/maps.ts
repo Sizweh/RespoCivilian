@@ -472,10 +472,15 @@ ReverseGeocoding:any;
           var latcoords = place.geometry.location.lat().toFixed(3);
           var lngcoords = place.geometry.location.lng().toFixed(3);
           var z = document.getElementById('getaccuracy')
-          var display = (`<b>Your GPS coordinates:</b>  ${latcoords} ,  ${lngcoords}`);
+          var display = (`<b>Your GPS coordinates:</b>`);
           z.innerHTML = display;
-
-
+          
+          let L = document.getElementById('getLat')
+          let Ln = document.getElementById('getLong')
+          L.innerHTML = latcoords;
+          Ln.innerHTML = lngcoords;
+          
+          // var display = latcoords + '<br>' + lngcoords;
           marrkerCivilian.setPosition(place.geometry.location);
 
           marrkerCivilian.setVisible(true);
@@ -540,13 +545,21 @@ console.log();
         var geocodrr = new google.maps.Geocoder();
 
         marrkerCivilian.addListener('dragend', function (event) {
-        console.log(event.latLng.lat() + ' ' +  event.latLng.lng());
-        var lat = event.latLng.lat().toFixed(3);
-        var longg = event.latLng.lng().toFixed(3);
-        var run  = (`<b>Your GPS coordinates:</b>  ${lat} ,  ${longg}`);
+        // console.log(event.latLng.lat() + ' ' +  event.latLng.lng());
+        var lat = event.latLng.lat().toFixed(4);
+        var longg = event.latLng.lng().toFixed(4);
+        var run  = (`<b>Your GPS coordinates:</b>`);
         var u = document.getElementById('getaccuracy')
 
         u.innerHTML=run;
+
+                  
+        let L = document.getElementById('getLat')
+        let Ln = document.getElementById('getLong')
+        L.innerHTML = lat;
+        Ln.innerHTML = longg;
+       console.log(lat);
+       console.log(longg);
 
           geocodrr.geocode({
             'latLng': event.latLng
@@ -557,9 +570,7 @@ console.log();
                 infowindow.setContent(this.adressess);
                 document.getElementById('infowindow-content').innerHTML = this.adressess;
                 this.Adressess = this.adressess;
-                this.storage.set('Latitude',event.latLng.lat() );
-                this.storage.set('Longitude',event.latLng.lat() );
-
+            
               }
             }
           });
@@ -604,8 +615,15 @@ ionViewDidLoad() {
         let RoundedLat = this.geoLatitude.toFixed(3);
         let RoundedLng = this.geoLongitude.toFixed(3);
         var x = document.getElementById('getaccuracy');
-        var GPS = (`<b>Your GPS coordinates:</b>  ${RoundedLat} ,  ${RoundedLng}`);
+        var GPS = (`<b>Your GPS coordinates:</b>`);
         x.innerHTML = GPS;
+      
+          
+        let L = document.getElementById('getLat')
+        let Ln = document.getElementById('getLong')
+        L.innerHTML = RoundedLat;
+        Ln.innerHTML = RoundedLng;
+       
 
         console.log(RoundedLat);
         console.log(RoundedLng);
@@ -635,9 +653,9 @@ goSelectResponder() {
     var Sear_location = document.getElementById('infowindow-content').innerText;
     var number = (<HTMLInputElement>document.getElementById("add")).value;
  
-    var u = document.getElementById('getaccuracy').innerHTML
-
-
+    // var abc = document.getElementById('getaccuracy').innerHTML
+    let L = document.getElementById('getLat')
+    let Ln = document.getElementById('getLong')
 
 
 
@@ -646,14 +664,15 @@ goSelectResponder() {
       this.storage.set('Longitude',data.coords.longitude);
     })
 
-
+    // this.storage.set('Latitude',L);
+    // this.storage.set('Longitude',Ln);
 
 
      this.storage.set('address', Sear_location);
     this.storage.set('additional_address', number);
 
-    this.storage.set('yyyy', u);
-    this.storage.set('mpume', u);
+    // this.storage.set('ab', abc);
+    // this.storage.set('cb', abc);
   
 
     this.navCtrl.push("SelectResponderPage", {

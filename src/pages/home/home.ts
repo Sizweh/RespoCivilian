@@ -45,8 +45,26 @@ export class HomePage {
 
 
     
-
-
+    this.network.onConnect().subscribe(()=>{
+      this.toastCtrl.create({
+  
+        message: 'hooray, we`re back on track',
+        position: 'Bottom',
+        closeButtonText: 'OK',
+      }).present();
+      });
+  
+      
+      this.network.onDisconnect().subscribe(()=>{
+      this.toastCtrl.create({
+  
+        message: 'Ooops, please check your network connection',
+        position: 'Bottom',
+        closeButtonText: 'OK',
+  
+      }).present();
+      });
+  
       
       // We just got a connection but we need to wait briefly
        // before we determine the connection type. Might need to wait.
@@ -218,6 +236,8 @@ this.storage.get('user_id').then((user_id) => {
   goSelfAdmission(fault){
     this.storage.set('category', fault);
     this.navCtrl.push('SelfAdmissionPage')
+
+  
 
     //
     let disconnectSubscription = this.network.onDisconnect().subscribe(() => {
