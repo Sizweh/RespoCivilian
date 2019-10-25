@@ -97,7 +97,7 @@ export class ModalPage {
  
 
 
-  goMyAccount() {
+  goHome() {
 
     const values = this.skinForm.value;
     this.storage.set('name', values.name);
@@ -123,8 +123,8 @@ export class ModalPage {
       });
 
     let toast = this.toastCtrl.create({
-      message: 'Edited Successfully!',
-      duration: 3000,
+      message: 'Next of kin details edited successfully!',
+      duration: 3500,
       position: 'bottom'
     });
     toast.onDidDismiss(() => {
@@ -135,11 +135,11 @@ export class ModalPage {
 
     const loading = this.loadingCtrl.create({
       content: "saving...",
-      duration: 800
+      duration: 700
     });
     loading.present();
 
-      this.navCtrl.setRoot("MyAccountPage");
+      this.navCtrl.setRoot("HomePage");
       }
 
 }

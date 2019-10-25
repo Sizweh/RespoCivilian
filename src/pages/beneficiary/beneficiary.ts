@@ -95,8 +95,8 @@ export class BeneficiaryPage {
         console.log(err);
     });
     let toast = this.toastCtrl.create({
-      message: 'Beneficiary added successfully',
-      duration: 3000,
+      message: 'Beneficiary added successfully!',
+      duration: 3500,
       position: 'bottom'
     });
     toast.onDidDismiss(() => {

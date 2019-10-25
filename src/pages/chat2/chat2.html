@@ -16,24 +16,6 @@
     <ion-title (click)="goMaps" text-center>Select Beneficiary</ion-title>
 
     <br>
-      
-
-        <ion-card (click)="goMaps">
-          <ion-card-content (click)="goMaps">
-            <ion-list *ngFor="let fault of ben_collection">
-              <div class="login-fields" [formGroup]="beneficiaryForm">
-                <ion-item  text-left>
-                  <ion-avatar item-left>
-                   <img class="logo" src="">
-                   </ion-avatar>
-                  <font size="3" color='#38414a'>{{ fault.name }}</font><br>
-                </ion-item>          
-              </div>
-            </ion-list>
-          </ion-card-content>
-        </ion-card>
-     
-
     <div class="login-fields" [formGroup]="beneficiaryForm">
 
     <ion-item (click)="goMaps()">

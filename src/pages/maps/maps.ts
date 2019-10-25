@@ -471,8 +471,8 @@ ReverseGeocoding:any;
             that.map.setZoom(12);
 
           }
-          var latcoords = place.geometry.location.lat().toFixed(3);
-          var lngcoords = place.geometry.location.lng().toFixed(3);
+          var latcoords = place.geometry.location.lat().toFixed(6);
+          var lngcoords = place.geometry.location.lng().toFixed(6);
           var z = document.getElementById('getaccuracy')
           var display = (`<b>Your GPS coordinates:</b>`);
           z.innerHTML = display;
@@ -537,10 +537,10 @@ console.log(lat);
 geocoder.geocode({'latLng':location}, function (results, status) {
 if(status == google.maps.GeocoderStatus.OK){
 
-  var add = results [0].formatted_address;
-  // console.log(lat);
-  // console.log(lng);
-  // document.getElementById('infowindow-content').innerText = add;
+  var ADD = results [0].formatted_address;
+  let AD = document.getElementById('infowindow-content')
+  AD.innerText = 
+  ADD;
   console.log(position.coords.latitude);
 }
 
@@ -550,8 +550,8 @@ console.log();
 
         marrkerCivilian.addListener('dragend', function (event) {
         // console.log(event.latLng.lat() + ' ' +  event.latLng.lng());
-        var lat = event.latLng.lat().toFixed(4);
-        var longg = event.latLng.lng().toFixed(4);
+        var lat = event.latLng.lat().toFixed(6);
+        var longg = event.latLng.lng().toFixed(6);
         var run  = (`<b>Your GPS coordinates:</b>`);
         var u = document.getElementById('getaccuracy')
 
@@ -616,8 +616,8 @@ ionViewDidLoad() {
     this.geoLongitude = data.coords.longitude;
     this.enableHighAccuracy =  data.coords.accuracy ;
 
-        let RoundedLat = this.geoLatitude.toFixed(3);
-        let RoundedLng = this.geoLongitude.toFixed(3);
+        let RoundedLat = this.geoLatitude.toFixed(6);
+        let RoundedLng = this.geoLongitude.toFixed(6);
         var x = document.getElementById('getaccuracy');
         var GPS = (`<b>Your GPS coordinates:</b>`);
         x.innerHTML = GPS;
@@ -630,6 +630,7 @@ ionViewDidLoad() {
        
 
         console.log(RoundedLat);
+
         console.log(RoundedLng);
         
     }); 
@@ -647,10 +648,6 @@ ionViewDidLoad() {
   }
 
 
-
-
-
-
 goHome(){
 this.navCtrl.setRoot('HomePage')
 }
@@ -663,24 +660,18 @@ console.log(getLat)
     var number = (<HTMLInputElement>document.getElementById("add")).value;
  
     // var abc = document.getElementById('getaccuracy').innerHTML
-    var RoundedLat = document.getElementById('getLat');
-    let Ln = document.getElementById('getLong');
+    var L = document.getElementById('getLat').innerHTML
+    let Ln = document.getElementById('getLong').innerHTML
 
 
 
-    this.geolocation.getCurrentPosition({enableHighAccuracy:true}).then((data)=>{
-      this.storage.set('lat',data.coords.latitude);
-      this.storage.set('lng',data.coords.longitude);
+    // this.geolocation.getCurrentPosition({enableHighAccuracy:true}).then((data)=>{
+    //   this.storage.set('Latitude',data.coords.latitude);
+    //   this.storage.set('Logitude',data.coords.longitude);
+    // })
 
-      this.storage.set('lng1',RoundedLat);
-
-      this.storage.set('getLat', RoundedLat);
-      this.storage.set('getLong', Ln);
-
-    })
-
-    // this.storage.set('lat',L);
-    // this.storage.set('lng',Ln);
+    this.storage.set('lat',L);
+    this.storage.set('lng',Ln);
 
 // this.storage.set('getLat', L)
 // this.storage.set('getLong', Ln)

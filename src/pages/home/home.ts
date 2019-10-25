@@ -326,26 +326,26 @@ checkAccept() {
  
 
 goEmergencyNo(){
-  this.network.onConnect().subscribe(()=>{
-    this.toastCtrl.create({
+  // this.network.onConnect().subscribe(()=>{
+  //   this.toastCtrl.create({
 
-      message: 'hooray, we`re back on track',
-      position: 'Bottom',
-      closeButtonText: 'OK',
-    }).present();
-    });
+  //     message: 'hooray, we`re back on track',
+  //     position: 'Bottom',
+  //     closeButtonText: 'OK',
+  //   }).present();
+  //   });
 
     
-    this.network.onDisconnect().subscribe(()=>{
-    this.toastCtrl.create({
+  //   this.network.onDisconnect().subscribe(()=>{
+  //   this.toastCtrl.create({
 
-      message: 'Ooops, please check your network connection',
-      position: 'Bottom',
-      closeButtonText: 'OK', 
+  //     message: 'Ooops, please check your network connection',
+  //     position: 'Bottom',
+  //     closeButtonText: 'OK', 
 
-    }).present();
-    });
-//this.navCtrl.setRoot('EmergencyNoPage')
+  //   }).present();
+  //   });
+this.navCtrl.setRoot('EmergencyNoPage')
 }
 
 

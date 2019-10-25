@@ -50,30 +50,9 @@ export class ChangePasswordPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChangePasswordPage');
-
-
-  //   var postData = this.passwordForm.value;
-
-  //   //THIS IS A BETTER WAY TO MAKE API CALLS
-  // this.urlService.password(postData)
-  // .subscribe(res => {
-  //     // this.presentToast(res.msg, res.status);
-  //    // console.log(res.id);
-  //     //console.log(res.drop_off);
-  //    //// this.alert.presentAlert("Notification", res.msg);
-  //  this.password_collection = res;
-  //     if (res.status=='OK') {
-  //   //    this.storage.set('user_name', res.user_name);
-  //     //  this.storage.set('user_id', res.user_id);
-  //       // localStorage.setItem('token', res.token);
-  //       //this.navCtrl.setRoot('HomePage');
-  //      }
-  // }, (err) => {
-  //     console.log(err);
-  // });
-
-
   }
+
+  
 
   goMyprofile(){
 
@@ -82,32 +61,21 @@ export class ChangePasswordPage {
     this.storage.set('password', values.password);
     this.storage.set('new_password', values.new_password);
  
-
-
-    var postData = this.passwordForm.value;
+  var postData = this.passwordForm.value;
 
    //THIS IS A BETTER WAY TO MAKE API CALLS
   this.urlService.changePassword(postData)
   .subscribe(res => {
-  //     // this.presentToast(res.msg, res.status);
-  //    // console.log(res.id);
-  //     //console.log(res.drop_off);
-  //    //// this.alert.presentAlert("Notification", res.msg);
    this.password_collection = res;
       if (res.status=='OK') {
-  //   //    this.storage.set('user_name', res.user_name);
-  //     //  this.storage.set('user_id', res.user_id);
-  //       // localStorage.setItem('token', res.token);
-  //       //this.navCtrl.setRoot('HomePage');
         }
   }, (err) => {
       console.log(err);
   });
 
-
   let toast = this.toastCtrl.create({
-    message: 'Password edited successfully',
-    duration: 3000,
+    message: 'Password change successful!',
+    duration: 3500,
     position: 'bottom'
   });
 

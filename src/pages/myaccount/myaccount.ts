@@ -16,15 +16,6 @@ export class MyaccountPage {
     private storage: Storage,
     ) {
 
-      this.storage.get('org_id').then((val) => {
-        console.log(String(val));
-        this.org_Id = String(val);  
-      });
-
-
-
-
-
 
   }
 

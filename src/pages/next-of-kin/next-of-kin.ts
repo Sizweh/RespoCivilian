@@ -189,10 +189,10 @@ goVerifyAccount(){
   this.Userdata = {
 
   //nextofkin//
-  name: this.name,
-  surname: this.surname,
-  phone:this.phone,
-  relationship:this.relationship,
+  name: value.name,
+  surname: value.surname,
+  phone:value.phone,
+  relationship:value.relationship,
 
 
    //register//

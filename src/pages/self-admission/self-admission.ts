@@ -36,32 +36,21 @@ export class SelfAdmissionPage {
         this.user_Id = String(val);
 
       });
-
-
       this.id = navParams.get('data') ;
       this.user_Id = navParams.get('user_id') ;
-      // this.id = navParams.get('id') ;
-  
+
       this.beneficiaryForm = formBuilder.group({
 
       'user_id': [this.user_Id,],
-        // 'user_id': ['16'],
-        //'id': ['1'],
-        
-        // 'name': ['',],
+    
         'Beneficiary_id': ['',],
       })
-
-
 
   }
 
 
 
   ionViewDidLoad() {
-
-
-    // this.storage.get('user_id').then((val) => {
 
     var headers = new Headers();
     headers.append("Accept", 'application/json');
@@ -79,23 +68,8 @@ export class SelfAdmissionPage {
         console.log(err);
       });
       
-   
-      // this.user_Id = String(val);  
-//  });
-
-
     console.log('ionViewDidLoad SelfAdmissionPage');
   }
-
-
-
-
-goHome(){
-  this.navCtrl.setRoot ("HomePage");
-}
-
-
-
 
 goMaps2(){
 this.storage.set('forWho', 'FM');
@@ -109,13 +83,6 @@ goMaps(){
   console.log('for someone clicked'); 
 this.navCtrl.push("MapsPage");
 }
-
-// goChat2(){
-//   this.storage.set('forWho', 'FB');
-// this.navCtrl.push("Chat2Page");
-// }
-
-
 
 goChat2(e){
   console.log(e);
@@ -134,7 +101,7 @@ goChat2(e){
       name: 'radio1',
       type: 'radio',
       label: ben.name,
-      value: ben.name,
+      value: ben.id,
     
     };
 
@@ -171,11 +138,11 @@ goChat2(e){
           console.log(e);
           
           const value = this.beneficiaryForm.value;
-   
+         
         
-         this.navCtrl.push("MapsPage");
-
-         this.storage.set('Beneficiary_id', value.Beneficiary_id);
+         //this.navCtrl.push("MapsPage");
+         this.storage.set('ben.id', value.ben.id);
+         
             
         }
         

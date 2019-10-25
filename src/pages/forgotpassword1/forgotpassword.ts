@@ -44,10 +44,6 @@ export class ForgotpasswordPage {
       // this.id = navParams.get('id') ;
 
       this.beneficiaryForm = formBuilder.group({
-
-        // 'user_id': [this.User_ID,],
-        // 'user_id': ['16'],
-        // 'id': ['3'],
        
         'user_id': [this.User_Id,],
         'id': [this.id,],
@@ -137,7 +133,7 @@ export class ForgotpasswordPage {
     });
     let toast = this.toastCtrl.create({
       message: 'Beneficiary details edited successfully',
-      duration: 3000,
+      duration: 3500,
       position: 'bottom'
     });
     toast.onDidDismiss(() => {

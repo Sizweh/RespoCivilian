@@ -76,7 +76,7 @@ export class MedicalHistoryPage {
   }
 
 
-  goMyprofile(){
+  goHome(){
 
     const values = this.medicalForm.value;
     this.storage.set('member_no', values.member_no);
@@ -93,6 +93,7 @@ export class MedicalHistoryPage {
   .subscribe(res => {
    this.medical_collection = res;
       if (res.status=='OK') {
+        
        }
   }, (err) => {
       console.log(err);
@@ -100,7 +101,7 @@ export class MedicalHistoryPage {
 
   let toast = this.toastCtrl.create({
     message: 'Medical details edited successfully',
-    duration: 3000,
+    duration: 3500,
     position: 'bottom'
   });
 
@@ -117,12 +118,9 @@ export class MedicalHistoryPage {
     loading.present();
     
 
-
-    this.navCtrl.push('MyprofilePage');
-
-   
-  
+    this.navCtrl.setRoot('HomePage');
     }
+
 
   goAddMedicalAid(){
     this.navCtrl.push('AddMedicalAidPage')

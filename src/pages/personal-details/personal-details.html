@@ -44,17 +44,21 @@
 
     <ion-item text-left>
       
-      <ion-label >Gender </ion-label>
+      <ion-label stacked>Gender </ion-label>
 
-      <ion-input value="{{ fault.gender }}"  formControlName="gender" block >
-      </ion-input>
+      <!-- <ion-input value="{{ fault.gender }}"  formControlName="gender" block >
+      </ion-input> -->
+  
           <ion-select formControlName="gender">
+              <!-- <ion-input value="{{ fault.gender }}"> </ion-input> -->
            <ion-label>Gender</ion-label>
           <ion-option>Male</ion-option>
-          <ion-option>Female</ion-option>
+          <ion-option>{{ fault.gender }}</ion-option>
+       
         </ion-select>
+     
     </ion-item>
-
+    <!-- <h5>  {{ fault.gender }}</h5> -->
       
     <ion-item text-left>
       <ion-label>DOB </ion-label>

@@ -38,12 +38,12 @@
 
   <div class="login-fields" [formGroup]="beneficiaryForm">
 
-
-    <button icon-right ion-button block color="newcolor"  (click)="goChat2(user_id)">
+      <div *ngIf="ben_collection">
+    <button icon-right ion-button block color="newcolor"  (click)="goChat2(ben_collection.id)">
     For Beneficiary
     <ion-icon name=""></ion-icon>
     </button>
-
+      </div>
 
     </div>
 
