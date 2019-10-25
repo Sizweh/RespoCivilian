@@ -28,6 +28,7 @@ export class HomePage {
   civilianId: any;
   userDetails: any;
   OneSignal: any;
+  isConnected:boolean;
 
   constructor(
     public navCtrl: NavController, 
@@ -46,21 +47,23 @@ export class HomePage {
 
     
     this.network.onConnect().subscribe(()=>{
+      this.isConnected=true;
       this.toastCtrl.create({
   
-        message: 'hooray, we`re back on track',
-        position: 'Bottom',
-        closeButtonText: 'OK',
+        message: '',
+        position: 'middle',
+        duration: 1500,
       }).present();
       });
   
       
       this.network.onDisconnect().subscribe(()=>{
+        this.isConnected=false;
       this.toastCtrl.create({
   
         message: 'Ooops, please check your network connection',
-        position: 'Bottom',
-        closeButtonText: 'OK',
+        position: 'middle',
+        duration: 1500,
   
       }).present();
       });
@@ -183,6 +186,34 @@ ionViewDidLoad() {
      }
      else{
      }
+
+     this.network.onConnect().subscribe(()=>{
+      this.isConnected=true;
+      this.toastCtrl.create({
+  
+        message: '',
+        position: 'middle',
+        duration: 1500,
+      }).present();
+      });
+  
+      
+      this.network.onDisconnect().subscribe(()=>{
+        this.isConnected=false;
+      this.toastCtrl.create({
+  
+        message: 'Ooops, please check your network connection',
+        position: 'middle',
+        duration: 1500,
+  
+      }).present();
+      });
+
+
+
+
+
+
     });
 
 

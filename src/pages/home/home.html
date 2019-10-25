@@ -23,31 +23,47 @@
 <ion-content text-center>
     <!-- <h6 color='light' text-right>More</h6> -->
   <br>
-  <ion-row no-lines *ngFor="let fault of faultCategories">
-    <ion-card no-lines>
-      <ion-item no-lines (click)="goSelfAdmission(fault)" text-right>
-        <ion-avatar item-start>
-          <img [src]="fault.imageUrl">
-        </ion-avatar>
-        <h1></h1>
-        <font size="3" color='#38414a'>{{ fault.category }}</font>
-      </ion-item>
-    </ion-card>
-  </ion-row>
 
-<ion-row no-lines *ngFor="let other of otherCategories">
-  <ion-card>
-    <ion-item (click)="goSpecifyEmergency(other)" no-lines text-right>
-      <ion-avatar item-start>
-       <img src="https://blooming-waters-81867.herokuapp.com/icons/other.png">
-        </ion-avatar>
-        <h1></h1>
+  <div *ngIf="isConnected===false">
+
+    <p style="margin-top:150px;text-align:center">Please connect to the internet</p>
+
+  </div>
+
+
+  <div *ngIf="isConnected===true">
+
+      <ion-row no-lines *ngFor="let fault of faultCategories">
+          <ion-card no-lines>
+            <ion-item no-lines (click)="goSelfAdmission(fault)" text-right>
+              <ion-avatar item-start>
+                <img [src]="fault.imageUrl">
+              </ion-avatar>
+              <h1></h1>
+              <font size="3" color='#38414a'>{{ fault.category }}</font>
+            </ion-item>
+          </ion-card>
+        </ion-row>
+
+        
+    <ion-row no-lines *ngFor="let other of otherCategories">
+        <ion-card>
+          <ion-item (click)="goSpecifyEmergency(other)" no-lines text-right>
+            <ion-avatar item-start>
+            <img src="https://blooming-waters-81867.herokuapp.com/icons/other.png">
+              </ion-avatar>
+              <h1></h1>
+            
+            <font size="3" color='#38414a'>{{ other.category }}</font>
       
-      <font size="3" color='#38414a'>{{ other.category }}</font>
+          </ion-item>
+        </ion-card>
+      </ion-row>
 
-    </ion-item>
-  </ion-card>
-</ion-row>
+
+  </div>
+  
+
 
 <br>
 <br>

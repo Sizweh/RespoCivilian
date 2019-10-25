@@ -130,6 +130,15 @@ ReverseGeocoding:any;
     });
 
     let that = this;
+
+
+
+    // geolocation setup
+
+
+
+
+
     //intial map setup, if no geolaction available
 
     this.map = new google.maps.Map(document.getElementById('map'), {
@@ -405,6 +414,10 @@ ReverseGeocoding:any;
 
          
 
+        
+
+
+
         var image = "https://blooming-waters-81867.herokuapp.com/icons/moving4.png";
         var marrkerCivilian;
         marrkerCivilian = new google.maps.Marker({
@@ -420,8 +433,8 @@ ReverseGeocoding:any;
         var images = "https://blooming-waters-81867.herokuapp.com/icons/fixed5.png";
         var markerCivilian;
         markerCivilian = new google.maps.Marker({
-          position: pos,
           map: that.map,
+          position: pos,
           title: 'My location',
           draggable: false,
           icon: images,
@@ -550,8 +563,8 @@ console.log();
 
         marrkerCivilian.addListener('dragend', function (event) {
         // console.log(event.latLng.lat() + ' ' +  event.latLng.lng());
-        var lat = event.latLng.lat().toFixed(6);
-        var longg = event.latLng.lng().toFixed(6);
+        var lat = event.latLng.lat().toFixed(3  );
+        var longg = event.latLng.lng().toFixed(3);
         var run  = (`<b>Your GPS coordinates:</b>`);
         var u = document.getElementById('getaccuracy')
 
@@ -583,7 +596,7 @@ console.log();
 
         var infowindow = new google.maps.InfoWindow();
         that.infoWindow.open(that.map);
-        that.map.setCenter(pos);
+        that.map.setCenter(markerCivilian,marrkerCivilian.getPosition());
       }, function () {
         this.handleLocationError(true, that.infoWindow, this.map.getCenter(), that.map);
       });
@@ -632,6 +645,7 @@ ionViewDidLoad() {
         console.log(RoundedLat);
 
         console.log(RoundedLng);
+        
         
     }); 
   
