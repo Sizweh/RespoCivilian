@@ -1,20 +1,20 @@
 
 <ion-content text-center>
 
-        <div class="register-fields" [formGroup]="map1Form">
+        <!-- <div class="register-fields" [formGroup]="map1Form">
                 <div class="searchWrapper">
                         <div class="searchSuggest">
                                 <div id="pac-container" class="input-icons" text-center>
-                            <input formControlName="address" id="pac-input" value="" style=" width:288px;
+                            <input formControlName="address" id="pac-input" value="" style=" width:400px;
                             padding: 10px; box-sizing: border-box; resize: vertical; font-size: 17px;"
                              class="w3w-address-field" placeholder="Change address" type="text" >
                         
                         </div>
                       </div>
                       </div>
-                      </div>
-<!-- 
-<div class="register-fields" [formGroup]="map1Form">
+                      </div> -->
+
+<!-- <div class="register-fields" [formGroup]="map1Form">
 
 <div id="pac-container" class="input-icons" text-center>
 <input formControlName="address" text-align=center value="" id="pac-input" type="text" style="width: 100%;   
@@ -24,10 +24,19 @@ placeholder="Enter a Location">
 
 </div> -->
 
-<div id="map" style="width:500px; height:550px;">
+<div id="map" style="width:500px; height:250px;">
 </div>
 
 
+<div class="register-fields" [formGroup]="map1Form">
+
+                <div id="pac-container" class="input-icons" text-center>
+                <input formControlName="address" text-align=center value="" id="pac-input" type="text" style="width: 100%;   
+                padding: 10px; box-sizing: border-box; resize: vertical; font-size: 17px;"
+                placeholder="Change Address">
+                </div>
+                
+                </div>
 <br>
 <div id="infowindow-content"  style="font-size: 17px;  color:#38414a; font-weight: bold;">
 <!-- <img src="" width="12" height="12" id="place-icon">
@@ -41,9 +50,10 @@ placeholder="Enter a Location">
 <div id="getLat" style="font-size: 13px;  color:#38414a; "></div>   
 <div id="getLong" style="font-size: 13px;  right: 1px; color:#38414a; "></div> 
 <!-- </div>         -->
+
 <br> 
 <div class="register-fields" [formGroup]="map2Form">
-<input  formControlName="additional_address" id="add"  value="" type="text" placeholder="Address 2: eg room 101"  
+<input text-center formControlName="additional_address" id="add"  value="" type="text" placeholder="Address 2: eg room 101"  
  style="border: none; border-bottom: 1px solid #38414a; width: 90%; padding: 12px; font-size: 16px;"  >
 </div>
        

@@ -5,6 +5,7 @@ import { AlertsProvider } from './../../providers/alerts/alerts';
 import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
 import { UrlbaseProvider } from '../../providers/urlbase/urlbase';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 
 
@@ -24,6 +25,7 @@ export class BankingDetailsPage {
   User_Id: any;
   user_id: any;
   org_id: string;
+  compileurl: any;
 
   
 
@@ -37,6 +39,7 @@ export class BankingDetailsPage {
     private storage: Storage,
     public formBuilder: FormBuilder,
     private urlService: UrlbaseProvider,
+    private socialSharing: SocialSharing,
     ) {
       
       this.storage.get('user_id').then((val) => {
@@ -56,6 +59,10 @@ export class BankingDetailsPage {
 
 
     }
+
+
+    // Check if sharing via email is supported
+
 
   ionViewDidLoad() {
 
@@ -136,11 +143,31 @@ export class BankingDetailsPage {
 
   
 
+whatsappShare(url){
+
+//  var url  = this.compileurl(index);
+   this.socialSharing.shareViaWhatsApp(url,'subject', 'https://respo.co.za/download');
+ }
 
 
+ facebookShare(url){
+  //  var url  = this.compileurl(index);
+    this.socialSharing.shareViaFacebook(url,'subject', 'https://respo.co.za/download');
+  }
 
 
-
-
+ 
 
 }
+//   this.socialSharing.canShareViaEmail().then(() => {
+//     // Sharing via email is possible
+//   }).catch(() => {
+//     // Sharing via email is not possible
+//   });
+  
+//  // Share via email
+//   let socialSharing.shareViaEmail('Body', 'Subject', ['recipient@example.org']).then(() => {
+//     // Success!
+//   }).catch(() => {
+//     // Error!
+//   });

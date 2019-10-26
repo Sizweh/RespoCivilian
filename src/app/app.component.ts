@@ -214,8 +214,8 @@ export class MyApp {
       }
   
   
-  goAbout(){
-    this.nav.setRoot('AboutPage');
+  goBankingDetails(){
+    this.nav.push('BankingDetailsPage');
     this.menu.enable(true);
     this.menu.close();
     }
@@ -239,15 +239,15 @@ export class MyApp {
     this.menu.close();
     }
 
-whatsappShare(index){
-  var msg  = this.compilemsg(index);
-   this.socialSharing.shareViaWhatsApp(msg, null, null);
- }
+// whatsappShare(index){
+//   var msg  = this.compilemsg(index);
+//    this.socialSharing.shareViaWhatsApp(msg, null, null);
+//  }
 
- facebookShare(index){
-   var msg  = this.compilemsg(index);
-    this.socialSharing.shareViaFacebook(msg, null, null);
-  }
+//  facebookShare(index){
+//    var msg  = this.compilemsg(index);
+//     this.socialSharing.shareViaFacebook(msg, null, null);
+//   }
     
   
 }

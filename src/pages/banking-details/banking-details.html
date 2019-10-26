@@ -8,9 +8,124 @@
   </ion-toolbar>
   </ion-navbar>
 </ion-header>
+
 <ion-content text-center padding >
-  <br>
- 
+<br>     
+
+<h5 text-center>Share App</h5>
+
+        <ion-col>
+          <button ion-button icon-only (click)="whatsappShare(url)" color="primary" clear >
+        <ion-icon color='secondary' class="share-icon" name="logo-whatsapp"></ion-icon>
+      </button>
+        </ion-col><br>
+        <ion-col>
+          <button ion-button icon-only (click)="facebookShare(url)" color="primary" clear >
+        <ion-icon color='' class="share-icon" name="logo-facebook"></ion-icon>
+      </button>
+        </ion-col><br>
+        <ion-col>
+          <button ion-button icon-only (click)="linkedInShare(i)" color="primary" clear >
+        <ion-icon color='newcolor' class="share-icon" name="logo-linkedin"></ion-icon>
+      </button>
+        </ion-col><br>
+        <ion-col>
+          <button ion-button icon-only (click)="smsShare(i)" color="primary" clear >
+        <ion-icon color='calm' class="share-icon" name="md-chatboxes"></ion-icon>
+      </button>
+        </ion-col><br>
+        <ion-col>
+          <button ion-button icon-only (click)="twitterShare(i)" color="primary" clear >
+        <ion-icon color='royal'  class="share-icon" name="logo-twitter"></ion-icon>
+      </button>
+        </ion-col><br>
+        <ion-col>
+          <button ion-button icon-only (click)="emailShare(i)" color="primary" clear>
+        <ion-icon color='danger'  class="share-icon" name="ios-mail"></ion-icon>
+      </button>
+        </ion-col><br>
+
+<!-- <ion-fab right bottom>
+  <button ion-fab color="secondary"><ion-icon name="md-share"></ion-icon></button>
+  <ion-fab-list side="left">
+    <button  color="calm" ion-fab><ion-icon name="logo-whatsapp"></ion-icon></button>
+    <button color="primary" ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
+    <button  color="royal" ion-fab><ion-icon name="md-chatboxes"></ion-icon></button>
+    <button ion-fab><ion-icon name="logo-linkedin"></ion-icon></button>
+  </ion-fab-list>
+</ion-fab> -->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <ion-row>
+      <ion-col col-6>
+        <button   ion-button round color='secondary' block (click)="goMyaccount()()">Save</button>
+      </ion-col>
+</ion-row> -->
+
+
+
+
+
+</ion-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <button clear small  ion-button round color='secondary' block (click)="goChat()">list</button> -->
+<!-- <font (click)="goFaq()" size="2" color='#488aff'>Read Terms & Conditions Here</font>
+<div class="remember_token">
+  <ion-item no-lines>
+    <ion-label>I Accept The Terms & Conditions</ion-label>
+    <ion-checkbox [(ngModel)]="remembertoken" (ionChange)="updateToken()"></ion-checkbox>
+  </ion-item>
+</div>
+<ion-item>
+  <ion-input placeholder="Credit/Debit card" type="text" formControlName="credit/debitCard"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-input placeholder="Card Holder Name" type="text" formControlName="cardholderName"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-input placeholder="Expiry Date" type="Date" formControlName="expiryDate"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-input placeholder="CVV" type="number" formControlName="cvc"></ion-input>
+</ion-item> -->
+
+
+
+
 
 
 <!-- <font size="3" color='#38414a'><b>Note:&nbsp;  </b>  Fill in this form or register <b>Once</b>, only if you're a Student at a  <b>University or College.</b></font><br>
@@ -48,40 +163,3 @@
 
 
 
-
-
-
-        
-<br>
-<!-- <ion-row>
-      <ion-col col-6>
-        <button   ion-button round color='secondary' block (click)="goMyaccount()()">Save</button>
-      </ion-col>
-</ion-row> -->
-
-
-
-<!-- <button clear small  ion-button round color='secondary' block (click)="goChat()">list</button> -->
-
-</ion-content>
-
-
-<!-- <font (click)="goFaq()" size="2" color='#488aff'>Read Terms & Conditions Here</font>
-<div class="remember_token">
-  <ion-item no-lines>
-    <ion-label>I Accept The Terms & Conditions</ion-label>
-    <ion-checkbox [(ngModel)]="remembertoken" (ionChange)="updateToken()"></ion-checkbox>
-  </ion-item>
-</div>
-<ion-item>
-  <ion-input placeholder="Credit/Debit card" type="text" formControlName="credit/debitCard"></ion-input>
-</ion-item>
-<ion-item>
-  <ion-input placeholder="Card Holder Name" type="text" formControlName="cardholderName"></ion-input>
-</ion-item>
-<ion-item>
-  <ion-input placeholder="Expiry Date" type="Date" formControlName="expiryDate"></ion-input>
-</ion-item>
-<ion-item>
-  <ion-input placeholder="CVV" type="number" formControlName="cvc"></ion-input>
-</ion-item> -->

@@ -52,7 +52,7 @@ export class HomePage {
   
         message: '',
         position: 'middle',
-        duration: 1500,
+        duration: 2000,
       }).present();
       });
   
@@ -63,7 +63,7 @@ export class HomePage {
   
         message: 'Ooops, please check your network connection',
         position: 'middle',
-        duration: 1500,
+        duration: 2000,
   
       }).present();
       });
@@ -100,9 +100,9 @@ faultCategories = [
   },
   {
     faultID: 2,
-    category: "Chest Pains",
-    imageUrl: "../../assets/icons/R1.png",
-    // imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/R1.png", 
+    category: "Heart Attack/Chest Pains",
+    // imageUrl: "../../assets/icons/R1.png",
+    imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/R1.png", 
     icon: "alarm"
   },
 
@@ -144,13 +144,13 @@ faultCategories = [
   },
   {
     faultID: 9,
-    category: "Collapse",
+    category: "Falling/Collapse",
     imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/R10.jpg",
     icon: "alarm"
   },
   {
     faultID: 10,
-    category: "Fitting",
+    category: "Seizure/Fitting",
     imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/R11.jpg",
     icon: "alarm"
   },
@@ -376,7 +376,7 @@ goEmergencyNo(){
 
   //   }).present();
   //   });
-this.navCtrl.setRoot('EmergencyNoPage')
+this.navCtrl.push('EmergencyNoPage')
 }
 
 

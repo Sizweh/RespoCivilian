@@ -84,8 +84,8 @@ goMaps(){
 this.navCtrl.push("MapsPage");
 }
 
-goChat2(e){
-  console.log(e);
+goChat2(){
+  
   
   //  const value = this.beneficiaryForm.value;
   //  this.storage.set('Beneficiary_id', value.Beneficiary_id);
@@ -137,11 +137,11 @@ goChat2(e){
 
           console.log(e);
           
-          const value = this.beneficiaryForm.value;
+          // const value = this.beneficiaryForm.value;
          
+          // this.storage.set('ben.id', value.ben.id);
+         this.navCtrl.push("MapsPage");
         
-         //this.navCtrl.push("MapsPage");
-         this.storage.set('ben.id', value.ben.id);
          
             
         }
