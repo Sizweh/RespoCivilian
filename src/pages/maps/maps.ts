@@ -140,7 +140,7 @@ ReverseGeocoding:any;
     //intial map setup, if no geolaction available
 
     this.map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 15,
+      zoom: 14.4,
       center: { lat: -29.856278, lng: 31.028828 },
 
       disableDefaultUI: true,
@@ -412,10 +412,6 @@ ReverseGeocoding:any;
 
 
 
-        
-
-
-
         var image = "https://blooming-waters-81867.herokuapp.com/icons/moving4.png";
         var marrkerCivilian;
         marrkerCivilian = new google.maps.Marker({
@@ -486,12 +482,12 @@ ReverseGeocoding:any;
           var lngcoords = place.geometry.location.lng().toFixed(6);
           var z = document.getElementById('getaccuracy')
           var display = (`<b>Your GPS coordinates:</b>`);
-          z.innerHTML = display;
+              z.innerHTML = display;
           
           let L = document.getElementById('getLat')
           let Ln = document.getElementById('getLong')
-          L.innerHTML = latcoords;
-          Ln.innerHTML = lngcoords;
+              L.innerHTML = latcoords;
+              Ln.innerHTML = lngcoords;
           
           // var display = latcoords + '<br>' + lngcoords;
           marrkerCivilian.setPosition(place.geometry.location);
@@ -550,8 +546,7 @@ if(status == google.maps.GeocoderStatus.OK){
 
   var ADD = results [0].formatted_address;
   let AD = document.getElementById('infowindow-content')
-  AD.innerText = 
-  ADD;
+  AD.innerText = ADD;
   console.log(position.coords.latitude);
 }
 
@@ -561,12 +556,11 @@ console.log();
 
         marrkerCivilian.addListener('dragend', function (event) {
         // console.log(event.latLng.lat() + ' ' +  event.latLng.lng());
-        var lat = event.latLng.lat().toFixed(3  );
-        var longg = event.latLng.lng().toFixed(3);
+        var lat = event.latLng.lat().toFixed(6);
+        var longg = event.latLng.lng().toFixed(6);
         var run  = (`<b>Your GPS coordinates:</b>`);
         var u = document.getElementById('getaccuracy')
-
-        u.innerHTML=run;
+            u.innerHTML = run;
 
                   
         let L = document.getElementById('getLat')
@@ -594,7 +588,7 @@ console.log();
 
         var infowindow = new google.maps.InfoWindow();
         that.infoWindow.open(that.map);
-        that.map.setCenter(markerCivilian,marrkerCivilian.getPosition());
+        that.map.setCenter(markerCivilian,marrkerCivilian);
       }, function () {
         this.handleLocationError(true, that.infoWindow, this.map.getCenter(), that.map);
       });

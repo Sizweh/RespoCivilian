@@ -23,16 +23,25 @@
 
 <ion-content text-center>
     <!-- <h6 color='light' text-right>More</h6> -->
+
+
+
+    <!-- <div *ngIf="isConnectedfalse">
+      <p>
+
+      connect to the internet
+
+      </p>
+
+
+
+
+    </div> -->
   <br>
 
-  <div *ngIf="isConnected===false">
-
-    <p style="margin-top:150px;text-align:center">Please connect to the internet</p>
-
-  </div>
-
-
-  <div *ngIf="isConnected===true">
+<!-- 
+  
+  <div *ngIf="isConnected"> -->
 
       <ion-row no-lines *ngFor="let fault of faultCategories">
           <ion-card no-lines>
@@ -62,7 +71,7 @@
       </ion-row>
 
 
-  </div>
+  <!-- </div> -->
   
 
 

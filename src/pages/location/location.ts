@@ -639,7 +639,7 @@ goConfirm(){
         duration: 3000
       });
       if (status == "error") {
-         // console.log(msg + 'server')
+        //  console.log(msg + 'server')
         this.alert.presentAlert("Respo", 'Please try again... connecting to the server');
       }
       if (status == "OK") {
