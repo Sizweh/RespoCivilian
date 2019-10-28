@@ -26,7 +26,12 @@ export class BankingDetailsPage {
   user_id: any;
   org_id: string;
   compileurl: any;
+  shareViaWhatsApp: any;
 
+  message:string = null;
+  file:string = null;
+  link:string = null;
+  subject:string = null;
   
 
   constructor(public navCtrl: NavController, 
@@ -61,7 +66,16 @@ export class BankingDetailsPage {
     }
 
 
-    // Check if sharing via email is supported
+share() {
+
+this.socialSharing.share(this.message, this.subject, this.file, this.link)
+.then(()=>{
+
+}).catch(()=>{
+
+});
+
+    }
 
 
   ionViewDidLoad() {
@@ -143,16 +157,16 @@ export class BankingDetailsPage {
 
   
 
-whatsappShare(url){
-
-//  var url  = this.compileurl(index);
-   this.socialSharing.shareViaWhatsApp(url,'subject', 'https://respo.co.za/download');
+whatsappShare(link){
+ //var url  = this.shareViaWhatsApp(url);
+  // this.socialSharing.shareViaWhatsApp(msg,'Join South Africas official Medical Emergency App and request an ambulance at a click of a button! To download the Respo App go to: https://respo.co.za/download','At Respo your well-being is our main priority');
+   this.socialSharing.shareViaWhatsApp(link ,"https://respo.co.za/download/");
  }
 
 
  facebookShare(url){
   //  var url  = this.compileurl(index);
-    this.socialSharing.shareViaFacebook(url,'subject', 'https://respo.co.za/download');
+    this.socialSharing.shareViaFacebook(url, 'https://respo.co.za/download/');
   }
 
 

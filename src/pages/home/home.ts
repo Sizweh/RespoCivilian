@@ -191,23 +191,14 @@ ionViewDidLoad() {
       this.isConnected=true;
       this.toastCtrl.create({
   
-        message: '',
+        message: 'network connected',
         position: 'middle',
         duration: 1500,
       }).present();
       });
   
       
-      this.network.onDisconnect().subscribe(()=>{
-        this.isConnected=false;
-      this.toastCtrl.create({
-  
-        message: 'Ooops, please check your network connection',
-        position: 'middle',
-        duration: 1500,
-  
-      }).present();
-      });
+      
 
 
 
@@ -279,6 +270,7 @@ this.storage.get('user_id').then((user_id) => {
   //   this.navCtrl.push('SelfAdmissionPage')
   // }
 
+
   goSpecifyEmergency(other){
     this.storage.set('category', other);
     this.storage.get('user_id').then((result) => {
@@ -291,35 +283,9 @@ this.storage.get('user_id').then((user_id) => {
 });
 
 
-let disconnectSubscription = this.network.onDisconnect().subscribe(() => {
-  console.log('network was disconnected :-(');
-
-  let toast = this.toastCtrl.create({
-    message: 'Network disconnected',
-    duration: 3000,
-  });
-    toast.present();
-});
-// stop disconnect watch
-disconnectSubscription.unsubscribe();
 
 
-// watch network for a connection
-let connectSubscription = this.network.onConnect().subscribe(() => {
-  console.log('network connected!');
-  let toast = this.toastCtrl.create({
-    message: 'Network connected',
-    duration: 3000,
-  });
-    toast.present();
 
-
-  alert('network connected!');
-
-  });
-
-    // stop connect watch
-   connectSubscription.unsubscribe();
 
 
 
