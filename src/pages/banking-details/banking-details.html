@@ -14,33 +14,15 @@
 
 <h5 text-center>Share App</h5>
 
-<ion-list>
 
-  <ion-item>
-    <ion-input [(ngModel)]="message" placeholder="Enter a message"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-input [(ngModel)]="link" placeholder="https://respo.co.za/download/"></ion-input>
-  </ion-item>
-
-
-</ion-list>
-
-
-<button icon-right ion-button full (click)="share()">Share
-    <ion-icon  color='' class="share-icon" name="logo-whatsapp"></ion-icon>
-</button>
-
-
-<!-- <ion-card-content>
+<ion-card-content>
         <ion-col>
-          <button ion-button icon-only (click)="whatsappShare(link)" color="secondary">
+          <button ion-button icon-only (click)="shareWhatsapp()" color="secondary">
         <ion-icon color='' class="share-icon" name="logo-whatsapp"> Whatsapp</ion-icon>
       </button>
         </ion-col><br>
         <ion-col>
-          <button ion-button icon-only (click)="facebookShare(url)" color="primary"  >
+          <button ion-button icon-only (click)="shareFacebook()" color="primary"  >
         <ion-icon color='' class="share-icon" name="logo-facebook"> FaceBook</ion-icon>
       </button>
         </ion-col><br>
@@ -64,17 +46,35 @@
         <ion-icon color=''  class="share-icon" name="ios-mail"> Email</ion-icon>
       </button>
         </ion-col><br>
-      </ion-card-content> -->
+      </ion-card-content>
 
-<!-- <ion-fab right bottom>
-  <button ion-fab color="secondary"><ion-icon name="md-share"></ion-icon></button>
-  <ion-fab-list side="left">
-    <button  color="calm" ion-fab><ion-icon name="logo-whatsapp"></ion-icon></button>
-    <button color="primary" ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
-    <button  color="royal" ion-fab><ion-icon name="md-chatboxes"></ion-icon></button>
-    <button ion-fab><ion-icon name="logo-linkedin"></ion-icon></button>
-  </ion-fab-list>
-</ion-fab> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ion-content>
+
+
+
+
+
+
+
 
 
 
@@ -97,13 +97,43 @@
 
 
 
-</ion-content>
+<!-- <ion-fab right bottom>
+  <button ion-fab color="secondary"><ion-icon name="md-share"></ion-icon></button>
+  <ion-fab-list side="left">
+    <button  color="calm" ion-fab><ion-icon name="logo-whatsapp"></ion-icon></button>
+    <button color="primary" ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
+    <button  color="royal" ion-fab><ion-icon name="md-chatboxes"></ion-icon></button>
+    <button ion-fab><ion-icon name="logo-linkedin"></ion-icon></button>
+  </ion-fab-list>
+</ion-fab> -->
 
 
 
 
 
 
+
+
+
+
+
+<!-- <button icon-right ion-button full (click)="share()">Share
+    <ion-icon  color='' class="share-icon" name="logo-whatsapp"></ion-icon>
+</button> -->
+
+
+<!-- <ion-list>
+
+  <ion-item>
+    <ion-input [(ngModel)]="message" placeholder="Enter a message"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input [(ngModel)]="link" placeholder=""></ion-input>
+  </ion-item>
+
+
+</ion-list> -->
 
 
 

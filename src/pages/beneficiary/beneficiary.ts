@@ -49,7 +49,7 @@ export class BeneficiaryPage {
         'dob': ['', Validators.compose([Validators.required])],
         'allergies': ['', Validators.compose([Validators.required])],
         'relationship': ['', Validators.compose([Validators.required])],
-        'email': ['', Validators.compose([Validators.required])],
+        // 'email': ['', Validators.compose([Validators.required])],
           
       })
 
@@ -72,7 +72,7 @@ export class BeneficiaryPage {
     const value = this.beneficiaryForm.value;
 
     this.storage.set('name', value.name);
-    this.storage.set('email', value.email);
+    // this.storage.set('email', value.email);
     this.storage.set('phone', value.phone);  
     this.storage.set('gender', value.gender);
     this.storage.set('allergies', value.allergies);

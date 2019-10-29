@@ -32,7 +32,9 @@ export class BankingDetailsPage {
   file:string = null;
   link:string = null;
   subject:string = null;
-  
+
+  url='https://respo.co.za/download/';
+  text='Join South Africas official Medical Emergency App and request an ambulance at a click of a button! To download the Respo App go to https://respo.co.za/download/. At Respo your well being is our main priority!';
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -51,31 +53,79 @@ export class BankingDetailsPage {
         this.user_id = String(val);  
       });
 
-
       this.registerForm = formBuilder.group({
-        
-      'user_id': ['',],
-      'id': ['',],
-
-      'org_id': ['',],
-      'student_no': ['', Validators.compose([Validators.required])],
-        
+      // 'user_id': ['',],
+      // 'id': ['',],
+      // 'org_id': ['',],
+      // 'student_no': ['', Validators.compose([Validators.required])],
     })
-
-
     }
 
 
-share() {
+shareWhatsapp() {
 
-this.socialSharing.share(this.message, this.subject, this.file, this.link)
+this.socialSharing.shareViaWhatsApp(this.text, null ,this.url)
 .then(()=>{
 
 }).catch(()=>{
 
 });
 
-    }
+}
+
+shareFacebook() {
+
+this.socialSharing.shareViaFacebook(this.text)
+.then(()=>{
+
+}).catch(()=>{
+
+});
+
+}
+
+linkedInShare() {
+
+this.socialSharing.shareVia(this.text, null ,this.url)
+.then(()=>{
+
+}).catch(()=>{
+
+});
+
+}
+smsShare() {
+
+this.socialSharing.shareViaSMS(this.text, this.url)
+.then(()=>{
+
+}).catch(()=>{
+
+});
+
+}
+
+twitterShare() {
+
+this.socialSharing.shareViaTwitter(this.text, null ,this.url)
+.then(()=>{
+
+}).catch(()=>{
+
+});
+
+}
+
+emailShare() {
+
+this.socialSharing.share(this.text, null ,this.url)
+.then(()=>{
+
+}).catch(()=>{
+
+});
+
+}
 
 
   ionViewDidLoad() {
@@ -159,7 +209,7 @@ this.socialSharing.share(this.message, this.subject, this.file, this.link)
 
 whatsappShare(link){
  //var url  = this.shareViaWhatsApp(url);
-  // this.socialSharing.shareViaWhatsApp(msg,'Join South Africas official Medical Emergency App and request an ambulance at a click of a button! To download the Respo App go to: https://respo.co.za/download','At Respo your well-being is our main priority');
+  // this.socialSharing.shareViaWhatsApp(msg,');
    this.socialSharing.shareViaWhatsApp(link ,"https://respo.co.za/download/");
  }
 

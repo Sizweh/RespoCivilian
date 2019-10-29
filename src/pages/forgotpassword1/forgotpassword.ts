@@ -54,7 +54,7 @@ export class ForgotpasswordPage {
         'dob': ['', Validators.compose([Validators.required])],
         'allergies': ['', Validators.compose([Validators.required])],
         'relationship': ['', Validators.compose([Validators.required])],
-        'email': ['', Validators.compose([Validators.required])],
+        // 'email': ['', Validators.compose([Validators.required])],
 
 
       })

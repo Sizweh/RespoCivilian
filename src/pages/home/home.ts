@@ -6,6 +6,7 @@ import { MenuController } from 'ionic-angular';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { Network } from '@ionic-native/network';
 import { ToastController } from 'ionic-angular';
+import { CodePush } from '@ionic-native/code-push';
 
 @IonicPage()
 @Component({
@@ -29,6 +30,7 @@ export class HomePage {
   userDetails: any;
   OneSignal: any;
   isConnected:boolean;
+  //codePush: any;
 
   constructor(
     public navCtrl: NavController, 
@@ -38,7 +40,8 @@ export class HomePage {
     private urlService: UrlbaseProvider,
     public menuCtrl: MenuController,
     private oneSignal: OneSignal,
-    private network: Network
+    private network: Network,
+    private codePush: CodePush
    
     ) {
     this.menuCtrl.enable(true);
@@ -87,9 +90,14 @@ export class HomePage {
 
 
 
+      this.codePush.sync().subscribe((syncStatus) => console.log(syncStatus));
 
+      const downloadProgress = (progress) => { console.log(`Downloaded ${progress.receivedBytes} of ${progress.totalBytes}`); }
+      this.codePush.sync({}, downloadProgress).subscribe((syncStatus) => console.log(syncStatus));
 
 }
+
+
 faultCategories = [
   {
     faultID: 1,

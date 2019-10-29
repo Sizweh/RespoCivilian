@@ -142,7 +142,7 @@ ReverseGeocoding:any;
     //intial map setup, if no geolaction available
 
     this.map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 14.4,
+      zoom: 16.4,
       center: { lat: -29.856278, lng: 31.028828 },
 
       disableDefaultUI: true,

@@ -66,6 +66,7 @@ Longitude: any;
 geoLatitude: number;
 Beneficiary_id: any;
   request_id: any;
+  Ln: any;
     
 
   constructor(public navCtrl: NavController, 
@@ -80,6 +81,7 @@ Beneficiary_id: any;
       this.storage.get('address').then((val) => {
           this.address = val;
       });
+
      
 this.storage.get('selected_responder').then((val) => {
 
@@ -127,10 +129,10 @@ this.storage.get('selected_responder').then((val) => {
         this.address = val;
       });
     this.storage.get('lat').then((val) => {
-        this.Latitude = val;
+        this.L = val;
       });
     this.storage.get('lng').then((val) => {
-        this.Longitude = val;
+        this.Ln = val;
       });
 
     this.storage.get('forWho').then((val) => {
@@ -201,11 +203,11 @@ setTimeout(()=>{
       });
 
       this.storage.get('lat').then((val) => {
-        this.Latitude = val;
+        this.L = val;
       });
       
     this.storage.get('lng').then((val) => {
-        this.Longitude = val;
+        this.Ln = val;
       });
 
       this.storage.get('selected_responder').then((val) => {
@@ -597,8 +599,8 @@ goConfirm(){
   this.userDetails = {
 
     'civilian_id': this.civilianId,
-    'lat': this.Latitude,//current lat
-    'lng': this.Longitude,//current lng
+    'lat': this.L,//current lat
+    'lng': this.Ln,//current lng
     'driver_id': this.selectedResponder.id, 
     'company_id': this.selectedResponder.company.id,
     'emergency_type': this.event,

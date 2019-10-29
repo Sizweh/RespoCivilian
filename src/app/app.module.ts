@@ -4,17 +4,14 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { CallNumber } from '@ionic-native/call-number';
 import { MyApp } from './app.component';
 import { Contacts } from '@ionic-native/contacts';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpClientModule } from '@angular/common/http'
 import { HttpModule } from '@angular/http';
-
 import { ToastProvider } from '../providers/toast/toast';
 import { AlertsProvider } from '../providers/alerts/alerts';
 import { PipesModule } from '../pipes/pipes.module';
 import { UrlbaseProvider } from '../providers/urlbase/urlbase';
-
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 // import { FileChooser } from '@ionic-native/file-chooser';
@@ -27,9 +24,10 @@ import { SelectSearchableModule } from 'ionic-select-searchable';
 import { OneSignal } from '@ionic-native/onesignal/ngx'
 import { Geolocation } from '@ionic-native/geolocation';
 import { SocialSharing } from '@ionic-native/social-sharing';
-import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 import { GeocodeProvider } from '../providers/geocode/geocode';
 import { Network } from '@ionic-native/network';
+import { CodePush } from '@ionic-native/code-push';
 
 const config: SocketIoConfig = { url: 'http://localhost:3001', options:{}};
 
@@ -68,6 +66,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options:{}};
   providers: [
     StatusBar,
     Geolocation,
+    CodePush,
     SocialSharing,
     SplashScreen,
     OneSignal,

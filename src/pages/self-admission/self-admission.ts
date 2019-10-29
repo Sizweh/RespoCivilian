@@ -134,13 +134,18 @@ goChat2(){
       }, {
         text: 'Ok',
         handler: (e) => {     
-
+          const value = this.beneficiaryForm.value;
+          this.storage.set('Beneficiary_id', (e));
           console.log(e);
+    //  const value = this.beneficiaryForm.value;
+    //   this.storage.set('handler', value.e);
+          
           
           // const value = this.beneficiaryForm.value;
          
-          // this.storage.set('ben.id', value.ben.id);
+
          this.navCtrl.push("MapsPage");
+        //  this.storage.set('Beneficiary_id', value.Beneficiary_id);
         
          
             
@@ -150,7 +155,8 @@ goChat2(){
       }
     ]
   });
- 
+  // const value = this.beneficiaryForm.value;
+  // this.storage.set('ben.name', value.ben.id);
 
  alert.present();
 

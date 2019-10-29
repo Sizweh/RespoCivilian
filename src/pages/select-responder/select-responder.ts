@@ -16,6 +16,9 @@ export class SelectResponderPage {
   address_loacation: any;
   responder_positions :any[]=[];
   allResponders_Distance : any[]=[];
+  myInput :string;
+  company_name: any;
+  responderName: any;
 
 
   constructor(
@@ -25,24 +28,25 @@ export class SelectResponderPage {
     private urlService: UrlbaseProvider,
     ) {
 
-      let lat = 0;
-      let long =0;
-      this.storage.get('Latitude').then(lt => lat=lt);
-      this.storage.get('Longitude').then(lg => long=lg);
+
+      let L = 0;
+      let Ln =0;
+      this.storage.get('lat').then(lt => L=lt);
+      this.storage.get('lng').then(lg => Ln=lg);
 
 
       this.urlService.showalldrivers()
               .subscribe(res => {
               console.log(res);
-              this.allResponders = res;
+              this.allResponders_Distance = res;
 
               res.forEach((responder, i)=>{
 
                 console.log(responder);
 
                 //radians
-                let lat1 = (lat * 2.0 * Math.PI) / 60.0 / 360.0;      
-                let long1 = (long * 2.0 * Math.PI) / 60.0 / 360.0;    
+                let lat1 = (L * 2.0 * Math.PI) / 60.0 / 360.0;      
+                let long1 = (Ln * 2.0 * Math.PI) / 60.0 / 360.0;    
                 let lat2 = (parseFloat(responder.lat) * 2.0 * Math.PI) / 60.0 / 360.0;   
                 let long2 = (parseFloat(responder.lng) * 2.0 * Math.PI) / 60.0 / 360.0;
 
@@ -132,6 +136,7 @@ export class SelectResponderPage {
 
 
   ionViewDidLoad() {
+    
 
     
     
@@ -156,6 +161,35 @@ export class SelectResponderPage {
    // console.log(respo);
     this.navCtrl.push('LocationPage')
   }
+
+
+
+  //[28/10/2019 1:30 PM] Clinton Jay Mtambo: getTopics(ev: any){
+
+    getTopics(ev: any){
+    let val: string = ev;
+
+    this.urlService.showalldrivers();
+let serVal = ev.target.value;
+if (serVal && serVal.trim() != ''){
+  this.allResponders_Distance = this.allResponders_Distance.filter((allResponders_Distance) => {
+    return (allResponders_Distance.company.company_name.toLowerCase().indexOf(serVal.toLowerCase()) > -1);
+
+    
+  })
+}
+
+  }
+//[28/10/2019 1:30 PM] Clinton Jay Mtambo: }
+
+
+
+
+
+
+
+
+
   
 
 }

@@ -75,7 +75,7 @@ export class Nextofkin2Page {
     this.navCtrl.push('NextOfSkinPage')
  }
 
-  goMyprofile(){
+ goHome(){
 
     const values = this.nextofkin2Form.value;
     this.storage.set('name', values.name);
@@ -132,7 +132,7 @@ export class Nextofkin2Page {
     });
     loading.present();
   
-    this.navCtrl.setRoot('MyprofilePage')
+    this.navCtrl.setRoot('HomePage')
  }
 
 

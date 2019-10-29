@@ -62,32 +62,21 @@ export class NextOfSkinPage {
     var headers = new Headers();
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
-  //  const requestOptions = new RequestOptions({ headers: headers });
-   
-   //   pass to back-end
-    //  console.log(this.historyForm.value);
+
       var postData = this.skinForm.value;
 
    //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.nextofSkin(postData)
     .subscribe(res => {
-        // this.presentToast(res.msg, res.status);
-       // console.log(res.id);
-        //console.log(res.drop_off);
-       //// this.alert.presentAlert("Notification", res.msg);
      this.skin_collection = res;
         if (res.status=='OK') {
-      //    this.storage.set('user_name', res.user_name);
-          // localStorage.setItem('token', res.token);
-          //this.navCtrl.setRoot('HomePage');
         }
     }, (err) => {
         console.log(err);
     });
   }
 
-  goMyprofile(id){
-
+  goHome(id){
 
 var headers = new Headers();
 headers.append("Accept", 'application/json');
@@ -98,16 +87,10 @@ var postData = { id:id }
 
   this.urlService.deleteNext(postData)
   .subscribe(res => {
-      // this.presentToast(res.msg, res.status);
-     // console.log(res.id);
-      //console.log(res.drop_off);
-     //// this.alert.presentAlert("Notification", res.msg);
+
    this.skin_collection = res;
       if (res.status=='OK') {
-    //    this.storage.set('user_name', res.user_name);
-      //  this.storage.set('user_id', res.user_id);
-        // localStorage.setItem('token', res.token);
-        //this.navCtrl.setRoot('HomePage');
+
        }
   }, (err) => {
       console.log(err);
@@ -120,15 +103,15 @@ var postData = { id:id }
         {
           text: 'Yes',
           handler: () => {
-            this.storage.set('Medical_Aid_Status', 'Yes');
+           // this.storage.set('Medical_Aid_Status', 'Yes');
             console.log('Agree clicked'); 
-            this.navCtrl.setRoot('MyprofilePage'); 
+            this.navCtrl.setRoot('HomePage'); 
           }
         },
         {
           text: 'No',
           handler: () => {
-            this.storage.set('Medical_Aid_Status', 'No');
+            //this.storage.set('Medical_Aid_Status', 'No');
             console.log('Disagree clicked');
      
           }
@@ -137,7 +120,7 @@ var postData = { id:id }
     });
     confirm.present();
 
-  // alert.present();
+  
   // const loading= this.loadingCtrl.create({
   //   content: "deleting details",
   //   duration: 1000
@@ -159,7 +142,8 @@ var postData = { id:id }
     });
 });
     
-    }
+}
+
     goModal(id,user_id){    
     
       this.navCtrl.push("ModalPage", {
