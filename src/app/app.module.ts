@@ -27,7 +27,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 import { GeocodeProvider } from '../providers/geocode/geocode';
 import { Network } from '@ionic-native/network';
-import { CodePush } from '@ionic-native/code-push';
+ import { CodePush } from '@ionic-native/code-push';
 
 const config: SocketIoConfig = { url: 'http://localhost:3001', options:{}};
 
@@ -87,7 +87,6 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options:{}};
     // FileTransfer,
     // File,
     SocketsProvider,
-    
     HttpModule,
     SocketsProvider,
     GeocodeProvider,

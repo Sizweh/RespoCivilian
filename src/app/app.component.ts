@@ -1,10 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav,  Platform, MenuController,  } from 'ionic-angular';
+import { Nav, Platform, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
-import { FormGroup, FormBuilder,} from '@angular/forms';
-import {OneSignal} from '@ionic-native/onesignal/ngx';
+import { FormGroup, FormBuilder} from '@angular/forms';
+import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing';
 
 
@@ -17,6 +17,10 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 export class MyApp {
   userId: string;
   [x: string]: any;
+
+  url='https://respo.co.za/download/';
+  text='Join South Africas official Medical Emergency App and request an ambulance at a click of a button! To download the Respo App go to https://respo.co.za/download/. At Respo your well being is our main priority!';
+  message='Join South Africas official Medical Emergency App and request an ambulance at a click of a button! To download the Respo App go to https://respo.co.za/download/. At Respo your well being is our main priority!';
  
 
   menuForm: FormGroup;
@@ -90,6 +94,17 @@ export class MyApp {
     
 
   }
+
+shareApp() {
+
+this.socialSharing.share(this.text, null ,this.url)
+.then(()=>{
+
+}).catch(()=>{
+
+});
+
+}
 
   ionViewDidLoad() {
 

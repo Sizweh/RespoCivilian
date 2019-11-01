@@ -4,8 +4,8 @@ import { FormGroup,  FormBuilder, Validators} from '@angular/forms';
 import { AlertsProvider } from './../../providers/alerts/alerts';
 import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
-import { UrlbaseProvider } from '../../providers/urlbase/urlbase';
-import { SocialSharing } from '@ionic-native/social-sharing';
+//import { UrlbaseProvider } from '../../providers/urlbase/urlbase';
+//import { SocialSharing } from '@ionic-native/social-sharing';
 
 
 
@@ -28,25 +28,25 @@ export class BankingDetailsPage {
   compileurl: any;
   shareViaWhatsApp: any;
 
-  message:string = null;
+  //message:string = null;
   file:string = null;
   link:string = null;
   subject:string = null;
 
-  url='https://respo.co.za/download/';
-  text='Join South Africas official Medical Emergency App and request an ambulance at a click of a button! To download the Respo App go to https://respo.co.za/download/. At Respo your well being is our main priority!';
+  // url='https://respo.co.za/download/';
+  // text='Join South Africas official Medical Emergency App and request an ambulance at a click of a button! To download the Respo App go to https://respo.co.za/download/. At Respo your well being is our main priority!';
+  // message='Join South Africas official Medical Emergency App and request an ambulance at a click of a button! To download the Respo App go to https://respo.co.za/download/. At Respo your well being is our main priority!';
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public alert: AlertsProvider,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
-
     public http: HttpClient,
     private storage: Storage,
     public formBuilder: FormBuilder,
-    private urlService: UrlbaseProvider,
-    private socialSharing: SocialSharing,
+   // private urlService: UrlbaseProvider,
+   // private socialSharing: SocialSharing,
     ) {
       
       this.storage.get('user_id').then((val) => {
@@ -62,70 +62,7 @@ export class BankingDetailsPage {
     }
 
 
-shareWhatsapp() {
-
-this.socialSharing.shareViaWhatsApp(this.text, null ,this.url)
-.then(()=>{
-
-}).catch(()=>{
-
-});
-
-}
-
-shareFacebook() {
-
-this.socialSharing.shareViaFacebook(this.text)
-.then(()=>{
-
-}).catch(()=>{
-
-});
-
-}
-
-linkedInShare() {
-
-this.socialSharing.shareVia(this.text, null ,this.url)
-.then(()=>{
-
-}).catch(()=>{
-
-});
-
-}
-smsShare() {
-
-this.socialSharing.shareViaSMS(this.text, this.url)
-.then(()=>{
-
-}).catch(()=>{
-
-});
-
-}
-
-twitterShare() {
-
-this.socialSharing.shareViaTwitter(this.text, null ,this.url)
-.then(()=>{
-
-}).catch(()=>{
-
-});
-
-}
-
-emailShare() {
-
-this.socialSharing.share(this.text, null ,this.url)
-.then(()=>{
-
-}).catch(()=>{
-
-});
-
-}
+// 
 
 
   ionViewDidLoad() {
@@ -151,78 +88,106 @@ this.socialSharing.share(this.text, null ,this.url)
 
 
 
-  goMyaccount(id) {
-
-    this.storage.get('user_id').then((val) => {
-      console.log(String(val));
-      this.user_id = String(val);
-
-      const values = this.registerForm.value;
-
-      this.storage.set('org_id', values.org_id);
-      this.storage.set('student_no', values.student_no);
-
-      var headers = new Headers();
-      headers.append("Accept", 'application/json');
-      headers.append('Content-Type', 'application/json');
-
-      // pass to back-end
-      console.log(this.registerForm.value);
-      var collection = {
-        user_id: val,
-        org_id: values.org_id,
-        student_no: values.student_no
-      };
-     
-    // THIS IS A BETTER WAY TO MAKE API CALLS
-       this.urlService.orgList(collection)
-       .subscribe(res => {
-        console.log(res);
-         if (res.status=='OK') {
-        }
-       }, (err) => {
-         console.log(err);
-       });
-
-          const loading= this.loadingCtrl.create({
-        content: "Saving...",
-        duration: 3000
-      });
-      loading.present();
-      let alert = this.alertCtrl.create({
-        title: 'Student Details',
-        message: 'Student details stored successfully. ',
-        buttons: [
-          {
-            text: 'OK',
-            handler: () => {
-            }
-          }
-        ]
-      });
-      alert.present();
-    });
-    this.navCtrl.setRoot("MyaccountPage");
-  }
+ 
 
   
 
-whatsappShare(link){
- //var url  = this.shareViaWhatsApp(url);
-  // this.socialSharing.shareViaWhatsApp(msg,');
-   this.socialSharing.shareViaWhatsApp(link ,"https://respo.co.za/download/");
- }
 
-
- facebookShare(url){
-  //  var url  = this.compileurl(index);
-    this.socialSharing.shareViaFacebook(url, 'https://respo.co.za/download/');
-  }
 
 
  
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+ // goMyaccount(id) {
+
+  //   this.storage.get('user_id').then((val) => {
+  //     console.log(String(val));
+  //     this.user_id = String(val);
+
+  //     const values = this.registerForm.value;
+
+  //     this.storage.set('org_id', values.org_id);
+  //     this.storage.set('student_no', values.student_no);
+
+  //     var headers = new Headers();
+  //     headers.append("Accept", 'application/json');
+  //     headers.append('Content-Type', 'application/json');
+
+  //     // pass to back-end
+  //     console.log(this.registerForm.value);
+  //     var collection = {
+  //       user_id: val,
+  //       org_id: values.org_id,
+  //       student_no: values.student_no
+  //     };
+     
+  //   // THIS IS A BETTER WAY TO MAKE API CALLS
+  //      this.urlService.orgList(collection)
+  //      .subscribe(res => {
+  //       console.log(res);
+  //        if (res.status=='OK') {
+  //       }
+  //      }, (err) => {
+  //        console.log(err);
+  //      });
+
+  //         const loading= this.loadingCtrl.create({
+  //       content: "Saving...",
+  //       duration: 3000
+  //     });
+  //     loading.present();
+  //     let alert = this.alertCtrl.create({
+  //       title: 'Student Details',
+  //       message: 'Student details stored successfully. ',
+  //       buttons: [
+  //         {
+  //           text: 'OK',
+  //           handler: () => {
+  //           }
+  //         }
+  //       ]
+  //     });
+  //     alert.present();
+  //   });
+  //   this.navCtrl.setRoot("MyaccountPage");
+  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //   this.socialSharing.canShareViaEmail().then(() => {
 //     // Sharing via email is possible
 //   }).catch(() => {
@@ -235,3 +200,93 @@ whatsappShare(link){
 //   }).catch(() => {
 //     // Error!
 //   });
+
+
+
+
+
+
+
+
+
+
+
+// shareWhatsapp() {
+
+// this.socialSharing.shareViaWhatsApp(this.text, null)
+// .then(()=>{
+
+// }).catch(()=>{
+
+// });
+
+// }
+
+// shareFacebook() {
+
+// this.socialSharing.shareViaFacebook(this.text, null ,this.url)
+// //this.socialSharing.canShareVia('Facebook', null ,this.url)
+// .then(()=>{
+
+// }).catch(()=>{
+
+// });
+
+// }
+
+// linkedInShare() {
+
+// this.socialSharing.share(this.text, null ,this.url)
+// .then(()=>{
+
+// }).catch(()=>{
+
+// });
+
+// }
+// smsShare() {
+
+// this.socialSharing.shareViaSMS(this.message,null)
+// .then(()=>{
+
+// }).catch(()=>{
+
+// });
+
+// }
+
+// twitterShare() {
+
+// this.socialSharing.shareViaTwitter(this.text, null ,this.url)
+// .then(()=>{
+
+// }).catch(()=>{
+
+// });
+
+// }
+
+// emailShare() {
+
+// this.socialSharing.share(this.text,null)
+// .then(()=>{
+
+// }).catch(()=>{
+
+// });
+
+// }
+
+
+
+// whatsappShare(link){
+//  //var url  = this.shareViaWhatsApp(url);
+//   // this.socialSharing.shareViaWhatsApp(msg,');
+//    this.socialSharing.shareViaWhatsApp(link ,"https://respo.co.za/download/");
+//  }
+
+
+//  facebookShare(url){
+//   //  var url  = this.compileurl(index);
+//     this.socialSharing.shareViaFacebook(url, 'https://respo.co.za/download/');
+//   }

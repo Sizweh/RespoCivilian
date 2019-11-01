@@ -49,7 +49,7 @@ placeholder="Enter a Location">
 
 <!-- <div class="register-fields" [formGroup]="map1Form"> -->
 <div id="getLat" style="font-size: 13px;  color:#38414a; "></div>   
-<div id="getLong" style="font-size: 13px;  right: 1px; color:#38414a; "></div> 
+<div  id="getLong" style="font-size: 13px;  right: 1px; color:#38414a; "></div> 
 <!-- </div>         -->
 
 <br> 
@@ -62,7 +62,7 @@ placeholder="Enter a Location">
        
 <br>          
 <br>          
-<button (click)="goSelectResponder()" ion-button color="secondary"
+<button   [disabled]="!map1Form.valid" (click)="goSelectResponder()" ion-button color="secondary"
 round>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Confirm Location
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
 <br>

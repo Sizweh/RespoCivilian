@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, } from 'ionic-angular';
 import { AlertsProvider } from './../../providers/alerts/alerts';
 import { Storage } from '@ionic/storage';
-//import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
+import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Geolocation,Geoposition } from '@ionic-native/geolocation';
-import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
+import { Geolocation, } from '@ionic-native/geolocation';
+import { NativeGeocoder, } from '@ionic-native/native-geocoder/ngx';
 
 import { Platform } from 'ionic-angular';
 
@@ -20,6 +20,9 @@ declare var google;
 })
 
 export class MapsPage implements OnInit {
+// Geoposition
+// NativeGeocoderResult
+// NativeGeocoderOptions
 
 marrkerCivilian:any;
 map         : any;
@@ -68,7 +71,7 @@ ReverseGeocoding:any;
     private storage: Storage,
     private geocoder: NativeGeocoder,
     public loadingCtrl: LoadingController,
-   // private urlService: UrlbaseProvider,
+    private urlService: UrlbaseProvider,
     public formBuilder: FormBuilder,
     private geolocation: Geolocation,
 
@@ -77,6 +80,11 @@ ReverseGeocoding:any;
       
       this.map1Form = formBuilder.group({
         'address': ['',],
+
+        'getLat': ['',],
+        'getLng': ['',],
+        '2': ['',],
+        
         
 
       })
@@ -660,9 +668,9 @@ goHome(){
 this.navCtrl.setRoot('HomePage')
 }
 
-goSelectResponder(getLat) {
+goSelectResponder() {
 
-console.log(getLat)
+//console.log(getLat)
 
     var Sear_location = document.getElementById('infowindow-content').innerText;
     var number = (<HTMLInputElement>document.getElementById("add")).value;
@@ -689,7 +697,6 @@ console.log(getLat)
 
     // this.storage.set('ab', abc);
     // this.storage.set('cb', abc);
-  
 
     this.navCtrl.push("SelectResponderPage", {
       sear_location: Sear_location,  number:number 

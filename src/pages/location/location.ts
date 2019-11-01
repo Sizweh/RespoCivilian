@@ -67,6 +67,8 @@ geoLatitude: number;
 Beneficiary_id: any;
   request_id: any;
   Ln: any;
+  allResponders_Distance: any;
+  idcivilian: any;
     
 
   constructor(public navCtrl: NavController, 
@@ -83,24 +85,30 @@ Beneficiary_id: any;
       });
 
      
-this.storage.get('selected_responder').then((val) => {
 
-    this.selectedResponder = [val];
-    this.responderId = val.id;
-    this.responderName = val.driver_name;
-    var randomnumber = Math.floor(Math.random() * (7 - 1 + 1)) + 1;
-    this.responderDistance = randomnumber;
-    }); 
      
       this.address = navParams.get('sear_location');
       this.additional_address = navParams.get('number');
-      //console.log('ssssssssssssss'+ this.address_loacation );
+  
       this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
       this.autocomplete = { input: '' };
       this.autocompleteItems = []
   }
 
   ionViewDidLoad() {
+
+    // this.storage.get('selected_responder').then((val) => {
+
+    // this.selectedResponder = [val];
+    // this.responderId = val.company_id;
+    // this.responderName = val.driver_name;
+    // var randomnumber = Math.floor(Math.random() * (7 - 1 + 1)) + 1;
+    // this.responderDistance = randomnumber;
+    // }); 
+
+
+
+
     console.log('ionViewDidLoad LocationPage');
 
   
@@ -141,10 +149,10 @@ this.storage.get('selected_responder').then((val) => {
 
       this.storage.get('specify_emergency').then((val) => {
         this.specify_emergency = val;
+        
         this.specify_emergency = val.specify_emergency;
       this.storage.remove( 'specify_emergency');
       });
-
 
     this.showText = true;
 
@@ -195,7 +203,7 @@ setTimeout(()=>{
       this.storage.get('user_id').then((val) => {
         // console.log('user db stuff');
         // console.log(val);
-        this.civilianId = val;
+        this.idcivilian = val;
       });
 
       this.storage.get('address').then((val) => {
@@ -212,13 +220,12 @@ setTimeout(()=>{
 
       this.storage.get('selected_responder').then((val) => {
         this.selectedResponder = val;
-        this.responderId = val.id;
+        this.responderId = val.company_id;
         this.responderName = val.driver_name;
         var randomnumber = Math.floor(Math.random() * (7 - 1 + 1)) + 1;
         this.responderDistance = randomnumber;
 
-        //polling, should look for alternatives
-       // this.timeInt();
+       
       }); 
 
 
@@ -598,20 +605,18 @@ goConfirm(){
   let that = this;
   this.userDetails = {
 
-    'civilian_id': this.civilianId,
+    'civilian_id': this.idcivilian,
     'lat': this.L,//current lat
     'lng': this.Ln,//current lng
     'driver_id': this.selectedResponder.id, 
-    'company_id': this.selectedResponder.company.id,
+    'company_id': this.selectedResponder.company_id,
     'emergency_type': this.event,
     'specify_emergency': this.specify_emergency,
     'address':this.address,
     'additional_address':this.additional_address,
     'forWho':this.forWho,
-    // 'Latitude':this.Latitude,
-    // 'Longitude':this.Longitude,
     'Beneficiary_id':this.Beneficiary_id,
-    // 'request_id':this.request_id,
+
 
  
   }
@@ -644,8 +649,8 @@ goConfirm(){
         this.storage.remove( 'specify_emergency');
         this.navCtrl.push("ConfirmPage");
 
-        this.storage.set('lat',L);
-        this.storage.set('Long',Ln);
+        //this.storage.set('lat',L);
+        //this.storage.set('Long',Ln);
       }
     }, (err) => {
      // console.log(err);

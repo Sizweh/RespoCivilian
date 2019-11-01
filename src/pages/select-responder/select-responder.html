@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
   <ion-navbar color="newcolor">
     <ion-toolbar mode="ios">
       <ion-buttons start>
@@ -10,28 +10,17 @@
       </ion-buttons>
     </ion-toolbar>
   </ion-navbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content text-center> 
   
       <br>
-      <!-- <ion-toolbar>
-          <ion-searchbar 
-          [(ngModel)]="myInput" 
-          showCancelButton="focus"
-          (ionInput)="getTopics($event)" 
-          debounce="500" 
-          (ionClear)="onClear($event)"></ion-searchbar>
-        </ion-toolbar> -->
-      
-      <!-- <div id="pac-container" class="input-icons" text-center>
-        <input  text-align=center value="" id="responder-input" type="text" style="width: 100%;   
-        padding: 10px; box-sizing: border-box; resize: vertical; font-size: 17px;"
-        placeholder="Search for Responder">
-        </div> -->
+    
 
-<!-- <ion-item (click)="goConfirm()"> -->
-      <!-- <ion-list *ngFor="let respo of allResponders"> -->
+  <ion-searchbar [(ngModel)]="myInput" (ionChange)='search($event)'></ion-searchbar>
+      
+  <br>
+
       <ion-row *ngFor="let respo of allResponders_Distance ">
       <!-- <ion-row *ngFor="let respo of allResponders"> -->
       
@@ -41,11 +30,11 @@
               <ion-item (click)="goLocation(respo)" text-left>
 
                   <ion-avatar item-right>
-                    <img src="{{ respo.company.profile }}">
+                    <img src="{{ respo.profile }}">
                   </ion-avatar>
 
   
-                  <font size="3" color='#38414a'><b>{{ respo.company.company_name }}</b></font><br>
+                  <font size="3" color='#38414a'><b>{{ respo.driver_name }}</b></font><br>
             
                 <ion-row>   
                     <p style="float:left; font-size: 12px;"><b></b> 
@@ -64,10 +53,21 @@
 </ion-content>
 
 
+  <!-- <div id="pac-container" class="input-icons" text-center>
+        <input  text-align=center value="" id="responder-input" type="text" style="width: 100%;   
+        padding: 10px; box-sizing: border-box; resize: vertical; font-size: 17px;"
+        placeholder="Search for Responder">
+        </div> -->
 
 
-
-
+ <!-- <ion-toolbar> -->
+          <!-- <ion-searchbar 
+          [(ngModel)]="myInput" 
+          showCancelButton="focus"
+          (ionInput)="getTopics($event)" 
+          debounce="500" 
+          (ionClear)="onClear($event)"></ion-searchbar> -->
+        <!-- </ion-toolbar> -->
 
 
       <!-- <button clear icon-right ion-button block round  color="dakar" (click)="goMaps()">

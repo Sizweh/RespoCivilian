@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, Alert} from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { MenuController } from 'ionic-angular';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { Network } from '@ionic-native/network';
 import { ToastController } from 'ionic-angular';
-import { CodePush } from '@ionic-native/code-push';
+import { CodePush, SyncStatus } from '@ionic-native/code-push';
 
 @IonicPage()
 @Component({
@@ -41,11 +41,35 @@ export class HomePage {
     public menuCtrl: MenuController,
     private oneSignal: OneSignal,
     private network: Network,
-    private codePush: CodePush
+    private codePush: CodePush,
+    private platform: Platform,
    
     ) {
+
     this.menuCtrl.enable(true);
 
+  //   this.platform.ready().then(() =>{
+  //     this.codePush.sync({}, (progress) => {
+  //   }).subscribe((status) => {
+  //     if(status == SyncStatus.CHECKING_FOR_UPDATE)
+  //     alert("Checking for Update");
+  //     if (status == SyncStatus.DOWNLOADING_PACKAGE)
+  //     alert("Downloading Package");
+  //     if(status == SyncStatus.IN_PROGRESS)
+  //     alert("In Progress");
+  //     if(status == SyncStatus.INSTALLING_UPDATE)
+  //     alert("Installing Update");
+  //     if(status == SyncStatus.UP_TO_DATE)
+  //     alert("Up to Date");
+  //     if(status == SyncStatus.UPDATE_INSTALLED)
+  //     alert("Update Installed");
+  //     if(status == SyncStatus.ERROR)
+  //     alert("Error");
+
+  //     })
+
+
+  // })
 
 
     
@@ -64,7 +88,7 @@ export class HomePage {
         this.isConnected=false;
       this.toastCtrl.create({
   
-        message: 'Ooops, please check your network connection',
+        message: 'please check your network connection',
         position: 'middle',
         duration: 2000,
   
@@ -90,10 +114,10 @@ export class HomePage {
 
 
 
-      this.codePush.sync().subscribe((syncStatus) => console.log(syncStatus));
+      // this.codePush.sync().subscribe((syncStatus) => console.log(syncStatus));
 
-      const downloadProgress = (progress) => { console.log(`Downloaded ${progress.receivedBytes} of ${progress.totalBytes}`); }
-      this.codePush.sync({}, downloadProgress).subscribe((syncStatus) => console.log(syncStatus));
+      // const downloadProgress = (progress) => { console.log(`Downloaded ${progress.receivedBytes} of ${progress.totalBytes}`); }
+      // this.codePush.sync({}, downloadProgress).subscribe((syncStatus) => console.log(syncStatus));
 
 }
 
