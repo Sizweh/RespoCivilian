@@ -46,27 +46,18 @@ export class HomePage {
 
 
     
-    this.network.onConnect().subscribe(()=>{
-      this.isConnected=true;
-      this.toastCtrl.create({
-  
-        message: '',
-        position: 'middle',
-        duration: 1500,
-      }).present();
-      });
-  
+    // this.network.onConnect().subscribe(()=>{
+    //   this.isConnected=true;
+    //   this.toastCtrl.create({
+    //   message: 'testing'
       
-      this.network.onDisconnect().subscribe(()=>{
-        this.isConnected=false;
-      this.toastCtrl.create({
-  
-        message: 'Ooops, please check your network connection',
-        position: 'middle',
-        duration: 1500,
-  
-      }).present();
-      });
+    //   }).present();
+      
+    // });
+      
+    //   this.network.onDisconnect().subscribe(()=>{
+    //     this.isConnected=false;
+    //   });
   
       
       // We just got a connection but we need to wait briefly
@@ -84,8 +75,6 @@ export class HomePage {
 
     
   
-
-
 
 
 
@@ -176,7 +165,7 @@ ionViewDidLoad() {
 
     this.storage.get('user_id').then((val) => {
     //   console.log('cater db stuff');
-    //  console.log(val);
+    //  console.log(val);  
      this.user_id = val;
     // console.log("note  login" + this.user_id)
      if(this.user_id === null)
@@ -190,11 +179,15 @@ ionViewDidLoad() {
      this.network.onConnect().subscribe(()=>{
       this.isConnected=true;
       this.toastCtrl.create({
-  
         message: 'network connected',
-        position: 'middle',
-        duration: 1500,
+        position: 'bottom',
+        duration: 3000,
       }).present();
+      });
+
+
+     this.network.onDisconnect().subscribe(()=>{
+      this.isConnected=false;
       });
   
       

@@ -13,14 +13,40 @@
 </ion-header> -->
 
 <ion-content text-center> 
+
+
+    <div *ngIf="isConnected">
+        <p>
+  
+        Please check your internet connection
+  
+        </p>
+  
+  
+  
+  
+      </div>
   
       <br>
       
-      <div id="pac-container" class="input-icons" text-center>
+      <div>
+
+
+          <ion-searchbar 
+          [(ngModel)]="myInput" 
+          showCancelButton="focus"
+          (ionInput)="getTopics($event)" 
+          debounce="500"
+          cancelButtonText="Clear" 
+          (ionClear)="onClear($event)"
+          (ionCancel)="oncCancel($event)"></ion-searchbar>
+
+
+      <!-- <div id="pac-container" class="input-icons" text-center>
         <input  text-align=center value="" id="responder-input" type="text" style="width: 100%;   
         padding: 10px; box-sizing: border-box; resize: vertical; font-size: 17px;"
         placeholder="Search for Responder">
-        </div>
+        </div> -->
 
 <!-- <ion-item (click)="goConfirm()"> -->
       <!-- <ion-list *ngFor="let respo of allResponders"> -->
@@ -51,7 +77,7 @@
       </ion-card> 
 
       </ion-row>
-
+    </div>
 </ion-content>
 
 

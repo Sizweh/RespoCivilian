@@ -2,6 +2,28 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
+import { Network } from '@ionic-native/network';
+import { ToastController } from 'ionic-angular';
+
+
+///////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////
 
 
 @IonicPage()
@@ -16,14 +38,42 @@ export class SelectResponderPage {
   address_loacation: any;
   responder_positions :any[]=[];
   allResponders_Distance : any[]=[];
-
+  isConnected:boolean;
+  myInput :string;   
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private storage: Storage,
+    private network: Network,
+    private toastCtrl: ToastController,
     private urlService: UrlbaseProvider,
     ) {
+
+        
+    this.network.onConnect().subscribe(()=>{
+      // this.isConnected=false;
+      this.toastCtrl.create({
+  
+        message: '',
+        position: 'middle',
+        duration: 2000,
+      }).present();
+      });
+  
+      
+      this.network.onDisconnect().subscribe(()=>{
+        // this.isConnected=false;
+      this.toastCtrl.create({
+  
+        message: 'please check your network connection',
+        position: 'middle',
+        duration: 2000,
+  
+      }).present();
+      });
+
+
 
       let lat = 0;
       let long =0;
@@ -155,7 +205,30 @@ export class SelectResponderPage {
   }
   
 
-}
+
+  getTopics(ev: any){
+
+    let val: string = ev;
+    
+    this.urlService.showalldrivers();
+    let serVal = ev.target.value;
+    if (serVal && serVal.trim() != ''){
+    this.allResponders_Distance = this.allResponders_Distance.filter((allResponders_Distance) => {
+    return (allResponders_Distance.company.company_name.toLowerCase().indexOf(serVal.toLowerCase()) > -1);
+    
+    
+    })
+    }
+    
+    }
+
+    onClear(ev){
+      this.myInput = "";
+    }
+    
+    }
+    
+
 
 
 

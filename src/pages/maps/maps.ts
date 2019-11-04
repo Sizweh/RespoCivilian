@@ -59,6 +59,7 @@ geoLatitude: number;
 geoLongitude: number;
 NativeGeocoderReverseResult:string="";
 ReverseGeocoding:any;
+buttonDisabled: boolean;
 
 
   constructor(public navCtrl: NavController, 
@@ -421,7 +422,6 @@ ReverseGeocoding:any;
           draggable: true,
           icon: image,
           animation: google.maps.Animation.DROP,
-
         });
 
         var images = "https://blooming-waters-81867.herokuapp.com/icons/fixed5.png";
@@ -433,7 +433,6 @@ ReverseGeocoding:any;
           draggable: false,
           icon: images,
           animation: google.maps.Animation.DROP,
-
         });
 
 
@@ -608,6 +607,7 @@ console.log();
 
 
 ionViewDidLoad() {
+ 
 
 
   let option = {
@@ -663,8 +663,9 @@ goSelectResponder() {
     // var abc = document.getElementById('getaccuracy').innerHTML
     var L = document.getElementById('getLat').innerHTML
     let Ln = document.getElementById('getLong').innerHTML
-
-
+  
+     
+    
 
     // this.geolocation.getCurrentPosition({enableHighAccuracy:true}).then((data)=>{
     //   this.storage.set('Latitude',data.coords.latitude);
@@ -681,13 +682,14 @@ goSelectResponder() {
     // this.storage.set('ab', abc);
     // this.storage.set('cb', abc);
   
-
+   
     this.navCtrl.push("SelectResponderPage", {
       sear_location: Sear_location,  number:number 
     });
     //console.log(Sear_location);
     //console.log(number);
-    
+  
+   
   }
 
 

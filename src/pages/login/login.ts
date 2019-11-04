@@ -1,9 +1,9 @@
- import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 // import { HttpClient } from '@angular/common/http';
 import { AlertsProvider } from './../../providers/alerts/alerts';
-
+import { Network } from '@ionic-native/network';
 import { Storage } from '@ionic/storage';
 import { MenuController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
@@ -11,7 +11,7 @@ import { AlertController } from 'ionic-angular';
 import { NextOfKinPage } from '../next-of-kin/next-of-kin';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 // import { updateDate } from 'ionic-angular/umd/util/datetime-util';
-
+import { ToastController } from 'ionic-angular';
 // import { MainServiceProvider } from './../../providers/main-service/main-service'
 
 @IonicPage()
@@ -22,7 +22,7 @@ import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 export class LoginPage {
 
   NextOfKinPage: NextOfKinPage ;
-
+  isConnected:boolean;
   remembertoken: boolean;
   loginForm: FormGroup;
   playerId :any; 
@@ -39,7 +39,8 @@ export class LoginPage {
     public navParams: NavParams,
     public formBuilder: FormBuilder,
     public alert: AlertsProvider,
-
+    private network: Network,
+    private toastCtrl: ToastController,
     private storage: Storage,
     public menuCtrl: MenuController,
     private urlService: UrlbaseProvider,
@@ -55,6 +56,23 @@ export class LoginPage {
         'phoneNumber': [ Validators.compose([Validators.required, Validators.minLength(11), Validators.pattern("^[0-9]{11}")])],
         'password': ['',],
       })
+
+
+
+      this.network.onConnect().subscribe(()=>{
+        this.isConnected=true;
+        this.toastCtrl.create({
+          message: 'Network connected',
+          position: 'bottom',
+          duration: 3000,
+        }).present();
+        });
+  
+  
+       this.network.onDisconnect().subscribe(()=>{
+        this.isConnected=false;
+        });
+    
 
   }
 

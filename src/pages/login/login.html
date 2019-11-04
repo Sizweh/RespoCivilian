@@ -1,6 +1,19 @@
 <ion-content padding="true" scroll="false" class="manual-ios-statusbar-padding">
-<div>
 
+
+        <div *ngIf="!isConnected" style="margin-top: 70px; text-align: center">
+    
+                <img src="assets/mapi/icon-error.png">
+                <br>
+                <br>  
+                <h3>Check internet connection</h3>
+          
+              </div>
+
+
+<div *ngIf="isConnected">
+    
+<div>
 <img class="logo" src="https://blooming-waters-81867.herokuapp.com/img/respo2.png"     
 style="display: block; width: 50%; height: auto; margin-left: auto; margin-right: auto;">
 </div>
@@ -47,5 +60,5 @@ Log in
 
 <button (click)="goRegister()"  full round ion-button color="calm" clear>Register</button>
 
-
+</div>
 </ion-content>

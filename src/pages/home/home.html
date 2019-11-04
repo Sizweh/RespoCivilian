@@ -22,26 +22,26 @@
 
 
 <ion-content text-center>
-    <!-- <h6 color='light' text-right>More</h6> -->
-
-
-
-    <!-- <div *ngIf="isConnectedfalse">
-      <p>
-
-      connect to the internet
-
-      </p>
 
 
 
 
-    </div> -->
+     <div *ngIf="!isConnected" style="margin-top: 70px ; text-align: center">
+      
+    
+      <img src="assets/mapi/icon-error.png">
+      <br>
+      <br>  
+      <h3>Check internet connection</h3>
+
+   
+
+    </div>
   <br>
 
-<!-- 
-  
-  <div *ngIf="isConnected"> -->
+
+ 
+  <div *ngIf="isConnected">
 
       <ion-row no-lines *ngFor="let fault of faultCategories">
           <ion-card no-lines>
@@ -71,7 +71,7 @@
       </ion-row>
 
 
-  <!-- </div> -->
+  </div>
   
 
 
