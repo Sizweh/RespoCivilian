@@ -133,16 +133,13 @@ export class MyBeneficiariesPage {
             {
               text: 'Yes',
               handler: () => {
-               // this.storage.set('Medical_Aid_Status', 'Yes');
-               // console.log('Agree clicked'); 
                 this.navCtrl.setRoot('HomePage'); 
               }
             },
             {
               text: 'No',
               handler: () => {
-               // this.storage.set('Medical_Aid_Status', 'No');
-                //console.log('Disagree clicked');
+
          
               }
             }
@@ -150,8 +147,21 @@ export class MyBeneficiariesPage {
         });
         confirm.present();
 
-
-    //this.navCtrl.setRoot('HomePage')
   }
-        
+   
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 }

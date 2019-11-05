@@ -13,9 +13,9 @@
     <ion-card>
         <ion-item no-lines color='light'>
           <ion-avatar item-right>
-            <img src="{{ detail.company.profile }}">
+            <img src="{{ detail.profile }}">
           </ion-avatar>
-          <font size="3" color='#38414a'><b>{{detail.company.company_name}}</b></font><br>
+          <font size="3" color='#38414a'><b>{{detail.company_name}}</b></font><br>
         </ion-item>
         
         <button icon-right clear color='secondary' small round ion-button (click)="callNow (detail.phone_no)">Call Responder

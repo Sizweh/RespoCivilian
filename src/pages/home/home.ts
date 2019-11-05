@@ -6,7 +6,7 @@ import { MenuController } from 'ionic-angular';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { Network } from '@ionic-native/network';
 import { ToastController } from 'ionic-angular';
-import { CodePush, SyncStatus } from '@ionic-native/code-push';
+//import { CodePush, SyncStatus } from '@ionic-native/code-push';
 
 @IonicPage()
 @Component({
@@ -41,7 +41,7 @@ export class HomePage {
     public menuCtrl: MenuController,
     private oneSignal: OneSignal,
     private network: Network,
-    private codePush: CodePush,
+    //private codePush: CodePush,
     private platform: Platform,
    
     ) {

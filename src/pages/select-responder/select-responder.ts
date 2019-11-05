@@ -36,7 +36,153 @@ export class SelectResponderPage {
  
  
 
-     // console.log(this.L)
+   
+            this.storage.get('additional_address').then((val) => {
+              this.additional_address = val;
+            });
+            this.storage.get('address').then((val) => {
+              this.address = val;
+            });
+
+
+     
+  }
+
+
+  sortArray(){
+    let newArr:any[] = [];
+
+    
+    
+    this.allResponders_Distance.forEach((itm,i)=>{
+      console.log("++++++++++++Sorting++++++++++++")
+      console.log(itm.distance);
+
+    let num = [];
+    num[i]=itm.distance;
+    newArr.concat(num);
+
+    });
+
+    
+    console.log("++++++++++++Printing new array++++++++++");
+    console.log(newArr);
+  }
+
+
+  ionViewDidLoad() {
+
+
+
+     this.storage.get('lat').then((la) => {
+        
+
+        this.storage.get('lng').then((ln) => {
+
+          this.urlService.sendList({'lat':la,'lon':ln})
+    .subscribe(res => {
+     this.allResponders_Distance = res;
+        if (res.status=='OK') {
+        }
+    }, (err) => {
+        console.log(err);
+    });
+         
+          
+      });
+
+      });
+    
+
+    console.log('+++++Printing old array+++++++++++');
+    console.log(this.allResponders_Distance);
+    this.sortArray();
+  }
+
+
+  
+  goRequestElse(respo) {
+       this.storage.set('selected_responder', respo);
+   // console.log(respo);
+    this.navCtrl.push('RequestElsePage')
+  }
+  goMaps() {
+    this.navCtrl.setRoot("MapsPage")
+  }
+  
+  goLocation(respo) {
+    this.storage.set('selected_responder', respo);
+
+   // console.log(respo);
+    this.navCtrl.push('LocationPage')
+  }
+
+
+
+  //[28/10/2019 1:30 PM] Clinton Jay Mtambo: getTopics(ev: any){
+
+//     getTopics(ev: any){
+//     let val: string = ev;
+
+//     this.urlService.showalldrivers();
+// let serVal = ev.target.value;
+// if (serVal && serVal.trim() != ''){
+//   this.allResponders_Distance = this.allResponders_Distance.filter((allResponders_Distance) => {
+//     return (allResponders_Distance.company.company_name.toLowerCase().indexOf(serVal.toLowerCase()) > -1);
+
+    
+//   })
+// }
+
+//   }
+//[28/10/2019 1:30 PM] Clinton Jay Mtambo: }
+
+
+search(){
+
+
+   this.urlService.search({'name':this.myInput})
+    .subscribe(res => {
+     this.allResponders_Distance = res;
+        if (res.status=='OK') {
+        }
+    }, (err) => {
+
+        console.log(err);
+    });
+
+}
+
+
+
+
+
+
+
+  
+
+}
+
+
+
+       //oninit
+          //api call to get all driver 
+        // this.http.get("http://03e873a6.ngrok.io/api/civilian/showalldrivers", this.userDetails)//testing on devapp
+         //this.http.get("http://46.101.169.33/api/civilian/showalldrivers", this.userDetails)
+  //        this.http.get("http://46.101.169.33/api/civilian/showalldrivers")
+  //     .subscribe(data => {
+  //       this.allResponders = data;
+      
+  //       console.log(data);
+  //       }, error => {
+  //       console.log(error);
+  //     });
+
+
+
+
+
+    // console.log(this.L)
 
 
 
@@ -138,142 +284,3 @@ export class SelectResponderPage {
           // this.L = navParams.get('lat');
           // this.Ln = navParams.get('lng');
 
-
-            this.storage.get('additional_address').then((val) => {
-              this.additional_address = val;
-            });
-            this.storage.get('address').then((val) => {
-              this.address = val;
-            });
-
-
-     
-  }
-
-
-  sortArray(){
-    let newArr:any[] = [];
-
-    
-    
-    this.allResponders_Distance.forEach((itm,i)=>{
-      console.log("++++++++++++Sorting++++++++++++")
-      console.log(itm.distance);
-
-    let num = [];
-    num[i]=itm.distance;
-    newArr.concat(num);
-
-    });
-
-    
-    console.log("++++++++++++Printing new array++++++++++");
-    console.log(newArr);
-  }
-
-
-  ionViewDidLoad() {
-
-
-
-     this.storage.get('lat').then((la) => {
-        
-
-        this.storage.get('lng').then((ln) => {
-
-          this.urlService.sendList({'lat':la,'lon':ln})
-    .subscribe(res => {
-     this.allResponders_Distance = res;
-        if (res.status=='OK') {
-        }
-    }, (err) => {
-        console.log(err);
-    });
-         
-          
-      });
-
-      });
-    
-
-    console.log('+++++Printing old array+++++++++++');
-    console.log(this.allResponders_Distance);
-    this.sortArray();
-  }
-
-
-  
-  goRequestElse(respo) {
-       this.storage.set('selected_responder', respo);
-   // console.log(respo);
-    this.navCtrl.push('RequestElsePage')
-  }
-  goMaps() {
-    this.navCtrl.setRoot("MapsPage")
-  }
-  
-  goLocation(respo) {
-    this.storage.set('selected_responder', respo);
-
-   // console.log(respo);
-    this.navCtrl.push('LocationPage')
-  }
-
-
-
-  //[28/10/2019 1:30 PM] Clinton Jay Mtambo: getTopics(ev: any){
-
-//     getTopics(ev: any){
-//     let val: string = ev;
-
-//     this.urlService.showalldrivers();
-// let serVal = ev.target.value;
-// if (serVal && serVal.trim() != ''){
-//   this.allResponders_Distance = this.allResponders_Distance.filter((allResponders_Distance) => {
-//     return (allResponders_Distance.company.company_name.toLowerCase().indexOf(serVal.toLowerCase()) > -1);
-
-    
-//   })
-// }
-
-//   }
-//[28/10/2019 1:30 PM] Clinton Jay Mtambo: }
-
-search(ev){
-
-
-   this.urlService.search({'name':this.myInput})
-    .subscribe(res => {
-     this.allResponders_Distance = res;
-        if (res.status=='OK') {
-        }
-    }, (err) => {
-        console.log(err);
-    });
-
-}
-
-
-
-
-
-
-
-  
-
-}
-
-
-
-       //oninit
-          //api call to get all driver 
-        // this.http.get("http://03e873a6.ngrok.io/api/civilian/showalldrivers", this.userDetails)//testing on devapp
-         //this.http.get("http://46.101.169.33/api/civilian/showalldrivers", this.userDetails)
-  //        this.http.get("http://46.101.169.33/api/civilian/showalldrivers")
-  //     .subscribe(data => {
-  //       this.allResponders = data;
-      
-  //       console.log(data);
-  //       }, error => {
-  //       console.log(error);
-  //     });

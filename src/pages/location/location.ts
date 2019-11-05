@@ -84,9 +84,6 @@ Beneficiary_id: any;
           this.address = val;
       });
 
-     
-
-     
       this.address = navParams.get('sear_location');
       this.additional_address = navParams.get('number');
   
@@ -96,22 +93,8 @@ Beneficiary_id: any;
   }
 
   ionViewDidLoad() {
+        console.log('ionViewDidLoad LocationPage');
 
-    // this.storage.get('selected_responder').then((val) => {
-
-    // this.selectedResponder = [val];
-    // this.responderId = val.company_id;
-    // this.responderName = val.driver_name;
-    // var randomnumber = Math.floor(Math.random() * (7 - 1 + 1)) + 1;
-    // this.responderDistance = randomnumber;
-    // }); 
-
-
-
-
-    console.log('ionViewDidLoad LocationPage');
-
-  
       this.geolocation.getCurrentPosition().then((data)=>{
         this.geoLatitude = data.coords.latitude;
         var tut =(`Lat : ${data.coords.latitude  } and Long : ${data.coords.longitude  }`);
@@ -119,9 +102,6 @@ Beneficiary_id: any;
         document.getElementById('infowindow-content').innerHTML = tut;     
       });
     
-    
-
-  
     this.storage.get('Beneficiary_id').then((val) => {
         this.Beneficiary_id = val;
       });
@@ -147,12 +127,14 @@ Beneficiary_id: any;
         this.forWho = val;
       });
 
-      this.storage.get('specify_emergency').then((val) => {
-        this.specify_emergency = val;
-        
-        this.specify_emergency = val.specify_emergency;
-      this.storage.remove( 'specify_emergency');
-      });
+  //  this.storage.get('specify_emergency').then((val) => {
+  //        this.specify_emergency = val;
+  //        //this.specify_emergency= val.specify_emergency;
+  //      //this.storage.remove( 'specify_emergency');
+  //     });
+
+     
+   
 
     this.showText = true;
 
@@ -188,21 +170,20 @@ setTimeout(()=>{
 
   googleMap() {
 
-    this.storage.get('specify_emergency').then((val) => {
-        this.specify_emergency = val;
-      this.storage.remove( 'specify_emergency');
+ this.storage.get('specify_emergency').then((val) => {
+         //this.specify_emergency = val;
+         this.event= val.specifyEmergency;
+       //this.storage.remove( 'specify_emergency');
       });
 
+  
+
     this.storage.get('category').then((val) => {
-        // console.log('cater db stuff');
-        // console.log(val);
         this.category = val;
         this.event = val.category;
       });
       
       this.storage.get('user_id').then((val) => {
-        // console.log('user db stuff');
-        // console.log(val);
         this.idcivilian = val;
       });
 
@@ -611,7 +592,7 @@ goConfirm(){
     'driver_id': this.selectedResponder.id, 
     'company_id': this.selectedResponder.company_id,
     'emergency_type': this.event,
-    'specify_emergency': this.specify_emergency,
+    'specify_emergency': this.specifyEmergency,
     'address':this.address,
     'additional_address':this.additional_address,
     'forWho':this.forWho,
@@ -645,7 +626,7 @@ goConfirm(){
       if (status == "OK") {
         loader.present();
       this.storage.set('request_id', reqId);
-        this.storage.set('specify_emergency', specify);
+        //this.storage.set('specify_emergency', specify);
         this.storage.remove( 'specify_emergency');
         this.navCtrl.push("ConfirmPage");
 

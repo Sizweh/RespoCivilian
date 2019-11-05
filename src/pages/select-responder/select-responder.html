@@ -14,43 +14,75 @@
 
 <ion-content text-center> 
   
-      <br>
+      
     
 
-  <ion-searchbar [(ngModel)]="myInput" (ionChange)='search($event)'></ion-searchbar>
-      
-  <br>
+  <!-- <ion-searchbar [(ngModel)]="myInput" (ionChange)='search($event)'></ion-searchbar>
 
-      <ion-row *ngFor="let respo of allResponders_Distance ">
+  <ion-searchbar [(ngModel)]="myInput" (ionCancel)='cancel($event)'></ion-searchbar> -->
+      
+
+
+  <ion-row *ngFor="let respo of allResponders_Distance ">
       <!-- <ion-row *ngFor="let respo of allResponders"> -->
       
        <ion-card>
           <ion-card-content>
-
               <ion-item (click)="goLocation(respo)" text-left>
-
                   <ion-avatar item-right>
                     <img src="{{ respo.profile }}">
                   </ion-avatar>
-
-  
                   <font size="3" color='#38414a'><b>{{ respo.driver_name }}</b></font><br>
-            
-                <ion-row>   
+                  <ion-row>   
                     <p style="float:left; font-size: 12px;"><b></b> 
-                    Distance: {{respo.distance}} km
+                    Distance: {{respo.distance}} Km
                     </p>
                 </ion-row> 
-                 
              </ion-item>
-
           </ion-card-content>
-
-      </ion-card> 
+       </ion-card> 
 
       </ion-row>
 
 </ion-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   <!-- <div id="pac-container" class="input-icons" text-center>

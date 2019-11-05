@@ -60,10 +60,9 @@ export class NextOfKinPage {
         'surname': ['', Validators.compose([Validators.required])],
         'phone': ['', Validators.compose([Validators.required])],
         'relationship': ['', Validators.compose([Validators.required])],
+        
 
-        updateToken() {
-          console.log('Remember token new state:' + this.remembertoken);
-        }
+   
 
         // 'paymentBrand': ['',Validators.compose([Validators.required])],
         // 'cardHolder': ['', Validators.compose([Validators.required])],
@@ -74,10 +73,14 @@ export class NextOfKinPage {
         // 'CVV': ['', Validators.compose([Validators.required])],
        // 'code': ['', Validators.compose([Validators.required])],
         // 'remembertoken': ['', Validators.compose([Validators.required])],
-    
+   
       })
-  
+   this.remembertoken
   }
+       updateToken() {
+         
+          console.log('Remember token new state:' + this.remembertoken);
+        }
 
   tel='';
 

@@ -41,25 +41,21 @@
         </ion-select>
       </ion-item>
 
-
-
     </div>
 
-
    <br>
    <br>
 
-   <font (click)="goFaq()" size="2" color='#488aff'>Read Terms & Conditions Here</font>
 
-   <!-- <div class="register-fields" [formGroup]="nextofkinForm"> -->
-      <div class="remember_token" >
+   <div class="remember_token">
+
+       <font (click)="goFaq()" size="2" color='#488aff'>Read Terms & Conditions Here</font>
+
           <ion-item no-lines>
               <ion-label>I Accept The Terms & Conditions</ion-label>
               <ion-checkbox [(ngModel)]="remembertoken"></ion-checkbox>
             </ion-item>
           </div>
-
-<!-- </div> -->
 
 <br>
     <ion-row>
@@ -70,7 +66,7 @@
             <button  [disabled]="!nextofkinForm.valid"  ion-button round color='secondary' block (click)="goVerifyAccount()">Done</button>
           </ion-col>
        </ion-row>
-
+  
        <!-- [disabled]="!nextofkinForm.valid" -->
 
 </ion-content>
