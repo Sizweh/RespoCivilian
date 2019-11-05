@@ -97,7 +97,7 @@ export class MyApp {
 
 shareApp() {
 
-this.socialSharing.share(this.text)
+this.socialSharing.share(this.text, this.message)
 .then(()=>{
 
 }).catch(()=>{

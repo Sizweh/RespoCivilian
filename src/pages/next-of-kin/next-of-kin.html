@@ -41,29 +41,32 @@
         </ion-select>
       </ion-item>
 
-    </div>
 
    <br>
    <br>
 
 
-   <div class="remember_token">
+   <!-- <div class="remember_token"> -->
 
        <font (click)="goFaq()" size="2" color='#488aff'>Read Terms & Conditions Here</font>
 
           <ion-item no-lines>
               <ion-label>I Accept The Terms & Conditions</ion-label>
-              <ion-checkbox [(ngModel)]="remembertoken"></ion-checkbox>
+              <ion-checkbox formControlName="remembertoken"></ion-checkbox>
+              <!-- <ion-checkbox [(ngModel)]="remembertoken"></ion-checkbox> -->
             </ion-item>
-          </div>
 
+
+          <!-- </div> -->
+
+    </div>
 <br>
     <ion-row>
         <ion-col col-6>
           <button ion-button clear color='newcolor' block (click)="goLogin()"> Cancel</button>
          </ion-col>
           <ion-col col-6>
-            <button  [disabled]="!nextofkinForm.valid"  ion-button round color='secondary' block (click)="goVerifyAccount()">Done</button>
+            <button   [disabled]="!nextofkinForm.valid"  ion-button round color='secondary' block (click)="goVerifyAccount()">Done</button>
           </ion-col>
        </ion-row>
   

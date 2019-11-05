@@ -23,6 +23,7 @@ export class SelectResponderPage {
   userDetails: {};
   L: any;
   Ln: any;
+  dist: any[]=[];
 
 
   constructor(
@@ -72,6 +73,7 @@ export class SelectResponderPage {
 
   ionViewDidLoad() {
 
+    
 
 
      this.storage.get('lat').then((la) => {
@@ -81,8 +83,16 @@ export class SelectResponderPage {
 
           this.urlService.sendList({'lat':la,'lon':ln})
     .subscribe(res => {
+
+      
+      
      this.allResponders_Distance = res;
+       console.log(res);
+       console.log("dist.........");
+       console.log(this.dist);
+
         if (res.status=='OK') {
+        
         }
     }, (err) => {
         console.log(err);
@@ -140,8 +150,9 @@ export class SelectResponderPage {
 
 search(){
 
-
-   this.urlService.search({'name':this.myInput})
+this.storage.get('lat').then((la) => {
+ this.storage.get('lng').then((ln) => {
+   this.urlService.search({'name':this.myInput, 'lat':la,'lon':ln})
     .subscribe(res => {
      this.allResponders_Distance = res;
         if (res.status=='OK') {
@@ -150,6 +161,8 @@ search(){
 
         console.log(err);
     });
+  });
+  });
 
 }
 
@@ -162,6 +175,21 @@ search(){
   
 
 }
+
+
+// this.storage.get('lat').then((la) => {
+//  this.storage.get('lng').then((ln) => {
+//    this.urlService.search({'name':this.myInput,'lat':la,'lon':ln})
+//     .subscribe(res => {
+//      this.allResponders_Distance = res;
+//         if (res.status=='OK') {
+//         }
+//     }, (err) => {
+
+//         console.log(err);
+//      });
+//     });
+//     });
 
 
 

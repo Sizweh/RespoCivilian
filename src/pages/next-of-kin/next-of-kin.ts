@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, AbstractControl } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { AlertsProvider } from './../../providers/alerts/alerts';
@@ -42,6 +42,7 @@ export class NextOfKinPage {
   relationship:any;
   name:any;
   surname:any;
+  isChecked: boolean;
 
 
 
@@ -60,23 +61,26 @@ export class NextOfKinPage {
         'surname': ['', Validators.compose([Validators.required])],
         'phone': ['', Validators.compose([Validators.required])],
         'relationship': ['', Validators.compose([Validators.required])],
-        
+        'remembertoken': ['false', Validators.compose([Validators.requiredTrue])],
+          //'checkbox': ['', Validators.compose([Validators.required])],
+ 
 
-   
 
-        // 'paymentBrand': ['',Validators.compose([Validators.required])],
-        // 'cardHolder': ['', Validators.compose([Validators.required])],
-        // 'cardNo': ['', Validators.compose([Validators.required])],
-        // //'cardNo': ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern("^[0-9]{10}")])],
-        // 'expiryMonth': ['', Validators.compose([Validators.required])],
-        // 'expiryYear': ['', Validators.compose([Validators.required])],
-        // 'CVV': ['', Validators.compose([Validators.required])],
-       // 'code': ['', Validators.compose([Validators.required])],
+         
         // 'remembertoken': ['', Validators.compose([Validators.required])],
-   
       })
-   this.remembertoken
+
   }
+
+  onTermsChecked($event)
+{
+    if ( ! $event.checked)
+    {
+        this.nextofkinForm.patchValue({ termsAccepted: null });
+    }
+}
+
+
        updateToken() {
          
           console.log('Remember token new state:' + this.remembertoken);
@@ -169,7 +173,15 @@ export class NextOfKinPage {
         this.prefered_hospital = val;
       });
 
-    
+            // 'paymentBrand': ['',Validators.compose([Validators.required])],
+        // 'cardHolder': ['', Validators.compose([Validators.required])],
+        // 'cardNo': ['', Validators.compose([Validators.required])],
+        // //'cardNo': ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern("^[0-9]{10}")])],
+        // 'expiryMonth': ['', Validators.compose([Validators.required])],
+        // 'expiryYear': ['', Validators.compose([Validators.required])],
+        // 'CVV': ['', Validators.compose([Validators.required])],
+       // 'code': ['', Validators.compose([Validators.required])],
+        //'remembertoken': [' this.isChecked = true',],
 
     
 

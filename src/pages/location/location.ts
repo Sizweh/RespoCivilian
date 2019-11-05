@@ -170,15 +170,20 @@ setTimeout(()=>{
 
   googleMap() {
 
- this.storage.get('specify_emergency').then((val) => {
-         //this.specify_emergency = val;
-         this.event= val.specifyEmergency;
-       //this.storage.remove( 'specify_emergency');
-      });
+//  this.storage.get('specify_emergency').then((val) => {
+//          //this.specify_emergency = val;
+//          this.event= val.specifyEmergency;
+//        //this.storage.remove( 'specify_emergency');
+//       });
 
   
 
-    this.storage.get('category').then((val) => {
+    this.storage.get('specify_emergency').then((val) => {
+          this.specify_emergency = val;
+        this.event = val.specify_emergency;
+      });
+      
+     this.storage.get('category').then((val) => {
         this.category = val;
         this.event = val.category;
       });
@@ -580,10 +585,6 @@ infoWindow.open(map);
 
 goConfirm(){
 
-    this.Userdata = { 
-        address:this.address,
-    }
-  let that = this;
   this.userDetails = {
 
     'civilian_id': this.idcivilian,
@@ -592,7 +593,7 @@ goConfirm(){
     'driver_id': this.selectedResponder.id, 
     'company_id': this.selectedResponder.company_id,
     'emergency_type': this.event,
-    'specify_emergency': this.specifyEmergency,
+    'specify_emergency': this.specify_emergency,
     'address':this.address,
     'additional_address':this.additional_address,
     'forWho':this.forWho,
@@ -612,8 +613,8 @@ goConfirm(){
 
    
       var specify = res.specify_emergency;
-      var L = document.getElementById('getLat').innerHTML
-      let Ln = document.getElementById('getLong').innerHTML
+      //var L = document.getElementById('getLat').innerHTML
+      //let Ln = document.getElementById('getLong').innerHTML
   
       const loader = this.loadingCtrl.create({
         content: "Sending request...",
@@ -626,7 +627,7 @@ goConfirm(){
       if (status == "OK") {
         loader.present();
       this.storage.set('request_id', reqId);
-        //this.storage.set('specify_emergency', specify);
+        this.storage.set('specify_emergency', specify);
         this.storage.remove( 'specify_emergency');
         this.navCtrl.push("ConfirmPage");
 
