@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
-import { FormGroup, FormBuilder, Validators, } from '@angular/forms';
+import { FormGroup, FormBuilder} from '@angular/forms';
 
 @IonicPage()
 @Component({
@@ -50,25 +50,25 @@ export class SelectResponderPage {
   }
 
 
-  sortArray(){
-    let newArr:any[] = [];
+  // sortArray(){
+  //   let newArr:any[] = [];
 
     
     
-    this.allResponders_Distance.forEach((itm,i)=>{
-      console.log("++++++++++++Sorting++++++++++++")
-      console.log(itm.distance);
+  //   this.allResponders_Distance.forEach((itm,i)=>{
+  //     console.log("++++++++++++Sorting++++++++++++")
+  //     console.log(itm.distance);
 
-    let num = [];
-    num[i]=itm.distance;
-    newArr.concat(num);
+  //   let num = [];
+  //   num[i]=itm.distance;
+  //   newArr.concat(num);
 
-    });
+  //   });
 
     
-    console.log("++++++++++++Printing new array++++++++++");
-    console.log(newArr);
-  }
+  //   console.log("++++++++++++Printing new array++++++++++");
+  //   console.log(newArr);
+  // }
 
 
   ionViewDidLoad() {
@@ -84,12 +84,10 @@ export class SelectResponderPage {
           this.urlService.sendList({'lat':la,'lon':ln})
     .subscribe(res => {
 
-      
-      
      this.allResponders_Distance = res;
-       console.log(res);
-       console.log("dist.........");
-       console.log(this.dist);
+      //  console.log(res);
+      //  console.log("dist.........");
+      //  console.log(this.dist);
 
         if (res.status=='OK') {
         
@@ -104,9 +102,9 @@ export class SelectResponderPage {
       });
     
 
-    console.log('+++++Printing old array+++++++++++');
-    console.log(this.allResponders_Distance);
-    this.sortArray();
+    // console.log('+++++Printing old array+++++++++++');
+    // console.log(this.allResponders_Distance);
+    // this.sortArray();
   }
 
 
