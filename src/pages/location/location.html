@@ -5,72 +5,49 @@
 
   <ion-title>Confirm Request</ion-title>
 
-
   <div [hidden] id="map" style="width:0px; height:0px;">
   </div>
 
   <br>
   <br>
 
-
-
-
   <div id="infowind" style="font-size: 17px;  color:#38414a; font-weight: bold;">
-
     {{address}}
-    <!-- {{address_loacation}} -->
-    <!-- <img src="" width="12" height="12" id="place-icon">
-    <span id="place-name" class="title"></span><br>
-    <span id=""></span> -->
-
   </div>
-
   <br>
 
   <div id="infowind" style="font-size: 14px;  color:#38414a; font-weight: bold;">
-      {{additional_address}}
+    {{additional_address}}
   </div>
 
 
-<!-- <div *ngIf="allResponders_Distance"> -->
-        <ion-card color='light'>
-          <ion-card-content text-center >
-            <ion-item color='light' text-center>
-                <font  size="3" color='#38414a'> Responder name : {{ responderName }}</font>
-              </ion-item>
-          </ion-card-content>
-        </ion-card>
-    <!-- </div> -->
-              
-              <br>
-              <font size="4" color='#38414a'>Emergency Type</font>
-              <br>
-              <br>
-              <font size="4" color='#f53d3d'>{{event}}</font><br>
-        
-       
-              <font size="4" color='#f53d3d'>{{specify_emergency}}</font>
+  <ion-card color='light'>
+    <ion-card-content text-center>
+      <ion-item color='light' text-center>
+        <font size="3" color='#38414a'> Responder name : {{ responderName }}</font>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
 
-            
-              <br>
+
+  <br>
+  <font size="4" color='#38414a'>Emergency Type</font>
+  <br>
+  <br>
+  <font size="4" color='#f53d3d'>{{event}}</font><br>
+  <font size="4" color='#f53d3d'>{{specify_emergency}}</font>
+  <br>
           
               
-              <button (click)="goConfirm()" ion-button color="secondary"
-                round>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Confirm
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-              <br>
-              <br>
-             
-              <button (click)="goHome()" ion-button color="newcolor"
-                round>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cancel
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-            
-              
-              </ion-content>
+<button (click)="goConfirm()" ion-button color="secondary"
+round>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Confirm
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+<br>
+<br>
 
-              <!-- <ion-list>
-                  <ion-item *ngIf="showText">
-                      <img src="../assets/imgs/dots.gif" height="50px" width="50px" >
-                      <font size="4" color='#f53d3d'>{{event}}</font><br>
-                 </ion-item>
-            </ion-list>  -->
+<button (click)="goHome()" ion-button color="newcolor"
+round>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cancel
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+ </ion-content>
+
+     

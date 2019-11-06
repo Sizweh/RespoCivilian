@@ -1,14 +1,8 @@
 import { Component, } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormGroup,  FormBuilder, Validators} from '@angular/forms'; 
-import { Storage } from '@ionic/storage';
 import { UrlbaseProvider } from '../../providers/urlbase/urlbase';
 import { AlertController, LoadingController, ToastController } from 'ionic-angular';
-
-
-
-
-
 
 @IonicPage()
 @Component({
@@ -31,17 +25,14 @@ export class ForgotpasswordPage {
 
     public formBuilder: FormBuilder, 
     public toastCtrl: ToastController,
-    private storage: Storage,
     private urlService: UrlbaseProvider,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
     public navParams: NavParams) {
      
-
-     
       this.id = navParams.get('data') ;
       this.User_Id = navParams.get('user_id') ;
-      // this.id = navParams.get('id') ;
+
 
       this.beneficiaryForm = formBuilder.group({
        
@@ -54,7 +45,7 @@ export class ForgotpasswordPage {
         'dob': ['', Validators.compose([Validators.required])],
         'allergies': ['', Validators.compose([Validators.required])],
         'relationship': ['', Validators.compose([Validators.required])],
-        // 'email': ['', Validators.compose([Validators.required])],
+
 
 
       })
@@ -75,23 +66,14 @@ export class ForgotpasswordPage {
 
 
 
-  ionViewDidLoad(id) {
+  ionViewDidLoad() {
 
-    // this.storage.get('id').then((val) => {
-    //   console.log(String(val));
-    //   this.  toConcat =   this.UserId =String(val); 
+  var headers = new Headers();
+  headers.append("Accept", 'application/json');
+  headers.append('Content-Type', 'application/json' );
 
-    var headers = new Headers();
-    headers.append("Accept", 'application/json');
-    headers.append('Content-Type', 'application/json' );
-  //  const requestOptions = new RequestOptions({ headers: headers });
-   
-   //   pass to back-end
-    //  console.log(this.historyForm.value);
-      var postData = this.beneficiaryForm.value;
+  var postData = this.beneficiaryForm.value;
       
-      // var postData = {id:val};
-
    //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.beneficiaries(postData)
     .subscribe(res => {
@@ -102,7 +84,6 @@ export class ForgotpasswordPage {
         console.log(err);
     });
 
-  // });
 
 
     console.log('ionViewDidLoad ForgotPasswordPage');{

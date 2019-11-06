@@ -27,58 +27,34 @@
         <ion-item text-left>
             <ion-label floating> Name </ion-label>
             <ion-input formControlName="name" block value="{{ fault.name }}">
-              
             </ion-input>
-            <!-- <div class="login-fields" [formGroup]="personalForm">
-                      </div> -->
           </ion-item>
      
         <ion-item text-left>
             <ion-label floating >Surname</ion-label>
             <ion-input formControlName="surname" block value="{{ fault.surname }}">
             </ion-input>
-            <!-- <div class="login-fields" [formGroup]="personalForm">
-                      </div> -->
           </ion-item>
      
         <ion-item text-left>
             <ion-label floating >Phone Number</ion-label>
             <ion-input [(ngModel)]='tel' (ionBlur)="convert()" minLength="11" maxLength="11" formControlName="phone" block value="{{ fault.phone }}">
             </ion-input>
-            <!-- <div class="login-fields" [formGroup]="personalForm">
-                      </div> -->
           </ion-item>
-     
-        <!-- < <ion-item text-left>
-            <ion-label floating >Email</ion-label>
-            <ion-input formControlName="email" block value="{{ fault.email }}">
-            </ion-input>
-          </ion-item>  -->
-
+    
         <ion-item text-left>
             <ion-label floating >Relationship</ion-label>
             <ion-input formControlName="relationship" block value="{{ fault.relationship }}">
             </ion-input>
           </ion-item>
 
-<br>
-
-          <!-- <ion-col>
-              <button button-end button-right  ion-button icon-start clear small (click)="goMyprofile()">
-                <ion-icon color='danger' name="md-trash"></ion-icon>
-                <ion-label color='danger'>Delete</ion-label>
-              </button>
-            </ion-col> -->
 
         </div>
-
           </ion-card>
-     
     </ion-row>
 
-
+<br>
     <ion-row>
-
         <ion-col col-6>
           <button icon-right ion-button block round color="secondary" (click)="goHome()">
               Save 

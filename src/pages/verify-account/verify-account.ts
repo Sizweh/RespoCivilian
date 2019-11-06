@@ -6,7 +6,7 @@ import { AlertsProvider } from './../../providers/alerts/alerts';
 import { MenuController } from 'ionic-angular';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 
-// import { MainServiceProvider } from './../../providers/main-service/main-service'
+
 @IonicPage()
 @Component({
   selector: 'page-verify-account',
@@ -26,7 +26,7 @@ export class VerifyAccountPage {
     private storage: Storage,
     public menuCtrl: MenuController,
     private urlService: UrlbaseProvider,
-    // public mainService: MainServiceProvider,
+
      ) {
       this.menuCtrl.enable(false);
       this.verificationCode = formBuilder.group({
@@ -43,7 +43,7 @@ export class VerifyAccountPage {
     var headers = new Headers();
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
-  //  const requestOptions = new RequestOptions({ headers: headers });
+
    
    //pass to back-end
       console.log(this.verificationCode.value);
@@ -51,10 +51,8 @@ export class VerifyAccountPage {
 
       this.urlService.activate(postData)
       .subscribe(res => {
-      // this.presentToast(res.msg, res.status);
+  
       console.log(res);
-
-      //loader
       const loader = this.loadingCtrl.create({
         content: "Checking code...",
         duration: 3000
@@ -65,7 +63,6 @@ export class VerifyAccountPage {
       if (res.status=='OK') {
         this.storage.set('user_name', res.user_name);
         this.storage.set('user_id', res.user_id);
-        // localStorage.setItem('token', res.token);
         this.navCtrl.setRoot('HomePage');
       }
     }, (err) => {

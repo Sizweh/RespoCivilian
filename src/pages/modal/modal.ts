@@ -29,14 +29,10 @@ export class ModalPage {
     private toastCtrl: ToastController
 
     ) {
-  //    this.id = navParams.get('data');
-
-    
+      
   this.id = navParams.get('data') ;
   this.User_Id = navParams.get('user_id') ;
  
-      
-   
       this.skinForm = formBuilder.group({
 
         'user_id': [this.User_Id,],
@@ -45,7 +41,6 @@ export class ModalPage {
         'name': ['', Validators.compose([Validators.required])],
         'surname': ['', Validators.compose([Validators.required])],
         'phone': ['', Validators.compose([Validators.required, Validators.minLength(11)])],
-        // 'email': ['', Validators.compose([Validators.required])],
         'relationship': ['', Validators.compose([Validators.required])],
 
       })
@@ -67,8 +62,6 @@ export class ModalPage {
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
     
-   //pass to back-end
-
       var postData = this.skinForm.value;
 
       //THIS IS A BETTER WAY TO MAKE API CALLS
@@ -82,20 +75,6 @@ export class ModalPage {
     });
   }
 
-  // ionViewWillLoad() {
-  // const data = this.navParams.get('data');
-  // console.log(data);
-  // }
-  // closeModal() {
-  //   const data = {
-  //    name: 'john doe',
-  //    occupation: 'Milkman'
-  //   }
-  //    this.view.dismiss(data);
-  // }
-
- 
-
 
   goHome() {
 
@@ -103,7 +82,6 @@ export class ModalPage {
     this.storage.set('name', values.name);
     this.storage.set('surname', values.surname);
     this.storage.set('phone', values.phone);
-    // this.storage.set('email', values.email);
     this.storage.set('relationship', values.relationship);
 
     var headers = new Headers();

@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import { HttpClient } from '@angular/common/http';
 import { FormBuilder,FormGroup } from '@angular/forms';
-//import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
-import { AlertsProvider } from './../../providers/alerts/alerts';
 
 @IonicPage()
 @Component({
@@ -23,10 +20,8 @@ export class SpecifyEmergencyPage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     private storage: Storage,
-    //private urlService: UrlbaseProvider,
-    public http: HttpClient,
     public formBuilder: FormBuilder,
-    public alert: AlertsProvider,
+
     ) {
 
       this.id = navParams.get('data') ;
@@ -45,11 +40,6 @@ export class SpecifyEmergencyPage {
     console.log('ionViewDidLoad SpecifyEmergencyPage');
   }
  
- 
-  goLocation(){
-    this.navCtrl.push('LocationPage')
-  }
-
 
   goHome(){
     this.navCtrl.setRoot('HomePage')
@@ -60,26 +50,11 @@ export class SpecifyEmergencyPage {
 
     const value = this.specifyForm.value;
     this.storage.set('specify_emergency', value.specify_emergency);
-    // var headers = new Headers();
-    // headers.append("Accept", 'application/json');
-    // headers.append('Content-Type', 'application/json');
-    // var postData = this.specifyForm.value
-    // this.urlService.specify(postData)
-    //   .subscribe(res => {
-    //     this.specify_collection = res;
-    //     if (res.status == 'OK') {
-    //     }
-    //   }, (err) => {
-    //     console.log(err);
-    //   });
-
     this.navCtrl.push('SelfAdmissionPage')
   }
 
 
-  goSelectResponder(){
-   this.navCtrl.push('SelectResponderPage')
-  }
+
 
 
 }

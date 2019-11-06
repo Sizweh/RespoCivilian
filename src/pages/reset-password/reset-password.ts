@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder,FormGroup } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
-import { AlertsProvider } from './../../providers/alerts/alerts';
+
 
 
 @IonicPage()
@@ -24,26 +24,21 @@ export class ResetPasswordPage {
     public navCtrl: NavController,  
     public navParams: NavParams,
     public formBuilder: FormBuilder,
-    public alertCtrl: AlertController,
-    public alert: AlertsProvider,
-    public loadingCtrl: LoadingController,
     public storage: Storage,
     private urlService: UrlbaseProvider,
     ) {
 
       this.storage.get('user_id').then((val) => {
-        console.log(String(val));
         this.user_id = String(val);  
       });
 
       this.storage.get('id').then((val) => {
-        console.log(String(val));
         this.id = String(val);  
       });
 
       this.resetPasswordForm = formBuilder.group({
         'email': ['',],
-        // 'password': ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.pattern("")])],
+      
       })
     }
 
@@ -55,38 +50,18 @@ export class ResetPasswordPage {
 
   goForgotpassword2(){
 
-
-
     const value = this.resetPasswordForm.value;
-
     this.storage.set('email', value.email);
-    // this.storage.set('password', value.password);
-
 
     var headers = new Headers();
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json');
-    //  const requestOptions = new RequestOptions({ headers: headers });
-
-
-   // pass to back-end
-    console.log(this.resetPasswordForm.value);
     var postData = this.resetPasswordForm.value;
-
-    // postData['user_role']=  "Civilian";
-
     //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.reset(postData)
       .subscribe(res => {
-        // this.presentToast(res.msg, res.status);
         console.log(res);
-        // alert(res);
-         // this.alert.presentAlert("Notification", res.msg);
-
         if (res.status == 'OK' ) {
-            
-          // this.navCtrl.push("VerifyAccountPage");
-          // this.navCtrl.push("Forgotpassword2Page");
         }
       }, (err) => {
         console.log(err);
@@ -97,7 +72,6 @@ export class ResetPasswordPage {
   }
 
   goLogin(){
-
     this.navCtrl.push("LoginPage");
   }
 

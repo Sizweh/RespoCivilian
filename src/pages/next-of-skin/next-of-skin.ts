@@ -4,7 +4,7 @@ import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AlertController, LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-//import { NextOfSkinPage } from '../next-of-kin/next-of-kin';
+
 
 @IonicPage()
 @Component({
@@ -19,8 +19,6 @@ export class NextOfSkinPage {
   toConcat:any;
   skinForm: FormGroup;
   skin_collection: any;
-
- // MyprofilePage: MyprofilePage ;
   phone:any;
   relationship:any;
   name:any;
@@ -37,14 +35,10 @@ export class NextOfSkinPage {
 
     ) {
 
-       //this.id = navParams.get('user_id') ;
-      // this.User_ID = navParams.get('user_id') ;
       this.id = navParams.get('data') ;
       this.User_Id = navParams.get('user_id') ;
   
       this.skinForm = formBuilder.group({
-
-        // 'user_id': [this.User_ID,],
         'user_id': [this.User_Id,],
         
         'name': ['', Validators.compose([Validators.required])],
@@ -83,15 +77,11 @@ headers.append("Accept", 'application/json');
 headers.append('Content-Type', 'application/json' );
 
 var postData = { id:id }
-// var postData = this.skinForm.value;
-
   this.urlService.deleteNext(postData)
   .subscribe(res => {
-
    this.skin_collection = res;
       if (res.status=='OK') {
-
-       }
+      }
   }, (err) => {
       console.log(err);
   });
@@ -103,32 +93,19 @@ var postData = { id:id }
         {
           text: 'Yes',
           handler: () => {
-           // this.storage.set('Medical_Aid_Status', 'Yes');
-            console.log('Agree clicked'); 
+        
             this.navCtrl.setRoot('HomePage'); 
           }
         },
         {
           text: 'No',
           handler: () => {
-            //this.storage.set('Medical_Aid_Status', 'No');
-            console.log('Disagree clicked');
-     
+            
           }
         }
       ]
     });
     confirm.present();
-
-  
-  // const loading= this.loadingCtrl.create({
-  //   content: "deleting details",
-  //   duration: 1000
-  // });
-  // loading.present();
-
-    // this.navCtrl.setRoot('MyprofilePage')
-  
     }
 
 
@@ -136,7 +113,6 @@ var postData = { id:id }
   goNextofkin2(user_id){
  
  this.storage.get('user_id').then((result) => {
-
   this.navCtrl.push("Nextofkin2Page", {
       user_id:result,
     });
@@ -145,7 +121,6 @@ var postData = { id:id }
 }
 
     goModal(id,user_id){    
-    
       this.navCtrl.push("ModalPage", {
         data: id,
         user_id:user_id

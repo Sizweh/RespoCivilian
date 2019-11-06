@@ -5,7 +5,7 @@
 <font size="4" color='#38414a'>Request Accepted By... </font>
 
 <br>
-  <!-- <h2>By...</h2> -->
+
 <br>
 
 <ion-row *ngFor="let detail of selectedResponder">
@@ -19,7 +19,7 @@
         </ion-item>
         
         <button icon-right clear color='secondary' small round ion-button (click)="callNow (detail.phone_no)">Call Responder
-          <!-- <ion-icon name="md-call"></ion-icon> -->
+       
         </button>
         </ion-card>
 
@@ -34,15 +34,4 @@
 
 
 
-    <!-- <ion-card >
-        <ion-item color='light'>
-        <ion-avatar item-right>
-          <img src="../../assets/CITIMED.jpg">
-          </ion-avatar>
-          <h2 class="card-title"><b>Company name:</b> {{detail.company.company_name}}</h2>
-          <h2 class="card-title"><b>Responder name:</b> {{detail.driver_name}}</h2>
-        <p>Cell: {{detail.phone_no}}</p> 
-        <p>Plate number:{{detail.license_no}}</p>
-      </ion-item>
-    </ion-card> -->
-      <!-- <a ion-button class="gl" outline color="secondary" href="tel:+2787463734">Call Responder</a> -->
+    

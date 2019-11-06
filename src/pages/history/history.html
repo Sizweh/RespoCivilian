@@ -14,45 +14,24 @@
 
 
 <ion-content text-center>
-
   <br>
- 
-
   <div reorder="true" class="register-fields" [formGroup]="historyForm">
      
-
       <ion-row no-lines *ngFor="let fault of history_collection">
 
-   
           <ion-card   no-lines>
             <ion-item (click)="goHistory1(fault.id, fault.user_id, fault.company_id)" color='light'no-lines  text-left>
-              <!-- <h1 color='newcolor'> Emergency type : {{ fault.emergency_type }}</h1> -->
               <font size="3" color='#38414a'> Emergency type :<b> {{ fault.emergency_type }}</b></font><br>
-              <!-- <font size="3" color='#38414a'>Pick-Up : {{ fault.pick_up }}</font><br>
-              <font size="3" color='#38414a'>Drop-off : {{ fault.drop_off }}</font><br> -->
               <font size="3" color='#38414a'>Status : {{ fault.status }}</font><br>
-              <!-- <font size="3" color='#38414a'>Responder : {{ fault.company_id }}</font><br> -->
               <font size="3" color='#38414a'>Date : {{ fault.created_at }}</font><br>
             </ion-item>
- <!-- <ion-datetime formControlName="myDate"  displayFormat="HH:mm" >{{ fault.created_at }}</ion-datetime> -->
           </ion-card>
-
-          <!-- <ion-item>
-              <ion-label>Date</ion-label>
-              <ion-datetime displayFormat="MM/DD/YYYY" formControlName="myDate"></ion-datetime>
-            </ion-item> -->
-            <!-- <ion-item  color='light'>
-                <ion-label>Time{{ fault.created_at }}</ion-label>
-                <ion-datetime displayFormat="HH:mm" formControlName="myDate">{{ fault.created_at }}</ion-datetime>
-              </ion-item> -->
 
         </ion-row>
         <br>
-        
-
   </div>
 
-    <br>
+<br>
     
  
 </ion-content>

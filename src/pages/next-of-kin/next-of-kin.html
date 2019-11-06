@@ -40,24 +40,14 @@
           <ion-option value="Colleague">Colleague</ion-option>
         </ion-select>
       </ion-item>
-
-
    <br>
    <br>
+  <font (click)="goFaq()" size="2" color='#488aff'>Read Terms & Conditions Here</font>
 
-
-   <!-- <div class="remember_token"> -->
-
-       <font (click)="goFaq()" size="2" color='#488aff'>Read Terms & Conditions Here</font>
-
-          <ion-item no-lines>
-              <ion-label>I Accept The Terms & Conditions</ion-label>
-              <ion-checkbox formControlName="remembertoken"></ion-checkbox>
-              <!-- <ion-checkbox [(ngModel)]="remembertoken"></ion-checkbox> -->
-            </ion-item>
-
-
-          <!-- </div> -->
+    <ion-item no-lines>
+        <ion-label>I Accept The Terms & Conditions</ion-label>
+        <ion-checkbox formControlName="remembertoken"></ion-checkbox>
+      </ion-item>
 
     </div>
 <br>
@@ -70,7 +60,7 @@
           </ion-col>
        </ion-row>
   
-       <!-- [disabled]="!nextofkinForm.valid" -->
+
 
 </ion-content>
 
@@ -96,67 +86,3 @@
 
 
 
-
-<!-- <ion-item>
-    <ion-input
-     placeholder="Payment Brand " 
-     type="text"
-     formControlName="paymentBrand"
-     ></ion-input>
-  </ion-item> -->
-    <!-- <ion-item>
-        <ion-input formControlName="paymentBrand" placeholder="Payment Brand" type="text"></ion-input>
-        <ion-select formControlName="paymentBrand">
-            <ion-label>Payment Brand</ion-label>
-          <ion-option >VISA</ion-option>
-          <ion-option >VisaElectron</ion-option>
-          <ion-option >Master</ion-option>
-          <ion-option >CarteBleue</ion-option>
-          <ion-option >Discover</ion-option>
-        </ion-select>
-      </ion-item>
-
-<ion-item>
-    <ion-input
-     placeholder="Card Holder" 
-     type="text"
-     formControlName="cardHolder"
-     ></ion-input>
-  </ion-item>
-
-<ion-item>
-    <ion-input
-     placeholder="Card Number" 
-     type="text"
-     formControlName="cardNo"
-      minLength="15"
-      maxLength="20"
-     ></ion-input>
-  </ion-item>
-
-
-  <ion-item>
-  
-    <ion-input formControlName="expiryMonth" placeholder="Expiry Month" type="text"></ion-input>
-    <ion-datetime
-    formControlName="expiryMonth"
-      displayFormat="MM"
-      pickerFormat="DD MMMM YYYY"
-    ></ion-datetime>
-  </ion-item>
-
-  <ion-item>
-   
-    <ion-input formControlName="expiryYear" placeholder="Expiry Year" type="text"></ion-input>
-  </ion-item>
-
-
-<ion-item>
-    <ion-input
-      minLength="3"
-      maxLength="3"
-     placeholder="CVV" 
-     type="text"
-     formControlName="CVV"
-     ></ion-input>
-  </ion-item> -->

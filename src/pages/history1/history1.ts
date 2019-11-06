@@ -47,27 +47,10 @@ export class History1Page {
     public view: ViewController,
     ) {
 
-      this.storage.get('selected_responder').then((val) => {
-        console.log('cd db stuff');
-        console.log(val);
-        this.selectedResponder = val;
-        this.responderId = val.id;
-        this.request_id = val.reqId;
-        this.responderName= val.driver_name;
-      });
-
-      //   this.storage.get('id').then((val) => {
-      //   console.log(String(val));
-      //   this.id = String(val);  
-      // });
-
         this.storage.get('user_id').then((val) => {
         console.log(String(val));
         this.user_id = String(val);  
       });
-
-     
-      
 
       this.id = navParams.get('data') ;
       this.User_Id = navParams.get('user_id') ;
@@ -105,9 +88,7 @@ export class History1Page {
           console.log(err);
       });
 
-      // var headers = new Headers();
-      // headers.append("Accept", 'application/json');
-      // headers.append('Content-Type', 'application/json' );
+  
      
      var postData = this.history1Form.value;
     
