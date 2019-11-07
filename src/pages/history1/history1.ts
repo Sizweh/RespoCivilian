@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { CallNumber } from '@ionic-native/call-number';
-import { Contacts } from '@ionic-native/contacts';
+
 import { FormGroup, FormBuilder, } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
@@ -40,7 +40,7 @@ export class History1Page {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public callNumber: CallNumber,
-    public contacts: Contacts,
+
     public formBuilder: FormBuilder,
     private urlService: UrlbaseProvider,
     private storage: Storage,
@@ -56,10 +56,7 @@ export class History1Page {
         this.responderName= val.driver_name;
       });
 
-      //   this.storage.get('id').then((val) => {
-      //   console.log(String(val));
-      //   this.id = String(val);  
-      // });
+
 
         this.storage.get('user_id').then((val) => {
         console.log(String(val));
@@ -92,8 +89,7 @@ export class History1Page {
       var headers = new Headers();
       headers.append("Accept", 'application/json');
       headers.append('Content-Type', 'application/json' );
-  
-     //pass to back-end
+
       var postData = this.historyForm.value;
         //THIS IS A BETTER WAY TO MAKE API CALLS
       this.urlService.viewhistory(postData)
@@ -105,9 +101,7 @@ export class History1Page {
           console.log(err);
       });
 
-      // var headers = new Headers();
-      // headers.append("Accept", 'application/json');
-      // headers.append('Content-Type', 'application/json' );
+
      
      var postData = this.history1Form.value;
     

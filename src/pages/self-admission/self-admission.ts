@@ -42,7 +42,6 @@ export class SelfAdmissionPage {
       this.beneficiaryForm = formBuilder.group({
 
       'user_id': [this.user_Id,],
-    
         'Beneficiary_id': ['',],
       })
 
@@ -85,11 +84,6 @@ this.navCtrl.push("MapsPage");
 }
 
 goChat2(){
-  
-  
-  //  const value = this.beneficiaryForm.value;
-  //  this.storage.set('Beneficiary_id', value.Beneficiary_id);
-
      this.storage.set('forWho', 'FB');
     
 
@@ -137,15 +131,10 @@ goChat2(){
           const value = this.beneficiaryForm.value;
           this.storage.set('Beneficiary_id', (e));
           console.log(e);
-    //  const value = this.beneficiaryForm.value;
-    //   this.storage.set('handler', value.e);
-          
-          
-          // const value = this.beneficiaryForm.value;
-         
+   
 
          this.navCtrl.push("MapsPage");
-        //  this.storage.set('Beneficiary_id', value.Beneficiary_id);
+       
         
          
             
@@ -155,13 +144,11 @@ goChat2(){
       }
     ]
   });
-  // const value = this.beneficiaryForm.value;
-  // this.storage.set('ben.name', value.ben.id);
+
 
  alert.present();
 
 
-//  this.storage.set('Beneficiary_id', this.Beneficiary_id)
 
 
 
@@ -179,105 +166,3 @@ goChat2(){
 }
 
 
-
-//   const alert = this.alertController.create({
-//     header: 'Radio',
-//     inputs: [
-//       {
-//         name: 'radio1',
-//         type: 'radio',
-//         label: 'Radio 1',
-//         value: 'value1',
-//         checked: true
-//       },
-//       {
-//         name: 'radio2',
-//         type: 'radio',
-//         label: 'Radio 2',
-//         value: 'value2'
-//       },
-//       {
-//         name: 'radio3',
-//         type: 'radio',
-//         label: 'Radio 3',
-//         value: 'value3'
-//       },
-//       {
-//         name: 'radio4',
-//         type: 'radio',
-//         label: 'Radio 4',
-//         value: 'value4'
-//       },
-//       {
-//         name: 'radio5',
-//         type: 'radio',
-//         label: 'Radio 5',
-//         value: 'value5'
-//       },
-//       {
-//         name: 'radio6',
-//         type: 'radio',
-//         label: 'Radio 6 Radio 6 Radio 6 Radio 6 Radio 6 Radio 6 Radio 6 Radio 6 Radio 6 Radio 6 ',
-//         value: 'value6'
-//       }
-//     ],
-//     buttons: [
-//       {
-//         text: 'Cancel',
-//         role: 'cancel',
-//         cssClass: 'secondary',
-//         handler: () => {
-//           console.log('Confirm Cancel');
-//         }
-//       }, {
-//         text: 'Ok',
-//         handler: () => {
-//           console.log('Confirm Ok');
-//         }
-//       }
-//     ]
-//   });
-
-//  alert.present();
-
-
-  // openModal() {
-  //   const myModalOptions: ModalOptions = {
-  //     enableBackdropDismiss: false
-  //   }
-  //   const myModalData = {
-  //     name: 'Paul Halliday',
-  //     occupation: 'Developer'
-  //   };
-  //   const myModal: Modal = this.modal.create('ModalPage', { data: myModalData }, myModalOptions);
-  //   myModal.present();
-  //   myModal.onDidDismiss((data) => {
-  //     console.log("I have dismissed");
-  //     console.log(data);
-  //   })
-  //   myModal.onDidDismiss((data) => {
-  //     console.log("I'm about to dismiss");
-  //     console.log(data);
-  //   })
-  // }
-
-  // goHome() {
-  //   const loading = this.loadingCtrl.create({
-  //     content: "Checking code...",
-  //     duration: 3000
-  //   });
-  //   loading.present();
-  //   let alert = this.alertCtrl.create({
-  //     title: 'Self Admission',
-  //     message: 'Admission details sent successfully, your medical aid will reply with confirmation',
-  //     buttons: [
-  //       {
-  //         text: 'OK',
-  //         handler: () => {
-  //         }
-  //       }
-  //     ]
-  //   });
-  //   alert.present();
-  //   this.navCtrl.setRoot("HomePage");
-  // }

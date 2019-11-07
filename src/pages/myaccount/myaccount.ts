@@ -24,43 +24,7 @@ export class MyaccountPage {
   }
 
 
-  goNextOfKin(){
-    this.navCtrl.push('NextOfKinPage')
-  }
-  // goBankingDetails(){
-  //   this.navCtrl.push('BankingDetailsPage')
-  // }
-
-
-  goBankingDetails(){
-    
-    this.storage.get('user_id').then((result) => {
-  this.storage.get('org_id').then((result) => {
-    
-       this.navCtrl.push("BankingDetailsPage", {
-          user_id:result,
-          org_id:result,
-
-          // id:result,
-        });
-
-      });
-    });
-
-        }
-    
-
-  goForSelf(){
-    
-    this.storage.get('user_id').then((result) => {
-       this.navCtrl.push("ForSelfPage", {
-          user_id:result,
-          // id:result,
-        });
-      });
-        }
-
-  goMedicalHistory(user_id){
+  goMedicalHistory(){
     this.storage.get('user_id').then((result) => {
         this.navCtrl.push("MedicalHistoryPage", {
           user_id:result,

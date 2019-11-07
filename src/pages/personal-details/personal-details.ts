@@ -35,10 +35,7 @@ export class PersonalDetailsPage {
       this.User_Id = navParams.get('user_id') ;
      
 
-      // this.storage.get('user_id').then((val) => {
-      //   console.log(String(val));
-      //   this.  toConcat =   this.UserId =String(val);  
-      // });
+
    
       this.personalForm = formBuilder.group({
      
@@ -48,10 +45,10 @@ export class PersonalDetailsPage {
         'fullName': ['', Validators.compose([Validators.required])],
         'gender': ['', Validators.compose([Validators.required])],
         'myDate': ['', Validators.compose([Validators.required])],
-        // 'phonenumber': [ Validators.compose([Validators.required, Validators.minLength(11), Validators.maxLength(11), ])],
+     
         'phonenumber': [Validators.compose([Validators.required, Validators.minLength(11)])],
        
-        // 'phonenumber': ['', Validators.compose([Validators.minLength(11), Validators.maxLength(11), Validators.pattern("^[0-9]{11}")])],
+ 
         'email': ['', Validators.compose([Validators.minLength(4), Validators.maxLength(50), Validators.pattern('[a-zA-Z0-9._]+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$'), Validators.required])],
 
       })
@@ -71,7 +68,6 @@ export class PersonalDetailsPage {
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
 
-   //pass to back-end
 
       var postData = this.personalForm.value;
 

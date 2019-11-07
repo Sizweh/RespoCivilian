@@ -42,79 +42,14 @@ export class HomePage {
     private oneSignal: OneSignal,
     private network: Network,
 
-    private platform: Platform,
+
    
     ) {
 
     this.menuCtrl.enable(true);
-
-  //   this.platform.ready().then(() =>{
-  //     this.codePush.sync({}, (progress) => {
-  //   }).subscribe((status) => {
-  //     if(status == SyncStatus.CHECKING_FOR_UPDATE)
-  //     alert("Checking for Update");
-  //     if (status == SyncStatus.DOWNLOADING_PACKAGE)
-  //     alert("Downloading Package");
-  //     if(status == SyncStatus.IN_PROGRESS)
-  //     alert("In Progress");
-  //     if(status == SyncStatus.INSTALLING_UPDATE)
-  //     alert("Installing Update");
-  //     if(status == SyncStatus.UP_TO_DATE)
-  //     alert("Up to Date");
-  //     if(status == SyncStatus.UPDATE_INSTALLED)
-  //     alert("Update Installed");
-  //     if(status == SyncStatus.ERROR)
-  //     alert("Error");
-
-  //     })
-
-
-  // })
-
-
     
-    this.network.onConnect().subscribe(()=>{
-      this.isConnected=true;
-      this.toastCtrl.create({
-  
-        message: '',
-        position: 'middle',
-        duration: 2000,
-      }).present();
-      });
-  
-      
-      this.network.onDisconnect().subscribe(()=>{
-        this.isConnected=false;
-      this.toastCtrl.create({
-  
-        message: 'please check your network connection',
-        position: 'middle',
-        duration: 2000,
-  
-      }).present();
-      });
-  
-      
-      // We just got a connection but we need to wait briefly
-       // before we determine the connection type. Might need to wait.
-      // prior to doing any api requests as well.
 
-
-
-      // setTimeout(() => {
-      //   if (this.network.type === 'wifi') {
-      //     alert('we got a wifi connection, woohoo!');
-      //     console.log('we got a wifi connection, woohoo!');
-      //   }
-      // }, 3000);
-
-    
-  
-
-
-
-      
+ 
 }
 
 
@@ -201,31 +136,42 @@ otherCategories = [
 
 
 ionViewDidLoad() {
+    console.log('ionViewDidLoad HomePage');
 
     this.storage.get('user_id').then((val) => {
-    //   console.log('cater db stuff');
-    //  console.log(val);
+
      this.user_id = val;
-    // console.log("note  login" + this.user_id)
+
      if(this.user_id === null)
      {
-      // console.log("Note  login")
        this.navCtrl.setRoot('LoginPage');  
      }
      else{
      }
 
-     this.network.onConnect().subscribe(()=>{
+     
+  
+      this.network.onConnect().subscribe(()=>{
       this.isConnected=true;
       this.toastCtrl.create({
   
-        message: 'network connected',
+        message: '',
         position: 'middle',
-        duration: 1500,
+        duration: 2000,
       }).present();
       });
   
       
+      this.network.onDisconnect().subscribe(()=>{
+        this.isConnected=false;
+      this.toastCtrl.create({
+  
+        message: 'please check your network connection',
+        position: 'middle',
+        duration: 2000,
+  
+      }).present();
+      });
       
 
 
@@ -237,7 +183,7 @@ ionViewDidLoad() {
 
 
 
-  //console.log('ionViewDidLoad HomePage');
+
 
   var notificationOpenedCallback = function(jsonData) {
     console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
@@ -248,20 +194,16 @@ ionViewDidLoad() {
    .handleNotificationOpened(notificationOpenedCallback)
    .endInit();
    
-//   window["plugins"].OneSignal.getIds(function(ids) {
-//       this.playerId =  ids.userId
-//      // alert(this.playerId)
-// });
-// //  alert(this.playerId)
+
 
 this.storage.get('user_id').then((val) => {
 window["plugins"].OneSignal.sendTag("user_id", this.user_id);
- // console.log("tags sent");
+
   this.user_id = String(val);  
 });
 
 
-this.storage.get('user_id').then((user_id) => {
+this.storage.get('user_id').then((_user_id) => {
    this.user_ids = 'user_id' ; 
 });
 
@@ -293,11 +235,6 @@ this.storage.get('user_id').then((user_id) => {
     
     }
 
-  // goSelfAdmission(fault){
-  //   this.storage.set('category', fault);
-  //   this.navCtrl.push('SelfAdmissionPage')
-  // }
-
 
   goSpecifyEmergency(other){
     this.storage.set('category', other);
@@ -309,14 +246,6 @@ this.storage.get('user_id').then((user_id) => {
       });
   });
 });
-
-
-
-
-
-
-
-
 
 }
 checkAccept() {
@@ -351,25 +280,7 @@ checkAccept() {
  
 
 goEmergencyNo(){
-  // this.network.onConnect().subscribe(()=>{
-  //   this.toastCtrl.create({
-
-  //     message: 'hooray, we`re back on track',
-  //     position: 'Bottom',
-  //     closeButtonText: 'OK',
-  //   }).present();
-  //   });
-
-    
-  //   this.network.onDisconnect().subscribe(()=>{
-  //   this.toastCtrl.create({
-
-  //     message: 'Ooops, please check your network connection',
-  //     position: 'Bottom',
-  //     closeButtonText: 'OK', 
-
-  //   }).present();
-  //   });
+ 
 this.navCtrl.push('EmergencyNoPage')
 }
 
@@ -383,78 +294,3 @@ this.navCtrl.push('EmergencyNoPage')
 
 
 
-// faultCategories = [
-//   {
-//     faultID: 1,
-//     category: "Vehicle Accident",
-//     imageUrl: "../../assets/icons/R7.png", 
-//     icon: "alarm"
-   
-//   },
-//   {
-//     faultID: 2,
-//     category: "Heart Attack",
-//     imageUrl: "../../assets/icons/R3.png",
-//     icon: "alarm"
-//   },
-//   {
-//     faultID: 3,
-//     category: "Severe Bleeding",
-//     imageUrl: "../../assets/icons/R5.png",
-//     icon: "alarm"
-//   },
-//   {
-//     faultID: 4,
-//     category: "Burns",
-//     imageUrl: "../../assets/icons/R9.png",
-//     icon: "alarm"
-//   },
-//   {
-//     faultID: 5,
-//     category: "Difficulty Breathing",
-//     imageUrl: "../../assets/icons/R12.jpg",
-//     icon: "alarm"
-//   },
-//   {
-//     faultID: 6,
-//     category: "Fainting",
-//     imageUrl: "../../assets/icons/R2.png",
-//     icon: "alarm"
-//   },
-//   {
-//     faultID: 7,
-//     category: "Snake Bite",
-//     imageUrl: "../../assets/icons/R6.png",
-//     icon: "alarm"
-//   },
-//   {
-//     faultID: 8,
-//     category: "Labour",
-//     imageUrl: "../../assets/icons/R4.png",
-//     icon: "alarm"
-//   },
-//   {
-//     faultID: 9,
-//     category: "Falling",
-//     imageUrl: "../../assets/icons/R10.jpg",
-//     icon: "alarm"
-//   },
-//   {
-//     faultID: 10,
-//     category: "Seizure",
-//     imageUrl: "../../assets/icons/R11.jpg",
-//     icon: "alarm"
-//   },
-// ];
-
- 
-// otherCategories = [
-//   {
-//     faultID: 11,
-//     category: "Other",
-//     imageUrl: "../../assets/icons/R8.png",
-//     icon: "alarm"
-   
-//   },
-
-// ];

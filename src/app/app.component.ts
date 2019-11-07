@@ -34,8 +34,6 @@ export class MyApp {
   rootPage: any = 'HomePage';
 
   
-  // menu: true;
- 
   
  
 
@@ -56,11 +54,9 @@ export class MyApp {
 
 
       this.storage.get('user_name').then((val) => {
-        //console.log(String(val));
         this.username = String(val);  
       });
       this.storage.get('user_id').then((val) => {
-       // console.log(String(val));
         this.userId = String(val);  
       });
    
@@ -72,21 +68,12 @@ export class MyApp {
     this.initializeApp(); {
       }
 
-    // used for an example of ngFor and navigation
+
  
   
 
     
     this.pages = [
-
-      // { title: 'Home', component: "HomePage", icon: 'home' },
-      // { title: 'My Account', component: "MyaccountPage", icon: 'person'},
-      // { title: 'Add Beneficiary', component: "BeneficiaryPage", icon: 'home' },
-      // { title: 'Payment Details', component: "BankDetailsPage", icon: 'chatbubbles' },
-      // { title: 'History', component: "HistoryPage", icon: 'document' },
-  
-      // { title: 'Support', component: "SupportPage", icon: 'help'},
-      // { title: 'About', component: "AboutPage", icon: 'information-circle'},
 
 
 
@@ -112,8 +99,7 @@ this.socialSharing.share(this.text, this.message)
   
   initializeApp() {
     this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
+
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.menu.enable(true);
@@ -130,46 +116,22 @@ this.socialSharing.share(this.text, this.message)
         .endInit();
         
 
-        // window["plugins"].OneSignal.sendTag("user_id", this.userId);
-        // console.log("tags sent");
-        
-        // this.oneSignal.getIds().then((id) => {
-        //   console.log(id);
-        //   let alert = this.alertCtrl.create({
-        //       title: 'playerId',
-        //       message: JSON.stringify(id),
-        //       buttons: [{
-        //         text: 'Ok',
-        //         role: 'ok'
-        //       }]
-        //     });
-        //     alert.present();
-        // });
-    
+ 
 
     });
   }
 
- 
 
-  goLogin(){
-    // this.sideMenu.hide();
-    this.nav.setRoot('LoginPage');
-    // this.menu.enable(true);
-    this.storage.clear();
-    this.menu.close();
-    }
   
   goHome(){
-     // this.sideMenu.hide();
+
     this.nav.setRoot('HomePage');
     this.menu.enable(true);
     this.menu.close();
     }
   
   goHistory(){
- // this.sideMenu.hide();
-    // this.nav.setRoot('HistoryPage');
+
     this.nav.setRoot("HistoryPage", {
       // user_id: this.User_Id,
     });
@@ -177,20 +139,6 @@ this.socialSharing.share(this.text, this.message)
     this.menu.close();
     }
   
-  // goMyAccount(){
-  //    // this.sideMenu.hide();
-  //   this.nav.setRoot('MyaccountPage');
-  //   this.menu.enable(true);
-  //   this.menu.close();
-  //   }
-  
-  // goSupport(){
-  //    // this.sideMenu.hide();
-
-  //   this.nav.setRoot('SupportPage');
-  //   this.menu.enable(true);
-  //   this.menu.close();
-  //   }
 
       
   goMyAccount(){
@@ -209,7 +157,7 @@ this.socialSharing.share(this.text, this.message)
     this.storage.get('user_id').then((result) => {
       this.nav.setRoot("MyBeneficiariesPage", {
         user_id:result,
-        //id:result,
+
       });
   });
   this.menu.enable(true);
@@ -229,11 +177,7 @@ this.socialSharing.share(this.text, this.message)
       }
   
   
-  goBankingDetails(){
-    this.nav.push('BankingDetailsPage');
-    this.menu.enable(true);
-    this.menu.close();
-    }
+
 
   goMyProfile(){
     this.nav.setRoot('MyprofilePage');
@@ -241,29 +185,10 @@ this.socialSharing.share(this.text, this.message)
     this.menu.close();
     }
 
-    // goMyBeneficiaries(){
-      
-    // this.nav.setRoot('MyBeneficiariesPage');
-    // this.menu.enable(true);
-    // this.menu.close();
-    // }
 
-    goBankDetails(){
-    this.nav.setRoot('BankDetailsPage');
-    this.menu.enable(true);
-    this.menu.close();
-    }
 
-// whatsappShare(index){
-//   var msg  = this.compilemsg(index);
-//    this.socialSharing.shareViaWhatsApp(msg, null, null);
-//  }
 
-//  facebookShare(index){
-//    var msg  = this.compilemsg(index);
-//     this.socialSharing.shareViaFacebook(msg, null, null);
-//   }
-    
+
   
 }
 

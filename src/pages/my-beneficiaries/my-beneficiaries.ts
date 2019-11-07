@@ -49,14 +49,11 @@ export class MyBeneficiariesPage {
 
   ionViewDidLoad() {
 
-    // this.storage.get('user_id').then((val) => {
-
     var headers = new Headers();
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
 
     var postData = this.beneficiaryForm.value;
-
    //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.viewbeneficiary(postData)
     .subscribe(res => {
@@ -67,29 +64,9 @@ export class MyBeneficiariesPage {
         console.log(err);
       });
       
-   
-      // this.user_Id = String(val);  
-//  });
-
-
     console.log('ionViewDidLoad MyBeneficiariesPage');
   }
 
-
-
-
-
-  // goForgotpassword(){
-  //   this.navCtrl.push('ForgotpasswordPage')
-  // }
-
-  // goBeneficiary(id,user_id){
-  //      this.navCtrl.push("BeneficiaryPage", {
-  //         // user_id:result,
-  //         data: id,
-  //         user_id:user_id
-  //       });
-  //  }
 
    goBeneficiary(){
     this.storage.get('user_id').then((result) => {
@@ -114,18 +91,14 @@ export class MyBeneficiariesPage {
     headers.append('Content-Type', 'application/json' );
     
     var postData = { id:id }
-    // var postData = this.skinForm.value;
-    
       this.urlService.deleletBen(postData)
       .subscribe(res => {
-      
        this.ben_collection = res;
           if (res.status=='OK') {
            }
       }, (err) => {
           console.log(err);
       });
-    
         const confirm = this.alertCtrl.create({
           title: 'Are you sure?',
           message: '',

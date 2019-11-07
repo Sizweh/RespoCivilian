@@ -14,10 +14,9 @@ import { AlertsProvider } from './../../providers/alerts/alerts';
 export class ResetPasswordPage {
     
   resetPasswordForm: FormGroup;
-  numberType: string = 'number';
-  numberIcon: string = 'eye-off';
+
   user_id: any;
-  id: string;
+  id: any;
 
 
   constructor(
@@ -43,7 +42,7 @@ export class ResetPasswordPage {
 
       this.resetPasswordForm = formBuilder.group({
         'email': ['',],
-        // 'password': ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.pattern("")])],
+      
       })
     }
 
@@ -54,39 +53,20 @@ export class ResetPasswordPage {
 
 
   goForgotpassword2(){
-
-
-
     const value = this.resetPasswordForm.value;
 
     this.storage.set('email', value.email);
-    // this.storage.set('password', value.password);
-
-
+   
     var headers = new Headers();
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json');
-    //  const requestOptions = new RequestOptions({ headers: headers });
 
-
-   // pass to back-end
-    console.log(this.resetPasswordForm.value);
     var postData = this.resetPasswordForm.value;
-
-    // postData['user_role']=  "Civilian";
-
     //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.reset(postData)
       .subscribe(res => {
-        // this.presentToast(res.msg, res.status);
         console.log(res);
-        // alert(res);
-         // this.alert.presentAlert("Notification", res.msg);
-
         if (res.status == 'OK' ) {
-            
-          // this.navCtrl.push("VerifyAccountPage");
-          // this.navCtrl.push("Forgotpassword2Page");
         }
       }, (err) => {
         console.log(err);
@@ -97,7 +77,6 @@ export class ResetPasswordPage {
   }
 
   goLogin(){
-
     this.navCtrl.push("LoginPage");
   }
 

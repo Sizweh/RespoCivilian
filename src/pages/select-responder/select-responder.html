@@ -1,31 +1,8 @@
-<!-- <ion-header>
-  <ion-navbar color="newcolor">
-    <ion-toolbar mode="ios">
-      <ion-buttons start>
-        <button ion-button icon-only menuToggle>
-          <ion-icon name="menu"></ion-icon>
-           </button>
-          </ion-buttons>
-       <ion-buttons end>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-navbar>
-</ion-header> -->
-
 <ion-content text-center> 
-  
-      
-    
 
-   <ion-searchbar block [(ngModel)]="myInput" (ionChange)='search($event)'></ion-searchbar>
-
-
-      
-
+  <ion-searchbar block [(ngModel)]="myInput" (ionChange)='search($event)'></ion-searchbar>
 
   <ion-row *ngFor="let respo of allResponders_Distance ">
-      <!-- <ion-row *ngFor="let respo of allResponders"> -->
-      
        <ion-card>
           <ion-card-content>
               <ion-item (click)="goLocation(respo)" text-left>
@@ -41,8 +18,17 @@
              </ion-item>
           </ion-card-content>
        </ion-card> 
-
       </ion-row>
+
+
+
+
+
+
+
+
+
+
 
 </ion-content>
 
@@ -83,89 +69,3 @@
 
 
 
-
-
-  <!-- <div id="pac-container" class="input-icons" text-center>
-        <input  text-align=center value="" id="responder-input" type="text" style="width: 100%;   
-        padding: 10px; box-sizing: border-box; resize: vertical; font-size: 17px;"
-        placeholder="Search for Responder">
-        </div> -->
-
-
- <!-- <ion-toolbar> -->
-          <!-- <ion-searchbar 
-          [(ngModel)]="myInput" 
-          showCancelButton="focus"
-          (ionInput)="getTopics($event)" 
-          debounce="500" 
-          (ionClear)="onClear($event)"></ion-searchbar> -->
-        <!-- </ion-toolbar> -->
-
-
-      <!-- <button clear icon-right ion-button block round  color="dakar" (click)="goMaps()">
-      Back
-        <ion-icon name=""></ion-icon>
-      </button> -->
-
-
- <!-- &nbsp;<h5>Request for someone else:</h5> -->
-
- <!-- <button (click)="goRequestElse()"  ion-button color="danger" round> -->
-
-   <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Click &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-   <!-- <ion-icon name="paper"></ion-icon> -->
-  <!-- </button> -->
-
-  
-    <!-- <ion-item >
-      <ion-avatar item-start>
-        <img src="../../assets/3FydRPmMQsaNOI7xC6Zo_RRV.png">
-      </ion-avatar>
-      <h2>ER24</h2>
-      <p>2km away
-        <br></p>
-    </ion-item>
-    <ion-item >
-      <ion-avatar item-start>
-        <img src="../../assets/l2d9CNXBTki9QpllSWCB_RRV2.png">
-      </ion-avatar>
-      <h2>Netcare</h2>
-      <p>12km away
-        <br></p>
-    </ion-item>
-    <ion-item >
-      <ion-avatar item-start>
-        <img src="../../assets/3FydRPmMQsaNOI7xC6Zo_RRV.png">
-      </ion-avatar>
-      <h2>Rescue care</h2>
-      <p>8km away
-        <br></p>
-    </ion-item>
-    <ion-item >
-      <ion-avatar item-start>
-        <img src="../../assets/l2d9CNXBTki9QpllSWCB_RRV2.png">
-      </ion-avatar>
-      <h2>Citi-Med</h2>
-      <p>1km away
-        <br></p>
-    </ion-item>
-    <ion-item >
-      <ion-avatar item-start>
-        <img src="../../assets/3FydRPmMQsaNOI7xC6Zo_RRV.png">
-      </ion-avatar>
-      <h2>Medicare</h2>
-      <p>15km away
-        <br></p>
-    </ion-item>
-    <ion-item >
-      <ion-avatar item-start>
-        <img src="../../assets/l2d9CNXBTki9QpllSWCB_RRV2.png">
-      </ion-avatar>
-      <h2>Paramed</h2>
-      <p>14km away
-        <br></p>
-    </ion-item> -->
-
-  <!-- </ion-list> -->
-
-  <!-- </ion-item> -->

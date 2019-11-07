@@ -29,7 +29,7 @@ export class ModalPage {
     private toastCtrl: ToastController
 
     ) {
-  //    this.id = navParams.get('data');
+ 
 
     
   this.id = navParams.get('data') ;
@@ -45,7 +45,7 @@ export class ModalPage {
         'name': ['', Validators.compose([Validators.required])],
         'surname': ['', Validators.compose([Validators.required])],
         'phone': ['', Validators.compose([Validators.required, Validators.minLength(11)])],
-        // 'email': ['', Validators.compose([Validators.required])],
+        
         'relationship': ['', Validators.compose([Validators.required])],
 
       })
@@ -82,18 +82,6 @@ export class ModalPage {
     });
   }
 
-  // ionViewWillLoad() {
-  // const data = this.navParams.get('data');
-  // console.log(data);
-  // }
-  // closeModal() {
-  //   const data = {
-  //    name: 'john doe',
-  //    occupation: 'Milkman'
-  //   }
-  //    this.view.dismiss(data);
-  // }
-
  
 
 
@@ -103,7 +91,7 @@ export class ModalPage {
     this.storage.set('name', values.name);
     this.storage.set('surname', values.surname);
     this.storage.set('phone', values.phone);
-    // this.storage.set('email', values.email);
+
     this.storage.set('relationship', values.relationship);
 
     var headers = new Headers();

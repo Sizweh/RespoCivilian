@@ -1,13 +1,13 @@
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AlertsProvider } from './../../providers/alerts/alerts';
-import { HttpClient } from '@angular/common/http';
+
+
 import { MenuController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import { AlertController } from 'ionic-angular';
-import { NextOfKinPage } from '../next-of-kin/next-of-kin';
-// import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
+
+
+
 
 @IonicPage()
 @Component({
@@ -17,18 +17,18 @@ import { NextOfKinPage } from '../next-of-kin/next-of-kin';
 export class RegisterPage {
 
   registerForm: FormGroup;
-  NextOfKinPage: NextOfKinPage ;
+
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public formBuilder: FormBuilder,
-    public alert: AlertsProvider,
-    public http: HttpClient,
+ 
+
     public menuCtrl: MenuController,
     public storage: Storage,
-    public alertCtrl: AlertController,
-    // private urlService: UrlbaseProvider,
+ 
+
 
     ) {
 
@@ -41,9 +41,7 @@ export class RegisterPage {
         'phonenumber': ['', Validators.compose([Validators.required, Validators.minLength(11), Validators.pattern("^[0-9]{11}")])],
         'email': ['', Validators.compose([Validators.minLength(4), Validators.maxLength(50), Validators.pattern('[a-zA-Z0-9._]+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$'), Validators.required])],
         'password': ['', Validators.compose([Validators.required, Validators.minLength(6)])],
-        // 'confirmPassword': ['', Validators.compose([Validators.required, Validators.minLength(6) ])],
-        // 'gender': ['', Validators.compose([Validators.required])],
-        // 'myDate': ['', Validators.compose([Validators.required])],
+     
       })
    
   }
@@ -76,11 +74,6 @@ export class RegisterPage {
     this.storage.set('password', values.password);
 
 
-    // this.storage.set('confirmPassword', values.confirmPassword);
-    // this.storage.set('student_no', values.student_no);
-    // this.storage.set('org_name', values.org_name);
-    // this.storage.set('gender', values.gender);
-    // this.storage.set('myDate', values.myDate);
     this.navCtrl.push('MedicalDetailsPage');
   }
 

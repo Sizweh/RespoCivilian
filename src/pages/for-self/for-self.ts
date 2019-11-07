@@ -31,8 +31,6 @@ export class ForSelfPage {
     private toastCtrl: ToastController
     ) {
       
-      // this.id = navParams.get('data') ;
-      // this.User_Id = navParams.get('user_id') ;
 
       this.medicaldetailsForm = formBuilder.group({
 
@@ -41,8 +39,7 @@ export class ForSelfPage {
         'partial_membership': ['', Validators.compose([Validators.required])],
         'prefered_hospital': ['', Validators.compose([Validators.required])],
 
-      //   'user_id': [this.User_Id,],
-      //   'id': [this.id,],
+
     })
 
 
@@ -57,7 +54,7 @@ ionViewDidLoad() {
       //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.medList()
     .subscribe(res => {
-      //console.log(res)
+
      this.medical_collection = res;
         if (res.status=='OK') {
         }
