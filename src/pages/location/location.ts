@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController,} from 'ionic-angular';
 import { AlertsProvider } from './../../providers/alerts/alerts';
 import { Storage } from '@ionic/storage';
@@ -143,7 +143,7 @@ goConfirm(){
   this.urlService.makeRequest(this.userDetails)
     .subscribe(res => {
  
-     var msg = res.msg;
+    //  var msg = res.msg;
       var status = res.status;
       var reqId = res.request_id;
       var specify = res.specify_emergency;

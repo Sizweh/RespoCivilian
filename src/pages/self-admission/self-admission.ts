@@ -128,7 +128,6 @@ goChat2(){
       }, {
         text: 'Ok',
         handler: (e) => {     
-          const value = this.beneficiaryForm.value;
           this.storage.set('Beneficiary_id', (e));
           console.log(e);
    

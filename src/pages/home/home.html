@@ -1,3 +1,4 @@
+  <!-- <div *ngIf="isConnected===true"> -->
 <ion-header>
     <ion-navbar color="newcolor">
       <ion-toolbar color="newcolor" mode="ios">
@@ -14,24 +15,25 @@
     </ion-toolbar>
   </ion-navbar>
 </ion-header> 
-
+<!-- </div> -->
 
 
 
 <ion-content text-center>
     <!-- <h6 color='light' text-right>More</h6> -->
-<!-- 
-     <div *ngIf="isConnected===false"  style="margin-top: 70px">   
 
-      <img src="assets/mapi/icon-error.png">
+     <!-- <div *ngIf="isConnected===false"  style="margin-top: 70px">    -->
+
+      <!-- <img src="assets/mapi/icon-error.png">
 
       <p>
 
       connect to the internet
 
-      </p>
-    </div> -->
-  <!-- <div *ngIf="isConnected===true"> -->
+      </p> -->
+    <!-- </div> -->
+    <!-- <br>
+  <div *ngIf="isConnected===true"> -->
 
       <ion-row no-lines *ngFor="let fault of faultCategories">
           <ion-card no-lines>

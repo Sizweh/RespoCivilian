@@ -10,10 +10,10 @@ import { catchError, tap } from 'rxjs/operators';
 @Injectable()
 export class UrlbaseProvider {
 
-//  apiUrl= 'https://blooming-waters-81867.herokuapp.com/api/civilian/';     
+ apiUrl= 'https://blooming-waters-81867.herokuapp.com/api/civilian/';     
 
 //  apiUrl = 'http://46.101.169.33/api/civilian/';
-apiUrl = 'http://127.0.0.1:8000/api/civilian/';  
+// apiUrl = 'http://127.0.0.1:8000/api/civilian/';  
 
 
   constructor(public http: HttpClient) {
@@ -135,15 +135,6 @@ apiUrl = 'http://127.0.0.1:8000/api/civilian/';
       );
   }
 
-  
-  contact(data): Observable<any> {
-    return this.http.post<any>(this.apiUrl + 'support', data)
-      .pipe(
-        tap(_ => this.log('support')),
-        catchError(this.handleError('support', []))
-      );
-  }
-
   reset(data): Observable<any> {
     return this.http.post<any>(this.apiUrl + 'resetPassword', data)
       .pipe(
@@ -201,28 +192,8 @@ apiUrl = 'http://127.0.0.1:8000/api/civilian/';
         catchError(this.handleError('medical_aidlist ', []))
       );
   }
-  orgList(data): Observable<any> {
-    return this.http.post<any>(this.apiUrl + 'addOrgInfo', data)
-      .pipe(
-        tap(_ => this.log('addOrgInfo')),
-        catchError(this.handleError('addOrgInfo', []))
-      );
-  }
+ 
 
-  institutionList(): Observable<any> {
-    return this.http.get<any>(this.apiUrl + 'org_list')
-      .pipe(
-        tap(_ => this.log('org_list')),
-        catchError(this.handleError('org_list', [])),
-      );
-  }
-  editDetails(data): Observable<any> {
-    return this.http.post<any>(this.apiUrl + 'org_change', data)
-      .pipe(
-        tap(_ => this.log('org_change')),
-        catchError(this.handleError('org_change', []))
-      );
-  }
 
  
   beneficiary(data): Observable<any> {

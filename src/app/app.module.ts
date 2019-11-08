@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule,  CUSTOM_ELEMENTS_SCHEMA, } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { CallNumber } from '@ionic-native/call-number';
 import { MyApp } from './app.component';
@@ -16,13 +16,12 @@ import { UrlbaseProvider } from '../providers/urlbase/urlbase';
 import { IonicStorageModule } from '@ionic/storage';
 
 
-import { SocketsProvider } from '../providers/sockets/sockets';
+
 import { SelectSearchableModule } from 'ionic-select-searchable';
-import { OneSignal } from '@ionic-native/onesignal/ngx'
+import { OneSignal } from '@ionic-native/onesignal';
 import { Geolocation } from '@ionic-native/geolocation';
 import { SocialSharing } from '@ionic-native/social-sharing';
-import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
-import { GeocodeProvider } from '../providers/geocode/geocode';
+
 import { Network } from '@ionic-native/network';
 
 
@@ -67,7 +66,6 @@ import { Network } from '@ionic-native/network';
     SplashScreen,
     OneSignal,
 
-    NativeGeocoder,
     Network,
 
     {provide: ErrorHandler, useClass: IonicErrorHandler},
@@ -79,10 +77,10 @@ import { Network } from '@ionic-native/network';
  
     UrlbaseProvider,
 
-    SocketsProvider,
+
     HttpModule,
-    SocketsProvider,
-    GeocodeProvider,
+
+ 
  
   
   

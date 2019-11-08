@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform, Alert} from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { MenuController } from 'ionic-angular';
-import { OneSignal } from '@ionic-native/onesignal/ngx';
+import { OneSignal } from '@ionic-native/onesignal';
 import { Network } from '@ionic-native/network';
 import { ToastController } from 'ionic-angular';
 
@@ -64,7 +64,7 @@ faultCategories = [
   {
     faultID: 2,
     category: "Heart Attack/Chest Pains",
-    // imageUrl: "../../assets/icons/R1.png",
+   
     imageUrl: "https://blooming-waters-81867.herokuapp.com/icons/R1.png", 
     icon: "alarm"
   },

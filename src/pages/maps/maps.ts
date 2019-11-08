@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Geolocation, } from '@ionic-native/geolocation';
-import { NativeGeocoder, } from '@ionic-native/native-geocoder/ngx';
+
 
 
 
@@ -28,15 +28,9 @@ value :any
 civilianLat : any;
 civilianId  : any;
 civilianLng : any;
-driversCompany: any;
-driversDistance: any;
 userDetails: any;
-category: any;
-specify_emergency: any;
 selectedResponder      : any; 
 responderName: any;
-responderPlate: any;
-responderDistance: any;
 GoogleAutocomplete: any;
 autocomplete: { input: string; };
 autocompleteItems: any[];
@@ -49,18 +43,12 @@ additional_address : any ;
 enableHighAccuracy:any;
 geoLatitude: number;
 geoLongitude: number;
-NativeGeocoderReverseResult:string="";
-ReverseGeocoding:any;
+
 
 
   constructor(public navCtrl: NavController, 
-
     public navParams: NavParams,
-
     private storage: Storage,
-    private geocoder: NativeGeocoder,
-    public loadingCtrl: LoadingController,
-
     public formBuilder: FormBuilder,
     private geolocation: Geolocation,
 
@@ -104,12 +92,8 @@ ReverseGeocoding:any;
 
 
   googleMap() {
- 
-
-    this.storage.get('category').then((val) => {
-      this.category = val;
-      this.event = val.category;
-    });
+  
+    
  
     this.storage.get('user_id').then((val) => {
       this.civilianId = val;

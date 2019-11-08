@@ -90,7 +90,7 @@ export class History1Page {
       headers.append("Accept", 'application/json');
       headers.append('Content-Type', 'application/json' );
 
-      var postData = this.historyForm.value;
+      postData = this.historyForm.value;
         //THIS IS A BETTER WAY TO MAKE API CALLS
       this.urlService.viewhistory(postData)
       .subscribe(res => {
