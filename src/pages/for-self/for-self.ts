@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams} from 'ionic-angular';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { FormGroup, FormBuilder, Validators, } from '@angular/forms';
-import { AlertController, LoadingController, ToastController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 
@@ -26,13 +25,9 @@ export class ForSelfPage {
     private urlService: UrlbaseProvider,
     private storage: Storage,
     public formBuilder: FormBuilder,
-    public alertCtrl: AlertController,
-    public loadingCtrl: LoadingController,
-    private toastCtrl: ToastController
+ 
     ) {
       
-      // this.id = navParams.get('data') ;
-      // this.User_Id = navParams.get('user_id') ;
 
       this.medicaldetailsForm = formBuilder.group({
 
@@ -41,8 +36,7 @@ export class ForSelfPage {
         'partial_membership': ['', Validators.compose([Validators.required])],
         'prefered_hospital': ['', Validators.compose([Validators.required])],
 
-      //   'user_id': [this.User_Id,],
-      //   'id': [this.id,],
+
     })
 
 
@@ -57,7 +51,7 @@ ionViewDidLoad() {
       //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.medList()
     .subscribe(res => {
-      //console.log(res)
+
      this.medical_collection = res;
         if (res.status=='OK') {
         }

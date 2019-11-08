@@ -17,9 +17,7 @@
 
     
           <ion-item (click)="goMyProfile()" >
-            <!-- <ion-avatar item-start>
-              <img src="https://blooming-waters-81867.herokuapp.com/uploads/download.png">
-            </ion-avatar> -->
+
             <ion-icon color='newcolor' item-left name="ios-person"></ion-icon>
             <h2>{{ username }}</h2>
             <p  style="font-size: 15px;">View Profile</p>
@@ -27,50 +25,37 @@
 
 
             <ion-item (click)="goHome()" color=''>
-              <!-- <ion-avatar item-start>
-                <img src="https://blooming-waters-81867.herokuapp.com/icons/15.png">
-              </ion-avatar> -->
+ 
               <h3>Home</h3>
               <ion-icon color='newcolor' item-left name="ios-home"></ion-icon>
             </ion-item>
          
 
             <ion-item (click)="goMyAccount()" color=''>
-              <!-- <ion-avatar item-start>
-                <img src="https://blooming-waters-81867.herokuapp.com/icons/14.png">
-              </ion-avatar> -->
+       
               <h3>My Account</h3>
               <ion-icon color='newcolor' item-left name="ios-contact"></ion-icon>
             </ion-item>
 
 
             <ion-item (click)="goMyBeneficiaries()" color=''>
-              <!-- <ion-avatar item-start>
-                <img src="https://blooming-waters-81867.herokuapp.com/icons/1.png">
-              </ion-avatar> -->
+        
               <h3>Beneficiaries</h3>
               <ion-icon color='newcolor' item-left name="ios-people"></ion-icon>
             </ion-item>
 
-            <!-- <ion-item (click)="goBankDetails()" color=''>
-              <h3>Payment Details</h3>
-              <ion-icon color='newcolor' item-left name="ios-card"></ion-icon>
-            </ion-item> -->
+       
        
         
             <ion-item (click)="goHistory(user_id)" color=''>
-              <!-- <ion-avatar item-start>
-                <img src="https://blooming-waters-81867.herokuapp.com/icons/11.png">
-              </ion-avatar> -->
+      
               <h3>History</h3>
               <ion-icon color='newcolor' item-left name="ios-document"></ion-icon>
             </ion-item>
         
 
             <ion-item (click)="goSupport()" color=''>
-              <!-- <ion-avatar item-start>
-                <img src="https://blooming-waters-81867.herokuapp.com/icons/12.png">
-              </ion-avatar> -->
+     
               <ion-icon color='newcolor' item-left name="ios-help-circle"></ion-icon>
               <h3>Support</h3>
             </ion-item>
@@ -97,30 +82,7 @@
   Your code
 </ion-menu>
 
-<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
 
 
- <!-- <ion-list color='calm' >
-              <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-                {{p.title}}
-                <ion-icon color='calm' item-end [name]="p.icon"></ion-icon>
-              </button>
-            </ion-list> -->
-
-            <!-- <ion-col>
-          <button ion-button icon-only (click)="whatsappShare(i)" color="primary" clear>
-        <ion-icon class="share-icon" name="logo-whatsapp"></ion-icon>
-      </button>
-        </ion-col>
-        <ion-col>
-          <button ion-button icon-only (click)="facebookShare(i)" color="primary" clear>
-        <ion-icon  class="share-icon" name="logo-facebook"></ion-icon>
-      </button>
-        </ion-col> -->
-
-            <!-- <ion-list-header>Share App On Facebook</ion-list-header> -->
-    <!-- <ion-item>
-        <ion-icon name="logo-facebook" item-left></ion-icon>
-        <a href="www.facebook.com">www.facebook.com</a>
-      </ion-item> -->

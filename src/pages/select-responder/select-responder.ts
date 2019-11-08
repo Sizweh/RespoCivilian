@@ -34,12 +34,6 @@ export class SelectResponderPage {
     public formBuilder: FormBuilder,
     ) {
 
-  this.storage.get('additional_address').then((val) => {
-    this.additional_address = val;
-  });
-  this.storage.get('address').then((val) => {
-    this.address = val;
-  });
 
   }
 
@@ -61,21 +55,11 @@ export class SelectResponderPage {
 
 
   
-  goRequestElse(respo) {
-       this.storage.set('selected_responder', respo);
-    this.navCtrl.push('RequestElsePage')
-  }
-  goMaps() {
-    this.navCtrl.setRoot("MapsPage")
-  }
   
   goLocation(respo) {
     this.storage.set('selected_responder', respo);
     this.navCtrl.push('LocationPage')
   }
-
-
-
 
 
 search(){

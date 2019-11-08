@@ -135,15 +135,6 @@ export class UrlbaseProvider {
       );
   }
 
-  
-  contact(data): Observable<any> {
-    return this.http.post<any>(this.apiUrl + 'support', data)
-      .pipe(
-        tap(_ => this.log('support')),
-        catchError(this.handleError('support', []))
-      );
-  }
-
   reset(data): Observable<any> {
     return this.http.post<any>(this.apiUrl + 'resetPassword', data)
       .pipe(
@@ -151,13 +142,7 @@ export class UrlbaseProvider {
         catchError(this.handleError('resetPassword', []))
       );
   }
-  upload(data): Observable<any> {
-    return this.http.post<any>(this.apiUrl + 'updateUserProfile', data)
-      .pipe(
-        tap(_ => this.log('updateUserProfile')),
-        catchError(this.handleError('updateUserProfile', []))
-      );
-  }
+
   addNext(data): Observable<any> {
     return this.http.post<any>(this.apiUrl + 'addnextOfKin', data)
       .pipe(
@@ -207,42 +192,10 @@ export class UrlbaseProvider {
         catchError(this.handleError('medical_aidlist ', []))
       );
   }
-  orgList(data): Observable<any> {
-    return this.http.post<any>(this.apiUrl + 'addOrgInfo', data)
-      .pipe(
-        tap(_ => this.log('addOrgInfo')),
-        catchError(this.handleError('addOrgInfo', []))
-      );
-  }
-  studentDetails(data): Observable<any> {
-    return this.http.post<any>(this.apiUrl + 'studentDetails', data)
-      .pipe(
-        tap(_ => this.log('studentDetails')),
-        catchError(this.handleError('studentDetails', []))
-      );
-  }
-  institutionList(): Observable<any> {
-    return this.http.get<any>(this.apiUrl + 'org_list')
-      .pipe(
-        tap(_ => this.log('org_list')),
-        catchError(this.handleError('org_list', [])),
-      );
-  }
-  editDetails(data): Observable<any> {
-    return this.http.post<any>(this.apiUrl + 'org_change', data)
-      .pipe(
-        tap(_ => this.log('org_change')),
-        catchError(this.handleError('org_change', []))
-      );
-  }
+ 
 
-  specify(data): Observable<any> {
-    return this.http.post<any>(this.apiUrl + 'sendspecify_emerg', data)
-      .pipe(
-        tap(_ => this.log('sendspecify_emerg')),
-        catchError(this.handleError('sendspecify_emerg', []))
-      );
-  }
+
+ 
   beneficiary(data): Observable<any> {
     return this.http.post<any>(this.apiUrl + 'addBeneficiaries', data)
       .pipe(

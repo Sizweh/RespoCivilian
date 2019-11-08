@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController,} from 'ionic-angular';
 import { AlertsProvider } from './../../providers/alerts/alerts';
 import { Storage } from '@ionic/storage';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
-import {  FormGroup } from '@angular/forms';
-import { Geolocation } from '@ionic-native/geolocation';
+
+
 
 
 declare var google;
@@ -16,7 +16,7 @@ declare var google;
   templateUrl: 'location.html',
 })
 
-export class LocationPage implements OnInit {
+export class LocationPage {
 
 
 L: any;
@@ -32,8 +32,8 @@ autocomplete: { input: string; };
 autocompleteItems: any[];
 address: any;
 additional_address : any ; 
-map2Form: FormGroup;
-showText: boolean;
+
+
 Sear_location: any;
 selectedResponder: any; 
 responderName: any;
@@ -55,7 +55,7 @@ idcivilian: any;
     private storage: Storage,
     public loadingCtrl: LoadingController,
     private urlService: UrlbaseProvider,
-    private geolocation: Geolocation,
+
     ) {
 
 
@@ -70,93 +70,55 @@ idcivilian: any;
   ionViewDidLoad() {
         console.log('ionViewDidLoad LocationPage');
 
-      this.geolocation.getCurrentPosition().then((data)=>{
-        this.geoLatitude = data.coords.latitude;
-        var tut =(`Lat : ${data.coords.latitude  } and Long : ${data.coords.longitude  }`);
-        console.log(tut);
-        document.getElementById('infowindow-content').innerHTML = tut;     
-      });
-    
-    this.storage.get('Beneficiary_id').then((val) => {
-        this.Beneficiary_id = val;
-      });
-      
-    this.storage.get('additional_address').then((val) => {
-        this.additional_address = val;
-      });
-    this.storage.get('request_id').then((val) => {
-        this.request_id = val;
-      });
+    this.storage.get('specify_emergency').then((val) => {
+      this.specify_emergency = val;
+      this.event = val.specify_emergency;
+    });
+
+    this.storage.get('category').then((val) => {
+      this.category = val;
+      this.event = val.category;
+    });
+
+    this.storage.get('user_id').then((val) => {
+      this.idcivilian = val;
+    });
+
+
+    this.storage.get('address').then((val) => {
+      this.address = val;
+    });
 
     this.storage.get('lat').then((val) => {
-        this.L = val;
-      });
+      this.L = val;
+    });
+
     this.storage.get('lng').then((val) => {
-        this.Ln = val;
-      });
+      this.Ln = val;
+    });
+
+    this.storage.get('selected_responder').then((val) => {
+      this.selectedResponder = val;
+      this.responderId = val.company_id;
+      this.responderName = val.driver_name;
+    });
+
+    this.storage.get('Beneficiary_id').then((val) => {
+      this.Beneficiary_id = val;
+    });
+
+    this.storage.get('additional_address').then((val) => {
+      this.additional_address = val;
+    });
+    this.storage.get('request_id').then((val) => {
+      this.request_id = val;
+    });
 
     this.storage.get('forWho').then((val) => {
-        this.forWho = val;
-      });
+      this.forWho = val;
+    });
 
 
-
-     
-   
-
-this.showText = true;
-setTimeout(()=>{  
-      this.showText = true;
- },3000);
-
-}
-
-
-
-  ngOnInit() {
-    let that = this;
-    setTimeout(function () {
-      that.googleMap();
-    }, 2000)
-  }
-
-
-googleMap() {
-
-this.storage.get('specify_emergency').then((val) => {
-this.specify_emergency = val;
-this.event = val.specify_emergency;
-});
-
-this.storage.get('category').then((val) => {
-this.category = val;
-this.event = val.category;
-});
-
-this.storage.get('user_id').then((val) => {
-this.idcivilian = val;
-});
-
-
-this.storage.get('address').then((val) => {
-this.address = val;
-});
-
-this.storage.get('lat').then((val) => {
-this.L = val;
-});
-
-this.storage.get('lng').then((val) => {
-this.Ln = val;
-});
-
-this.storage.get('selected_responder').then((val) => {
-this.selectedResponder = val;
-this.responderId = val.company_id;
-this.responderName = val.driver_name;
-var randomnumber = Math.floor(Math.random() * (7 - 1 + 1)) + 1;
-this.responderDistance = randomnumber;
-}); 
 }
 
 goConfirm(){
@@ -164,8 +126,8 @@ goConfirm(){
   this.userDetails = {
 
     'civilian_id': this.idcivilian,
-    'lat': this.L,//current lat
-    'lng': this.Ln,//current lng
+    'lat': this.L,
+    'lng': this.Ln,
     'driver_id': this.selectedResponder.id, 
     'company_id': this.selectedResponder.company_id,
     'emergency_type': this.event,
@@ -178,8 +140,8 @@ goConfirm(){
 
   this.urlService.makeRequest(this.userDetails)
     .subscribe(res => {
-      //console.log(res);
-      var msg = res.msg;
+ 
+    //  var msg = res.msg;
       var status = res.status;
       var reqId = res.request_id;
       var specify = res.specify_emergency;

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
-import { FormBuilder, Validators, FormGroup, AbstractControl } from '@angular/forms';
+import { IonicPage, NavController, NavParams,  } from 'ionic-angular';
+import { FormBuilder, Validators, FormGroup,  } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { AlertsProvider } from './../../providers/alerts/alerts';
@@ -22,21 +22,18 @@ export class NextOfKinPage {
   Userdata: any;
 
   fullName:any;
-  // gender:any;
-  // myDate:any;
+
   phonenumber:any;
   email:any;
   password:any;
-  // confirmPassword:any;
+
 
 
   partial_membership:any;
   member_no:any;
   scheme_name:any;
   prefered_hospital:any;
-  // chronic_dis:any;
-  // disability:any;
-  // Medical_Aid_Status:any;
+
 
   phone:any;
   relationship:any;
@@ -52,7 +49,7 @@ export class NextOfKinPage {
     public storage: Storage,
     private urlService: UrlbaseProvider,
     public alert: AlertsProvider,
-    public loadingCtrl: LoadingController,
+   
     ) {
 
       this.nextofkinForm = formBuilder.group({
@@ -62,12 +59,7 @@ export class NextOfKinPage {
         'phone': ['', Validators.compose([Validators.required])],
         'relationship': ['', Validators.compose([Validators.required])],
         'remembertoken': ['false', Validators.compose([Validators.requiredTrue])],
-          //'checkbox': ['', Validators.compose([Validators.required])],
- 
-
-
-         
-        // 'remembertoken': ['', Validators.compose([Validators.required])],
+      
       })
 
   }
@@ -99,89 +91,67 @@ export class NextOfKinPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad NextOfKinPage');
 
-    //////////////////nextofkin////////////////////////
+  
 
     this.storage.get('name').then((val) => {
-      //  console.log(String(val));
+ 
       this.name = val;
     });
     
     this.storage.get('surname').then((val) => {
-      //  console.log(String(val));
+
       this.surname = val;
     });
     
     this.storage.get('phone').then((val) => {
-      //  console.log(String(val));
+      
       this.phone = val;
     });
     
     this.storage.get('relationship').then((val) => {
-      //  console.log(String(val));
+      
       this.relationship = val;
     });
 
-    /////////////////register//////////////////
+    
 
     this.storage.get('fullName').then((val) => {
-      //  console.log(String(val));
+   
       this.fullName = val;
     });
     this.storage.get('email').then((val) => {
-      //  console.log(String(val));
+  
       this.email = val;
     });
     this.storage.get('phonenumber').then((val) => {
-      //  console.log(String(val));
+   
       this.phonenumber = val;
     });
     this.storage.get('password').then((val) => {
-      //  console.log(String(val));
+     
       this.password = val;
     });
-    // this.storage.get('confirmPassword').then((val) => {
-    //   //  console.log(String(val));
-    //   this.confirmPassword = val;
-    // });
-     // this.storage.get('gender').then((val) => {
-    //   //  console.log(String(val));
-    //   this.gender = val;
-    // });
-    // this.storage.get('myDate').then((val) => {
-    //   //  console.log(String(val));
-    //   this.myDate = val;
-    // });
-    //////////////////medical////////////////////////
-    
+
       this.storage.get('member_no').then((val) => {
-        //  console.log(String(val));
+    
         this.member_no = val;
       }); 
 
       this.storage.get('scheme_name').then((val) => {
-        //  console.log(String(val));
+      
         this.scheme_name = val;
       });
     
       this.storage.get('partial_membership').then((val) => {
-        //  console.log(String(val));
+        
         this.partial_membership = val;
       });
     
       this.storage.get('prefered_hospital').then((val) => {
-        //  console.log(String(val));
+    
         this.prefered_hospital = val;
       });
 
-            // 'paymentBrand': ['',Validators.compose([Validators.required])],
-        // 'cardHolder': ['', Validators.compose([Validators.required])],
-        // 'cardNo': ['', Validators.compose([Validators.required])],
-        // //'cardNo': ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern("^[0-9]{10}")])],
-        // 'expiryMonth': ['', Validators.compose([Validators.required])],
-        // 'expiryYear': ['', Validators.compose([Validators.required])],
-        // 'CVV': ['', Validators.compose([Validators.required])],
-       // 'code': ['', Validators.compose([Validators.required])],
-        //'remembertoken': [' this.isChecked = true',],
 
     
 
@@ -215,18 +185,14 @@ goVerifyAccount(){
    phonenumber: this.phonenumber,
    email: this.email,
    password:this.password,
-// //  gender: this.gender,
-// //  myDate: this.myDate,
-// //  confirmPassword: this.confirmPassword, 
+
 
 //    //medical//
   scheme_name:this.scheme_name,
   member_no:this.member_no,
   partial_membership:this.partial_membership,
   prefered_hospital:this.prefered_hospital,
- // medical_aid_status:this.Medical_Aid_Status,
- //  chronic_dis:this.chronic_dis,
- //  disability:this.disability,
+
 
 
    
@@ -239,7 +205,7 @@ goVerifyAccount(){
      //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.register(this.Userdata)
     .subscribe(res => {
-    // console.log(res);
+
   this.alert.presentAlert("Notification", res.msg);
       if (res.status=='OK') {
       this.navCtrl.push("VerifyAccountPage");
@@ -262,9 +228,7 @@ goVerifyAccount(){
   }
 
 
-  goRegister(){
-     this.navCtrl.push('RegisterPage')
-  }
+
   
 
 

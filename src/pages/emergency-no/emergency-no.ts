@@ -26,8 +26,6 @@ export class EmergencyNoPage {
 
 
   goHome(){
-  // this.storage.set('forWho', 'FS');
-  // console.log('for someone clicked'); 
 this.navCtrl.setRoot("HomePage");
 }
 

@@ -66,14 +66,9 @@ export class Nextofkin2Page {
   }
 
 
-  goLogin(){
-    this.navCtrl.push('LoginPage')
- }
 
 
-  goNextOfSkin(){
-    this.navCtrl.push('NextOfSkinPage')
- }
+
 
  goHome(){
 
@@ -84,30 +79,20 @@ export class Nextofkin2Page {
     // this.storage.set('email', values.email);
     this.storage.set('relationship', values.relationship);
 
-    this.Userdata = { 
 
-     name: this.name,
-     surname: this.surname,
-     phone:this.phone,
-    //  email:this.email,
-     relationship:this.relationship,
-  
- 
-   }
    
     var headers = new Headers();
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
-  //  const requestOptions = new RequestOptions({ headers: headers });
+  
    
-   //pass to back-end
-    //  console.log(this.nextofkin2Form.value);
+ 
       var postData = this.nextofkin2Form.value;
 
       //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.addNext(postData)
     .subscribe(res => {
-       //// this.alert.presentAlert("Notification", res.msg);
+    
      this.skin_collection = res;
         if (res.status=='OK') {
          }
