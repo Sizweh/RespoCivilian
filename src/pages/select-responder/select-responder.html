@@ -1,31 +1,8 @@
-<!-- <ion-header>
-  <ion-navbar color="newcolor">
-    <ion-toolbar mode="ios">
-      <ion-buttons start>
-        <button ion-button icon-only menuToggle>
-          <ion-icon name="menu"></ion-icon>
-           </button>
-          </ion-buttons>
-       <ion-buttons end>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-navbar>
-</ion-header> -->
-
 <ion-content text-center> 
-  
-      
-    
 
-   <ion-searchbar block [(ngModel)]="myInput" (ionChange)='search($event)'></ion-searchbar>
-
-
-      
-
+  <ion-searchbar block [(ngModel)]="myInput" (ionChange)='search($event)'></ion-searchbar>
 
   <ion-row *ngFor="let respo of allResponders_Distance ">
-      <!-- <ion-row *ngFor="let respo of allResponders"> -->
-      
        <ion-card>
           <ion-card-content>
               <ion-item (click)="goLocation(respo)" text-left>
@@ -41,8 +18,17 @@
              </ion-item>
           </ion-card-content>
        </ion-card> 
-
       </ion-row>
+
+
+
+
+
+
+
+
+
+
 
 </ion-content>
 
