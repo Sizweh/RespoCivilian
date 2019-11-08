@@ -14,16 +14,11 @@
 
 
 <ion-content text-center>
-
   <br>
- 
-
   <div reorder="true" class="register-fields" [formGroup]="historyForm">
      
-
       <ion-row no-lines *ngFor="let fault of history_collection">
 
-   
           <ion-card   no-lines>
             <ion-item (click)="goHistory1(fault.id, fault.user_id, fault.company_id)" color='light'no-lines  text-left>
             
@@ -40,11 +35,9 @@
 
         </ion-row>
         <br>
-        
-
   </div>
 
-    <br>
+<br>
     
  
 </ion-content>

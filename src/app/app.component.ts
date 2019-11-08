@@ -3,8 +3,8 @@ import { Nav, Platform, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
-import { FormGroup, FormBuilder} from '@angular/forms';
-import { OneSignal } from '@ionic-native/onesignal/ngx';
+
+import { OneSignal } from '@ionic-native/onesignal';
 import { SocialSharing } from '@ionic-native/social-sharing';
 
 
@@ -23,7 +23,6 @@ export class MyApp {
   message='Join South Africas official Medical Emergency App and request an ambulance at a click of a button! To download the Respo App go to https://respo.co.za/download/. At Respo your well being is our main priority!';
  
 
-  menuForm: FormGroup;
   id: any;
   User_Id :any;
   user_id:any;
@@ -42,16 +41,13 @@ export class MyApp {
 
   constructor( public platform: Platform, 
     public statusBar: StatusBar, 
-   
     public splashScreen: SplashScreen, 
     public menu: MenuController,
     private storage: Storage,
     private oneSignal: OneSignal,
-    public formBuilder: FormBuilder,
+
     private socialSharing: SocialSharing
     ) {
-
-
 
       this.storage.get('user_name').then((val) => {
         this.username = String(val);  
@@ -61,9 +57,7 @@ export class MyApp {
       });
    
 
-      this.menuForm = formBuilder.group({
-        'user_id': [''],
-      })
+
 
     this.initializeApp(); {
       }
@@ -99,7 +93,6 @@ this.socialSharing.share(this.text, this.message)
   
   initializeApp() {
     this.platform.ready().then(() => {
-
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.menu.enable(true);
@@ -131,9 +124,7 @@ this.socialSharing.share(this.text, this.message)
     }
   
   goHistory(){
-
     this.nav.setRoot("HistoryPage", {
-      // user_id: this.User_Id,
     });
     this.menu.enable(true);
     this.menu.close();

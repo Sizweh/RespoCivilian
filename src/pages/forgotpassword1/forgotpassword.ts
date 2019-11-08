@@ -28,11 +28,8 @@ export class ForgotpasswordPage {
     public loadingCtrl: LoadingController,
     public navParams: NavParams) {
      
-
-     
       this.id = navParams.get('data') ;
       this.User_Id = navParams.get('user_id') ;
-  
 
       this.beneficiaryForm = formBuilder.group({
        
@@ -45,7 +42,6 @@ export class ForgotpasswordPage {
         'dob': ['', Validators.compose([Validators.required])],
         'allergies': ['', Validators.compose([Validators.required])],
         'relationship': ['', Validators.compose([Validators.required])],
-   
 
 
       })
@@ -68,12 +64,12 @@ export class ForgotpasswordPage {
 
   ionViewDidLoad() {
 
-    var headers = new Headers();
-    headers.append("Accept", 'application/json');
-    headers.append('Content-Type', 'application/json' );
+  var headers = new Headers();
+  headers.append("Accept", 'application/json');
+  headers.append('Content-Type', 'application/json' );
 
-      var postData = this.beneficiaryForm.value;
-
+  var postData = this.beneficiaryForm.value;
+      
    //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.beneficiaries(postData)
     .subscribe(res => {

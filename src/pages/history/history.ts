@@ -58,7 +58,8 @@ export class HistoryPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad HistoryPage' );
 
-this.storage.get('user_id').then((val) => {
+   this.storage.get('user_id').then((val) => {
+
     var headers = new Headers();
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
@@ -66,10 +67,10 @@ this.storage.get('user_id').then((val) => {
       var postData = {user_id:val};
 
 
+
       //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.history(postData)
     .subscribe(res => {
-
      this.history_collection = res;
         if (res.status=='OK') {
         }
@@ -77,8 +78,8 @@ this.storage.get('user_id').then((val) => {
         console.log(err);
     });
 
-     });
-  }
+  });
+}
 
 
 

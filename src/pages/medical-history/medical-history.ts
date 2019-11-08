@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { FormGroup, FormBuilder, Validators, } from '@angular/forms';
-import { AlertController, LoadingController, ToastController } from 'ionic-angular';
+import  {LoadingController, ToastController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 
@@ -14,7 +14,6 @@ import { Storage } from '@ionic/storage';
 export class MedicalHistoryPage {
 
   Employee:any;
-
   UserId :any;
   User_Id :any;
   id: any;
@@ -27,7 +26,6 @@ export class MedicalHistoryPage {
     private urlService: UrlbaseProvider,
     private storage: Storage,
     public formBuilder: FormBuilder,
-    public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
     private toastCtrl: ToastController
     ) {
@@ -38,8 +36,7 @@ export class MedicalHistoryPage {
       this.medicalForm = formBuilder.group({
         
         'user_id': [this.User_Id,],
-        // 'user_id': [this.User_Id],
-
+  
         'member_no': ['', Validators.compose([Validators.required])],
         'scheme_name': ['', Validators.compose([Validators.required])],
         'partial_membership': ['', Validators.compose([Validators.required])],
@@ -58,7 +55,7 @@ export class MedicalHistoryPage {
     var headers = new Headers();
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
-   //pass to back-end
+
       var postData = this.medicalForm.value;
       //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.medicalHistory(postData)
@@ -122,9 +119,7 @@ export class MedicalHistoryPage {
     }
 
 
-  goAddMedicalAid(){
-    this.navCtrl.push('AddMedicalAidPage')
-    }
+
 
  
 

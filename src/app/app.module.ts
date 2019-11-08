@@ -18,7 +18,7 @@ import { IonicStorageModule } from '@ionic/storage';
 
 
 import { SelectSearchableModule } from 'ionic-select-searchable';
-import { OneSignal } from '@ionic-native/onesignal/ngx';
+import { OneSignal } from '@ionic-native/onesignal';
 import { Geolocation } from '@ionic-native/geolocation';
 import { SocialSharing } from '@ionic-native/social-sharing';
 

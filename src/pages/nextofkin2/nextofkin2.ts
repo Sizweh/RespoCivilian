@@ -76,7 +76,6 @@ export class Nextofkin2Page {
     this.storage.set('name', values.name);
     this.storage.set('surname', values.surname);
     this.storage.set('phone', values.phone);
-    // this.storage.set('email', values.email);
     this.storage.set('relationship', values.relationship);
 
 

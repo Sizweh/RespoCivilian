@@ -84,9 +84,9 @@ this.navCtrl.push("MapsPage");
 }
 
 goChat2(){
-     this.storage.set('forWho', 'FB');
-    
-
+  
+  this.storage.set('forWho', 'FB');
+  
   let opt =[];
 
   this.ben_collection.forEach((ben,index)=>{
@@ -98,25 +98,14 @@ goChat2(){
       value: ben.id,
     
     };
-
     opt[index] =inp;
-
-    
-    
   });
   console.log(opt);
-
-  
-
     const alert = this.alertCtrl.create({
-  
     inputs:
      opt
     ,
     buttons: 
-    
-
-
     [
       {
         text: 'Cancel',
@@ -130,29 +119,14 @@ goChat2(){
         handler: (e) => {     
           this.storage.set('Beneficiary_id', (e));
           console.log(e);
-   
 
          this.navCtrl.push("MapsPage");
-       
-        
-         
-            
+  
         }
-        
-   
       }
     ]
   });
-
-
  alert.present();
-
-
-
-
-
-
-
 }
 
 

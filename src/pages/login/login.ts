@@ -1,9 +1,7 @@
  import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
 import { AlertsProvider } from './../../providers/alerts/alerts';
-
 import { Storage } from '@ionic/storage';
 import { MenuController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
@@ -23,11 +21,10 @@ export class LoginPage {
   remembertoken: boolean;
   loginForm: FormGroup;
   playerId :any; 
-  username :any;
   user_id:any;
   passwordType: string = 'password';
   passwordIcon: string = 'eye-off';
-  sideMenu: any;
+
  
   constructor(
    
@@ -36,7 +33,6 @@ export class LoginPage {
     public navParams: NavParams,
     public formBuilder: FormBuilder,
     public alert: AlertsProvider,
-
     private storage: Storage,
     public menuCtrl: MenuController,
     private urlService: UrlbaseProvider,
@@ -67,7 +63,7 @@ export class LoginPage {
   
 
 
-  ionViewDidEnter() {
+ionViewDidEnter() {
 
 this.menuCtrl.enable(false);
   this.menuCtrl.close();
@@ -96,8 +92,6 @@ this.menuCtrl.enable(false);
      else{
      this.navCtrl.setRoot('HomePage');
      }
-      
-
     });
 
 
@@ -107,7 +101,6 @@ this.menuCtrl.enable(false);
     this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';
   }
 
-
   goHome(){
 
     var headers = new Headers();
@@ -115,6 +108,7 @@ this.menuCtrl.enable(false);
     headers.append('Content-Type', 'application/json' );
 
       var postData = this.loginForm.value;
+
       //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.login(postData)
     .subscribe(res => {

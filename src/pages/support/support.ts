@@ -4,22 +4,12 @@ import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 import { FormGroup, FormBuilder, FormControl, } from '@angular/forms';
 
 
-
-
-import 'rxjs/add/operator/toPromise';
-
-
-
-
-
 @IonicPage()
 @Component({
   selector: 'page-support',
   templateUrl: 'support.html',
 })
 export class SupportPage {
-
-  
   data:any;
  nickname = '';
   addmessageForm: FormGroup;
@@ -43,17 +33,11 @@ export class SupportPage {
   messages = [
    
   ];
-
   
   @ViewChild(Content) content: Content;
 
   public messageForm: any;
   chatBox: any;
-
-
-
-
-
   UserId :any;
   Id :any;
   toConcat:any;
@@ -74,7 +58,6 @@ export class SupportPage {
       this.id = navParams.get('data') ;
       this.User_Id = navParams.get('user_id') ;
 
-
       this.contactForm = formBuilder.group({
         'user_id': [this.User_Id],
         'message': ['', ],
@@ -91,7 +74,6 @@ export class SupportPage {
     console.log('ionViewDidLoad SupportPage');
 
   }
-
   send(message) {
     if (message && message !== '') {
 

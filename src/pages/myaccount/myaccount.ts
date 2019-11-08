@@ -15,8 +15,6 @@ export class MyaccountPage {
     public navParams: NavParams,
     private storage: Storage,
     ) {
-
-
   }
 
   ionViewDidLoad() {
@@ -30,15 +28,16 @@ export class MyaccountPage {
           user_id:result,
         });
     })
-      }
+  }
     
-        goNextOfSkin(){
+  goNextOfSkin(){
     this.storage.get('user_id').then((result) => {
-    
         this.navCtrl.push("NextOfSkinPage", {
           user_id:result,
         });
     });
-        }
+  }
+
+
     
 }

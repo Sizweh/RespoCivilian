@@ -63,9 +63,6 @@ export class History1Page {
         this.user_id = String(val);  
       });
 
-     
-      
-
       this.id = navParams.get('data') ;
       this.User_Id = navParams.get('user_id') ;
       this.company_Id = navParams.get('company_id') ;
@@ -100,7 +97,6 @@ export class History1Page {
       }, (err) => {
           console.log(err);
       });
-
 
      
      var postData = this.history1Form.value;

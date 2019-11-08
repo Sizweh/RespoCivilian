@@ -13,11 +13,9 @@ export class SelectResponderPage {
   allResponders: any[];
   additional_address: any;
   address: any;
-
   responder_positions :any[]=[];
   allResponders_Distance : any[]=[];
   myInput :'';
-
   responderName: any;
   responderForm: FormGroup;
   userDetails: {};
@@ -33,8 +31,6 @@ export class SelectResponderPage {
     private urlService: UrlbaseProvider,
     public formBuilder: FormBuilder,
     ) {
-
-
   }
 
   ionViewDidLoad() {
@@ -53,14 +49,10 @@ export class SelectResponderPage {
       });
   }
 
-
-  
-  
   goLocation(respo) {
     this.storage.set('selected_responder', respo);
     this.navCtrl.push('LocationPage')
   }
-
 
 search(){
 

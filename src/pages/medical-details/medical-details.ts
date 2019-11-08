@@ -44,18 +44,13 @@ export class MedicalDetailsPage {
 
 
   goNextOfKin(){
-
-    
-       this.storage.set('MA', 'Non-Medical');
-   
+      this.storage.set('MA', 'Non-Medical');
    this.navCtrl.push('NextOfKinPage')
   }
 
 
   goForSelf(){
-
-         this.storage.set('MA', 'Medical-Aid');
-
+      this.storage.set('MA', 'Medical-Aid');
     this.navCtrl.push('ForSelfPage')
   }
 

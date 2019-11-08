@@ -44,13 +44,15 @@ export class VerifyAccountPage {
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
 
+   
+   //pass to back-end
+      console.log(this.verificationCode.value);
       var postData = this.verificationCode.value;
 
       this.urlService.activate(postData)
       .subscribe(res => {
- 
+  
       console.log(res);
-
       const loader = this.loadingCtrl.create({
         content: "Checking code...",
         duration: 3000

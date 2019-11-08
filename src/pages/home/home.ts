@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { MenuController } from 'ionic-angular';
-import { OneSignal } from '@ionic-native/onesignal/ngx';
+import { OneSignal } from '@ionic-native/onesignal';
 import { Network } from '@ionic-native/network';
 import { ToastController } from 'ionic-angular';
 
@@ -131,10 +131,6 @@ otherCategories = [
 
 ];
 
-
-
-
-
 ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
 
@@ -213,9 +209,7 @@ this.storage.get('user_id').then((_user_id) => {
   .subscribe(res => {
   console.log(res);
   if (res.status=='OK') {
-    console.log("playeId updated.");
   }  else {
-    console.log("Please try again.");
   }
 }, (err) => {
   console.log(err);
@@ -232,9 +226,7 @@ this.storage.get('user_id').then((_user_id) => {
       user_id:result,
     });
 });
-    
     }
-
 
   goSpecifyEmergency(other){
     this.storage.set('category', other);
@@ -259,7 +251,7 @@ checkAccept() {
   
   this.urlService.checkRespoAccept( this.userDetails)
   .subscribe(res => {
-      // this.presentToast(res.msg, res.status);
+
       console.log(res);
       if (res.status=='accepted') {
         this.alert.presentAlert("Notification", res.msg);

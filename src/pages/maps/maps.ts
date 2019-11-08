@@ -54,7 +54,6 @@ geoLongitude: number;
 
     ) {
 
-      
       this.map1Form = formBuilder.group({
         'address': ['',],
       })
@@ -358,10 +357,8 @@ geoLongitude: number;
 
     this.infoWindow = new google.maps.InfoWindow();
 
-
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function (position) {
-
         var pos = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
@@ -373,9 +370,6 @@ geoLongitude: number;
           that.civilianLat = pos.lat;
           that.civilianLng = pos.lng;
         }
-
-         
-
         var image = "https://blooming-waters-81867.herokuapp.com/icons/moving4.png";
         var marrkerCivilian;
         marrkerCivilian = new google.maps.Marker({
@@ -495,7 +489,6 @@ var location = new google.maps.LatLng(position.coords.latitude, position.coords.
 var lat = position.coords.longitude;
 console.log(lat);
 
-
 geocoder.geocode({'latLng':location}, function (results, status) {
 if(status == google.maps.GeocoderStatus.OK){
 
@@ -586,19 +579,11 @@ ionViewDidLoad() {
         let L = document.getElementById('getLat');
         let Ln = document.getElementById('getLong');
         L.innerHTML = RoundedLat;
-        Ln.innerHTML = RoundedLng;
-       
-
-        console.log(RoundedLat);
-
-        console.log(RoundedLng);
-        
+        Ln.innerHTML = RoundedLng;  
         
     }); 
-
  console.log('ionViewDidLoad MapsPage');
 }
-
 
 
 goHome(){

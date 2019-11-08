@@ -12,80 +12,39 @@
   </ion-header>
 
 <ion-content text-center padding>
-<!-- 
-    <div id="map">
-
-
-      </div> -->
-
   <br>
-        <div class="register-fields" [formGroup]="historyForm">
+ 
+<ion-row no-lines *ngFor="let fault of history_collection">
+      <ion-item color='light'no-lines  text-left>
+        <font size="3" color='#38414a'>Pick-Up : <b>{{ fault.pick_up }}</b></font><br>
+        <font size="3" color='#38414a'>Drop-off : {{ fault.drop_off }}</font><br>
+      </ion-item>
+  </ion-row>
 
-            
-            <ion-row no-lines *ngFor="let fault of history_collection">
+  <ion-row no-lines *ngFor="let fault of history_collection">
+        <ion-item color='light'no-lines  text-left>
+          <font size="3" color='#38414a'>Emergency type :<b> {{ fault.emergency_type }}</b></font><br>
+          <font size="3" color='#38414a'>Status : {{ fault.status }}</font><br>
+          <font size="3" color='#38414a'>Date : {{ fault.created_at }}</font><br>
+        </ion-item>
+    </ion-row>            
+<br>
+                           
+<ion-row no-lines *ngFor="let fault of history1_collection">
+  <ion-title text-center>Responder details</ion-title>
 
-               
-                  <ion-item color='light'no-lines  text-left>
-                  
-                    <font size="3" color='#38414a'>Pick-Up : <b>{{ fault.pick_up }}</b></font><br>
-                    <font size="3" color='#38414a'>Drop-off : {{ fault.drop_off }}</font><br> 
-              
-                  </ion-item>
-              
-              </ion-row>
+  <ion-card>
+    <ion-item no-lines color='light'>
+      <ion-avatar item-right>
+        <img src="{{ fault.profile }}">
+      </ion-avatar>
+      <font size="3" color='#38414a'> {{ fault.company_name }} </font><br>
+    </ion-item>
+    <button icon-right clear color='secondary' small round ion-button (click)="callNow (fault.phone_no)">Call Responder
+    </button>
+  </ion-card>
 
-                <ion-row no-lines *ngFor="let fault of history_collection">
-          
-                      <ion-item color='light'no-lines  text-left>
-                        <font size="3" color='#38414a'>Emergency type :<b> {{ fault.emergency_type }}</b></font><br>
-                        <font size="3" color='#38414a'>Status : {{ fault.status }}</font><br>
-                        <font size="3" color='#38414a'>Date : {{ fault.created_at }}</font><br>
-                        <!-- <font size="3" color='#38414a'>Company id : {{ fault.company_id }}</font><br> -->
-                      </ion-item>
-
-                      <!-- <button hreround (click)="goLanding(fault.company_id)" ion-button color="newcolor"
-                      >Responder details
-                    </button> -->
-
-                  </ion-row>
-
-                </div>
-                 
-
-                    <br>
-                   
-
-        
-              <ion-row  no-lines *ngFor="let fault of history1_collection"> 
-
-           
-                <ion-title text-center>Responder details</ion-title>
-
-                <ion-card>
-
-                    <div class="register-fields" [formGroup]="history1Form">
-                   <ion-item  no-lines color='light'>      
-                     <ion-avatar item-right>
-                      <img src="{{ fault.profile }}">                                                        
-                    </ion-avatar> 
-                     <!-- <font size="3" color='#38414a'> {{ responderName }} </font><br>             -->      
-                    <!-- <p>1 minute away.</p> -->
-                    <font size="3" color='#38414a'> {{ fault.company_name }} </font><br>  
-
-                   </ion-item>
-
-
-                <button icon-right clear color='secondary' small round ion-button (click)="callNow (fault.phone_no)">Call Responder
-                  <!-- <ion-icon name="md-call"></ion-icon> -->
-                </button>
-             
-              </div>
-
-              </ion-card>
-                  
-               
-            
-               </ion-row>
+</ion-row>
             
 
              

@@ -13,14 +13,9 @@ import { AlertsProvider } from './../../providers/alerts/alerts';
 })
 export class NextOfKinPage {
   remembertoken: boolean;
-
   nextofkinForm: FormGroup;
-  nextofkin2Form : FormGroup;
-  registerForm: FormGroup;
-
   UserId :any;
   Userdata: any;
-
   fullName:any;
 
   phonenumber:any;
@@ -40,8 +35,6 @@ export class NextOfKinPage {
   name:any;
   surname:any;
   isChecked: boolean;
-
-
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -73,13 +66,11 @@ export class NextOfKinPage {
 }
 
 
-       updateToken() {
-         
-          console.log('Remember token new state:' + this.remembertoken);
-        }
+updateToken() {
+  console.log('Remember token new state:' + this.remembertoken);
+}
 
   tel='';
-
   convert(){
     if(this.tel.substr(0,1)==='0'){
       this.tel='27'+this.tel.substr(1);
@@ -97,17 +88,13 @@ export class NextOfKinPage {
  
       this.name = val;
     });
-    
     this.storage.get('surname').then((val) => {
-
       this.surname = val;
-    });
-    
+    })
     this.storage.get('phone').then((val) => {
       
       this.phone = val;
     });
-    
     this.storage.get('relationship').then((val) => {
       
       this.relationship = val;
@@ -169,8 +156,6 @@ goVerifyAccount(){
   this.storage.set('phone', value.phone);
   this.storage.set('relationship', value.relationship);
 
-  
-
   this.Userdata = {
 
   //nextofkin//
@@ -178,8 +163,6 @@ goVerifyAccount(){
   surname: value.surname,
   phone:value.phone,
   relationship:value.relationship,
-
-
    //register//
    fullName: this.fullName,
    phonenumber: this.phonenumber,
@@ -205,7 +188,6 @@ goVerifyAccount(){
      //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.register(this.Userdata)
     .subscribe(res => {
-
   this.alert.presentAlert("Notification", res.msg);
       if (res.status=='OK') {
       this.navCtrl.push("VerifyAccountPage");
@@ -234,6 +216,7 @@ goVerifyAccount(){
 
 
 
+
 }
 
 
@@ -260,23 +243,4 @@ goVerifyAccount(){
 
 
 
-
-       //    this.http.post("http://46.101.169.33/api/civilian/registerCivilian", postData)
-   
-  //     .subscribe(data => {
-  //      console.log(data);
-  //       // alert("Done")
-  //       var msg = data['msg'];
-  //       var status = data['status'];
-  //       if (status == "OK") {
-  //         this.alert.presentAlert("Notification", msg);
-  //         this.navCtrl.push("VerifyAccountPage");
-  //        } //else {
-  //       //   this.alert.presentAlert("Whoops!", 'User Taken');
-  //       // }
-
-  //      }, error => {
-  //       console.log(error);
-  //     });
-  //}
   

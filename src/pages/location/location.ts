@@ -6,7 +6,6 @@ import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 
 
 
-
 declare var google;
 
 
@@ -55,7 +54,6 @@ idcivilian: any;
     private storage: Storage,
     public loadingCtrl: LoadingController,
     private urlService: UrlbaseProvider,
-
     ) {
 
 

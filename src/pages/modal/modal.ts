@@ -35,8 +35,6 @@ export class ModalPage {
   this.id = navParams.get('data') ;
   this.User_Id = navParams.get('user_id') ;
  
-      
-   
       this.skinForm = formBuilder.group({
 
         'user_id': [this.User_Id,],
@@ -67,8 +65,6 @@ export class ModalPage {
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
     
-   //pass to back-end
-
       var postData = this.skinForm.value;
 
       //THIS IS A BETTER WAY TO MAKE API CALLS
@@ -91,7 +87,6 @@ export class ModalPage {
     this.storage.set('name', values.name);
     this.storage.set('surname', values.surname);
     this.storage.set('phone', values.phone);
-
     this.storage.set('relationship', values.relationship);
 
     var headers = new Headers();

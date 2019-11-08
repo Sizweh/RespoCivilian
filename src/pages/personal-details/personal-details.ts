@@ -40,8 +40,7 @@ export class PersonalDetailsPage {
       this.personalForm = formBuilder.group({
      
         'user_id': [this.User_Id],
-        // 'user_id': [this.User_Id],
-
+  
         'fullName': ['', Validators.compose([Validators.required])],
         'gender': ['', Validators.compose([Validators.required])],
         'myDate': ['', Validators.compose([Validators.required])],
@@ -68,15 +67,12 @@ export class PersonalDetailsPage {
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
 
-
       var postData = this.personalForm.value;
-
       //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.personalDetails(postData)
     .subscribe(res => {
      this.personal_collection = res;
         if (res.status=='OK') {
-        
         }
     }, (err) => {
         console.log(err);
@@ -93,7 +89,6 @@ export class PersonalDetailsPage {
     this.storage.set('phonenumber', values.phonenumber);
 
     var postData = this.personalForm.value;
-
     //THIS IS A BETTER WAY TO MAKE API CALLS
   this.urlService.editPersonal(postData)
   .subscribe(res => {
