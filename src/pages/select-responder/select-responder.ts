@@ -39,24 +39,32 @@ export class SelectResponderPage {
 
   ionViewDidLoad() {
 
-     this.storage.get('lat').then((la) => {
-        this.storage.get('lng').then((ln) => {
-          this.urlService.sendList({'lat':la,'lon':ln})
+     this.storage.get('lat').then((lat) => {
+        this.storage.get('lng').then((lng) => {
+
+    //  this.storage.get('lat').then((l) => {
+    //     this.storage.get('lng').then((Ln) => {
+
+    this.urlService.sendList({'lat':lat,'lon':lng})
     .subscribe(res => {
      this.allResponders_Distance = res;
         if (res.status=='OK') {
         }
     }, (err) => {
         console.log(err);
-    });  
+       });  
       });
-      });
+    //  });
+    // });
+  });
   }
 
 
   
   
   goLocation(respo) {
+    
+
     this.storage.set('selected_responder', respo);
     this.navCtrl.push('LocationPage')
   }

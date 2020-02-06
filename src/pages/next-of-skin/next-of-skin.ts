@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AlertController, LoadingController } from 'ionic-angular';
@@ -34,6 +34,7 @@ export class NextOfSkinPage {
     public formBuilder: FormBuilder,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
+    private toastCtrl: ToastController
 
     ) {
 
@@ -55,7 +56,7 @@ export class NextOfSkinPage {
 
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
     console.log('ionViewDidLoad NextOfSkinPage');
 
  
@@ -76,14 +77,22 @@ export class NextOfSkinPage {
     });
   }
 
-  goHome(id){
+  goNextOfSkin(id){
+
+
+    const confirm = this.alertCtrl.create({
+      title: 'Are you sure?',
+      message: '',
+      buttons: [
+        {
+          text: 'Yes',
+          handler: () => {
 
 var headers = new Headers();
 headers.append("Accept", 'application/json');
 headers.append('Content-Type', 'application/json' );
 
 var postData = { id:id }
-// var postData = this.skinForm.value;
 
   this.urlService.deleteNext(postData)
   .subscribe(res => {
@@ -95,48 +104,64 @@ var postData = { id:id }
   }, (err) => {
       console.log(err);
   });
+            this.navCtrl.setRoot('MyaccountPage', {
+            id:id,
+            user_id:this.User_Id,
+          }); 
+          const loading= this.loadingCtrl.create({
+            content: "Deleting...",
+            duration: 700
+          });
+          loading.present();
 
-    const confirm = this.alertCtrl.create({
-      title: 'Are you sure?',
-      message: '',
-      buttons: [
-        {
-          text: 'Yes',
-          handler: () => {
-           // this.storage.set('Medical_Aid_Status', 'Yes');
-            console.log('Agree clicked'); 
-            this.navCtrl.setRoot('HomePage'); 
+    let toast = this.toastCtrl.create({
+      message: 'Next of Kin deleted successfully.',
+      duration: 3500,
+      position: 'bottom'
+    });
+  
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+  
+    toast.present();
+            
           }
         },
         {
           text: 'No',
           handler: () => {
-            //this.storage.set('Medical_Aid_Status', 'No');
-            console.log('Disagree clicked');
-     
           }
         }
       ]
     });
+  
+
+
     confirm.present();
 
+    // let toast = this.toastCtrl.create({
+    //   message: 'Medical details edited successfully',
+    //   duration: 3500,
+    //   position: 'bottom'
+    // });
   
-  // const loading= this.loadingCtrl.create({
-  //   content: "deleting details",
-  //   duration: 1000
-  // });
-  // loading.present();
+    // toast.onDidDismiss(() => {
+    //   console.log('Dismissed toast');
+    // });
+  
+    // toast.present();
+  
+     
 
-    // this.navCtrl.setRoot('MyprofilePage')
-  
+
     }
 
 
 
-  goNextofkin2(user_id){
+  goNextofkin2(){
  
  this.storage.get('user_id').then((result) => {
-
   this.navCtrl.push("Nextofkin2Page", {
       user_id:result,
     });

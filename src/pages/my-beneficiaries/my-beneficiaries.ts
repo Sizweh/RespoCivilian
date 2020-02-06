@@ -47,7 +47,7 @@ export class MyBeneficiariesPage {
   }
 
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
 
     var headers = new Headers();
     headers.append("Accept", 'application/json');
@@ -86,6 +86,15 @@ export class MyBeneficiariesPage {
 
    goHome(id){
 
+    
+const confirm = this.alertCtrl.create({
+  title: 'Are you sure?',
+  message: '',
+  buttons: [
+    {
+      text: 'Yes',
+      handler: () => {
+
     var headers = new Headers();
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
@@ -99,26 +108,23 @@ export class MyBeneficiariesPage {
       }, (err) => {
           console.log(err);
       });
-        const confirm = this.alertCtrl.create({
-          title: 'Are you sure?',
-          message: '',
-          buttons: [
-            {
-              text: 'Yes',
-              handler: () => {
-                this.navCtrl.setRoot('HomePage'); 
-              }
-            },
-            {
-              text: 'No',
-              handler: () => {
 
-         
-              }
-            }
-          ]
-        });
-        confirm.present();
+        this.navCtrl.setRoot('MyBeneficiariesPage', {
+          user_id:this.User_Id,
+          id:this.id,
+        }); 
+      }
+    },
+    {
+      text: 'No',
+      handler: () => {
+
+  
+      }
+    }
+  ]
+});
+confirm.present();
 
   }
    

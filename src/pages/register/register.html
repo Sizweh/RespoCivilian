@@ -13,6 +13,23 @@
           placeholder="Full Name"
         ></ion-input>
       </ion-item>
+      <ion-item no-lines  *ngIf="fullName.hasError('required') && fullName.touched">
+          &nbsp;<font size="2" color='#f53d3d'>Full name  is required!</font>
+       </ion-item>
+
+      <ion-item>
+        <ion-input
+          block
+          formControlName="civsurname"
+          type="text"
+          placeholder="Surname"
+        ></ion-input>
+      </ion-item>
+      <ion-item no-lines  *ngIf="civsurname.hasError('required') && civsurname.touched">
+          &nbsp;<font size="2" color='#f53d3d'>Surname is required!</font>
+       </ion-item>
+    
+   
   
       <ion-item>
         <ion-input [(ngModel)]='phone' (ionBlur)="convert()"
@@ -24,6 +41,9 @@
           placeholder="Cell Number"
         ></ion-input>
       </ion-item>
+      <ion-item no-lines  *ngIf="phonenumber.hasError('required') && phonenumber.touched">
+          &nbsp;<font size="2" color='#f53d3d'>Cell number is required!</font>
+       </ion-item>
   
       <ion-item>
         <ion-input
@@ -35,6 +55,9 @@
           maxLength="50"
         ></ion-input>
       </ion-item>
+      <ion-item no-lines  *ngIf="email.hasError('required') && email.touched">
+          &nbsp;<font size="2" color='#f53d3d'>Email is required!</font>
+       </ion-item>
   
   
 
@@ -45,9 +68,19 @@
             minLength="6"
             maxLength="6"
             type="password"
-            placeholder="Create Password"
+            placeholder="Create Password (6)"
+            [type]="passwordType" 
+            clearOnEdit="true" 
           ></ion-input>
+          
+          <button ion-button clear item-end (click)='hideShowPassword()' style="height:25px;">
+              <ion-icon name="eye" style="font-size:25px;">
+              </ion-icon>
+              </button>
         </ion-item>
+        <ion-item no-lines *ngIf="password.hasError('required') && password.touched">
+        &nbsp;<font size="2" color='#f53d3d'>6 characters required!</font>
+     </ion-item>
 
      
     </div>

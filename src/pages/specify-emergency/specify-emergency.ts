@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-
 import { FormBuilder,FormGroup } from '@angular/forms';
 
 
@@ -22,8 +21,6 @@ export class SpecifyEmergencyPage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     private storage: Storage,
-  
- 
     public formBuilder: FormBuilder,
 
     ) {
@@ -45,23 +42,24 @@ export class SpecifyEmergencyPage {
   }
  
 
-
-
   goHome(){
     this.navCtrl.setRoot('HomePage')
   }
 
   
+
   goSelfAdmission(){
 
-    const value = this.specifyForm.value;
-    this.storage.set('specify_emergency', value.specify_emergency);
+  const value = this.specifyForm.value;
+   this.storage.set('specify_emergency', value.specify_emergency);
 
-
-    this.navCtrl.push('SelfAdmissionPage')
-  }
-
-
+    this.storage.get('user_id').then((result) => {
+      this.navCtrl.push("SelfAdmissionPage",{
+        user_id:result,
+      });
+  });    
+}
+ 
  
 
 

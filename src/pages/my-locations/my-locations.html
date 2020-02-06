@@ -1,0 +1,50 @@
+<ion-header>
+    <ion-navbar color="newcolor">
+      <ion-toolbar color="newcolor" mode="ios">
+        <ion-buttons start>
+          <button color='light' ion-button icon-only menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+        </ion-buttons>
+        <ion-title text-center></ion-title>
+      </ion-toolbar>
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content padding>
+    
+<ion-row no-lines *ngFor="let fault of location_collection">
+  <ion-card>
+
+    <ion-item  color='light'>
+        <h2><b>Address Type:</b> {{ fault.description }}</h2>
+        <h2><b>Address:</b> {{ fault.address }}</h2>
+        <h2><b>Latitude:</b> {{ fault.lat }}</h2>
+        <h2><b>Longitude:</b> {{ fault.lng }}</h2>
+    </ion-item>
+   
+
+  <ion-col>
+  <button button-left ion-button icon-start clear small (click)="goHome(fault.id)">
+        <ion-icon color='danger' name=""></ion-icon>
+        <ion-label color='danger'>Delete</ion-label>
+       </button>
+    </ion-col>
+
+
+  </ion-card>
+</ion-row>
+
+
+
+
+<button icon-right  ion-button round color='newcolor'  (click)="goAddress(user_id)"> 
+    Add Address
+    <ion-icon name=""></ion-icon>
+  </button>
+
+
+
+
+</ion-content>

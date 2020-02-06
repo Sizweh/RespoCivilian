@@ -20,6 +20,17 @@ export class UrlbaseProvider {
     console.log('Hello UrlbaseProvider Provider');
   }
 
+  //RESEND OTP
+  resendOTP(phone): Observable<any> {
+    return this.http.post(this.apiUrl+"resendOTP",{"phone":phone});
+  }
+
+  changePhone(p,id): Observable<any>{
+
+    return this.http.post(this.apiUrl+"ChangePhone",{"phone":p,"user_id":id});
+
+  }
+
   //pass test on local
   login (data): Observable<any> {
     return this.http.post<any>(this.apiUrl + 'loginCivilian', data)
@@ -35,7 +46,6 @@ export class UrlbaseProvider {
       .pipe(
         tap(_ => this.log('registerCivilian')),
         catchError(this.handleError('registerCivilian', []))
-
       );
   }
   //pass test on local
@@ -245,6 +255,41 @@ export class UrlbaseProvider {
       .pipe(
         tap(_ => this.log('search')),
         catchError(this.handleError('search', []))
+      );
+  }
+  saveLocation(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'saveLocations',data)
+      .pipe(
+        tap(_ => this.log('saveLocations')),
+        catchError(this.handleError('saveLocations', []))
+      );
+  }
+  viewMyLocation(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'viewMyLocation',data)
+      .pipe(
+        tap(_ => this.log('viewMyLocation')),
+        catchError(this.handleError('viewMyLocation', []))
+      );
+  }
+  deleteLocations(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'deleteLocations',data)
+      .pipe(
+        tap(_ => this.log('deleteLocations')),
+        catchError(this.handleError('deleteLocations', []))
+      );
+  }
+  updateLocation(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'updateLocation',data)
+      .pipe(
+        tap(_ => this.log('updateLocation')),
+        catchError(this.handleError('updateLocation', []))
+      );
+  }
+  showLocation(data): Observable<any> {
+    return this.http.post<any>(this.apiUrl + 'showLocation',data)
+      .pipe(
+        tap(_ => this.log('showLocation')),
+        catchError(this.handleError('showLocation', []))
       );
   }
 

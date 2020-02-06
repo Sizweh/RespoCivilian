@@ -15,6 +15,7 @@ import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 export class VerifyAccountPage {
 
   verificationCode: FormGroup;
+  
 
   constructor(
     public navCtrl: NavController,
@@ -38,6 +39,47 @@ export class VerifyAccountPage {
     console.log('ionViewDidLoad VerifyAccountPage');
   }
 
+  ionViewDidEnter(){
+    this.storage.get('phonenumber').then(p=>{
+
+      let otp = document.getElementById("otpmsg");
+
+      otp.innerHTML=`OTP message has been sent to ${p}`;
+
+    });
+
+    
+    
+
+    this.storage.get('otpstatus').then(stat=>{
+      console.log(".........OTP STATUS...........")
+      if(stat===null){
+        this.storage.set('otpstatus',"pending");
+      }
+      console.log(stat)
+    });
+  }
+
+  resendOTP(e): void{
+
+    e.preventDefault();
+
+    this.storage.get('phonenumber').then(p=>{
+      this.urlService.resendOTP(p).subscribe((res)=>{
+        console.log(res)
+      })
+    })
+
+    
+  }
+
+  changePhone(e): void{
+    e.preventDefault();
+    console.log('change number');
+
+ this.navCtrl.push('ChangePage');
+  }
+
   verifyCode(){
 
     var headers = new Headers();
@@ -51,6 +93,7 @@ export class VerifyAccountPage {
  
       console.log(res);
 
+
       const loader = this.loadingCtrl.create({
         content: "Checking code...",
         duration: 3000
@@ -59,10 +102,12 @@ export class VerifyAccountPage {
       
       this.alert.presentAlert("Notification", res.msg);
       if (res.status=='OK') {
+        this.storage.set('otpstatus',"accepted");
         this.storage.set('user_name', res.user_name);
         this.storage.set('user_id', res.user_id);
         this.navCtrl.setRoot('HomePage');
       }
+
     }, (err) => {
       console.log(err);
     });

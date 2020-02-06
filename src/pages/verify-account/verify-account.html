@@ -3,7 +3,7 @@
   <div class="title"><h3>Verify Account</h3></div>
 <br>
   <div class="text">
-    <p>Please check your messages for the verification code sent.</p>
+    <p id="otpmsg"><!--OTP MESSAGE HANDLED IN THE CONTROLLER--></p>
   </div>
 
   <div class="register-fields" [formGroup]="verificationCode">
@@ -28,4 +28,10 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+  <p style="text-align: center; text-decoration: none;">
+    <a href="#" (click)="resendOTP($event)">Resend SMS</a>
+  </p>
+  <p style="text-align: center; text-decoration: none;">
+    <a href="#" (click)="changePhone($event)">Change Phone Number</a>
+  </p>
 </ion-content>

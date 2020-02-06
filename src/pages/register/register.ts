@@ -1,13 +1,8 @@
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, AbstractControl } from '@angular/forms';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-
 import { MenuController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-
-
-
 
 @IonicPage()
 @Component({
@@ -17,32 +12,41 @@ import { Storage } from '@ionic/storage';
 export class RegisterPage {
 
   registerForm: FormGroup;
-
+  passwordType: string = 'password';
+  passwordIcon: string = 'eye-off';
+  password:AbstractControl;
+  fullName:AbstractControl;
+  email:AbstractControl;
+  phonenumber:AbstractControl;
+  civsurname:AbstractControl;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public formBuilder: FormBuilder,
- 
-
     public menuCtrl: MenuController,
     public storage: Storage,
  
-
-
     ) {
 
       this.menuCtrl.enable(false);
-     
 
       this.registerForm = formBuilder.group({
 
         'fullName': ['', Validators.compose([Validators.required])],
-        'phonenumber': ['', Validators.compose([Validators.required, Validators.minLength(11), Validators.pattern("^[0-9]{11}")])],
+        'civsurname': ['', Validators.compose([Validators.required])],
+        'phonenumber': ['', Validators.compose([Validators.required])],
         'email': ['', Validators.compose([Validators.minLength(4), Validators.maxLength(50), Validators.pattern('[a-zA-Z0-9._]+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$'), Validators.required])],
         'password': ['', Validators.compose([Validators.required, Validators.minLength(6)])],
      
       })
+
+      this.password = this.registerForm.controls['password'];
+      this.fullName = this.registerForm.controls['fullName'];
+      this.email = this.registerForm.controls['email'];
+      this.phonenumber = this.registerForm.controls['phonenumber'];
+      this.civsurname = this.registerForm.controls['civsurname'];
+
    
   }
   phone='';
@@ -55,6 +59,11 @@ export class RegisterPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
+  }
+  
+  hideShowPassword() {
+    this.passwordType = this.passwordType === 'tel' ? 'password' : 'tel';
+    this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';
   }
 
   goLogin(){
@@ -69,6 +78,7 @@ export class RegisterPage {
 
     const values = this.registerForm.value;
     this.storage.set('fullName', values.fullName);
+    this.storage.set('civsurname', values.civsurname);
     this.storage.set('email', values.email);
     this.storage.set('phonenumber', values.phonenumber);
     this.storage.set('password', values.password);

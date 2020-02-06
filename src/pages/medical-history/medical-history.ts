@@ -48,27 +48,52 @@ export class MedicalHistoryPage {
         'prefered_hospital': ['', Validators.compose([Validators.required])],
 
       })
+
+      this.storage.get('user_id').then((result) => {
+        var headers = new Headers();
+        headers.append("Accept", 'application/json');
+        headers.append('Content-Type', 'application/json' );
+       //pass to back-end
+          var postData = this.medicalForm.value;
+         
+          //var Data = {user_id:result}
+          //THIS IS A BETTER WAY TO MAKE API CALLS
+        this.urlService.medicalHistory(postData)
+        .subscribe(res => {
+         this.medical_collection = res;
+            if (res.status=='OK') {
+            }
+        }, (err) => {
+            console.log(err);
+         });
+        });
+
+
+
   }
 
 
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
     console.log('ionViewDidLoad MedicalHistoryPage');
 
-    var headers = new Headers();
-    headers.append("Accept", 'application/json');
-    headers.append('Content-Type', 'application/json' );
-   //pass to back-end
-      var postData = this.medicalForm.value;
-      //THIS IS A BETTER WAY TO MAKE API CALLS
-    this.urlService.medicalHistory(postData)
-    .subscribe(res => {
-     this.medical_collection = res;
-        if (res.status=='OK') {
-        }
-    }, (err) => {
-        console.log(err);
-    });
+  //   this.storage.get('user_id').then((result) => {
+  //   var headers = new Headers();
+  //   headers.append("Accept", 'application/json');
+  //   headers.append('Content-Type', 'application/json' );
+  //  //pass to back-end
+  //     var postData = this.medicalForm.value;
+  //     //var Data = {user_id:result}
+  //     //THIS IS A BETTER WAY TO MAKE API CALLS
+  //   this.urlService.medicalHistory(postData);
+  //   .subscribe(res => {
+  //    this.medical_collection = res;
+  //       if (res.status=='OK') {
+  //       }
+  //   }, (err) => {
+  //       console.log(err);
+  //    });
+  //   });
 
 
 
@@ -76,7 +101,7 @@ export class MedicalHistoryPage {
   }
 
 
-  goHome(){
+  goMyaccount(){
 
     const values = this.medicalForm.value;
     this.storage.set('member_no', values.member_no);
@@ -116,9 +141,11 @@ export class MedicalHistoryPage {
       duration: 700
     });
     loading.present();
-    
-
-    this.navCtrl.setRoot('HomePage');
+  
+    this.navCtrl.setRoot('MyaccountPage', {
+      user_id:this.User_Id,
+      id:this.id
+    });
     }
 
 

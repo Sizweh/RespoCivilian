@@ -1,41 +1,57 @@
-<ion-content padding="true" scroll="false" class="manual-ios-statusbar-padding">
+<ion-content text-center padding="true" scroll="false" class="manual-ios-statusbar-padding">
+
+<!-- <div *ngIf="!isConnected" style="margin-top: 70px">
+
+    <img src="assets/mapi/icon-error.png">
+    <p style="text-align: center;">
+        connect to the internet
+    </p>
+</div> -->
+<br>
+
+<!-- <div *ngIf="isConnected"> -->
+                          
 <div>
+    <img class="logo" src="https://blooming-waters-81867.herokuapp.com/img/respo2.png"
+        style="display: block; width: 50%; height: auto; margin-left: auto; margin-right: auto;">
+</div>
+<br>
+<br>
+<br>
 
-<img class="logo" src="https://blooming-waters-81867.herokuapp.com/img/respo2.png"     
-style="display: block; width: 50%; height: auto; margin-left: auto; margin-right: auto;">
+<div scroll="false"  [formGroup]="formgroup">
+
+    <ion-item>
+        <ion-input [(ngModel)]='tel' (ionBlur)="convert()" block formControlName="phoneNumber" minLength="11"
+            maxLength="11" type="tel" placeholder="Cell Number">
+        </ion-input>
+    </ion-item>
+    <ion-item no-lines  *ngIf="phoneNumber.hasError('required') && phoneNumber.touched">
+  
+       &nbsp;&nbsp;<font size="2" color='#f53d3d'>Cell Number is required!</font>
+    </ion-item>
+
+    <ion-item>
+        <ion-input formControlName="password" [type]="passwordType" clearOnEdit="false" minLength="4" maxLength="6"
+            placeholder="Password">
+        </ion-input>
+        <button ion-button clear item-end (click)='hideShowPassword()' style="height:25px;">
+            <ion-icon name="eye" style="font-size:25px;">
+            </ion-icon>
+        </button>
+    </ion-item>
+    <ion-item no-lines *ngIf="password.hasError('required') && password.touched">
+            &nbsp;<font size="2" color='#f53d3d'>Password is required!</font>
+         </ion-item>
+
 </div>
 
-<br>
-<br>
-<br>
-
-<div  scroll="false" class="login-fields" [formGroup]="loginForm">
-
-<ion-item>
-<ion-input [(ngModel)]='tel' (ionBlur)="convert()" block formControlName="phoneNumber" minLength="11" maxLength="11" type="tel" placeholder="Cell Number">
-</ion-input>
-</ion-item>
-
-<ion-item>
-<ion-input formControlName="password" [type]="passwordType" clearOnEdit="false" minLength="4" maxLength="6" placeholder="Password">
-</ion-input>
-
-<button ion-button clear item-end (click)='hideShowPassword()' style="height:25px;">
-<ion-icon name="eye" style="font-size:25px;">
-</ion-icon>
-</button>
-</ion-item>
-
-
-</div>
-
-<!-- https://blooming-waters-81867.herokuapp.com/img/respo2.png -->
 
 
 
 <br>
-<!-- <button ion-button round block [disabled]="!loginForm.valid" (click)="goLogin()" color="newcolor"> -->
-<button  icon-right ion-button round block (click)="goHome()" color="newcolor">
+
+<button    icon-right ion-button round block (click)="goHome()" color="newcolor">
 
 Log in
 </button>
@@ -46,8 +62,6 @@ Log in
 <P text-center >Or</P>
 
 <button (click)="goRegister()"  full round ion-button color="calm" clear>Register</button>
-
-<!-- <button (click)="goRegister()"  full round ion-button color="calm" clear>dddd</button> -->
-
+<!-- </div> -->
 
 </ion-content>

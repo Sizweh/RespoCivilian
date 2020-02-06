@@ -1,4 +1,5 @@
-  <!-- <div *ngIf="isConnected===true"> -->
+<!-- <div *ngIf="isConnected"> -->
+
 <ion-header>
     <ion-navbar color="newcolor">
       <ion-toolbar color="newcolor" mode="ios">
@@ -14,26 +15,33 @@
        </ion-buttons>   
     </ion-toolbar>
   </ion-navbar>
-</ion-header> 
+</ion-header>
+
 <!-- </div> -->
 
+<br>
+<br>
+<br>
+<br>
 
 
 <ion-content text-center>
-    <!-- <h6 color='light' text-right>More</h6> -->
 
-     <!-- <div *ngIf="isConnected===false"  style="margin-top: 70px">    -->
+<!-- <div *ngIf="!isConnected"  style="margin-top: 70px">   
 
-      <!-- <img src="assets/mapi/icon-error.png">
+    <img src="assets/mapi/icon-error.png">
 
-      <p>
-
+      <p style="text-align: center;">
       connect to the internet
+      </p>
 
-      </p> -->
-    <!-- </div> -->
+</div> -->
+
     <!-- <br>
-  <div *ngIf="isConnected===true"> -->
+    <br>
+    <br> -->
+
+  <!-- <div *ngIf="isConnected"> -->
 
       <ion-row no-lines *ngFor="let fault of faultCategories">
           <ion-card no-lines>
@@ -41,7 +49,7 @@
               <ion-avatar item-start>
                 <img [src]="fault.imageUrl">
               </ion-avatar>
-              <h1></h1>
+            
               <font size="3" color='#38414a'>{{ fault.category }}</font>
             </ion-item>
           </ion-card>
@@ -53,11 +61,8 @@
           <ion-item (click)="goSpecifyEmergency(other)" no-lines text-right>
             <ion-avatar item-start>
             <img src="https://blooming-waters-81867.herokuapp.com/icons/other.png">
-              </ion-avatar>
-              <h1></h1>
-            
+            </ion-avatar>
             <font size="3" color='#38414a'>{{ other.category }}</font>
-      
           </ion-item>
         </ion-card>
       </ion-row>
@@ -65,8 +70,7 @@
 
   <!-- </div> -->
   
-<br>
-<br>
+
 <br>
 <br>
 

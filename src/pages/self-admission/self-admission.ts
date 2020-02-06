@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController, LoadingController
 import { Storage } from '@ionic/storage';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { FormGroup, FormBuilder,  } from '@angular/forms';
+import { Network } from '@ionic-native/network';
 
 
 
@@ -22,6 +23,7 @@ export class SelfAdmissionPage {
   name: any;
   Beneficiary_id: any;
   user_id: string;
+  isConnected:boolean;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -30,19 +32,49 @@ export class SelfAdmissionPage {
     public storage: Storage,
     private urlService: UrlbaseProvider,
     public formBuilder: FormBuilder,
+    private network: Network,
     ) {
 
-      this.storage.get('user_id').then((val) => {
-        this.user_Id = String(val);
-
+      setTimeout(() => {
+        if(this.network.type==="wifi"){
+          this.isConnected=true;
+        }
+        if(this.network.type==="cellular"){
+          this.isConnected=true;
+        }
+        if(this.network.type==="4g"){
+          this.isConnected=true;
+        }
+      else{
+      
+      }
+      
+      }, 0);
+      
+      
+        
+      this.network.onConnect().subscribe(()=>{
+      this.isConnected=true;
+      
       });
+      
+      
+      this.network.onDisconnect().subscribe(()=>{
+        this.isConnected=false;
+      
+      });
+
+      // this.storage.get('user_id').then((val) => {
+      //   this.user_Id = String(val);
+
+      // });
       this.id = navParams.get('data') ;
       this.user_Id = navParams.get('user_id') ;
 
       this.beneficiaryForm = formBuilder.group({
 
       'user_id': [this.user_Id,],
-        'Beneficiary_id': ['',],
+      'Beneficiary_id': ['',],
       })
 
   }
@@ -70,22 +102,58 @@ export class SelfAdmissionPage {
     console.log('ionViewDidLoad SelfAdmissionPage');
   }
 
-goMaps2(){
-this.storage.set('forWho', 'FM');
-console.log('for me clicked');  
-this.navCtrl.push("MapsPage");
-}
+// goMaps2(){
+// this.storage.set('forWho', 'FM');
 
+// this.navCtrl.push("MapsPage");
 
-goMaps(){
+// const loading= this.loadingCtrl.create({
+//   content: "Getting your location...",
+//   duration: 4500
+// });
+// loading.present();
+// }
+
+goMaps2(id,user_id){    
+  this.storage.set('forWho', 'FM');
+  this.navCtrl.push("MapsPage", {
+    data: id,
+    user_id:user_id
+  });
+
+const loading= this.loadingCtrl.create({
+  content: "Getting your location...",
+  duration: 4500
+});
+loading.present();
+
+  }
+
+goMaps(id,user_id){    
   this.storage.set('forWho', 'FS');
-  console.log('for someone clicked'); 
-this.navCtrl.push("MapsPage");
-}
+  this.navCtrl.push("MapsPage", {
+    data: id,
+    user_id:user_id
+  });
 
-goChat2(){
+const loading= this.loadingCtrl.create({
+  content: "Getting your location...",
+  duration: 4500
+});
+loading.present();
+
+  }
+
+
+
+goChat2(id,user_id){
      this.storage.set('forWho', 'FB');
-    
+     const loading= this.loadingCtrl.create({
+      content: "Getting your location...",
+      duration: 4500
+    });
+    loading.present();
+
 
   let opt =[];
 
@@ -100,14 +168,7 @@ goChat2(){
     };
 
     opt[index] =inp;
-
-    
-    
   });
-  console.log(opt);
-
-  
-
     const alert = this.alertCtrl.create({
   
     inputs:
@@ -115,8 +176,6 @@ goChat2(){
     ,
     buttons: 
     
-
-
     [
       {
         text: 'Cancel',
@@ -129,14 +188,12 @@ goChat2(){
         text: 'Ok',
         handler: (e) => {     
           this.storage.set('Beneficiary_id', (e));
-          console.log(e);
-   
+         this.navCtrl.push("MapsPage", {
 
-         this.navCtrl.push("MapsPage");
-       
-        
-         
-            
+          data: id,
+          user_id:user_id
+         });  
+
         }
         
    
@@ -148,11 +205,6 @@ goChat2(){
  alert.present();
 
 
-
-
-
-
-
 }
 
 
@@ -164,4 +216,13 @@ goChat2(){
 
 }
 
+// goMaps(){
+//   this.storage.set('forWho', 'FS');
 
+// this.navCtrl.push("MapsPage");
+// const loading= this.loadingCtrl.create({
+//   content: "Getting your location...",
+//   duration: 4500
+// });
+// loading.present();
+// }

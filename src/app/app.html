@@ -1,8 +1,7 @@
-<ion-menu color='calm'  [content]="content">
-  <ion-header >
+<ion-menu color='newcolor'  [content]="content">
+  <ion-header>
     <ion-toolbar color='newcolor' >
       <ion-title></ion-title>
-      
     </ion-toolbar>
   </ion-header>
 
@@ -11,13 +10,12 @@
 
 
 
-<div class="login-fields" [formGroup]="menuForm">
+<!-- <div class="login-fields" [formGroup]="menuForm"> -->
 
 <ion-list no-lines>
 
     
           <ion-item (click)="goMyProfile()" >
-
             <ion-icon color='newcolor' item-left name="ios-person"></ion-icon>
             <h2>{{ username }}</h2>
             <p  style="font-size: 15px;">View Profile</p>
@@ -25,37 +23,35 @@
 
 
             <ion-item (click)="goHome()" color=''>
- 
               <h3>Home</h3>
               <ion-icon color='newcolor' item-left name="ios-home"></ion-icon>
             </ion-item>
          
 
             <ion-item (click)="goMyAccount()" color=''>
-       
               <h3>My Account</h3>
               <ion-icon color='newcolor' item-left name="ios-contact"></ion-icon>
             </ion-item>
 
+            <ion-item (click)="goMyLocations()" color=''>
+              <h3>Locations</h3>
+              <ion-icon color='newcolor' item-left name="ios-pin"></ion-icon>
+            </ion-item>
+
 
             <ion-item (click)="goMyBeneficiaries()" color=''>
-        
               <h3>Beneficiaries</h3>
               <ion-icon color='newcolor' item-left name="ios-people"></ion-icon>
             </ion-item>
 
        
-       
-        
             <ion-item (click)="goHistory(user_id)" color=''>
-      
               <h3>History</h3>
               <ion-icon color='newcolor' item-left name="ios-document"></ion-icon>
             </ion-item>
         
 
             <ion-item (click)="goSupport()" color=''>
-     
               <ion-icon color='newcolor' item-left name="ios-help-circle"></ion-icon>
               <h3>Support</h3>
             </ion-item>
@@ -63,7 +59,7 @@
           
           </ion-list>
 
-          </div>
+          <!-- </div> -->
 
   <button text-color='light' ion-button  block  color='newcolor' (click)="shareApp()"> Share App </button>
 
@@ -78,9 +74,6 @@
   
 </ion-menu>
 
-<ion-menu [content]="content" [swipeEnabled]="false">
-  Your code
-</ion-menu>
 
 
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

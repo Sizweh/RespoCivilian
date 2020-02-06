@@ -35,8 +35,6 @@ export class PersonalDetailsPage {
       this.User_Id = navParams.get('user_id') ;
      
 
-
-   
       this.personalForm = formBuilder.group({
      
         'user_id': [this.User_Id],
@@ -45,10 +43,8 @@ export class PersonalDetailsPage {
         'fullName': ['', Validators.compose([Validators.required])],
         'gender': ['', Validators.compose([Validators.required])],
         'myDate': ['', Validators.compose([Validators.required])],
-     
+        'civsurname': ['', Validators.compose([Validators.required])],
         'phonenumber': [Validators.compose([Validators.required, Validators.minLength(11)])],
-       
- 
         'email': ['', Validators.compose([Validators.minLength(4), Validators.maxLength(50), Validators.pattern('[a-zA-Z0-9._]+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$'), Validators.required])],
 
       })
@@ -62,15 +58,13 @@ export class PersonalDetailsPage {
     }
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
    
     var headers = new Headers();
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
 
-
       var postData = this.personalForm.value;
-
       //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.personalDetails(postData)
     .subscribe(res => {
@@ -87,6 +81,7 @@ export class PersonalDetailsPage {
 
     const values = this.personalForm.value;
     this.storage.set('fullName', values.fullName);
+    this.storage.set('civsurname', values.civsurname);
     this.storage.set('gender', values.gender);
     this.storage.set('myDate', values.myDate);
     this.storage.set('email', values.email);
@@ -106,7 +101,7 @@ export class PersonalDetailsPage {
 
 
   let toast = this.toastCtrl.create({
-    message: 'Personal details edited successfully',
+    message: 'Personal details edited successfully.',
     duration: 3000,
     position: 'bottom'
   });

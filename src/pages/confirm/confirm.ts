@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-// import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
 import { AlertsProvider } from './../../providers/alerts/alerts';
 import { CallNumber } from '@ionic-native/call-number';
 import { interval } from 'rxjs/observable/interval';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
+import { AlertController } from 'ionic-angular';
 
 
 
@@ -22,14 +22,11 @@ export class ConfirmPage {
   driverLng   : any;
   driverETA   : any;
   driversCompany: any;
-  driversDistance: any;//distance between driver and civilian should be
-  //calculated on backend;
-
+  driversDistance: any;
   userDetails: any;
   category: any;
   selectedResponder: any; 
   responderName: any;
-  
   responderId: any;
   responderPlate: any;
   responderDistance: any;
@@ -43,58 +40,37 @@ export class ConfirmPage {
     public alert: AlertsProvider,
     private storage: Storage,
     public callNumber: CallNumber,
+     public alertCtrl: AlertController
     ) 
     
     {
   
      
       this.storage.get('user_id').then((val) => {
-       // console.log('user db stuff');
-       // console.log(val);
         this.civilianId = val;
-        // alert(val);
-        
       });
+
       this.storage.get('request_id').then((val) => {
-       // console.log('request db stuff');
-       // console.log(val);
         this.reqId = val;
-        // alert(val);
-        
       });
-      this.storage.get('selected_responder').then((val) => {
-       // console.log('respo db stuff');
-       // console.log(val);
+
+        this.storage.get('selected_responder').then((val) => {
         this.selectedResponder = [val];
         this.responderId = val.id;
         this.responderName = val.driver_name;
-        // alert(this.responderName);
-        var randomnumber = Math.floor(Math.random() * (7 - 1 + 1)) + 1;
-        this.responderDistance = randomnumber;
-
-        //polling, should look for alternatives
-        this.timeInt();
-      }); 
-      
+      });  
   }
   timeInt (){
       const source = interval(5000);
-      //output: 0,1,2,3,4,5....
       this.subscription = source.subscribe(val => this.checkAccept());
-      // this.checkAccept();
-
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ConfirmPage');
   }
 
-  goCountDown(){
-    this.subscription.unsubscribe();
-    this.navCtrl.push('CountDownPage')
-  }
+
   goHome(){
-    this.subscription.unsubscribe();
     this.navCtrl.setRoot('HomePage')
   }
 
@@ -104,13 +80,13 @@ export class ConfirmPage {
       'user_id': this.civilianId,
       'driver_id': this.responderId,
       'request_id': this.reqId,
-     
     }
+
+
     
     this.urlService.checkRespoAccept(this.userDetails)
     .subscribe(res => {
-        // this.presentToast(res.msg, res.status);
-       // console.log(res);
+
         if (res.status=='accepted') {
           this.alert.presentAlert("Notification", res.msg);
           this.subscription.unsubscribe();
@@ -119,10 +95,10 @@ export class ConfirmPage {
         if (res.status=='canceled') {
           this.alert.presentAlert("Notification", res.msg);
           this.subscription.unsubscribe();
-          this.navCtrl.push('CountDownPage');
+          this.navCtrl.push('HomePage');
         }
     }, (err) => {
-        //console.log(err);
+     
     });
 
 

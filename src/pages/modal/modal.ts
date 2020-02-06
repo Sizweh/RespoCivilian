@@ -60,15 +60,13 @@ export class ModalPage {
     }
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
     console.log('ionViewDidLoad ModalPage');
     
     var headers = new Headers();
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
     
-   //pass to back-end
-
       var postData = this.skinForm.value;
 
       //THIS IS A BETTER WAY TO MAKE API CALLS
@@ -127,7 +125,11 @@ export class ModalPage {
     });
     loading.present();
 
-      this.navCtrl.setRoot("HomePage");
+      this.navCtrl.setRoot("MyaccountPage", {
+      user_id:this.User_Id,
+      id:this.id,
+    
+  });
       }
 
 }

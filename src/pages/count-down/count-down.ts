@@ -4,12 +4,6 @@ import { CallNumber } from '@ionic-native/call-number';
 import { Storage } from '@ionic/storage';
 
 
-/**
- * Generated class for the CountDownPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -41,15 +35,11 @@ export class CountDownPage {
   }
 
 
-  goArrival(){
-    this.navCtrl.push('ArrivalPage')
-  }
+
   goHome(){
     this.navCtrl.setRoot('HomePage')
   }
-  goChat1(){
-    this.navCtrl.push('Chat1Page')
-  }
+ 
 
   callNow(number) {
     this.callNumber.callNumber(number, true)

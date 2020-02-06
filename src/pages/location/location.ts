@@ -47,6 +47,10 @@ request_id: any;
 Ln: any;
 allResponders_Distance: any;
 idcivilian: any;
+  addressType: any;
+  lat: any;
+  lng: any;
+  description: any;
     
 
   constructor(public navCtrl: NavController, 
@@ -67,8 +71,8 @@ idcivilian: any;
       this.autocompleteItems = []
   }
 
-  ionViewDidLoad() {
-        console.log('ionViewDidLoad LocationPage');
+  ionViewDidEnter() {
+        //console.log('ionViewDidLoad LocationPage');
 
     this.storage.get('specify_emergency').then((val) => {
       this.specify_emergency = val;
@@ -89,12 +93,23 @@ idcivilian: any;
       this.address = val;
     });
 
+    this.storage.get('addressType').then((val) => {
+      this.description = val;
+    });
+
     this.storage.get('lat').then((val) => {
       this.L = val;
     });
 
     this.storage.get('lng').then((val) => {
       this.Ln = val;
+    });
+    this.storage.get('lat2').then((val) => {
+      this.lat = val;
+    });
+
+    this.storage.get('lng2').then((val) => {
+      this.lng = val;
     });
 
     this.storage.get('selected_responder').then((val) => {
@@ -128,11 +143,14 @@ goConfirm(){
     'civilian_id': this.idcivilian,
     'lat': this.L,
     'lng': this.Ln,
+    // 'lat2': this.lat,
+    // 'lng2': this.lng,
     'driver_id': this.selectedResponder.id, 
     'company_id': this.selectedResponder.company_id,
     'emergency_type': this.event,
     'specify_emergency': this.specify_emergency,
     'address':this.address,
+    'addressType':this.description,
     'additional_address':this.additional_address,
     'forWho':this.forWho,
     'Beneficiary_id':this.Beneficiary_id,
@@ -168,6 +186,7 @@ goConfirm(){
 
 
 goHome(){
+  this.storage.remove( 'specify_emergency');
 this.navCtrl.setRoot('HomePage')
 }
 

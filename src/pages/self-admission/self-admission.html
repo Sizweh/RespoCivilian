@@ -1,39 +1,32 @@
-<ion-header>
-    <ion-navbar color="newcolor">
-      <ion-toolbar color="newcolor" mode="ios">
-        <ion-buttons start>
-         <button color='light' ion-button icon-only menuToggle>
-         <ion-icon name="menu"></ion-icon>
-        </button>
-       </ion-buttons>
-      <ion-title text-center></ion-title>
-   
-    </ion-toolbar>
-  </ion-navbar>
-</ion-header>
-
-
-
+<br>
 <ion-content text-center padding>
 <br>
 <br>
 <br>
+  
+  <!-- <div *ngIf="!isConnected"  style="margin-top: 70px">   
+
+        <img src="assets/mapi/icon-error.png">
+    
+          <p style="text-align: center;">
+          connect to the internet
+          </p>
+  </div> -->
+<br>
 <br>
 <br>
 <br>
 <br>
 
 
+
+<!-- <div *ngIf="isConnected"> -->
     <button icon-right ion-button block   color="danger" (click)="goMaps2()">
       For Me
       <ion-icon name=""></ion-icon>
     </button>
    <br>
  
-
-   
-  <div class="login-fields" [formGroup]="beneficiaryForm">
-
       <div *ngIf="ben_collection">
     <button icon-right ion-button block color="newcolor"  (click)="goChat2()">
     For Beneficiary
@@ -41,7 +34,7 @@
     </button>
       </div>
 
-    </div>
+  
 
    <br>
       
@@ -51,7 +44,7 @@
         <ion-icon name=""></ion-icon>
     </button>
 
-         
+<!-- </div>          -->
 
     
 </ion-content>

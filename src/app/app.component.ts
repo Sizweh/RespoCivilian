@@ -3,7 +3,7 @@ import { Nav, Platform, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
-import { FormGroup, FormBuilder} from '@angular/forms';
+import { FormGroup} from '@angular/forms';
 import { OneSignal } from '@ionic-native/onesignal';
 import { SocialSharing } from '@ionic-native/social-sharing';
 
@@ -34,7 +34,6 @@ export class MyApp {
   rootPage: any = 'HomePage';
 
   
-  
  
 
   pages: Array<{ title: string, component: any , icon:string}>;
@@ -47,11 +46,9 @@ export class MyApp {
     public menu: MenuController,
     private storage: Storage,
     private oneSignal: OneSignal,
-    public formBuilder: FormBuilder,
     private socialSharing: SocialSharing
+    
     ) {
-
-
 
       this.storage.get('user_name').then((val) => {
         this.username = String(val);  
@@ -59,20 +56,11 @@ export class MyApp {
       this.storage.get('user_id').then((val) => {
         this.userId = String(val);  
       });
-   
 
-      this.menuForm = formBuilder.group({
-        'user_id': [''],
-      })
 
     this.initializeApp(); {
       }
 
-
- 
-  
-
-    
     this.pages = [
 
 
@@ -93,17 +81,17 @@ this.socialSharing.share(this.text, this.message)
 
 }
 
-  ionViewDidLoad() {
 
-  }
   
   initializeApp() {
+
+    
     this.platform.ready().then(() => {
 
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.menu.enable(true);
-      
+
       var notificationOpenedCallback = function(jsonData) {
         console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
       };
@@ -114,10 +102,6 @@ this.socialSharing.share(this.text, this.message)
          .startInit("c92bb615-7c1e-4a91-8e4d-e4d3d771c165", "384977991016")
         .handleNotificationOpened(notificationOpenedCallback)
         .endInit();
-        
-
- 
-
     });
   }
 
@@ -133,7 +117,7 @@ this.socialSharing.share(this.text, this.message)
   goHistory(){
 
     this.nav.setRoot("HistoryPage", {
-      // user_id: this.User_Id,
+
     });
     this.menu.enable(true);
     this.menu.close();
@@ -163,6 +147,17 @@ this.socialSharing.share(this.text, this.message)
   this.menu.enable(true);
   this.menu.close();
       }
+      goMyLocations(){
+
+    this.storage.get('user_id').then((result) => {
+      this.nav.setRoot("MyLocationsPage", {
+        user_id:result,
+
+      });
+  });
+  this.menu.enable(true);
+  this.menu.close();
+      }
       
     goSupport(){
 
@@ -171,10 +166,10 @@ this.socialSharing.share(this.text, this.message)
         user_id:result,
         id:result,
       });
-  });
+    });
   this.menu.enable(true);
   this.menu.close();
-      }
+  }
   
   
 

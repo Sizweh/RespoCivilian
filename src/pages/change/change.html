@@ -1,0 +1,53 @@
+<ion-header>
+    <ion-navbar color="newcolor">
+      <ion-toolbar color="newcolor" mode="ios">
+        <ion-buttons start>
+         <button color='light' ion-button icon-only menuToggle>
+         <ion-icon name="menu"></ion-icon>
+        </button>
+       </ion-buttons>
+    </ion-toolbar>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content text-center padding>
+  <br>
+  <ion-title>Change Phone No:</ion-title>
+<br>
+<br>
+
+<div class="register-fields" [formGroup]="changeForm">
+
+    <ion-item>
+        <ion-input [(ngModel)]='phone' (ionBlur)="convert()"
+          block
+          formControlName="phone"
+          minLength="11"
+          maxLength="11"
+          type="tel"
+          placeholder="Cell Number"
+        ></ion-input>
+      </ion-item>
+
+
+<br>
+
+      <ion-grid>
+          <ion-row>
+            <ion-col col-6>
+              <button [disabled]="!changeForm.valid" ion-button block color="secondary" round   (click)="goLogin()">
+                Done
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+    </div>
+
+
+
+
+
+
+</ion-content>

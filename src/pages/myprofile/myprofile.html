@@ -13,10 +13,21 @@
 
 
 <ion-content padding>
+<br>
+<br>
 
-<br>
-<br>
-  <ion-item round no-lines text-center  color=''>
+<!-- <button  ion-button block  (click)="openLibrary()">Upload Pic</button> -->
+
+<!-- <img [src]="base64Image"> -->
+  <ion-item  (click)="openLibrary()" round no-lines text-center  color=''>
+<!-- <ion-avatar> -->
+   
+        <!-- <img [src]="base64Image"> -->
+        <!-- style="display: block; width: 30%; height: auto; margin-left: auto; margin-right: auto;"> -->
+
+<!-- </ion-avatar> -->
+ 
+ 
     <div *ngFor="let fault of profile_collection">
     <h3>Hi ,{{fault.name}}</h3>
     <p>{{imageURI}}</p>

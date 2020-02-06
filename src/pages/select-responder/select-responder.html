@@ -2,7 +2,11 @@
 
   <ion-searchbar block [(ngModel)]="myInput" (ionChange)='search($event)'></ion-searchbar>
 
-  <ion-row *ngFor="let respo of allResponders_Distance ">
+
+<p> <b>Note:</b> You may have to pay for the services rendered by the providers listed below. </p>
+
+
+  <ion-row *ngFor="let respo of allResponders_Distance">
        <ion-card>
           <ion-card-content>
               <ion-item (click)="goLocation(respo)" text-left>
@@ -19,12 +23,6 @@
           </ion-card-content>
        </ion-card> 
       </ion-row>
-
-
-
-
-
-
 
 
 

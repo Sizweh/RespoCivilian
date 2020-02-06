@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { UrlbaseProvider } from './../../providers/urlbase/urlbase';
 import { MenuController } from 'ionic-angular';
 import { OneSignal } from '@ionic-native/onesignal';
 import { Network } from '@ionic-native/network';
-import { ToastController } from 'ionic-angular';
+import { Geolocation, } from '@ionic-native/geolocation';
+// import { Diagnostic } from '@ionic-native/diagnostic';
+
 
 
 @IonicPage()
@@ -31,22 +33,58 @@ export class HomePage {
   OneSignal: any;
   isConnected:boolean;
 
+enableHighAccuracy:any;
+geoLatitude: number;
+geoLongitude: number;
+
 
   constructor(
     public navCtrl: NavController, 
-    private toastCtrl: ToastController,
+    public alertCtrl: AlertController,
     public navParams: NavParams,
     private storage: Storage,
     private urlService: UrlbaseProvider,
     public menuCtrl: MenuController,
     private oneSignal: OneSignal,
     private network: Network,
+    private geolocation: Geolocation,
+    // private diagnostic: Diagnostic,
 
 
    
     ) {
 
     this.menuCtrl.enable(true);
+
+
+    setTimeout(() => {
+      if(this.network.type==="wifi"){
+        this.isConnected=true;
+      }
+      if(this.network.type==="cellular"){
+        this.isConnected=true;
+      }
+      if(this.network.type==="4g"){
+        this.isConnected=true;
+      }
+    else{
+    
+    }
+    
+    }, 0);
+    
+    
+      
+    this.network.onConnect().subscribe(()=>{
+    this.isConnected=true;
+    
+    });
+    
+    
+    this.network.onDisconnect().subscribe(()=>{
+      this.isConnected=false;
+    
+    });
     
 
  
@@ -135,119 +173,136 @@ otherCategories = [
 
 
 
-ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
+ionViewDidEnter() {
+  console.log('ionViewDidLoad HomePage');
 
-    this.storage.get('user_id').then((val) => {
+  let option = {
+    enableHighAccuracy:true,
+    maximumAge: 100,
+    timeout:8000
+   };
+ 
+     this.geolocation.getCurrentPosition(option).then((data)=>{
+     this.geoLatitude = data.coords.latitude;
+     this.geoLongitude = data.coords.longitude;
+     this.enableHighAccuracy =  data.coords.accuracy ;
+ 
+        //  let RoundedLat = this.geoLatitude.toFixed(6);
+        //  let RoundedLng = this.geoLongitude.toFixed(6);
+        //  var x = document.getElementById('getaccuracy');
+        //  var GPS = (`<b>Your GPS coordinates:</b>`);
+        //  x.innerHTML = GPS;
+       
+           
+        //  let L = document.getElementById('getLat');
+        //  let Ln = document.getElementById('getLong');
+        //  L.innerHTML = RoundedLat;
+        //  Ln.innerHTML = RoundedLng;
+        
+     }); 
 
-     this.user_id = val;
-
-     if(this.user_id === null)
-     {
-       this.navCtrl.setRoot('LoginPage');  
-     }
-     else{
-     }
-
+//      let successCallback = (isAvailable) => { console.log('Is available? ' + isAvailable); };
+//      let errorCallback = (e) => console.error(e);
      
-  
-      this.network.onConnect().subscribe(()=>{
-      this.isConnected=true;
-      this.toastCtrl.create({
-  
-        message: '',
-        position: 'middle',
-        duration: 2000,
-      }).present();
-      });
-  
+//      this.diagnostic.isLocationAvailable().then(successCallback, errorCallback);
+//      this.diagnostic.getLocationMode()
+
+//      .then((state) => {
+//        if (state == this.diagnostic.locationMode.LOCATION_OFF){
+//          // do something
+//          this.alertCtrl.create({
+//           title: "Notification.",
+//           subTitle:"Switch On your Location and Restart the Request Process.",
+//           buttons:[
+            
+//             {text: 'Ok',
+//             role: 'ok',
+//             handler:()=>{
+//               this.diagnostic.switchToLocationSettings();
+//               this.navCtrl.setRoot("HomePage");
+//             }
+//           }
+//         ]
+//         }).present();
       
-      this.network.onDisconnect().subscribe(()=>{
-        this.isConnected=false;
-      this.toastCtrl.create({
-  
-        message: 'please check your network connection',
-        position: 'middle',
-        duration: 2000,
-  
-      }).present();
-      });
-      
+//        } else {
+// ////////////////////////////////////////////////////////////////////////
+
+//        }
+       
+//      }).catch(e => console.error(e));
 
 
 
+  this.storage.get('user_id').then((val) => {
 
+    this.user_id = val;
 
+    if (this.user_id === null) {
+      this.navCtrl.setRoot('LoginPage');
+    }
+    else {
+    }
+  });
 
-    });
-
-
-
-
-
-  var notificationOpenedCallback = function(jsonData) {
+  var notificationOpenedCallback = function (jsonData) {
     console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
   };
 
- window["plugins"].OneSignal
- .startInit("c92bb615-7c1e-4a91-8e4d-e4d3d771c165", "384977991016")
-   .handleNotificationOpened(notificationOpenedCallback)
-   .endInit();
-   
+  window["plugins"].OneSignal
+    .startInit("c92bb615-7c1e-4a91-8e4d-e4d3d771c165", "384977991016")
+    .handleNotificationOpened(notificationOpenedCallback)
+    .endInit();
 
 
-this.storage.get('user_id').then((val) => {
-window["plugins"].OneSignal.sendTag("user_id", this.user_id);
+  this.storage.get('user_id').then((val) => {
+    window["plugins"].OneSignal.sendTag("user_id", this.user_id);
+    this.user_id = String(val);
+  });
 
-  this.user_id = String(val);  
-});
 
+  this.storage.get('user_id').then((_user_id) => {
+    this.user_ids = 'user_id';
+  });
 
-this.storage.get('user_id').then((_user_id) => {
-   this.user_ids = 'user_id' ; 
-});
-
- var postData ={user_id:this.user_ids , playerId:this.playerId };
+  var postData = { user_id: this.user_ids, playerId: this.playerId };
 
   this.urlService.updatePlayerId(postData)
-  .subscribe(res => {
-  console.log(res);
-  if (res.status=='OK') {
-    console.log("playeId updated.");
-  }  else {
-    console.log("Please try again.");
-  }
-}, (err) => {
-  console.log(err);
-});
-  
+    .subscribe(res => {
+      console.log(res);
+      if (res.status == 'OK') {
+        console.log("playeId updated.");
+      } else {
+        console.log("Please try again.");
+      }
+    }, (err) => {
+      console.log(err);
+    });
+
    
 }
 
   goSelfAdmission(fault){
-
   this.storage.get('user_id').then((result) => {
     this.storage.set('category', fault);
     this.navCtrl.push("SelfAdmissionPage", {
       user_id:result,
     });
-});
-    
-    }
+  });   
+}
 
 
   goSpecifyEmergency(other){
     this.storage.set('category', other);
-    this.storage.get('user_id').then((result) => {
-    this.storage.get('id').then((_result_) => {
+     this.storage.get('user_id').then((result) => {
       this.navCtrl.push("SpecifyEmergencyPage", {
         user_id:result,
-        id:result,
       });
   });
-});
-
 }
+
+
+
 checkAccept() {
 
   this.userDetails={
@@ -257,17 +312,17 @@ checkAccept() {
    
   }
   
-  this.urlService.checkRespoAccept( this.userDetails)
+  this.urlService.checkRespoAccept(this.userDetails)
   .subscribe(res => {
       // this.presentToast(res.msg, res.status);
       console.log(res);
       if (res.status=='accepted') {
-        this.alert.presentAlert("Notification", res.msg);
+       this.alert.presentAlert("Notification", res.msg);
         this.subscription.unsubscribe();
         this.navCtrl.push('CountDownPage');
       }
       if (res.status=='canceled') {
-        this.alert.presentAlert("Notification", res.msg);
+       this.alert.presentAlert("Notification", res.msg);
         this.subscription.unsubscribe();
         this.navCtrl.push('CountDownPage');
       }
@@ -280,7 +335,6 @@ checkAccept() {
  
 
 goEmergencyNo(){
- 
 this.navCtrl.push('EmergencyNoPage')
 }
 

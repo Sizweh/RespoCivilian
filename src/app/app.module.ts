@@ -3,7 +3,6 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { CallNumber } from '@ionic-native/call-number';
 import { MyApp } from './app.component';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpClientModule } from '@angular/common/http'
@@ -12,21 +11,18 @@ import { ToastProvider } from '../providers/toast/toast';
 import { AlertsProvider } from '../providers/alerts/alerts';
 import { PipesModule } from '../pipes/pipes.module';
 import { UrlbaseProvider } from '../providers/urlbase/urlbase';
-
 import { IonicStorageModule } from '@ionic/storage';
-
-
-
 import { SelectSearchableModule } from 'ionic-select-searchable';
 import { OneSignal } from '@ionic-native/onesignal';
 import { Geolocation } from '@ionic-native/geolocation';
 import { SocialSharing } from '@ionic-native/social-sharing';
-
 import { Network } from '@ionic-native/network';
-
-
-
-
+import { Diagnostic } from '@ionic-native/diagnostic';
+import { PhotoLibrary } from '@ionic-native/photo-library';
+import { ImagePicker } from '@ionic-native/image-picker';
+import { Camera,  } from '@ionic-native/camera';
+import { FileOpener } from '@ionic-native/file-opener';
+// CameraOptions
 
 @NgModule({
   declarations: [
@@ -61,29 +57,22 @@ import { Network } from '@ionic-native/network';
   providers: [
     StatusBar,
     Geolocation,
-   
+    FileOpener,
     SocialSharing,
     SplashScreen,
     OneSignal,
-
     Network,
-
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-
-   
     AlertsProvider,
     ToastProvider,
     CallNumber,
- 
     UrlbaseProvider,
-
-
+    Diagnostic,
     HttpModule,
-
- 
- 
-  
-  
+    PhotoLibrary,
+    ImagePicker,
+    Camera,
+    //CameraOptions
   ]
 })
 export class AppModule {}

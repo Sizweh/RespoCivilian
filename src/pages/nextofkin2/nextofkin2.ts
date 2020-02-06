@@ -117,7 +117,9 @@ export class Nextofkin2Page {
     });
     loading.present();
   
-    this.navCtrl.setRoot('HomePage')
+    this.navCtrl.setRoot('MyaccountPage' , {
+      user_id:this.User_Id,
+  })
  }
 
 

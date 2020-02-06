@@ -22,6 +22,7 @@ export class NextOfKinPage {
   Userdata: any;
 
   fullName:any;
+  civsurname:any;
 
   phonenumber:any;
   email:any;
@@ -119,6 +120,10 @@ export class NextOfKinPage {
    
       this.fullName = val;
     });
+    this.storage.get('civsurname').then((val) => {
+   
+      this.civsurname = val;
+    });
     this.storage.get('email').then((val) => {
   
       this.email = val;
@@ -185,6 +190,7 @@ goVerifyAccount(){
    phonenumber: this.phonenumber,
    email: this.email,
    password:this.password,
+   civsurname:this.civsurname,
 
 
 //    //medical//
@@ -205,6 +211,8 @@ goVerifyAccount(){
      //THIS IS A BETTER WAY TO MAKE API CALLS
     this.urlService.register(this.Userdata)
     .subscribe(res => {
+      
+      this.storage.set('userid',res.user_id)
 
   this.alert.presentAlert("Notification", res.msg);
       if (res.status=='OK') {

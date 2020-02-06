@@ -6,8 +6,6 @@
           <ion-icon name="menu"></ion-icon>
         </button>
       </ion-buttons>
-
-
     </ion-toolbar>
   </ion-navbar>
 </ion-header>
@@ -25,8 +23,14 @@
   <div no-scrolling                                                                                                                                                                                                                                                                            class="login-fields" [formGroup]="personalForm">
 
     <ion-item text-left>
-      <ion-label stacked>Full Name </ion-label>
+      <ion-label stacked>Full Name</ion-label>
       <ion-input formControlName="fullName" floating block value="{{ fault.name }}">
+      </ion-input>
+    </ion-item>
+
+    <ion-item text-left>
+      <ion-label stacked>Surname</ion-label>
+      <ion-input formControlName="civsurname" floating block value="{{ fault.surname }}">
       </ion-input>
     </ion-item>
 

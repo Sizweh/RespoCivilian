@@ -28,13 +28,7 @@ export class BeneficiaryPage {
     private toastCtrl: ToastController
     ) {
 
-      // this.storage.get('user_id').then((val) => {
-      //   this.user_id = String(val);  
-      // });
-
-      // this.storage.get('id').then((val) => {
-      //   this.id = String(val);  
-      // });
+      
 
       this.User_Id = navParams.get('user_id') ;
 
@@ -49,7 +43,7 @@ export class BeneficiaryPage {
         'dob': ['', Validators.compose([Validators.required])],
         'allergies': ['', Validators.compose([Validators.required])],
         'relationship': ['', Validators.compose([Validators.required])],
-        // 'email': ['', Validators.compose([Validators.required])],
+
           
       })
 
@@ -72,7 +66,7 @@ export class BeneficiaryPage {
     const value = this.beneficiaryForm.value;
 
     this.storage.set('name', value.name);
-    // this.storage.set('email', value.email);
+
     this.storage.set('phone', value.phone);  
     this.storage.set('gender', value.gender);
     this.storage.set('allergies', value.allergies);
@@ -108,7 +102,11 @@ export class BeneficiaryPage {
         duration: 700
       });
       loading.present();
-    this.navCtrl.setRoot('HomePage')
+    this.navCtrl.setRoot('MyBeneficiariesPage', {
+      user_id:this.User_Id,
+  });
+  
   }
+
 
 }

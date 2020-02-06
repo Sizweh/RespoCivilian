@@ -127,7 +127,11 @@ export class ForgotpasswordPage {
       });
       loading.present();
 
-    this.navCtrl.setRoot('HomePage')
+    this.navCtrl.setRoot('MyBeneficiariesPage', {
+      user_id:this.user_Id,
+      id:this.id,
+
+  })
   }
 
 

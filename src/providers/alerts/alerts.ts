@@ -1,24 +1,29 @@
 import { Injectable } from '@angular/core';
 import { AlertController } from 'ionic-angular';
-// import { HttpClient } from '@angular/common/http';
+
+
 
 
 @Injectable()
 export class AlertsProvider {
 
   constructor(
-    public alertCtrl: AlertController
-    // public http: HttpClient
+    public alertCtrl: AlertController,
+
+
     ) { }
 
-  presentAlert(title: string, message: string) {
+  presentAlert(title: string, message: string,) {
     const alert = this.alertCtrl.create(
       {
         title,
         subTitle: message,
         buttons: [
           {
-            text: 'OK'
+            text: 'OK',
+            handler : ()=>{
+
+            }
           }
         ]
       });

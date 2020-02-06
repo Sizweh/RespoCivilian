@@ -1,6 +1,14 @@
 <ion-content text-center>
+          
 
-<div map-align=center id="map" style="position:relative;width:100%;height:250px;">
+
+<button   (click)="goMaps()" icon-right rou ion-button  color="newcolor">Select Saved Address
+<ion-icon name="md-arrow-dropdown"></ion-icon>
+</button>
+                
+
+
+<div map-align=center id="map" style="position:relative;width:100%;height:290px;">
 </div>
 
 
@@ -19,8 +27,6 @@ padding: 10px; box-sizing: border-box; resize: vertical; font-size: 17px;" place
 <div id="getaccuracy" style="font-size: 13px;  color:#38414a; "></div>
 <div id="getLat" style="font-size: 13px;  color:#38414a; "></div>
 <div id="getLong" style="font-size: 13px;  right: 1px; color:#38414a; "></div>
-<br>
-
 
 <div class="register-fields" [formGroup]="map2Form">
     <input text-center formControlName="additional_address" id="add" value="" type="text"
@@ -28,15 +34,15 @@ padding: 10px; box-sizing: border-box; resize: vertical; font-size: 17px;" place
         style="border: none; border-bottom: 1px solid #38414a; width: 90%; padding: 12px; font-size: 16px;">
 </div>
 <br>
-<br>
 
-<button [disabled]="!map1Form.valid" (click)="goSelectResponder()" ion-button color="secondary"
+<button  (click)="goSelectResponder()" ion-button color="secondary"
     round>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Confirm Location
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
 <br>
 <br>
 
-<button (click)="goHome()" ion-button color="newcolor"
+
+<button (click)="goHome()" ion-button color="danger"
     round>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cancel
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
 <br>

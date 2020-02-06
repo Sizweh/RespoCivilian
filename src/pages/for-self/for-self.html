@@ -22,12 +22,12 @@
 <div class="login-fields" [formGroup]="medicaldetailsForm">
 
 <ion-item>
-      <ion-input placeholder="Scheme Name" type="text"></ion-input>
+      <ion-input formControlName="scheme_name" placeholder="Scheme Name" type="text"></ion-input>
       <ion-select formControlName="scheme_name">
           <ion-label>Scheme Name</ion-label>
         
         <div *ngFor="let fault of medical_collection">
-            <ion-option >{{fault.company_name}}</ion-option>
+            <ion-option>{{fault.company_name}}</ion-option>
           </div>
 
       </ion-select>
