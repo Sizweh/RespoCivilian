@@ -6,7 +6,7 @@ import { Storage } from '@ionic/storage';
 import { FormGroup} from '@angular/forms';
 import { OneSignal } from '@ionic-native/onesignal';
 import { SocialSharing } from '@ionic-native/social-sharing';
-
+import { AlertController } from 'ionic-angular';
 
 
 
@@ -46,6 +46,7 @@ export class MyApp {
     public menu: MenuController,
     private storage: Storage,
     private oneSignal: OneSignal,
+    public alertCtrl: AlertController,
     private socialSharing: SocialSharing
     
     ) {
@@ -102,6 +103,10 @@ this.socialSharing.share(this.text, this.message)
          .startInit("c92bb615-7c1e-4a91-8e4d-e4d3d771c165", "384977991016")
         .handleNotificationOpened(notificationOpenedCallback)
         .endInit();
+      
+         
+        this.nav.setRoot("AlertsPage");
+        this.nav.setRoot("HomePage");
     });
   }
 
@@ -176,6 +181,21 @@ this.socialSharing.share(this.text, this.message)
 
   goMyProfile(){
     this.nav.setRoot('MyprofilePage');
+    this.menu.enable(true);
+    this.menu.close();
+    }
+
+  goAlerts(){
+
+    const alert = this.alertCtrl.create({
+      title: 'Notification!',
+      subTitle: 'Your friend, Obi wan Kenobi, just accepted your friend request!',
+      buttons: ['OK']
+    });
+    alert.present();
+
+
+    this.nav.setRoot('AlertsPage');
     this.menu.enable(true);
     this.menu.close();
     }

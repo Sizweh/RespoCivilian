@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar color="newcolor">
+    <ion-toolbar color="newcolor" mode="ios">
+      <ion-buttons start>
+       <button color='light' ion-button icon-only menuToggle>
+       <ion-icon name="menu"></ion-icon>
+        </button>
+       </ion-buttons>
+      <!-- <ion-buttons end>
+       <button (click)="goEmergencyNo()" color='light' ion-button icon-only >
+         <h6  color='light'>E-Directory</h6>
+      </button>
+     </ion-buttons>    -->
+  </ion-toolbar>
+</ion-navbar>
+</ion-header>
+
+
+<ion-content text-center padding>
+
+
+<h5>Incoming Alerts</h5>
+
+<ion-row no-lines *ngFor="let fault of alerts_collection">
+
+  <!-- <ion-card   no-lines>
+    <ion-item (click)="goHistory1()" color='light'no-lines  text-left>
+    
+      <font size="3" color='#38414a'><b>Notification: </b>{{ fault.message }} <br><br></font><br>
+    
+     
+    </ion-item>
+
+  </ion-card> -->
+
+  <font size="3" color='#38414a'><b>Notification: </b>{{ fault.message }} <br><br></font>
+
+
+</ion-row>
+
+
+
+
+</ion-content>

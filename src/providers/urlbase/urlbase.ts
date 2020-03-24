@@ -10,10 +10,10 @@ import { catchError, tap } from 'rxjs/operators';
 @Injectable()
 export class UrlbaseProvider {
 
- apiUrl= 'https://blooming-waters-81867.herokuapp.com/api/civilian/';     
+apiUrl= 'https://blooming-waters-81867.herokuapp.com/api/civilian/';     
 
 //  apiUrl = 'http://46.101.169.33/api/civilian/';
-// apiUrl = 'http://127.0.0.1:8000/api/civilian/';  
+//apiUrl = 'http://127.0.0.1:8000/api/civilian/';  
 
 
   constructor(public http: HttpClient) {
@@ -23,6 +23,10 @@ export class UrlbaseProvider {
   //RESEND OTP
   resendOTP(phone): Observable<any> {
     return this.http.post(this.apiUrl+"resendOTP",{"phone":phone});
+  }
+
+  alerts(): Observable<any> {
+    return this.http.get(this.apiUrl+"viewBroadcast",{})
   }
 
   changePhone(p,id): Observable<any>{
@@ -39,6 +43,7 @@ export class UrlbaseProvider {
         catchError(this.handleError('loginCivilian', []))
       );
   }
+ 
 
   //pass test on local
   register (data): Observable<any> {

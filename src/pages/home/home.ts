@@ -253,6 +253,7 @@ ionViewDidEnter() {
     .startInit("c92bb615-7c1e-4a91-8e4d-e4d3d771c165", "384977991016")
     .handleNotificationOpened(notificationOpenedCallback)
     .endInit();
+    //this.navCtrl.setRoot('HomePage');
 
 
   this.storage.get('user_id').then((val) => {
